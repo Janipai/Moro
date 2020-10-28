@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:fontFamily="@font/anton"
-            android:text="TextView"
+            android:text="kontakt os"
             android:textAllCaps="true"
             android:textColor="#260023"
             android:textSize="36sp"
