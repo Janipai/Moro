@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:orientation="vertical"
+
+    android:background="#FFFDBA"
+    tools:context=".Hvad">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anton"
+        android:text="Hvad"
+        android:textSize="64sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idtype"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="85dp"
+        android:clickable="true"
+        android:text="TYPE"
+        android:textColor="#FFA500"
+        android:textSize="32sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="85dp"
+
+        android:clickable="true"
+        android:text="STEMNING"
+        android:textSize="32sp"
+        />
+        />
+        <!--android:layout_marginStart="251dp"-->
+    </RelativeLayout>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/idtype"
+        android:padding="15dp"
+
+         >
+
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Udstilling og kunst"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:textColor="#FFA500"
+            android:text="Litteratur"
+            />
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
