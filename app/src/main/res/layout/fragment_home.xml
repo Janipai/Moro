@@ -4,11 +4,61 @@
     android:layout_height="match_parent"
     android:background="#E69999">
 
+    <ListView
+        android:id="@+id/eventlistview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/anbefaletTxt"
+
+        />
+
+
+
+    <TextView
+        android:id="@+id/ligenutxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/anton"
+        android:text="LIGE NU"
+        android:textSize="40sp"
+        />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/anton"
+        android:text="DATO"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/eventTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/anton"
+        android:layout_centerHorizontal="true"
+        android:text="FIND EVENTS / VIBE CHECK"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/anbefaletTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTxt"
+        android:layout_marginLeft="20sp"
+        android:text="ANBEFALET"
+        android:fontFamily="@font/anton"
+        android:textSize="20sp"
+        />
+
+
 
 </RelativeLayout>
