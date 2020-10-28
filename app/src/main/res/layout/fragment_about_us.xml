@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D3CAEE"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
     tools:context=".AboutUsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/title"
@@ -26,35 +27,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="236dp"
-            android:layout_height="230dp"
+            android:id="@+id/aboutPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="20dp"
+            android:contentDescription="Picture of the squad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:src="@tools:sample/avatars" />
 
-        <EditText
-            android:id="@+id/editTextTextMultiLine"
+        <TextView
+            android:id="@+id/aboutText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="20dp"
-            android:clickable="false"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:selectAllOnFocus="false"
-            android:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL "
-            android:textSize="10sp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/anton"
+            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/aboutPicture"
+            tools:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL " />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</ScrollView>
