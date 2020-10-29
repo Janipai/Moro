@@ -6,13 +6,9 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
+import com.example.moro.EventHandler.EventFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                     break;
                 case R.id.bot_nav_events :
-                    //selectedFragment = new EventFragment();
+                    selectedFragment = new EventFragment();
                     break;
                 case R.id.bot_nav_favorite :
                     //selectedFragment = new FavoriteFragment();
@@ -54,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     //selectedFragment = new ProfileFragment();
                     break;
                 case R.id.top_nav_search :
-                    //selectedFragment = new SearchFragment();
+                    selectedFragment = new EventFragment();
                     break;
 
             }

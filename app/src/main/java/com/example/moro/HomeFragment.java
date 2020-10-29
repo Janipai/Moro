@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void createEvents() {
+    public void createEvents() {
         Event event1 = new Event("Softball", "3 KM", "10/11/2020", "10:00 - 12:00");
         Event event2 = new Event("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00");
         Event event3 = new Event("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00");
