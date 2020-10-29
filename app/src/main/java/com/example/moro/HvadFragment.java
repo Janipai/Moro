@@ -1,19 +1,21 @@
+package com.example.moro;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.moro.R;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HvornaarFragment#newInstance} factory method to
+ * Use the {@link HvadFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HvornaarFragment extends Fragment {
+public class HvadFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class HvornaarFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HvornaarFragment() {
+    public HvadFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class HvornaarFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Hvornaar.
+     * @return A new instance of fragment Hvad.
      */
     // TODO: Rename and change types and number of parameters
-    public static HvornaarFragment newInstance(String param1, String param2) {
-        HvornaarFragment fragment = new HvornaarFragment();
+    public static HvadFragment newInstance(String param1, String param2) {
+        HvadFragment fragment = new HvadFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,12 +55,26 @@ public class HvornaarFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hvornaar, container, false);
+        View v = inflater.inflate(R.layout.fragment_hvad, container, false);
+        TextView typeText = v.findViewById(R.id.idstemning);
+
+        typeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NaarFragment naar = new NaarFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout, naar);
+                transaction.commit();
+            }
+        });
+        return v;
     }
 }

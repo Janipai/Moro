@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     //selectedFragment = new ProfileFragment();
                     break;
                 case R.id.top_nav_search :
-                    //selectedFragment = new SearchFragment();
+                    selectedFragment = new HvadFragment();
                     break;
 
             }
