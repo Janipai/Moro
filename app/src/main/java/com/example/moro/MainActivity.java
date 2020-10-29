@@ -9,8 +9,6 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new BurgerMenuFragment();
                         break;
                     case R.id.top_nav_profile:
-                        //selectedFragment = new ProfileFragment();
+                        selectedFragment = new LoginFragment();
                         break;
                     case R.id.top_nav_search:
                         //selectedFragment = new SearchFragment();

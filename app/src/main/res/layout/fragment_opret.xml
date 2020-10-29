@@ -15,137 +15,141 @@
 
         <EditText
             android:id="@+id/emailProfil"
-            android:layout_width="0dp"
+            android:layout_width="331dp"
             android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/tipborder"
             android:ems="10"
             android:fontFamily="@font/anton"
+            android:hint="EMAIL"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
-            android:text="EMAIL"
-            app:layout_constraintBottom_toTopOf="@+id/passwordProfil"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kønProfi" />
+            app:layout_constraintTop_toBottomOf="@+id/fødsdatoProfil" />
 
         <TextView
             android:id="@+id/opretOverskrift"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="80dp"
             android:fontFamily="@font/anton"
             android:text="OPRET PROFIL"
             android:textColor="#000000"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/nameProfil"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/nameProfil"
-            android:layout_width="0dp"
+            android:layout_width="331dp"
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="20dp"
             android:autoText="false"
             android:background="@drawable/tipborder"
             android:ems="10"
             android:fontFamily="@font/anton"
+            android:hint="NAVN"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
-            android:text="NAVN"
-            app:layout_constraintBottom_toTopOf="@+id/kønProfi"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/opretOverskrift" />
 
         <EditText
             android:id="@+id/fødsdatoProfil"
-            android:layout_width="0dp"
+            android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/tipborder"
             android:ems="10"
             android:fontFamily="@font/anton"
+            android:hint="FØDSELSDAG"
             android:inputType="date"
             android:paddingLeft="10dp"
-            android:text="FØDSELSDAG"
-            app:layout_constraintBottom_toTopOf="@+id/emailProfil"
-            app:layout_constraintEnd_toStartOf="@+id/kønProfi"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
         <Spinner
             android:id="@+id/kønProfi"
             android:layout_width="161dp"
             android:layout_height="50dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/tipborder"
             android:hint="Køn"
-            app:layout_constraintBottom_toTopOf="@+id/emailProfil"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fødsdatoProfil"
             app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
         <EditText
             android:id="@+id/passwordProfil"
-            android:layout_width="0dp"
+            android:layout_width="331dp"
             android:layout_height="50dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/tipborder"
             android:ems="10"
             android:fontFamily="@font/anton"
             android:hint="ADGANGSKODE"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/opretProfil"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailProfil" />
-
-        <Button
-            android:id="@+id/opretProfil"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="65dp"
-            android:layout_marginEnd="65dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#F69E1C"
-            android:fontFamily="@font/anton"
-            android:text="OPRET PROFIL"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/alleredeProfil"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordProfil" />
 
         <TextView
             android:id="@+id/alleredeProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="130dp"
+            android:layout_marginTop="22dp"
             android:clickable="true"
             android:fontFamily="@font/anton"
             android:text="HAR DU ALLEREDE EN PROFIL?"
             android:textColor="#FF9800"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/opretProfil" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordProfil" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/alleredeProfil">
+
+            <Button
+                android:id="@+id/buttonOpretLogin"
+                android:layout_width="250dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="13dp"
+                android:background="#F6A31A"
+                android:fontFamily="@font/anton"
+                android:text="opret profil"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/button_back"
+                app:layout_constraintEnd_toEndOf="@+id/button_back"
+                app:layout_constraintStart_toStartOf="@+id/button_back"
+                app:layout_constraintTop_toTopOf="@+id/button_back" />
+
+            <TextView
+                android:id="@+id/button_back"
+                android:layout_width="250dp"
+                android:layout_height="42dp"
+                android:background="@drawable/tipborder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="6dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
