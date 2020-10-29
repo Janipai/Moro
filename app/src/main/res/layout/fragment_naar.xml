@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
-    tools:context="Naar">
+    tools:context="NaarFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout

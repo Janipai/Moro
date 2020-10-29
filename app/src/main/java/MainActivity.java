@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Shania leger lidt, men proever ikke t fucke noget op
-        Hvad hvad = new Hvad();
+        HvadFragment hvad = new HvadFragment();
         FragmentManager manager = getSupportFragmentManager();
 
         manager.beginTransaction().add(R.id.mainLayout,hvad).commit();
