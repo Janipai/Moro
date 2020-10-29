@@ -45,8 +45,6 @@ public class BurgerMenuFragment extends Fragment implements View.OnClickListener
                 fragment = new ContactFragment();
                 break;
         }
-        //FragmentManager fragmentManager = myContext.getSupportFragmentManager();
-        //fragmentManager.beginTransaction().replace(R.id.main_fragment_container, fragment).commit();
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).commit();
+        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
     }
 }
