@@ -16,19 +16,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_tip);
+        setContentView(R.layout.activity_main);
 
 
 
-        //BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        //BottomNavigationView topNav = findViewById(R.id.top_navigation);
-        //bottomNav.setOnNavigationItemReselectedListener(navListener);
-        //topNav.setOnNavigationItemReselectedListener(navListener);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView topNav = findViewById(R.id.top_navigation);
+        bottomNav.setOnNavigationItemReselectedListener(navListener);
+        topNav.setOnNavigationItemReselectedListener(navListener);
 
     }
     private BottomNavigationView.OnNavigationItemReselectedListener navListener =
