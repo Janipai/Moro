@@ -6,14 +6,25 @@
     android:background="#FFFDBA"
     tools:context="Hvad">
 
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/anton"
-        android:text="Hvad"
-        android:textSize="64sp" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/anton"
+            android:text="Hvad"
+            android:textSize="64sp" />
+
+        <ImageView
+            android:id="@+id/arrow_up"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/arrow_up_float" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/idtypestemning"
@@ -29,12 +40,14 @@
             android:layout_marginStart="0dp"
             android:layout_marginTop="85dp"
 
-            android:onClick="onClick"
             android:clickable="true"
+            android:fontFamily="@font/anton"
 
+            android:onClick="onClick"
             android:text="TYPE"
             android:textColor="#FFA500"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/idstemning"
@@ -46,9 +59,9 @@
             android:layout_marginTop="85dp"
 
             android:clickable="true"
+            android:fontFamily="@font/anton"
             android:text="STEMNING"
             android:textSize="32sp" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -95,11 +108,6 @@
 
     </RelativeLayout>
 
-
-
-
-
-
     <RelativeLayout
         android:id="@+id/idrow2"
         android:layout_width="wrap_content"
@@ -143,4 +151,14 @@
             android:textColor="#FFA500" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="120dp"
+        android:src="@android:drawable/arrow_down_float" />
 </RelativeLayout>
