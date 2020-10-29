@@ -16,18 +16,44 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    String[] testEvents = {"Softball", "Kunstner fremvisning", "Natklub åbning", "Vin smagning", "Kulturnat", "Øl smagning", "Pudekamp på rådhuspladsen", "Nøgenløb", "Ild festival"};
+    ArrayList<Event> testEvents;
     ListView eventList;
-    ArrayAdapter<String> eventAdapter;
+    EventArrayAdapter eventAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        createEvents();
+
         View view = inflater.inflate(R.layout.fragment_home,container,false);
         eventList = (ListView) view.findViewById(R.id.eventlistview);
-        eventAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, testEvents);
+        eventAdapter = new EventArrayAdapter(getActivity(), R.layout.home_event_adapterv_view_layout, testEvents);
         eventList.setAdapter(eventAdapter);
 
         return view;
     }
+
+    private void createEvents() {
+        Event event1 = new Event("Softball", "3 KM", "10/11/2020", "10:00 - 12:00");
+        Event event2 = new Event("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00");
+        Event event3 = new Event("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00");
+        Event event4 = new Event("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00");
+        Event event5 = new Event("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00");
+        Event event6 = new Event("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00");
+        Event event7 = new Event("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00");
+        Event event8 = new Event("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00");
+
+        testEvents = new ArrayList<>();
+        testEvents.add(event1);
+        testEvents.add(event2);
+        testEvents.add(event3);
+        testEvents.add(event4);
+        testEvents.add(event5);
+        testEvents.add(event6);
+        testEvents.add(event7);
+        testEvents.add(event8);
+
+    }
+
 }

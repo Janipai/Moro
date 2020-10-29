@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        BottomNavigationView topNav = findViewById(R.id.top_navigation);
         bottomNav.setOnNavigationItemReselectedListener(navListener);
-
+        topNav.setOnNavigationItemReselectedListener(navListener);
 
     }
     private BottomNavigationView.OnNavigationItemReselectedListener navListener =
@@ -41,14 +42,21 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                     break;
                 case R.id.bot_nav_events :
-                    //selectedFragment = new HomeFragment();
+                    //selectedFragment = new EventFragment();
                     break;
                 case R.id.bot_nav_favorite :
-                    //selectedFragment = new HomeFragment();
+                    //selectedFragment = new FavoriteFragment();
                     break;
                 case R.id.bot_nav_menu :
-                    //selectedFragment = new HomeFragment();
+                    //selectedFragment = new BurgerMenuFragment();
                     break;
+                case R.id.top_nav_profile :
+                    //selectedFragment = new ProfileFragment();
+                    break;
+                case R.id.top_nav_search :
+                    //selectedFragment = new SearchFragment();
+                    break;
+
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).commit();
