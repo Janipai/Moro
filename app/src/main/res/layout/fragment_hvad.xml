@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFDBA"
+    tools:context="HvadFragment">
+
+    <RelativeLayout
+        android:id="@+id/idtypestemning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/anton"
+            android:text="Hvad"
+            android:textSize="64sp" />
+
+        <TextView
+            android:id="@+id/idtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="85dp"
+
+            android:clickable="true"
+            android:onClick="onClick"
+
+            android:text="TYPE"
+            android:fontFamily="@font/anton"
+            android:textColor="#FFA500"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/idstemning"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="85dp"
+
+            android:clickable="true"
+            android:fontFamily="@font/anton"
+            android:text="STEMNING"
+            android:textSize="32sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/idrow1"
+        android:layout_below="@+id/idtypestemning"
+        android:layout_above="@+id/idnavbar"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Udstilling og kunst"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Litteratur"
+            android:textColor="#FFA500" />
+
+
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerInParent="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Udstilling og kunst"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Litteratur"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_above="@+id/idrow1"
+        android:layout_centerHorizontal="true"
+        android:src="@android:drawable/arrow_up_float" />
+
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/idrow1"
+        android:layout_marginBottom="120dp"
+        android:src="@android:drawable/arrow_down_float" />
+
+</RelativeLayout>
