@@ -11,6 +11,8 @@ import com.example.moro.data.LoginRepository;
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
+
+/*
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 
     @NonNull
@@ -24,3 +26,5 @@ public class LoginViewModelFactory implements ViewModelProvider.Factory {
         }
     }
 }
+
+ */

@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moro.R;
-
+/*
 public class LoginFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
@@ -136,3 +136,5 @@ public class LoginFragment extends Fragment {
         }
     }
 }
+
+ */

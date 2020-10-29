@@ -10,7 +10,7 @@ import com.example.moro.data.LoginRepository;
 import com.example.moro.data.Result;
 import com.example.moro.data.model.LoggedInUser;
 import com.example.moro.R;
-
+/*
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
@@ -68,3 +68,5 @@ public class LoginViewModel extends ViewModel {
         return password != null && password.trim().length() > 5;
     }
 }
+
+ */
