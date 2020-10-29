@@ -9,10 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moro.MainActivity;
 import com.example.moro.R;
 
 import java.util.List;
@@ -46,14 +44,6 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
-        holder.cardView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = null;
-
-                ((MainActivity) fragment.getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
-            }
-        });
     }
    /*     holder.cardView.setOnClickListener(new View.OnClickListener(){
 

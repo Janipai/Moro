@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
+import com.example.moro.EventHandler.EventFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         BottomNavigationView topNav = findViewById(R.id.top_navigation);
 
+
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new HomeFragment();
                         break;
                     case R.id.bot_nav_events:
-                        //selectedFragment = new EventFragment();
+                        selectedFragment = new EventFragment();
                         break;
                     case R.id.bot_nav_favorite:
                         //selectedFragment = new FavoriteFragment();
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new BurgerMenuFragment();
                         break;
                     case R.id.top_nav_profile:
-                        selectedFragment = new LoginFragment();
+                        //selectedFragment = new LoginFragment();
                         break;
                     case R.id.top_nav_search:
                         //selectedFragment = new SearchFragment();
