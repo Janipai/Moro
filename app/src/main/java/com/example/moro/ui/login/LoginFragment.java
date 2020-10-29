@@ -46,7 +46,7 @@ public class LoginFragment extends Fragment {
         final Button loginButton = view.findViewById(R.id.buttonLogin);
         final ProgressBar loadingProgressBar = view.findViewById(R.id.loading);
 
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
+        /*loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
                 if (loginFormState == null) {
@@ -60,9 +60,9 @@ public class LoginFragment extends Fragment {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
             }
-        });
+        });*/
 
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
+        /*loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
                 if (loginResult == null) {
@@ -77,7 +77,7 @@ public class LoginFragment extends Fragment {
                 }
             }
         });
-
+*/
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
