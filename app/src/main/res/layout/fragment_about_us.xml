@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#D3CAEE"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     tools:context=".AboutUsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/title"
@@ -28,17 +28,21 @@
 
         <ImageView
             android:id="@+id/aboutPicture"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="20dp"
+            android:adjustViewBounds="true"
             android:contentDescription="Picture of the squad"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:src="@tools:sample/avatars" />
+            app:srcCompat="@drawable/untitled"
+            tools:src="@drawable/untitled"
+            tools:srcCompat="@drawable/untitled" />
 
         <TextView
             android:id="@+id/aboutText"
@@ -48,7 +52,8 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/anton"
-            android:text="TextView"
+            android:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL "
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
