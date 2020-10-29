@@ -4,34 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
-    tools:context="NaarFragment">
+    tools:context=".NaarFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/idtypestemning"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/anton"
-            android:text="Hvad"
+            android:text="Når"
             android:textSize="64sp" />
-
-        <ImageView
-            android:id="@+id/arrow_up"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@android:drawable/arrow_up_float" />
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/idtypestemning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/idtype"
@@ -70,7 +57,7 @@
     <RelativeLayout
         android:id="@+id/idrow1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/idtypestemning"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -109,21 +96,6 @@
             android:text="Du har tømmermænd"
             android:textColor="#FFA500" />
 
-    </RelativeLayout>
-
-
-
-
-
-
-    <RelativeLayout
-        android:id="@+id/idrow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idrow1"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:padding="15dp">
 
         <Button
             android:id="@+id/button4"
@@ -131,6 +103,7 @@
             android:layout_height="95dp"
 
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
 
             android:background="@drawable/outlined_button_style"
             android:text="du vil udvide dine horisonter"
@@ -141,7 +114,7 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
-            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
 
             android:background="@drawable/outlined_button_style"
             android:text="du har tomme lommer"
@@ -153,21 +126,27 @@
             android:layout_height="95dp"
 
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
 
             android:background="@drawable/outlined_button_style"
             android:text="mad gør dig glad"
             android:textColor="#FFA500" />
 
+        <ImageView
+            android:id="@+id/arrow_down"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:src="@android:drawable/arrow_down_float" />
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/arrow_down"
+        android:id="@+id/arrow_up"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
-        android:src="@android:drawable/arrow_down_float" />
+        android:layout_above="@+id/idrow1"
+        android:src="@android:drawable/arrow_up_float" />
 
 </RelativeLayout>
