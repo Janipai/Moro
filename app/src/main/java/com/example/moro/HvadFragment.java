@@ -1,3 +1,5 @@
+package com.example.moro;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -6,9 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.moro.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,7 +56,6 @@ public class HvadFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
 
@@ -64,7 +64,10 @@ public class HvadFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_hvad, container, false);
-        TextView typeText = v.findViewById(R.id.idtype);
+        TextView typeText = v.findViewById(R.id.idstemning);
+
+       ImageView arrowDown = v.findViewById(R.id.arrow_down);
+       ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +75,26 @@ public class HvadFragment extends Fragment {
                 NaarFragment naar = new NaarFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainLayout, naar);
+                transaction.commit();
+            }
+        });
+
+        arrowDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvorFragment hvor = new HvorFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,hvor);
+                transaction.commit();
+            }
+        });
+
+        arrowUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvornaarFragment hvornaar = new HvornaarFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,hvornaar);
                 transaction.commit();
             }
         });

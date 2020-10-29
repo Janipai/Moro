@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
-    tools:context="HvorFragment">
+    tools:context=".HvorFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
@@ -21,20 +21,6 @@
             android:textSize="64sp"
 
             />
-
-        <ImageView
-            android:id="@+id/arrow_up"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:src="@android:drawable/arrow_up_float" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/idtypestemning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/idtype"
@@ -56,7 +42,7 @@
         android:id="@+id/idrow1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/idtypestemning"
+        android:layout_below="@+id/idhvor"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
         android:padding="15dp">
@@ -95,6 +81,14 @@
             android:textColor="#FFA500" />
 
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/arrow_up"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/idrow1"
+        android:src="@android:drawable/arrow_up_float" />
 
     <ImageView
         android:id="@+id/arrow_down"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
-    tools:context="HvadFragment">
+    tools:context=".HvadFragment">
 
     <RelativeLayout
         android:id="@+id/idtypestemning"
@@ -46,6 +46,7 @@
             android:layout_marginTop="85dp"
 
             android:clickable="true"
+
             android:fontFamily="@font/anton"
             android:text="STEMNING"
             android:textSize="32sp" />
@@ -167,6 +168,16 @@
             android:background="@drawable/outlined_button_style"
             android:text="Koncerter"
             android:textColor="#FFA500" />
+        <ImageView
+            android:id="@+id/arrow_down"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:onClick="clickArrowDownEvent"
+
+
+            android:src="@android:drawable/arrow_down_float" />
     </RelativeLayout>
 
     <ImageView
@@ -175,15 +186,9 @@
         android:layout_height="25dp"
         android:layout_above="@+id/idrow1"
         android:layout_centerHorizontal="true"
-        android:src="@android:drawable/arrow_up_float" />
+        android:src="@android:drawable/arrow_up_float"
+        android:onClick="clickArrowUpEvent"
+        />
 
-    <ImageView
-        android:id="@+id/arrow_down"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/idrow1"
-        android:layout_marginBottom="120dp"
-        android:src="@android:drawable/arrow_down_float" />
 
 </RelativeLayout>
