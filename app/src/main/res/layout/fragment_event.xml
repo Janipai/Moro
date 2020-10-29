@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".event">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D4E2F2">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginEnd="25dp"
+            app:cardBackgroundColor="#1F3A7D"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="121dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="51dp"
+                    android:layout_height="19dp"
+                    android:fontFamily="@font/anton"
+                    android:text="00:00 - 00:00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px"
+                    tools:layout_editor_absoluteX="97dp"
+                    tools:layout_editor_absoluteY="141dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="166dp"
+                    android:layout_height="99dp"
+                    app:cardBackgroundColor="#C4C4C4"
+                    tools:layout_editor_absoluteX="-1dp"
+                    tools:layout_editor_absoluteY="-2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="166dp"
+                            android:layout_height="99dp"
+                            tools:layout_editor_absoluteX="0dp"
+                            tools:layout_editor_absoluteY="0dp"
+                            tools:src="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="28dp"
+                            android:layout_height="21dp"
+                            android:text="14"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="3dp"
+                            tools:layout_editor_absoluteY="76dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="28dp"
+                    android:layout_height="19dp"
+                    android:fontFamily="@font/anton"
+                    android:text="23 KM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px"
+                    tools:layout_editor_absoluteX="7dp"
+                    tools:layout_editor_absoluteY="141dp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:fontFamily="@font/anton"
+                    android:text="TITEL PÅ EVENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="37px"
+                    tools:layout_editor_absoluteX="9dp"
+                    tools:layout_editor_absoluteY="102dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:background="#D4E2F2"
+            android:src="@drawable/group_36"
+            tools:layout_editor_absoluteX="235dp"
+            tools:layout_editor_absoluteY="60dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:background="#D4E2F2"
+            android:src="@drawable/group_35"
+            tools:layout_editor_absoluteX="184dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="164dp"
+            android:layout_height="38dp"
+            android:background="#D4E2F2"
+            android:src="@drawable/group_37"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="65dp" />
+
+        <ImageButton
+            android:id="@+id/kortButton"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:background="#D4E2F2"
+            android:src="@drawable/union"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="60dp" />
+
+        <TextView
+            android:id="@+id/eventText"
+            android:layout_width="75dp"
+            android:layout_height="41dp"
+            android:fontFamily="@font/anton"
+            android:text="Events"
+            android:textColor="#1E1E1C"
+            android:textSize="60px"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="22dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="36dp"
+            android:layout_height="19dp"
+            android:fontFamily="@font/anton"
+            android:text="Filter"
+            android:textColor="#FFFFFF"
+            android:textSize="35px"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="65dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="164dp"
+            android:layout_height="164dp"
+            android:layout_marginStart="25dp"
+            app:cardBackgroundColor="#1F3A7D"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="121dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="51dp"
+                    android:layout_height="19dp"
+                    android:fontFamily="@font/anton"
+                    android:text="00:00 - 00:00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px"
+                    tools:layout_editor_absoluteX="97dp"
+                    tools:layout_editor_absoluteY="141dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="166dp"
+                    android:layout_height="99dp"
+                    app:cardBackgroundColor="#C4C4C4"
+                    tools:layout_editor_absoluteX="-1dp"
+                    tools:layout_editor_absoluteY="-2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="166dp"
+                            android:layout_height="99dp"
+                            tools:layout_editor_absoluteX="-2dp"
+                            tools:layout_editor_absoluteY="0dp"
+                            tools:src="@tools:sample/avatars" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="28dp"
+                            android:layout_height="21dp"
+                            android:text="14"
+                            android:textSize="18sp"
+                            tools:layout_editor_absoluteX="3dp"
+                            tools:layout_editor_absoluteY="76dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="28dp"
+                    android:layout_height="19dp"
+                    android:fontFamily="@font/anton"
+                    android:text="23 KM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px"
+                    tools:layout_editor_absoluteX="7dp"
+                    tools:layout_editor_absoluteY="141dp" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:fontFamily="@font/anton"
+                    android:text="TITEL PÅ EVENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="37px"
+                    tools:layout_editor_absoluteX="9dp"
+                    tools:layout_editor_absoluteY="102dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
