@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new HomeFragment();
                     break;
                 case R.id.bot_nav_events :
-                    //selectedFragment = new EventFragment();
+                    selectedFragment = new EventBeskrivelseFragment();
                     break;
                 case R.id.bot_nav_favorite :
                     //selectedFragment = new FavoriteFragment();
