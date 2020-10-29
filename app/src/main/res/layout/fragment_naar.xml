@@ -1,16 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
-    tools:context=".Naar">
+    tools:context="Naar">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Når"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/anton"
+        android:text="Hvad"
         android:textSize="64sp" />
 
-</FrameLayout>
+    <RelativeLayout
+        android:id="@+id/idtypestemning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/idtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="85dp"
+
+            android:onClick="onClick"
+            android:clickable="true"
+
+            android:text="TYPE"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/idstemning"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="85dp"
+
+            android:clickable="true"
+            android:text="STEMNING"
+            android:textColor="#FFA500"
+
+            android:textSize="32sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/idrow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idtypestemning"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Du vil ikke hjem, men videre"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Du vil ud i det blå"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="Du har tømmermænd"
+            android:textColor="#FFA500" />
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/idrow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idrow1"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="du vil udvide dine horisonter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="du har tomme lommer"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/outlined_button_style"
+            android:text="mad gør dig glad"
+            android:textColor="#FFA500" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
