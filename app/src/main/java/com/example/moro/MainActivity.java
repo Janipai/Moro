@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     //selectedFragment = new FavoriteFragment();
                     break;
                 case R.id.bot_nav_menu :
-                    //selectedFragment = new BurgerMenuFragment();
+                    selectedFragment = new BurgerMenuFragment();
                     break;
                 case R.id.top_nav_profile :
                     //selectedFragment = new ProfileFragment();
