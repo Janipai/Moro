@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         eventList = (ListView) view.findViewById(R.id.eventlistview);
         eventAdapter = new EventArrayAdapter(getActivity(), R.layout.home_event_adapterv_view_layout, testEvents);
         eventList.setAdapter(eventAdapter);
+
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
 
