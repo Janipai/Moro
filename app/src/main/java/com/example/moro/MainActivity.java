@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                         //selectedFragment = new SearchFragment();
                         break;
                 }
+                if (selectedFragment == null)
+                    return true;
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
                 return true;
             }
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new BurgerMenuFragment();
                         break;
                 }
+                if (selectedFragment == null)
+                    return true;
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
                 return true;
             }
