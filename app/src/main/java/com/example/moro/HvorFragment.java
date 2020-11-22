@@ -3,17 +3,19 @@ package com.example.moro;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HvorFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HvorFragment extends Fragment {
+public class HvorFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +61,40 @@ public class HvorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hvor, container, false);
+        View v =  inflater.inflate(R.layout.fragment_hvor, container, false);
+
+        ImageView arrowDown = v.findViewById(R.id.arrow_down);
+        ImageView arrowUp = v.findViewById(R.id.arrow_up);
+
+        arrowDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Dine resultater skal ind her
+                EventBeskrivelseFragment event = new EventBeskrivelseFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,event);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        arrowUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvadFragment hvad = new HvadFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,hvad);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+        return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

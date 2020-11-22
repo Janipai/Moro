@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDBA"
+    android:background="#FFB7FC"
     tools:context=".HvorFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -54,9 +54,9 @@
 
             android:layout_alignParentLeft="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/outlined_button_redstyle"
             android:text="Du vil ikke hjem, men videre"
-            android:textColor="#FFA500" />
+            android:textColor="#990000" />
 
         <Button
             android:id="@+id/button2"
@@ -65,9 +65,9 @@
 
             android:layout_centerHorizontal="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/outlined_button_redstyle"
             android:text="Du vil ud i det blå"
-            android:textColor="#FFA500" />
+            android:textColor="#990000" />
 
         <Button
             android:id="@+id/button3"
@@ -76,9 +76,9 @@
 
             android:layout_alignParentRight="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/outlined_button_redstyle"
             android:text="Du har tømmermænd"
-            android:textColor="#FFA500" />
+            android:textColor="#990000" />
 
     </RelativeLayout>
 

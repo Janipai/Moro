@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -70,6 +71,32 @@ public class NaarFragment extends Fragment {
                 HvadFragment hvad = new HvadFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainLayout, hvad);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        ImageView arrowDown = v.findViewById(R.id.arrow_down);
+        ImageView arrowUp = v.findViewById(R.id.arrow_up);
+
+        arrowDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvorFragment hvor = new HvorFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,hvor);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        arrowUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvornaarFragment hvornaar = new HvornaarFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.mainLayout,hvornaar);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });

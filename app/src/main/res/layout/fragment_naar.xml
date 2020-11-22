@@ -57,7 +57,7 @@
     <RelativeLayout
         android:id="@+id/idrow1"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="450dp"
         android:layout_below="@+id/idtypestemning"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -70,7 +70,7 @@
 
             android:layout_alignParentLeft="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="Du vil ikke hjem, men videre"
             android:textColor="#FFA500" />
 
@@ -81,7 +81,7 @@
 
             android:layout_centerHorizontal="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="Du vil ud i det blå"
             android:textColor="#FFA500" />
 
@@ -92,7 +92,7 @@
 
             android:layout_alignParentRight="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="Du har tømmermænd"
             android:textColor="#FFA500" />
 
@@ -105,7 +105,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="du vil udvide dine horisonter"
             android:textColor="#FFA500" />
 
@@ -116,7 +116,7 @@
 
             android:layout_centerInParent="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="du har tomme lommer"
             android:textColor="#FFA500" />
 
@@ -128,25 +128,26 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
 
-            android:background="@drawable/outlined_button_style"
+            android:background="@drawable/hvad_button_style"
             android:text="mad gør dig glad"
             android:textColor="#FFA500" />
-
-        <ImageView
-            android:id="@+id/arrow_down"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:src="@android:drawable/arrow_down_float" />
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/arrow_up"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/idrow1"
         android:src="@android:drawable/arrow_up_float" />
+
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/idrow1"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@android:drawable/arrow_down_float" />
 
 </RelativeLayout>
