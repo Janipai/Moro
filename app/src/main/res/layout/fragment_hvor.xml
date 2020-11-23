@@ -159,7 +159,7 @@
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/idrow1"
-        android:src="@android:drawable/arrow_up_float" />
+        android:src="@drawable/red_up_arrow" />
 
     <ImageView
         android:id="@+id/arrow_down"
@@ -168,6 +168,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="120dp"
-        android:src="@android:drawable/arrow_down_float" />
+        android:src="@drawable/red_down_arrow" />
 
 </RelativeLayout>
