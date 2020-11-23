@@ -141,7 +141,7 @@
             android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="Koncerter"
+            android:text="Du vil fortrække dig selv"
             android:textColor="#FFA500" />
 
         <Button
@@ -153,7 +153,7 @@
             android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="Koncerter"
+            android:text="Du vil imponere din date"
             android:textColor="#FFA500" />
 
         <Button
@@ -165,7 +165,7 @@
             android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="Koncerter"
+            android:text="De gamle kmmer på besøg"
             android:textColor="#FFA500" />
     </RelativeLayout>
 
