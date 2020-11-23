@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public class HvadFragment extends Fragment implements View.OnClickListener {
 
-    Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
-
     public HvadFragment() {
         // Required empty public constructor
     }
@@ -32,11 +30,11 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
 
     ArrayList<Button> hvadButtonsList = new ArrayList<>();
     ArrayList<Button> choosenHvadButtonList = new ArrayList<>();
+    Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_hvad, container, false);

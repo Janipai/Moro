@@ -131,6 +131,42 @@
             android:background="@drawable/hvad_button_style"
             android:text="mad gør dig glad"
             android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="Koncerter"
+            android:textColor="#FFA500" />
     </RelativeLayout>
 
     <ImageView
