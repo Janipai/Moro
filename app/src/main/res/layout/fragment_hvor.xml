@@ -41,7 +41,7 @@
     <RelativeLayout
         android:id="@+id/idrow1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:layout_below="@+id/idhvor"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -54,7 +54,7 @@
 
             android:layout_alignParentLeft="true"
 
-            android:background="@drawable/outlined_button_redstyle"
+            android:background="@drawable/hvor_button_style"
             android:text="Du vil ikke hjem, men videre"
             android:textColor="#990000" />
 
@@ -65,7 +65,7 @@
 
             android:layout_centerHorizontal="true"
 
-            android:background="@drawable/outlined_button_redstyle"
+            android:background="@drawable/hvor_button_style"
             android:text="Du vil ud i det blå"
             android:textColor="#990000" />
 
@@ -76,7 +76,78 @@
 
             android:layout_alignParentRight="true"
 
-            android:background="@drawable/outlined_button_redstyle"
+            android:background="@drawable/hvor_button_style"
+            android:text="Du har tømmermænd"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Du vil ikke hjem, men videre"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerInParent="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Du vil ud i det blå"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Du har tømmermænd"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Du vil ikke hjem, men videre"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Du vil ud i det blå"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:background="@drawable/hvor_button_style"
             android:text="Du har tømmermænd"
             android:textColor="#990000" />
 
