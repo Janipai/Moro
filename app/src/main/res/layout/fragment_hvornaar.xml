@@ -31,6 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:background="@drawable/calendar_layoutstyle"
+
+            android:weekSeparatorLineColor="@drawable/calendar_layoutstyle"
+            android:selectedWeekBackgroundColor="#FF542B"
             ></CalendarView>
 
         <TextView

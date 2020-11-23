@@ -30,7 +30,7 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
 
     ArrayList<Button> hvadButtonsList = new ArrayList<>();
     ArrayList<Button> choosenHvadButtonList = new ArrayList<>();
-    Button button1, button2, button3, button4, button5, button6, button7, button8, button9;
+    Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +52,9 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
         button7 = v.findViewById(R.id.button7);
         button8 = v.findViewById(R.id.button8);
         button9 = v.findViewById(R.id.button9);
+        button10 = v.findViewById(R.id.button10);
+        button11 = v.findViewById(R.id.button11);
+        button12 = v.findViewById(R.id.button12);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -62,6 +65,9 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
+        button12.setOnClickListener(this);
 
         hvadButtonsList.add((Button) v.findViewById(R.id.button1));
         hvadButtonsList.add((Button) v.findViewById(R.id.button2));
@@ -72,6 +78,9 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
         hvadButtonsList.add((Button) v.findViewById(R.id.button7));
         hvadButtonsList.add((Button) v.findViewById(R.id.button8));
         hvadButtonsList.add((Button) v.findViewById(R.id.button9));
+        hvadButtonsList.add((Button) v.findViewById(R.id.button10));
+        hvadButtonsList.add((Button) v.findViewById(R.id.button11));
+        hvadButtonsList.add((Button) v.findViewById(R.id.button12));
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override

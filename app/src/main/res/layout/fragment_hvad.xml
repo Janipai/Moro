@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -59,7 +58,7 @@
         android:id="@+id/idrow1"
         android:layout_below="@+id/idtypestemning"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
         android:padding="15dp">
@@ -105,8 +104,8 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/button1"
+            android:layout_marginTop="15dp"
 
             android:background="@drawable/hvad_button_style"
             android:text="Film"
@@ -117,7 +116,10 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
-            android:layout_centerInParent="true"
+            android:layout_below="@+id/button2"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
 
             android:background="@drawable/hvad_button_style"
             android:text="Comedy"
@@ -128,9 +130,9 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button3"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-
 
             android:background="@drawable/hvad_button_style"
             android:text="Talk"
@@ -141,11 +143,12 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="Teater og forestilling"
+            android:text="Teater og forestillinger"
             android:textColor="#FFA500" />
 
         <Button
@@ -153,11 +156,12 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="fest"
+            android:text="Fest"
             android:textColor="#FFA500" />
 
         <Button
@@ -165,11 +169,51 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button6"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
-            android:text="gratis"
+            android:text="Gratis"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button7"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="sport og spil"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button8"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="Mad og drikke"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button9"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="Mode"
             android:textColor="#FFA500" />
 
     </RelativeLayout>

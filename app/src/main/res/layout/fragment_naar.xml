@@ -6,7 +6,6 @@
     android:background="#FFFDBA"
     tools:context=".NaarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,8 +101,8 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/button1"
+            android:layout_marginTop="15dp"
 
             android:background="@drawable/hvad_button_style"
             android:text="du vil udvide dine horisonter"
@@ -114,7 +113,9 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
-            android:layout_centerInParent="true"
+            android:layout_below="@+id/button2"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
 
             android:background="@drawable/hvad_button_style"
             android:text="du har tomme lommer"
@@ -125,8 +126,9 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button3"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
 
             android:background="@drawable/hvad_button_style"
             android:text="mad gør dig glad"
@@ -137,8 +139,9 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
             android:text="Du vil fortrække dig selv"
@@ -149,8 +152,9 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
             android:text="Du vil imponere din date"
@@ -161,11 +165,49 @@
             android:layout_width="95dp"
             android:layout_height="95dp"
 
+            android:layout_below="@+id/button6"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
 
             android:background="@drawable/hvad_button_style"
             android:text="De gamle kmmer på besøg"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button7"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:text="du vil have gang i kroppen"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button8"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/hvad_button_style"
+            android:textColor="#FFA500" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button9"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/hvad_button_style"
             android:textColor="#FFA500" />
     </RelativeLayout>
 

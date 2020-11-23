@@ -1,5 +1,6 @@
 package com.example.moro;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,9 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener {
 
         calendarView = view.findViewById(R.id.calender);
         test = view.findViewById(R.id.testCalenderDate);
+
+        calendarView.setWeekSeparatorLineColor(Color.parseColor("#FF542B"));
+
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
