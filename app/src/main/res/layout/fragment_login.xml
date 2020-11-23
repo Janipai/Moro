@@ -122,7 +122,6 @@
             android:layout_height="42dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/tipborder"
-            android:text="OPRET DIG HER"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -139,7 +138,7 @@
 
         <Button
             android:id="@+id/buttonLogin"
-            android:layout_width="250dp"
+            android:layout_width="252dp"
             android:layout_height="42dp"
             android:layout_marginStart="13dp"
             android:layout_marginBottom="13dp"
@@ -158,7 +157,6 @@
             android:layout_height="42dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/tipborder"
-            android:text="LOG IND"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

@@ -21,13 +21,30 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         BottomNavigationView topNav = findViewById(R.id.top_navigation);
 
+        topNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.top_nav_profile:
+                        selectedFragment = new LoginFragment();
+                        break;
+                    case R.id.top_nav_search:
+                        //selectedFragment = new SearchFragment();
+                        break;
+                }
+                if (selectedFragment == null)
+                    return true;
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
+                return true;
+            }
+        });
 
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment selectedFragment = null;
                 switch (item.getItemId()) {
-
                     case R.id.bot_nav_home:
                         selectedFragment = new HomeFragment();
                         break;
@@ -40,14 +57,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.bot_nav_menu:
                         selectedFragment = new BurgerMenuFragment();
                         break;
-                    case R.id.top_nav_profile:
-                        //selectedFragment = new LoginFragment();
-                        break;
-                    case R.id.top_nav_search:
-                        //selectedFragment = new SearchFragment();
-                        break;
-
                 }
+                if (selectedFragment == null)
+                    return true;
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
                 return true;
             }
