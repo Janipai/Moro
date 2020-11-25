@@ -8,15 +8,17 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hvornår"
-        android:textSize="64sp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Hvornår"
+            android:textSize="64sp"
+            />
+
         <Button
             android:id="@+id/idcalender"
             android:layout_below="@+id/calender"
@@ -33,9 +35,13 @@
             android:layout_centerInParent="true"
             android:background="@drawable/calendar_layoutstyle"
 
-            android:weekSeparatorLineColor="@drawable/calendar_layoutstyle"
-            android:selectedWeekBackgroundColor="#FF542B"
-            ></CalendarView>
+            android:showWeekNumber="false"
+            android:weekSeparatorLineColor="#FF542B"
+            android:dateTextAppearance="@android:style/Animation.Dialog"
+
+            >
+
+        </CalendarView>
 
         <TextView
             android:id="@+id/testCalenderDate"
@@ -47,7 +53,5 @@
             android:layout_marginTop="126dp"
             android:text="TextView" />
     </RelativeLayout>
-
-
 
 </FrameLayout>

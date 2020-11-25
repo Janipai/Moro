@@ -42,6 +42,7 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener {
         test = view.findViewById(R.id.testCalenderDate);
 
         calendarView.setWeekSeparatorLineColor(Color.parseColor("#FF542B"));
+        calendarView.setFirstDayOfWeek(2);
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

@@ -3,4 +3,10 @@
     <stroke
         android:width="2dp"
         android:color="#FF542B" />
+    <corners
+        android:radius="20dp"/>
+    <solid android:color="#FFF"></solid>
+    <style>name="CalenderViewCustom" parent="Theme.AppCompat.Light.Dialog">
+        <item android:name="colorAccent">@color/red</item>
+    </style>
 </shape>
