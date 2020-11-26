@@ -59,9 +59,6 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvadFragment()).commit();
 
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.addToBackStack(null);
-        transaction.commit();
 
     }
 }
