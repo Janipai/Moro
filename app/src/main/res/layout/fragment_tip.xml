@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/anton"
-            android:text="Tip os"
+            android:text="Tip osa"
             android:textAllCaps="true"
             android:textColor="#000000"
             android:textSize="36sp"
