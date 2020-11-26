@@ -1,32 +1,23 @@
     package com.example.moro;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
+    import android.os.Bundle;
+    import android.view.LayoutInflater;
+    import android.view.View;
+    import android.view.ViewGroup;
+    import android.widget.AdapterView;
+    import android.widget.ArrayAdapter;
+    import android.widget.Button;
+    import android.widget.EditText;
+    import android.widget.Spinner;
 
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+    import androidx.annotation.Nullable;
+    import androidx.fragment.app.Fragment;
 
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
+    import org.json.JSONException;
+    import org.json.JSONObject;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+    import java.util.ArrayList;
+    import java.util.Calendar;
 
 
 
