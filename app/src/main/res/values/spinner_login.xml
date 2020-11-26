@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="genderList">
-        <item>Man</item>
-        <item>Woman</item>
+        <item>MAND</item>
+        <item>KVINDE</item>
+        <item>ANDET</item>
     </string-array>
 </resources>
