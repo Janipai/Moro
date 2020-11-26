@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="date_array">
-        <item>dd</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
+        <item>DD</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
         <item>10</item>
         <item>11</item>
         <item>12</item>
@@ -35,19 +35,21 @@
         <item>31</item>
     </string-array>
     <string-array name="month_array">
-        <item>Januar</item>
-        <item>Februar</item>
-        <item>Marts</item>
-        <item>April</item>
-        <item>Maj</item>
-        <item>Juni</item>
-        <item>Juli</item>
-        <item>August</item>
-        <item>Septemper</item>
-        <item>Oktober</item>
-        <item>November</item>
-        <item>December</item>
+        <item>MM</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
-
-
+    <string-array name="year_array">
+        <item>YY</item>
+    </string-array>
 </resources>
