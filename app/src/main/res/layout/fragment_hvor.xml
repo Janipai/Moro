@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDBA"
+    android:background="#FFB7FC"
     tools:context=".HvorFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -41,7 +41,7 @@
     <RelativeLayout
         android:id="@+id/idrow1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:layout_below="@+id/idhvor"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -54,9 +54,9 @@
 
             android:layout_alignParentLeft="true"
 
-            android:background="@drawable/outlined_button_style"
-            android:text="Du vil ikke hjem, men videre"
-            android:textColor="#FFA500" />
+            android:background="@drawable/hvor_button_style"
+            android:text="Nørrebro"
+            android:textColor="#990000" />
 
         <Button
             android:id="@+id/button2"
@@ -65,9 +65,9 @@
 
             android:layout_centerHorizontal="true"
 
-            android:background="@drawable/outlined_button_style"
-            android:text="Du vil ud i det blå"
-            android:textColor="#FFA500" />
+            android:background="@drawable/hvor_button_style"
+            android:text="Islandsbrygge"
+            android:textColor="#990000" />
 
         <Button
             android:id="@+id/button3"
@@ -76,10 +76,125 @@
 
             android:layout_alignParentRight="true"
 
-            android:background="@drawable/outlined_button_style"
-            android:text="Du har tømmermænd"
-            android:textColor="#FFA500" />
+            android:background="@drawable/hvor_button_style"
+            android:text="Indre by"
+            android:textColor="#990000" />
 
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button1"
+            android:layout_marginTop="15dp"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Østerbro"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button2"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Nordvest"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button3"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Valby"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Brønshøj og Husum"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Amager"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button6"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Vesterbro"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button7"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Vanløse"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button8"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Christianshavn"
+            android:textColor="#990000" />
+
+        <Button
+            android:id="@+id/button12"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+
+            android:layout_below="@+id/button9"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+
+            android:background="@drawable/hvor_button_style"
+            android:text="Refshaleøen"
+            android:textColor="#990000" />
     </RelativeLayout>
 
     <ImageView
@@ -88,7 +203,7 @@
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/idrow1"
-        android:src="@android:drawable/arrow_up_float" />
+        android:src="@drawable/red_up_arrow" />
 
     <ImageView
         android:id="@+id/arrow_down"
@@ -97,6 +212,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="120dp"
-        android:src="@android:drawable/arrow_down_float" />
+        android:src="@drawable/red_down_arrow" />
 
 </RelativeLayout>
