@@ -39,43 +39,38 @@
             app:layout_constraintTop_toBottomOf="@+id/title">
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/facebook_link"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="facebook link"
                 android:maxWidth="100dp"
                 android:maxHeight="100dp"
-                android:minWidth="20dp"
-                android:minHeight="20dp"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/download"
                 tools:src="@drawable/download" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/instagram_link"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
-                android:contentDescription="facebook link"
+                android:contentDescription="instagram link"
                 android:maxWidth="100dp"
                 android:maxHeight="100dp"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/gram"
                 tools:src="@drawable/gram" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/linked_in_link"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
                 android:contentDescription="linked in link"
                 android:maxWidth="100dp"
                 android:maxHeight="100dp"
-                android:padding="10dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/linkedin"
                 tools:src="@drawable/linkedin" />
 
