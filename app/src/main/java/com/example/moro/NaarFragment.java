@@ -85,7 +85,7 @@ public class NaarFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvadFragment hvad = new HvadFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout, hvad);
+                transaction.replace(R.id.main_fragment_container, hvad);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -96,7 +96,7 @@ public class NaarFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvorFragment hvor = new HvorFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout,hvor);
+                transaction.replace(R.id.main_fragment_container,hvor);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -107,7 +107,7 @@ public class NaarFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvornaarFragment hvornaar = new HvornaarFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout,hvornaar);
+                transaction.replace(R.id.main_fragment_container,hvornaar);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
