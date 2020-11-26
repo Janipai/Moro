@@ -9,15 +9,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/idtypestemning"
-        >
+        android:id="@+id/idtypestemning">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/anton"
             android:text="Når"
-            android:textSize="64sp" />
+            android:textSize="64sp"
+            android:padding="2dip"
+            />
 
         <TextView
             android:id="@+id/idtype"
@@ -54,9 +55,9 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/idrow1"
+        android:id="@+id/allbuttons"
         android:layout_width="wrap_content"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/idtypestemning"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
@@ -215,13 +216,13 @@
         android:id="@+id/arrow_up"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_above="@+id/idrow1"
+        android:layout_above="@+id/allbuttons"
         android:layout_centerHorizontal="true"
         android:src="@drawable/yellow_up_arrow" />
 
     <ImageView
         android:id="@+id/arrow_down"
-        android:layout_below="@+id/idrow1"
+        android:layout_below="@+id/allbuttons"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_centerHorizontal="true"

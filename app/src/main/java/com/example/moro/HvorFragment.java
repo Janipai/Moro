@@ -85,7 +85,7 @@ public class HvorFragment extends Fragment implements View.OnClickListener {
                 //Dine resultater skal ind her
                 EventBeskrivelseFragment event = new EventBeskrivelseFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout,event);
+                transaction.replace(R.id.main_fragment_container,event);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -96,7 +96,7 @@ public class HvorFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvadFragment hvad = new HvadFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainLayout,hvad);
+                transaction.replace(R.id.main_fragment_container,hvad);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
