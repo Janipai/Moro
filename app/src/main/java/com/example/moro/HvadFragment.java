@@ -122,6 +122,7 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         buttonClicked(v);
+        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvorFragment()).addToBackStack(null).commit();
     }
 
     public void buttonClicked(View v) {
@@ -145,7 +146,5 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
                 }
             }
         }
-
     }
-
 }
