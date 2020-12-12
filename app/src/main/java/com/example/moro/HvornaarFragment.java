@@ -19,7 +19,7 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener {
     public HvornaarFragment() {
         // Required empty public constructor
     }
-
+ 
     TextView test;
     CalendarView calendarView;
     Button calender;
