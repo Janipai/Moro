@@ -64,7 +64,7 @@
             android:id="@+id/fødsdatoProfil"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/tipborder"
             android:ems="10"
@@ -73,17 +73,6 @@
             android:inputType="date"
             android:paddingLeft="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
-
-        <Spinner
-            android:id="@+id/kønProfi"
-            android:layout_width="161dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="22dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/tipborder"
-            android:hint="Køn"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
         <EditText
@@ -150,6 +139,17 @@
                 tools:layout_editor_absoluteY="6dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/tipborder"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

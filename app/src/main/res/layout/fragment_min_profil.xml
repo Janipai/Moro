@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MinProfil">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D3E9CF">
+
+
+        <TextView
+            android:id="@+id/minProfilTextView"
+            android:layout_width="195dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/anton"
+            android:text="MIN PROFIL"
+            android:textSize="45sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="145dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/minprofil_button_style"
+            android:src="@drawable/bruh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilTextPB"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <TextView
+            android:id="@+id/minProfilTextPB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="PROFILBILLEDE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilPassword" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="UPLOAD FRA KAMERARULLE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="TAG ET BILLEDE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="84dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/minprofil_button_style"
+            android:paddingLeft="5dp"
+            android:text="DINE VIBES"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.977"
+            app:layout_constraintStart_toEndOf="@+id/minProfilTextPB"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilVis" />
+
+        <Button
+            android:id="@+id/minProfilVis"
+            android:layout_width="72dp"
+            android:layout_height="50dp"
+            android:background="@drawable/minprofil_button_style"
+            android:text="VIS"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/minProfilPassword"
+            app:layout_constraintTop_toTopOf="@+id/minProfilPassword" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="52dp"
+            android:text="ÆNDRE OPLYSNINGER"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/minProfilTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/minProfilNavn"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/minprofil_button_style"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:text="NAVN"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilTextView" />
+
+        <EditText
+            android:id="@+id/minProfilFoeds"
+            android:layout_width="189dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/minprofil_button_style"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:text="FØDSELSDATO"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilNavn" />
+
+        <EditText
+            android:id="@+id/minProfilEmail"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/minprofil_button_style"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:text="EMAIL"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilFoeds" />
+
+        <EditText
+            android:id="@+id/minProfilPassword"
+            android:layout_width="370dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/minprofil_button_style"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:text="ADGANGSKODE"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilEmail" />
+
+        <Spinner
+            android:id="@+id/minProfilSpinner"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/minprofil_button_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minProfilNavn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

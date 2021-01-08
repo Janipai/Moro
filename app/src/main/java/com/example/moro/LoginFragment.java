@@ -40,7 +40,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
-                fragment = new HomeFragment();
+                fragment = new MinProfil();
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();

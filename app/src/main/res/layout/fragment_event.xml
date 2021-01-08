@@ -129,7 +129,7 @@
             tools:layout_editor_absoluteY="60dp" />
 
         <TextView
-            android:id="@+id/eventText"
+            android:id="@+id/favoritTitle"
             android:layout_width="75dp"
             android:layout_height="41dp"
             android:fontFamily="@font/anton"

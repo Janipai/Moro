@@ -33,7 +33,9 @@ public class MainActivity extends AppCompatActivity {
                         //selectedFragment = new SearchFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
+                if (selectedFragment == null)
+                    return true;
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
                 return true;
             }
         });
@@ -50,13 +52,15 @@ public class MainActivity extends AppCompatActivity {
                         selectedFragment = new EventFragment();
                         break;
                     case R.id.bot_nav_favorite:
-                        //selectedFragment = new FavoriteFragment();
+                        selectedFragment = new favoritterFragment();
                         break;
                     case R.id.bot_nav_menu:
                         selectedFragment = new BurgerMenuFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, selectedFragment).addToBackStack(null).commit();
+                if (selectedFragment == null)
+                    return true;
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
                 return true;
             }
         });

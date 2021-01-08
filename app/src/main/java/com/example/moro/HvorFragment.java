@@ -1,64 +1,135 @@
 package com.example.moro;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HvorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HvorFragment extends Fragment {
+import java.util.ArrayList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class HvorFragment extends Fragment implements View.OnClickListener {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public HvorFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Hvor.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HvorFragment newInstance(String param1, String param2) {
-        HvorFragment fragment = new HvorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
+
+    ArrayList<Button> hvorButtonsList = new ArrayList<>();
+    ArrayList<Button> choosenHvorButtonList = new ArrayList<>();
+    Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hvor, container, false);
+        View v =  inflater.inflate(R.layout.fragment_hvor, container, false);
+
+        ImageView arrowDown = v.findViewById(R.id.arrow_down);
+        ImageView arrowUp = v.findViewById(R.id.arrow_up);
+
+        button1 = v.findViewById(R.id.button1);
+        button2 = v.findViewById(R.id.button2);
+        button3 = v.findViewById(R.id.button3);
+        button4 = v.findViewById(R.id.button4);
+        button5 = v.findViewById(R.id.button5);
+        button6 = v.findViewById(R.id.button6);
+        button7 = v.findViewById(R.id.button7);
+        button8 = v.findViewById(R.id.button8);
+        button9 = v.findViewById(R.id.button9);
+        button10 = v.findViewById(R.id.button10);
+        button11 = v.findViewById(R.id.button11);
+        button12 = v.findViewById(R.id.button12);
+
+        button1.setOnClickListener(this);
+        button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
+        button12.setOnClickListener(this);
+
+        hvorButtonsList.add((Button) v.findViewById(R.id.button1));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button2));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button3));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button4));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button5));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button6));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button7));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button8));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button9));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button10));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button11));
+        hvorButtonsList.add((Button) v.findViewById(R.id.button12));
+
+        arrowDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Dine resultater skal ind her
+                EventBeskrivelseFragment event = new EventBeskrivelseFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container,event);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        arrowUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HvadFragment hvad = new HvadFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container,hvad);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+        return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        buttonClicked(v);
+    }
+
+    public void buttonClicked(View v) {
+
+        if (!choosenHvorButtonList.contains(v)){
+            for (int i = 0; i < hvorButtonsList.size(); i++) {
+                if (v.getId() == hvorButtonsList.get(i).getId()) {
+                    choosenHvorButtonList.add(hvorButtonsList.get(i));
+                    hvorButtonsList.get(i).setBackgroundColor(Color.parseColor("#990000"));
+                    hvorButtonsList.get(i).setTextColor(Color.parseColor("#FFB7FC"));
+                }
+            }
+        } else {
+            for (int i = 0; i < hvorButtonsList.size(); i++) {
+                if (v.getId() == hvorButtonsList.get(i).getId()) {
+                    hvorButtonsList.get(i).setBackgroundColor(Color.parseColor("#FFB7FC"));
+                    hvorButtonsList.get(i).setTextColor(Color.parseColor("#990000"));
+                    Drawable bg = getResources().getDrawable(R.drawable.hvor_button_style);
+                    hvorButtonsList.get(i).setBackground(bg);
+                    choosenHvorButtonList.remove(hvorButtonsList.get(i));
+                }
+            }
+        }
+
     }
 }
