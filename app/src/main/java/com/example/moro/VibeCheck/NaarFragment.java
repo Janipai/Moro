@@ -1,4 +1,4 @@
-package com.example.moro;
+package com.example.moro.VibeCheck;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -14,31 +14,34 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.moro.R;
+import com.example.moro.VibeCheck.HvadFragment;
+import com.example.moro.VibeCheck.HvorFragment;
+import com.example.moro.VibeCheck.HvornaarFragment;
+
 import java.util.ArrayList;
 
-public class HvadFragment extends Fragment implements View.OnClickListener {
+public class NaarFragment extends Fragment implements View.OnClickListener {
 
-    public HvadFragment() {
+    public NaarFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
 
-    ArrayList<Button> hvadButtonsList = new ArrayList<>();
-    ArrayList<Button> choosenHvadButtonList = new ArrayList<>();
+    }
     Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12;
+    ArrayList<Button> naarButtonsList = new ArrayList<>();
+    ArrayList<Button> choosenNaarButtonList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_hvad, container, false);
-        final TextView typeText = v.findViewById(R.id.idstemning);
+        View v = inflater.inflate(R.layout.fragment_naar, container, false);
+        TextView typeText = v.findViewById(R.id.idtype);
 
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
@@ -69,26 +72,26 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
         button11.setOnClickListener(this);
         button12.setOnClickListener(this);
 
-        hvadButtonsList.add((Button) v.findViewById(R.id.button1));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button2));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button3));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button4));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button5));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button6));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button7));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button8));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button9));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button10));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button11));
-        hvadButtonsList.add((Button) v.findViewById(R.id.button12));
+        naarButtonsList.add((Button) v.findViewById(R.id.button1));
+        naarButtonsList.add((Button) v.findViewById(R.id.button2));
+        naarButtonsList.add((Button) v.findViewById(R.id.button3));
+        naarButtonsList.add((Button) v.findViewById(R.id.button4));
+        naarButtonsList.add((Button) v.findViewById(R.id.button5));
+        naarButtonsList.add((Button) v.findViewById(R.id.button6));
+        naarButtonsList.add((Button) v.findViewById(R.id.button7));
+        naarButtonsList.add((Button) v.findViewById(R.id.button8));
+        naarButtonsList.add((Button) v.findViewById(R.id.button9));
+        naarButtonsList.add((Button) v.findViewById(R.id.button10));
+        naarButtonsList.add((Button) v.findViewById(R.id.button11));
+        naarButtonsList.add((Button) v.findViewById(R.id.button12));
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NaarFragment naar = new NaarFragment();
+                HvadFragment hvad = new HvadFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container, hvad);
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.main_fragment_container, naar);
                 transaction.commit();
             }
         });
@@ -98,8 +101,8 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvorFragment hvor = new HvorFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container,hvor);
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.main_fragment_container, hvor);
                 transaction.commit();
             }
         });
@@ -109,42 +112,40 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
             public void onClick(View v) {
                 HvornaarFragment hvornaar = new HvornaarFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_fragment_container,hvornaar);
                 transaction.addToBackStack(null);
-                transaction.replace(R.id.main_fragment_container, hvornaar);
                 transaction.commit();
             }
         });
-
         return v;
     }
-
 
     @Override
     public void onClick(View v) {
         buttonClicked(v);
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvorFragment()).addToBackStack(null).commit();
     }
 
     public void buttonClicked(View v) {
 
-        if (!choosenHvadButtonList.contains(v)){
-            for (int i = 0; i < hvadButtonsList.size(); i++) {
-                if (v.getId() == hvadButtonsList.get(i).getId()) {
-                    choosenHvadButtonList.add(hvadButtonsList.get(i));
-                    hvadButtonsList.get(i).setBackgroundColor(Color.parseColor("#FFA500"));
-                    hvadButtonsList.get(i).setTextColor(Color.parseColor("#FFFDBA"));
+        if (!choosenNaarButtonList.contains(v)){
+            for (int i = 0; i < naarButtonsList.size(); i++) {
+                if (v.getId() == naarButtonsList.get(i).getId()) {
+                    choosenNaarButtonList.add(naarButtonsList.get(i));
+                    naarButtonsList.get(i).setBackgroundColor(Color.parseColor("#FFA500"));
+                    naarButtonsList.get(i).setTextColor(Color.parseColor("#FFFDBA"));
                 }
             }
         } else {
-            for (int i = 0; i < hvadButtonsList.size(); i++) {
-                if (v.getId() == hvadButtonsList.get(i).getId()) {
-                    hvadButtonsList.get(i).setBackgroundColor(Color.parseColor("#FFFDBA"));
-                    hvadButtonsList.get(i).setTextColor(Color.parseColor("#FFA500"));
+            for (int i = 0; i < naarButtonsList.size(); i++) {
+                if (v.getId() == naarButtonsList.get(i).getId()) {
+                    naarButtonsList.get(i).setBackgroundColor(Color.parseColor("#FFFDBA"));
+                    naarButtonsList.get(i).setTextColor(Color.parseColor("#FFA500"));
                     Drawable bg = getResources().getDrawable(R.drawable.hvad_button_style);
-                    hvadButtonsList.get(i).setBackground(bg);
-                    choosenHvadButtonList.remove(hvadButtonsList.get(i));
+                    naarButtonsList.get(i).setBackground(bg);
+                    choosenNaarButtonList.remove(naarButtonsList.get(i));
                 }
             }
         }
+
     }
 }

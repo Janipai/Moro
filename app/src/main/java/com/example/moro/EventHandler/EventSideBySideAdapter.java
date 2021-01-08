@@ -74,7 +74,5 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
             tv_tidsrum = (TextView) itemView.findViewById(R.id.tidsrum);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
         }
-
-
     }
 }
