@@ -16,12 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.moro.EventHandler.RecyclerViewOnClickListener;
 import com.example.moro.MainActivity;
 import com.example.moro.R;
 
 import java.util.List;
 
-public class HvadFragment extends Fragment implements View.OnClickListener {
+public class HvadFragment extends Fragment implements View.OnClickListener, RecyclerViewOnClickListener {
 
     public HvadFragment() {
         // Required empty public constructor
@@ -51,7 +52,7 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_hvad);
 
         //Adapter
-        ButtonListAdapter myAdapter = new ButtonListAdapter(v.getContext(),listButtons);
+        ButtonListAdapter myAdapter = new ButtonListAdapter(this,v.getContext(),listButtons);
         //set the layout to a 3 columns gridlayout
         recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
         recyclerView.setAdapter(myAdapter);
@@ -144,5 +145,8 @@ public class HvadFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public void recyclerViewOnClick(int position) {
 
+    }
 }

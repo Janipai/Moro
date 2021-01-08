@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.moro.EventHandler.RecyclerViewOnClickListener;
 import com.example.moro.R;
 
 import java.util.List;
@@ -17,10 +18,12 @@ import java.util.List;
 
 public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.MyViewHolder> {
 
+    private final RecyclerViewOnClickListener listener;
     private Context myContext;
     private List<Button> myButtons;
 
-    public ButtonListAdapter(Context myContext, List<Button> myButtons) {
+    public ButtonListAdapter(RecyclerViewOnClickListener listener,Context myContext, List<Button> myButtons) {
+        this.listener = listener;
         this.myContext = myContext;
         this.myButtons = myButtons;
     }
