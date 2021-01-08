@@ -6,22 +6,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.EventBeskrivelseFragment;
 import com.example.moro.R;
 
 import java.util.List;
 
 public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySideAdapter.MyViewHolder> {
 
-            private Context myContext;
-            private List<EventSideBySide> myData;
+         private final RecyclerViewOnClickListener listener;
+         private Context myContext;
+         private List<EventSideBySide> myData;
 
 
-    public EventSideBySideAdapter(Context myContext, List<EventSideBySide> myData) {
+    public EventSideBySideAdapter(RecyclerViewOnClickListener listener, Context myContext, List<EventSideBySide> myData) {
+        this.listener = listener;
         this.myContext = myContext;
         this.myData = myData;
     }
@@ -29,10 +36,11 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
         view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
+        final MyViewHolder vHolder = new MyViewHolder(view);
+
         return new MyViewHolder(view);
     }
 
@@ -44,11 +52,18 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
-    }
-   /*     holder.cardView.setOnClickListener(new View.OnClickListener(){
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+            }
+        });
 
     }
-*/
+
     @Override
     public int getItemCount() {
         return myData.size();
@@ -74,5 +89,8 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
             tv_tidsrum = (TextView) itemView.findViewById(R.id.tidsrum);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
         }
+
     }
+
+
 }
