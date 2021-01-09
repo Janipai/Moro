@@ -22,13 +22,11 @@ import java.util.List;
 
 public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySideAdapter.MyViewHolder> {
 
-         private final RecyclerViewOnClickListener listener;
          private Context myContext;
          private List<EventSideBySide> myData;
 
 
-    public EventSideBySideAdapter(RecyclerViewOnClickListener listener, Context myContext, List<EventSideBySide> myData) {
-        this.listener = listener;
+    public EventSideBySideAdapter(Context myContext, List<EventSideBySide> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
@@ -39,7 +37,6 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
         view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
-        final MyViewHolder vHolder = new MyViewHolder(view);
 
         return new MyViewHolder(view);
     }

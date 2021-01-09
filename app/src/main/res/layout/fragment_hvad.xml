@@ -55,8 +55,9 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
         android:id="@+id/recyclerview_hvad"
         android:layout_below="@id/idtypestemning"
         />

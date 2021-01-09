@@ -3,14 +3,17 @@ package com.example.moro.VibeCheck;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.example.moro.EventHandler.RecyclerViewOnClickListener;
+import com.example.moro.EventBeskrivelseFragment;
 import com.example.moro.R;
 
 import java.util.List;
@@ -18,12 +21,10 @@ import java.util.List;
 
 public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.MyViewHolder> {
 
-    private final RecyclerViewOnClickListener listener;
     private Context myContext;
-    private List<Button> myButtons;
+    private List<ButtonTextDTO> myButtons;
 
-    public ButtonListAdapter(RecyclerViewOnClickListener listener,Context myContext, List<Button> myButtons) {
-        this.listener = listener;
+    public ButtonListAdapter(Context myContext, List<ButtonTextDTO> myButtons) {
         this.myContext = myContext;
         this.myButtons = myButtons;
     }
@@ -32,28 +33,40 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        view = myInflater.inflate(R.layout.fragment_hvad,parent,false);
+        view = myInflater.inflate(R.layout.gridview_item_buttons,parent,false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        //holder.all_buttons.setBackgroundResource(R.drawable.hvad_button_style);
+
+        holder.tv.setText(myButtons.get(position).getTextField());
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return myButtons.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        Button all_buttons;
+        TextView tv;
+        LinearLayout layout;
 
         public MyViewHolder( @NonNull View itemView){
             super(itemView);
 
-            all_buttons = (Button) itemView.findViewById(R.id.all_buttons);
+            tv = (TextView) itemView.findViewById(R.id.all_textview);
+            layout = (LinearLayout) itemView.findViewById(R.id.linear_layout);
         }
     }
 }
