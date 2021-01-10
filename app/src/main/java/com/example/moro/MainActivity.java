@@ -10,12 +10,23 @@ import android.view.MenuItem;
 import com.example.moro.EventHandler.EventFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import io.sentry.Sentry;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // SENTRY TEST
+        try {
+            throw new Exception("This is a test of sentry.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
+
+
         Fragment home = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
