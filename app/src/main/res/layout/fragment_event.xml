@@ -117,7 +117,8 @@
             android:layout_width="164dp"
             android:layout_height="38dp"
             android:background="#D4E2F2"
-            android:src="@drawable/group_37"
+            android:src="@drawable/ic_back"
+            android:tint="#002399"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="65dp" />
 
