@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.moro.EventBeskrivelseFragment;
 import com.example.moro.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -37,8 +39,9 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         return new MyViewHolder(view);
     }
 
+    ArrayList<TextView> choosenHvadButtonList = new ArrayList<>();
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         holder.tv.setText(myButtons.get(position));
         //holder.tv.setPadding(40,40,40,40);
@@ -46,9 +49,19 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+                //AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                //EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
+                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+
+                if (choosenHvadButtonList.contains(holder.tv)){
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
+                    holder.tv.setTextColor(Color.parseColor("#FFA500"));
+                    choosenHvadButtonList.remove(holder.tv);
+                }else if (!choosenHvadButtonList.contains(holder.tv)){
+                    choosenHvadButtonList.add(holder.tv);
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad2);
+                    holder.tv.setTextColor(Color.parseColor("#FFFDBA"));
+                }
             }
         });
     }

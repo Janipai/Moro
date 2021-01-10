@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,42 +16,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Hvornår"
+            android:layout_marginLeft="35dp"
             android:textSize="64sp"
             />
 
         <Button
-            android:id="@+id/idcalender"
-            android:layout_below="@+id/calender"
+            android:id="@+id/idcalendersubmission"
+            android:layout_below="@+id/datePicker"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit" />
 
 
-        <CalendarView
-            android:id="@+id/calender"
+        <DatePicker
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/datePicker"
             android:layout_centerInParent="true"
-            android:background="@drawable/calendar_layoutstyle"
-
-            android:showWeekNumber="false"
-            android:weekSeparatorLineColor="#FF542B"
-            android:dateTextAppearance="@android:style/Animation.Dialog"
-
-            >
-
-        </CalendarView>
-
-        <TextView
-            android:id="@+id/testCalenderDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="179dp"
-            android:layout_marginTop="126dp"
-            android:text="TextView" />
+            android:background="#FFFFFF"
+            />
     </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>
