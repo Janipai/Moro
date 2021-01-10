@@ -1,5 +1,6 @@
 package com.example.moro.VibeCheck;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -71,7 +72,7 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
         TextView tv;
         LinearLayout layout;
 
-        public MyViewHolder( @NonNull View itemView){
+        public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
             tv = (TextView) itemView.findViewById(R.id.all_textview_forhvor);
