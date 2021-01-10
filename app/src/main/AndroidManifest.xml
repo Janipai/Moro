@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -18,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <!-- BRUGES TIL SENTRY.IO, GIVER EN VALUE SOM KALDES DSN (DATA SOURCE NAME) -->
+        <meta-data android:name="io.sentry.dsn" android:value="https://14fb317b522646d2a51328dbeb81728d@o502016.ingest.sentry.io/5583914" />
 
         <meta-data
             android:name="preloaded_fonts"
