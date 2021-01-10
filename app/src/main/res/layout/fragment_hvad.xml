@@ -16,7 +16,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/anton"
             android:text="Hvad"
-            android:textSize="64sp" />
+            android:textSize="64sp"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/idtype"
@@ -24,8 +25,8 @@
             android:layout_height="wrap_content"
 
             android:layout_alignParentLeft="true"
-            android:layout_marginStart="0dp"
             android:layout_marginTop="85dp"
+            android:layout_marginLeft="20dp"
 
             android:clickable="true"
             android:onClick="onClick"
@@ -44,6 +45,7 @@
 
             android:layout_alignParentRight="true"
             android:layout_marginTop="85dp"
+            android:layout_marginRight="20dp"
 
             android:clickable="true"
 
@@ -55,11 +57,12 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/recyclerview_hvad"
         android:layout_below="@id/idtypestemning"
+        android:layout_marginTop="20dp"
         />
 
     <ImageView
@@ -68,7 +71,8 @@
         android:layout_height="25dp"
         android:layout_above="@+id/recyclerview_hvad"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/yellow_up_arrow" />
+        android:src="@drawable/yellow_up_arrow"
+        android:layout_marginBottom="5dp"/>
 
     <ImageView
         android:id="@+id/arrow_down"

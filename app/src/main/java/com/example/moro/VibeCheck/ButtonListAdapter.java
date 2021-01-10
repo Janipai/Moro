@@ -22,9 +22,9 @@ import java.util.List;
 public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.MyViewHolder> {
 
     private Context myContext;
-    private List<ButtonTextDTO> myButtons;
+    private List<String> myButtons;
 
-    public ButtonListAdapter(Context myContext, List<ButtonTextDTO> myButtons) {
+    public ButtonListAdapter(Context myContext, List<String> myButtons) {
         this.myContext = myContext;
         this.myButtons = myButtons;
     }
@@ -40,7 +40,8 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.tv.setText(myButtons.get(position).getTextField());
+        holder.tv.setText(myButtons.get(position));
+        //holder.tv.setPadding(40,40,40,40);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

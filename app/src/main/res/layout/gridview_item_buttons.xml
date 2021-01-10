@@ -7,11 +7,18 @@
     <TextView
         android:id="@+id/all_textview"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAlignment="center"
         android:paddingVertical="30dp"
         android:text="Nørrebro"
-        android:layout_height="wrap_content"
         android:background="@drawable/hvad_button_style"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+
+        android:autoSizeTextType="uniform"
         />
 
 </LinearLayout>
