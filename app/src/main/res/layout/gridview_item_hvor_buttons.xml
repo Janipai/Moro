@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:id="@+id/linear_layout_forhvor"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/all_textview_forhvor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:paddingVertical="30dp"
+        android:text="Nørrebro"
+        android:textColor="#990000"
+        android:background="@drawable/button_style_hvor"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+
+        android:autoSizeTextType="uniform"
+        />
+
+</RelativeLayout>

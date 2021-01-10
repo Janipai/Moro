@@ -1,10 +1,6 @@
 package com.example.moro.VibeCheck;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,18 +8,20 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.moro.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.MyViewHolder> {
+public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAdapter.MyViewHolder>{
 
     private Context myContext;
     private List<String> myButtons;
 
-    public ButtonListAdapter(Context myContext, List<String> myButtons) {
+    public ButtonListHvorAdapter(Context myContext, List<String> myButtons) {
         this.myContext = myContext;
         this.myButtons = myButtons;
     }
@@ -32,14 +30,14 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        view = myInflater.inflate(R.layout.gridview_item_buttons,parent,false);
-        return new MyViewHolder(view);
+        view = myInflater.inflate(R.layout.gridview_item_hvor_buttons,parent,false);
+        return new  MyViewHolder(view);
+
     }
 
     ArrayList<TextView> choosenButtonList = new ArrayList<>();
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
-
         holder.tv.setText(myButtons.get(position));
         //holder.tv.setPadding(40,40,40,40);
 
@@ -76,8 +74,8 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         public MyViewHolder( @NonNull View itemView){
             super(itemView);
 
-            tv = (TextView) itemView.findViewById(R.id.all_textview);
-            layout = (LinearLayout) itemView.findViewById(R.id.linear_layout);
+            tv = (TextView) itemView.findViewById(R.id.all_textview_forhvor);
+            layout = (LinearLayout) itemView.findViewById(R.id.linear_layout_forhvor);
         }
     }
 }
