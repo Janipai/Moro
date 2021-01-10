@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventFragment extends Fragment {
+public class EventFragment extends Fragment{
 
     List<EventSideBySide> testEvents;
     private RecyclerView myrv;
@@ -33,7 +33,7 @@ public class EventFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_event2,container,false);
         myrv = (RecyclerView) view.findViewById(R.id.recyclerview);
-        EventSideBySideAdapter myAdapter = new EventSideBySideAdapter(view.getContext(), testEvents);
+        EventSideBySideAdapter myAdapter = new EventSideBySideAdapter( view.getContext(), testEvents);
         myrv.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
         myrv.setAdapter(myAdapter);
 
@@ -61,4 +61,6 @@ public class EventFragment extends Fragment {
         testEvents.add(event8);
 
     }
+
+
 }
