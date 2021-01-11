@@ -30,8 +30,9 @@ public class EventArrayAdapter extends ArrayAdapter<Event> {
         String distance = getItem(position).getDistance();
         String date = getItem(position).getDate();
         String timeframe = getItem(position).getTimeframe();
+        int image = getItem(position).getImage();
 
-        Event event = new Event(title, distance, date, timeframe);
+        Event event = new Event(title, distance, date, timeframe, image);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
