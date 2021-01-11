@@ -46,9 +46,6 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                //EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
 
                 if (choosenButtonList.contains(holder.tv)){
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
