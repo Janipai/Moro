@@ -62,8 +62,7 @@
         android:layout_height="25dp"
         android:layout_above="@+id/recyclerview_naar"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_arrow_up"
-        android:layout_marginBottom="5dp"/>
+        android:src="@drawable/ic_arrow_up"/>
 
     <ImageView
         android:id="@+id/arrow_down"
