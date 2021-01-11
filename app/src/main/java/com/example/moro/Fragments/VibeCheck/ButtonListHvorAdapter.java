@@ -50,12 +50,12 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
                 //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
 
                 if (choosenButtonList.contains(holder.tv)){
-                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvor);
                     holder.tv.setTextColor(Color.parseColor("#FFA500"));
                     choosenButtonList.remove(holder.tv);
                 }else if (!choosenButtonList.contains(holder.tv)){
                     choosenButtonList.add(holder.tv);
-                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad2);
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvor2);
                     holder.tv.setTextColor(Color.parseColor("#FFFDBA"));
                 }
             }
