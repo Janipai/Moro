@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_vertical"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:gravity="center_vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardviewItem"
         android:layout_marginHorizontal="10dp"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="#000000"
         >
         <ImageView
             android:id="@+id/cardviewImgView"
@@ -18,7 +21,6 @@
 
         </ImageView>
         <LinearLayout
-            android:id="@+id/hometoplayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginBottom="10dp"

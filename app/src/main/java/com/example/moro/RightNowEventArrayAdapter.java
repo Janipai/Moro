@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -41,14 +42,14 @@ public class RightNowEventArrayAdapter extends PagerAdapter {
 
         ImageView background = view.findViewById(R.id.cardviewImgView);
         TextView date = view.findViewById(R.id.cardviewDate);
-        TextView title = view.findViewById(R.id.cardviewEventtitle);
+        final TextView title = view.findViewById(R.id.cardviewEventtitle);
         TextView timeframe = view.findViewById(R.id.cardviewTime);
 
         Event event = rightNowList.get(position);
-        String eventDate= event.getDate();
-        String eventTitle = event.getTitle();
-        String eventTimeframe = event.getTimeframe();
-        int eventImage = event.getImage();
+        final String eventDate= event.getDate();
+        final String eventTitle = event.getTitle();
+        final String eventTimeframe = event.getTimeframe();
+        final int eventImage = event.getImage();
 
         date.setText(eventDate);
         title.setText(eventTitle);
@@ -58,7 +59,7 @@ public class RightNowEventArrayAdapter extends PagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(mContext, eventTitle, Toast.LENGTH_SHORT).show();
             }
         });
 

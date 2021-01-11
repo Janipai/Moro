@@ -5,28 +5,23 @@
     android:background="#E69999"
     >
 
-    <LinearLayout
-        android:id="@+id/hometoplayout"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        >
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="220dp"
             android:overScrollMode="never"
             android:clipToPadding="false"
             android:foregroundGravity="center"
             android:layout_marginBottom="10dp"
             >
         </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
+
 
     <Button
         android:id="@+id/eventTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hometoplayout"
+        android:layout_below="@+id/viewPager"
         android:fontFamily="@font/anton"
         android:layout_centerHorizontal="true"
         android:text="FIND EVENTS / VIBE CHECK"

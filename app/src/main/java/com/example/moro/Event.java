@@ -5,9 +5,6 @@ public class Event {
     private String distance;
     private String date;
     private String timeframe;
-
-
-
     private int image;
 
     public Event(String title, String distance, String date, String timeframe, int image) {

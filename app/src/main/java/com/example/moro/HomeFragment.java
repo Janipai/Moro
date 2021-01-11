@@ -1,6 +1,7 @@
 package com.example.moro;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,19 +45,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         eventList = (ListView) view.findViewById(R.id.eventlistview);
         eventAdapter = new EventArrayAdapter(getActivity(), R.layout.home_event_adapterv_view_layout, testEvents);
-
         eventList.setAdapter(eventAdapter);
 
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
 
 
-
-
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                Log.d("tag", "Ligma blaas");
             }
 
             @Override
@@ -76,10 +74,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
 
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
         rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
         rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
         rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
