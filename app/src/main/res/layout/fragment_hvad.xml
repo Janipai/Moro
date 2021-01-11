@@ -70,7 +70,6 @@
         android:layout_height="25dp"
         android:layout_above="@+id/recyclerview_hvad"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
         android:src="@drawable/ic_arrow_up" />
 
     <ImageView
