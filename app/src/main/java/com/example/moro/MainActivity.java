@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Sentry.captureMessage("testing SDK setup");
+
         // SENTRY TEST
         try {
             throw new Exception("This is a test of sentry.");
