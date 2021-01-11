@@ -1,4 +1,4 @@
-package com.example.moro.VibeCheck;
+package com.example.moro.Fragments.VibeCheck;
 
 import android.os.Bundle;
 
@@ -10,16 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.moro.MainActivity;
 import com.example.moro.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class HvadFragment extends Fragment{
 

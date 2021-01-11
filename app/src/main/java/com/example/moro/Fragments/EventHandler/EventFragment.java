@@ -1,4 +1,4 @@
-package com.example.moro.EventHandler;
+package com.example.moro.Fragments.EventHandler;
 
 import android.os.Bundle;
 
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.moro.HomeFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
 import java.util.ArrayList;

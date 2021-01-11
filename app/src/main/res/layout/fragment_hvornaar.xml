@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFE8DC"
-    tools:context=".VibeCheck.HvornaarFragment">
+    tools:context=".Fragments.VibeCheck.HvornaarFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -1,19 +1,16 @@
-package com.example.moro.EventHandler;
+package com.example.moro.Fragments;
 
-public class EventSideBySide {
-
+public class Event {
     private String title;
     private String distance;
     private String date;
     private String timeframe;
-    private int image;
 
-    public EventSideBySide(String title, String distance, String date, String timeframe, int image) {
+    public Event(String title, String distance, String date, String timeframe) {
         this.title = title;
         this.distance = distance;
         this.date = date;
         this.timeframe = timeframe;
-        this.image = image;
     }
 
     public String getTitle() {
@@ -47,15 +44,4 @@ public class EventSideBySide {
     public void setTimeframe(String timeframe) {
         this.timeframe = timeframe;
     }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-
-
 }

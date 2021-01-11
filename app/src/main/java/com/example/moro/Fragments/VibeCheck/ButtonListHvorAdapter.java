@@ -1,6 +1,5 @@
-package com.example.moro.VibeCheck;
+package com.example.moro.Fragments.VibeCheck;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.moro;
+package com.example.moro.Fragments;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 
-import com.example.moro.EventHandler.EventFragment;
+import com.example.moro.Fragments.EventHandler.EventFragment;
+import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.sentry.Sentry;
@@ -19,14 +20,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Sentry.captureMessage("testing SDK setup");
-
-        // SENTRY TEST
-        try {
-            throw new Exception("This is a test of sentry.");
-        } catch (Exception e) {
-            Sentry.captureException(e);
-        }
+//        Sentry.captureMessage("testing SDK setup");
+//        // SENTRY TEST
+//        try {
+//            throw new Exception("This is a test of sentry.");
+//        } catch (Exception e) {
+//            Sentry.captureException(e);
+//        }
 
 
         Fragment home = new HomeFragment();

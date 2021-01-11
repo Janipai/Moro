@@ -1,4 +1,4 @@
-package com.example.moro;
+package com.example.moro.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.moro.VibeCheck.HvornaarFragment;
+import com.example.moro.R;
+import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
 import java.util.ArrayList;
 

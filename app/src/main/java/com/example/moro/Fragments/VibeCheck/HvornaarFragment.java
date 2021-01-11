@@ -1,24 +1,18 @@
-package com.example.moro.VibeCheck;
+package com.example.moro.Fragments.VibeCheck;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
-import android.widget.TextView;
 
-import com.example.moro.MainActivity;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
-
-import java.util.Calendar;
-import java.util.Date;
 
 public class HvornaarFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
