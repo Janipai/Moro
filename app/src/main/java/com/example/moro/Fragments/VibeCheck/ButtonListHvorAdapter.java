@@ -51,12 +51,12 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
 
                 if (choosenButtonList.contains(holder.tv)){
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvor);
-                    holder.tv.setTextColor(Color.parseColor("#FFA500"));
+                    holder.tv.setTextColor(Color.parseColor("#990000"));
                     choosenButtonList.remove(holder.tv);
                 }else if (!choosenButtonList.contains(holder.tv)){
                     choosenButtonList.add(holder.tv);
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvor2);
-                    holder.tv.setTextColor(Color.parseColor("#FFFDBA"));
+                    holder.tv.setTextColor(Color.parseColor("#FFB7FC"));
                 }
             }
         });
