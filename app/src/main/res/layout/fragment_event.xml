@@ -144,7 +144,7 @@
             tools:layout_editor_absoluteY="22dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/harprofilTV"
             android:layout_width="36dp"
             android:layout_height="19dp"
             android:fontFamily="@font/anton"
