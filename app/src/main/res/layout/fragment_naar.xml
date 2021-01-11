@@ -1,280 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFDBA"
     tools:context=".VibeCheck.NaarFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
+        android:id="@+id/idstemningtype"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/idtypestemning">
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/anton"
+            android:text="Når"
+            android:textSize="64sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/idtype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:id="@+id/allbuttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:padding="15dp">
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="85dp"
+            android:layout_marginLeft="20dp"
 
+            android:onClick="onClick"
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+            android:clickable="true"
 
-        android:layout_alignParentRight="true"
+            android:fontFamily="@font/anton"
+            android:text="TYPE"
+            android:textSize="32sp"/>
+        <TextView
+            android:id="@+id/idstemning"
 
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="Du har tømmermænd"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtype" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="85dp"
+            android:layout_marginRight="20dp"
 
-        android:layout_below="@+id/button3"
-        android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:clickable="true"
 
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="mad gør dig glad"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+            android:fontFamily="@font/anton"
+            android:text="STEMNING"
+            android:textColor="#FFA500"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/idstemning"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentRight="true"
-
-        android:layout_marginEnd="10dp"
-        android:clickable="true"
-        android:fontFamily="@font/anton"
-        android:text="STEMNING"
-        android:textColor="#FFA500"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/idtype"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentLeft="true"
-
-        android:layout_marginStart="10dp"
-        android:clickable="true"
-
-        android:fontFamily="@font/anton"
-        android:onClick="onClick"
-        android:text="TYPE"
-        android:textSize="32sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <ImageView
-        android:id="@+id/arrow_down"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_below="@+id/allbuttons"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/yellow_down_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button12" />
-
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/arrow_up"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_above="@+id/allbuttons"
+        android:layout_above="@+id/recyclerview_naar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         android:src="@drawable/yellow_up_arrow"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="5dp"/>
 
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button9"
-        android:layout_alignParentRight="true"
-
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toStartOf="@+id/button11"
-        app:layout_constraintStart_toEndOf="@+id/button10"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button8"
+    <ImageView
+        android:id="@+id/arrow_down"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/recyclerview_naar"
         android:layout_centerHorizontal="true"
+        android:src="@drawable/yellow_down_arrow"/>
 
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button7"
-        android:layout_alignParentLeft="true"
-
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="du vil have gang i kroppen"
-        android:textColor="#FFA500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
-
-    <Button
-        android:id="@+id/button9"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button6"
-        android:layout_alignParentRight="true"
-
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="De gamle kmmer på besøg"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button5"
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="Du vil imponere din date"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toStartOf="@+id/button9"
-        app:layout_constraintStart_toEndOf="@+id/button7"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button5"
-        android:layout_alignParentLeft="true"
-
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="Du vil fortrække dig selv"
-        android:textColor="#FFA500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="du har tomme lommer"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_below="@+id/button1"
-
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="du vil udvide dine horisonter"
-        android:textColor="#FFA500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_centerHorizontal="true"
-
-        android:background="@drawable/hvad_button_style"
-        android:text="Du vil ud i det blå"
-        android:textColor="#FFA500"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/idtype" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-
-        android:layout_alignParentLeft="true"
-
-        android:layout_marginStart="10dp"
-        android:background="@drawable/hvad_button_style"
-        android:text="Du vil ikke hjem, men videre"
-        android:textColor="#FFA500"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idtype" />
-
-    <TextView
-        android:id="@+id/textView4"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_naar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/anton"
-        android:padding="2dip"
-        android:text="Når"
-        android:textSize="64sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@id/idstemningtype"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        />
+
+
+</RelativeLayout>

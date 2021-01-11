@@ -1,9 +1,9 @@
 package com.example.moro.VibeCheck;
 
-import android.graphics.Color;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,21 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.example.moro.MainActivity;
 import com.example.moro.R;
-import com.example.moro.VibeCheck.HvadFragment;
 
-public class HvornaarFragment extends Fragment implements View.OnClickListener {
+import java.util.Calendar;
+import java.util.Date;
 
-    public HvornaarFragment() {
-        // Required empty public constructor
-    }
- 
-    TextView test;
-    CalendarView calendarView;
-    Button calender;
+public class HvornaarFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+
+    DatePicker dp;
+    Button calendersubmit;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,24 +36,34 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hvornaar, container, false);
 
-        calender = view.findViewById(R.id.idcalender);
-        calender.setOnClickListener(this);
+        calendersubmit = view.findViewById(R.id.idcalendersubmission);
+        calendersubmit.setOnClickListener(this);
 
-        calendarView = view.findViewById(R.id.calender);
-        test = view.findViewById(R.id.testCalenderDate);
-
-        calendarView.setWeekSeparatorLineColor(Color.parseColor("#FF542B"));
-        calendarView.setFirstDayOfWeek(2);
+        dp = view.findViewById(R.id.datePicker);
 
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        /*'calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = (dayOfMonth + "/" + month + "/" + year);
                 test.setText(date);
             }
-        });
+        });*/
+
+
         return view;
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        //get choosen date
+        showSetDate(year,month,dayOfMonth);
+    }
+
+    public void showSetDate(int year, int month, int dayOfMonth) {
+        //get choosen date
+        String date = "day/month/year: " + dayOfMonth + "/" + month + "/" + year;
+        System.out.println(date);
     }
 
     @Override
