@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Event">
+    tools:context=".Fragments.Event">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -97,7 +97,8 @@
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:background="#D4E2F2"
-            android:src="@drawable/group_36"
+            android:src="@drawable/ic_gridview_filled"
+            android:tint="#002399"
             tools:layout_editor_absoluteX="235dp"
             tools:layout_editor_absoluteY="60dp" />
 
@@ -106,7 +107,8 @@
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:background="#D4E2F2"
-            android:src="@drawable/group_35"
+            android:src="@drawable/ic_listview_unfilled"
+            android:tint="#002399"
             tools:layout_editor_absoluteX="184dp"
             tools:layout_editor_absoluteY="63dp" />
 
@@ -115,7 +117,8 @@
             android:layout_width="164dp"
             android:layout_height="38dp"
             android:background="#D4E2F2"
-            android:src="@drawable/group_37"
+            android:src="@drawable/ic_back"
+            android:tint="#002399"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="65dp" />
 
@@ -124,7 +127,8 @@
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:background="#D4E2F2"
-            android:src="@drawable/union"
+            android:src="@drawable/ic_map_unfilled"
+            android:tint="#002399"
             tools:layout_editor_absoluteX="288dp"
             tools:layout_editor_absoluteY="60dp" />
 
@@ -140,7 +144,7 @@
             tools:layout_editor_absoluteY="22dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/harprofilTV"
             android:layout_width="36dp"
             android:layout_height="19dp"
             android:fontFamily="@font/anton"

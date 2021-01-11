@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D7E9CF"
-    tools:context=".EventHandler.EventFragment">
+    tools:context=".Fragments.EventHandler.EventFragment">
 
 
     <TextView
@@ -32,7 +32,7 @@
             android:layout_marginLeft="30dp"
             android:layout_weight="1"
             android:background="#D4E2F2"
-            android:src="@drawable/group_37"
+            android:src="@drawable/ic_back"
             android:textAlignment="center" />
 
 
@@ -42,7 +42,7 @@
             android:layout_height="43dp"
             android:layout_weight="1"
             android:background="#D4E2F2"
-            android:src="@drawable/group_36"
+            android:src="@drawable/ic_listview_filled"
             tools:layout_editor_absoluteX="235dp"
             tools:layout_editor_absoluteY="60dp" />
 
@@ -53,7 +53,7 @@
             android:layout_marginVertical="3dp"
             android:layout_weight="1"
             android:background="#D4E2F2"
-            android:src="@drawable/group_35"
+            android:src="@drawable/ic_gridview_unfilled"
             tools:layout_editor_absoluteX="184dp"
             tools:layout_editor_absoluteY="63dp" />
 
