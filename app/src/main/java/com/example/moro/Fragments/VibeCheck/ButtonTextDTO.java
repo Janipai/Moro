@@ -1,4 +1,4 @@
-package com.example.moro.VibeCheck;
+package com.example.moro.Fragments.VibeCheck;
 
 public class ButtonTextDTO {
 

@@ -1,6 +1,5 @@
-package com.example.moro;
+package com.example.moro.Fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.net.URI;
+import com.example.moro.R;
 
 public class ContactFragment extends Fragment implements View.OnClickListener {
 

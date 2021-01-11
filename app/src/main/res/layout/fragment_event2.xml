@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#D4E2F2"
     android:id="@+id/event2All"
-    tools:context=".EventHandler.EventFragment">
+    tools:context=".Fragments.EventHandler.EventFragment">
 
 
     <TextView

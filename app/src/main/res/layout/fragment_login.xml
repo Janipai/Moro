@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/fragment_vertical_margin"
     android:paddingRight="@dimen/fragment_horizontal_margin"
     android:paddingBottom="@dimen/fragment_vertical_margin"
-    tools:context=".LoginFragment">
+    tools:context=".Fragments.LoginFragment">
 
     <EditText
         android:id="@+id/passwordLogin"
@@ -63,7 +63,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/harprofilTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/anton"
@@ -99,7 +99,7 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/harprofilTV">
 
         <Button
             android:id="@+id/buttonOpretLogin"
@@ -114,7 +114,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/buttonOpretConstraint"
             app:layout_constraintEnd_toEndOf="@+id/buttonOpretConstraint"
             app:layout_constraintStart_toStartOf="@+id/buttonOpretConstraint"
-            app:layout_constraintTop_toTopOf="@+id/buttonOpretConstraint"/>
+            app:layout_constraintTop_toTopOf="@+id/buttonOpretConstraint" />
 
         <TextView
             android:id="@+id/buttonOpretConstraint"
@@ -161,5 +161,43 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/fbiIV"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/tipborder"
+        android:src="@drawable/ggi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:srcCompat="@drawable/fbi" />
+
+    <ImageView
+        android:id="@+id/giIV"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="120dp"
+        android:background="@drawable/tipborder"
+        android:src="@drawable/fbi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toEndOf="@+id/fbiIV"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:srcCompat="@drawable/ggi" />
+
+    <TextView
+        android:id="@+id/ellerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eller "
+        android:textColor="#FF9800"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

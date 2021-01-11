@@ -1,4 +1,4 @@
-package com.example.moro;
+package com.example.moro.Fragments;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.moro.R;
 
 import java.util.ArrayList;
 
