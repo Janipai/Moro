@@ -31,7 +31,7 @@
             android:clickable="true"
             android:fontFamily="@font/anton"
 
-            android:onClick="onClick"
+            
             android:text="TYPE"
             android:textColor="#FFA500"
             android:textSize="32sp"
@@ -78,6 +78,7 @@
         android:layout_height="25dp"
         android:layout_below="@+id/recyclerview_hvad"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_arrow_down" />
 
 

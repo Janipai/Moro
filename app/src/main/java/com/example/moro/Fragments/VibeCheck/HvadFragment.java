@@ -44,6 +44,7 @@ public class HvadFragment extends CustomFragment {
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
 
+
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +55,7 @@ public class HvadFragment extends CustomFragment {
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*      */
+                replaceFragment(new HvorFragment());
             }
         });
 
