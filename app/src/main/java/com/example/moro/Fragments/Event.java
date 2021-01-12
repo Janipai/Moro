@@ -5,12 +5,14 @@ public class Event {
     private String distance;
     private String date;
     private String timeframe;
+    private int image;
 
-    public Event(String title, String distance, String date, String timeframe) {
+    public Event(String title, String distance, String date, String timeframe, int image) {
         this.title = title;
         this.distance = distance;
         this.date = date;
         this.timeframe = timeframe;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -44,4 +46,10 @@ public class Event {
     public void setTimeframe(String timeframe) {
         this.timeframe = timeframe;
     }
+
+    public int getImage() { return image; }
+
+    public void setImage(int image) { this.image = image; }
+
 }
+
