@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -49,13 +50,13 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
                 //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
 
                 if (choosenButtonList.contains(holder.tv)){
-                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
-                    holder.tv.setTextColor(Color.parseColor("#FFA500"));
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvor);
+                    holder.tv.setTextColor(Color.parseColor("#990000"));
                     choosenButtonList.remove(holder.tv);
                 }else if (!choosenButtonList.contains(holder.tv)){
                     choosenButtonList.add(holder.tv);
-                    holder.tv.setBackgroundResource(R.drawable.button_style_hvad2);
-                    holder.tv.setTextColor(Color.parseColor("#FFFDBA"));
+                    holder.tv.setBackgroundResource(R.drawable.button_style_hvor2);
+                    holder.tv.setTextColor(Color.parseColor("#FFB7FC"));
                 }
             }
         });
@@ -69,13 +70,13 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView tv;
-        LinearLayout layout;
+        RelativeLayout layout;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
             tv = (TextView) itemView.findViewById(R.id.all_textview_forhvor);
-            layout = (LinearLayout) itemView.findViewById(R.id.linear_layout_forhvor);
+            layout = (RelativeLayout) itemView.findViewById(R.id.linear_layout_forhvor);
         }
     }
 }

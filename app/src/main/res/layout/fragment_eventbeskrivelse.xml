@@ -140,7 +140,8 @@
                     android:id="@+id/ED_pinicon"
                     android:layout_width="100dp"
                     android:layout_height="87dp"
-                    android:src="@drawable/ic_map_unfilled"
+                    android:src="@drawable/ic_map_filled"
+                    android:tint="#002399"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

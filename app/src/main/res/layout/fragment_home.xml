@@ -5,84 +5,23 @@
     android:background="#E69999"
     >
 
-    <LinearLayout
-        android:id="@+id/hometoplayout"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginBottom="10dp"
-        android:weightSum="2"
-        android:background="@drawable/resutnat"
-
-        >
-
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/ligenutxt"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:fontFamily="@font/anton"
-            android:text="LIGE NU"
-            android:textSize="40sp"
-            android:textColor="#FFFFFF"
-            />
+            android:layout_height="220dp"
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:foregroundGravity="center"
+            android:layout_marginBottom="10dp"
+            >
+        </androidx.viewpager.widget.ViewPager>
 
-        <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewEnd"
-
-                android:textColor="#FFFFFF"
-                android:fontFamily="@font/anton"
-                android:text="1/11/2020"
-                android:textSize="30sp" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginLeft="40dp"
-                android:background="#D81818">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#FFFFFF"
-                    android:fontFamily="@font/anton"
-                    android:text="Klunkdyp på resturant Saltvand"
-                    android:textSize="10sp"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:textColor="#FFFFFF"
-                    android:fontFamily="@font/anton"
-                    android:text="10:00                                         14:00"
-                    android:textSize="10sp"
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
 
     <Button
         android:id="@+id/eventTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hometoplayout"
+        android:layout_below="@+id/viewPager"
         android:fontFamily="@font/anton"
         android:layout_centerHorizontal="true"
         android:text="FIND EVENTS / VIBE CHECK"

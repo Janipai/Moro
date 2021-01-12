@@ -8,7 +8,6 @@
     tools:context=".Fragments.VibeCheck.HvorFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
         android:id="@+id/idhvor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -21,22 +20,21 @@
             android:text="Hvor"
             android:textSize="64sp" />
 
-        <TextView
-            android:id="@+id/hittentxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/hittentxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="85dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="85dp"
 
-            android:fontFamily="@font/anton"
-            android:text="TYPE"
-            android:textSize="32sp"
-            android:visibility="invisible" />
+        android:fontFamily="@font/anton"
+        android:text="TYPE"
+        android:textSize="32sp"
+        android:visibility="invisible" />
 
 
-    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_hvor"
@@ -44,8 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/hittentxt"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        tools:ignore="NotSibling" />
+        android:layout_marginTop="20dp" />
 
     <ImageView
         android:id="@+id/arrow_up"
@@ -53,7 +50,8 @@
         android:layout_height="25dp"
         android:layout_above="@+id/recyclerview_hvor"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/red_up_arrow" />
+        android:src="@drawable/ic_arrow_up"
+        app:tint="#990000"/>
 
     <ImageView
         android:id="@+id/arrow_down"
@@ -61,6 +59,7 @@
         android:layout_height="25dp"
         android:layout_below="@+id/recyclerview_hvor"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/red_down_arrow" />
+        android:src="@drawable/ic_arrow_down"
+        app:tint="#990000" />
 
 </RelativeLayout>

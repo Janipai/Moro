@@ -13,9 +13,9 @@
         android:text="Nørrebro"
         android:textColor="#FFA500"
         android:background="@drawable/button_style_hvad"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginBottom="22.5dp"
+        android:layout_marginLeft="22.5dp"
+        android:layout_marginRight="22.5dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
 

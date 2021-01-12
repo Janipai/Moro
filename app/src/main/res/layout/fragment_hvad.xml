@@ -70,8 +70,7 @@
         android:layout_height="25dp"
         android:layout_above="@+id/recyclerview_hvad"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:src="@drawable/yellow_up_arrow" />
+        android:src="@drawable/ic_arrow_up" />
 
     <ImageView
         android:id="@+id/arrow_down"
@@ -79,7 +78,7 @@
         android:layout_height="25dp"
         android:layout_below="@+id/recyclerview_hvad"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/yellow_down_arrow" />
+        android:src="@drawable/ic_arrow_down" />
 
 
 </RelativeLayout>
