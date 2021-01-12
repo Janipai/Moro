@@ -47,13 +47,6 @@ public class HvadFragment extends CustomFragment {
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                NaarFragment naar = new NaarFragment();
-//                if (!naar.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, naar);
-//                    transaction.commit();
-//                }
                 replaceFragment(new NaarFragment());
             }
         });
@@ -61,31 +54,14 @@ public class HvadFragment extends CustomFragment {
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvorFragment hvor = new HvorFragment();
-//                if (!hvor.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, hvor);
-//                    transaction.commit();
-//                }
+                /*      */
             }
         });
 
         arrowUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvornaarFragment hvornaar = new HvornaarFragment();
-//                if (!hvornaar.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, hvornaar);
-//                    transaction.commit();
-//                }
-//                replaceFragment(new HvornaarFragment());
-//                getActivity().getSupportFragmentManager().popBackStackImmediate();
                 getActivity().onBackPressed();
-
-
             }
         });
         return v;

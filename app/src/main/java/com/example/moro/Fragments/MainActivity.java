@@ -17,11 +17,18 @@ import io.sentry.Sentry;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        CustomFragment cf = new CustomFragment() {
+            @Override
+            public void replaceFragment(Fragment fragment) {
+                super.replaceFragment(fragment);
+            }
+        };
 
         Fragment home = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
@@ -40,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
             }
             if (selectedFragment == null)
                 return true;
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+            cf.replaceFragment(selectedFragment);
             return true;
         });
 
@@ -62,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
             }
             if (selectedFragment == null)
                 return true;
-            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+            cf.replaceFragment(selectedFragment);
             return true;
         });
+
     }
 }

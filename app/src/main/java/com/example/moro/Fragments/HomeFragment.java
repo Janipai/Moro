@@ -19,7 +19,7 @@ import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import java.util.ArrayList;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends CustomFragment implements View.OnClickListener{
 
     ArrayList<Event> testEvents;
     ArrayList<Event> rightNowTestEvents;
@@ -109,6 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
+        replaceFragment(new HvornaarFragment());
+//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
     }
 }

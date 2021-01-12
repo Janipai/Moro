@@ -65,8 +65,6 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        HvornaarFragment hvornaarFragment = new HvornaarFragment();
-
         replaceFragment(new HvadFragment());
 
 //        backStateName = hvornaarFragment.getClass().getName();
