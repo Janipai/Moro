@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.moro.Fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_hvornaarFragment"
+            app:destination="@id/hvornaarFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.moro.Fragments.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/hvornaarFragment"
+        android:name="com.example.moro.Fragments.VibeCheck.HvornaarFragment"
+        android:label="fragment_hvornaar"
+        tools:layout="@layout/fragment_hvornaar" >
+        <action
+            android:id="@+id/action_hvornaarFragment_to_hvadFragment"
+            app:destination="@id/hvadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hvadFragment"
+        android:name="com.example.moro.Fragments.VibeCheck.HvadFragment"
+        android:label="fragment_hvad"
+        tools:layout="@layout/fragment_hvad" >
+        <action
+            android:id="@+id/action_hvadFragment_to_naarFragment"
+            app:destination="@id/naarFragment" />
+        <action
+            android:id="@+id/action_hvadFragment_to_hvorFragment"
+            app:destination="@id/hvorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/naarFragment"
+        android:name="com.example.moro.Fragments.VibeCheck.NaarFragment"
+        android:label="fragment_naar"
+        tools:layout="@layout/fragment_naar" >
+        <action
+            android:id="@+id/action_naarFragment_to_hvorFragment"
+            app:destination="@id/hvorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hvorFragment"
+        android:name="com.example.moro.Fragments.VibeCheck.HvorFragment"
+        android:label="fragment_hvor"
+        tools:layout="@layout/fragment_hvor" />
+</navigation>
