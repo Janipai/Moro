@@ -59,7 +59,8 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
 //                transaction.replace(R.id.main_fragment_container, hvad);
 //                transaction.addToBackStack(null);
 //                transaction.commit();
-                replaceFragment(new HvadFragment());
+//                replaceFragment(new HvadFragment());
+                getActivity().onBackPressed();
             }
         });
 

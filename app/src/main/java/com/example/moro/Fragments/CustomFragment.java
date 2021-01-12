@@ -14,14 +14,18 @@ public abstract class CustomFragment extends Fragment {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
 
+
+
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
-        } else {
-            ft.show(fragment);
         }
+    }
 
+    public void resetBackStack() {
+     FragmentManager manager = getActivity().getSupportFragmentManager();
+     manager.popBackStackImmediate();
     }
 }

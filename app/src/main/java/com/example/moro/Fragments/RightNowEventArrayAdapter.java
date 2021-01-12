@@ -1,4 +1,4 @@
-package com.example.moro;
+package com.example.moro.Fragments;
 
 import android.content.Context;
 import android.media.Image;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.moro.R;
 
 import java.util.ArrayList;
 
