@@ -12,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventBeskrivelseFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
 
-public class HvorFragment extends Fragment implements View.OnClickListener {
+public class HvorFragment extends CustomFragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     String[] hvadButtonname = {"Nørrebro", "Islands brugge",

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.moro.R;
 
-public class OpretFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,7 +61,8 @@ public class OpretFragment extends Fragment implements View.OnClickListener, Ada
                 fragment = new LoginFragment();
                 break;
         }
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
+        replaceFragment(fragment);
+//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
 
     }
 
