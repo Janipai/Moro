@@ -2,69 +2,56 @@ package com.example.moro.Data.DTO;
 
 public class EventDTO {
 
-    private String eventName;
-    private String eventGenre;
-    private String eventDate;
-    private String eventPrice;
-    private String eventInfo;
-    private int eventImage;
+    private String title;
+    private String distance;
+    private String date;
+    private String timeframe;
+    private int image;
 
-    public EventDTO(String eventName, String eventGenre, String eventDate, String eventPrice, String eventInfo, int eventImage){
-        this.eventName = eventName;
-        this.eventGenre = eventGenre;
-        this.eventDate = eventDate;
-        this.eventPrice = eventPrice;
-        this.eventInfo = eventInfo;
-        this.eventImage = eventImage;
+    public EventDTO(String title, String distance, String date, String timeframe, int image) {
+        this.title = title;
+        this.distance = distance;
+        this.date = date;
+        this.timeframe = timeframe;
+        this.image = image;
     }
 
-    public String getEventName() {
-        return eventName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getEventGenre() {
-        return eventGenre;
+    public String getDistance() {
+        return distance;
     }
 
-    public void setEventGenre(String eventGenre) {
-        this.eventGenre = eventGenre;
+    public void setDistance(String distance) {
+        this.distance = distance;
     }
 
-    public String getEventDate() {
-        return eventDate;
+    public String getDate() {
+        return date;
     }
 
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getEventPrice() {
-        return eventPrice;
+    public String getTimeframe() {
+        return timeframe;
     }
 
-    public void setEventPrice(String eventPrice) {
-        this.eventPrice = eventPrice;
+    public void setTimeframe(String timeframe) {
+        this.timeframe = timeframe;
     }
 
-    public String getEventInfo() {
-        return eventInfo;
-    }
+    public int getImage() { return image; }
 
-    public void setEventInfo(String eventInfo) {
-        this.eventInfo = eventInfo;
-    }
-
-    public int getEventImage() {
-        return eventImage;
-    }
-
-    public void setEventImage(int eventImage) {
-        this.eventImage = eventImage;
-    }
-
+    public void setImage(int image) { this.image = image; }
 
 }
+
+

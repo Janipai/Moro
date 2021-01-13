@@ -11,13 +11,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 
-public class HvornaarFragment extends Fragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
+public class HvornaarFragment extends CustomFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     DatePicker dp;
     Button calendersubmit;
+    String backStateName;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,16 @@ public class HvornaarFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onClick(View v) {
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvadFragment()).addToBackStack(null).commit();
+        replaceFragment(new HvadFragment());
+
+//        backStateName = hvornaarFragment.getClass().getName();
+//        boolean fragmentPopped = getActivity().getSupportFragmentManager().popBackStackImmediate(backStateName,0);
+//        if(!fragmentPopped) {
+//            ((MainActivity) getActivity()).getSupportFragmentManager().
+//                    beginTransaction().
+//                    replace(R.id.main_fragment_container, new HvadFragment()).
+//                    addToBackStack(backStateName).
+//                    commit();
+
     }
 }

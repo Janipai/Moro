@@ -3,6 +3,7 @@ package com.example.moro.Fragments.VibeCheck;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,11 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
 
-public class NaarFragment extends Fragment implements View.OnClickListener {
+public class NaarFragment extends CustomFragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     String[] naarButtonname = {"Du vil ikke hjem, men videre", "Du vil ud i det blå",
@@ -48,36 +50,25 @@ public class NaarFragment extends Fragment implements View.OnClickListener {
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
 
+
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HvadFragment hvad = new HvadFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragment_container, hvad);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                getActivity().onBackPressed();
             }
         });
 
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HvorFragment hvor = new HvorFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragment_container,hvor);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                replaceFragment(new HvorFragment());
             }
         });
 
         arrowUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HvornaarFragment hvornaar = new HvornaarFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragment_container,hvornaar);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                getActivity().onBackPressed();
             }
         });
         return v;

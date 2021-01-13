@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.BurgerMenu;
 
 import android.os.Bundle;
 

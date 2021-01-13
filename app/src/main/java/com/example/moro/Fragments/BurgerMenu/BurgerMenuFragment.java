@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.BurgerMenu;
 
 import android.os.Bundle;
 
@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
-public class BurgerMenuFragment extends Fragment implements View.OnClickListener {
+public class BurgerMenuFragment extends CustomFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class BurgerMenuFragment extends Fragment implements View.OnClickListener
                 fragment = new ContactFragment();
                 break;
         }
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
+        replaceFragment(fragment);
+//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
     }
 }

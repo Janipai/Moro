@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class EventFragment extends Fragment{
 
-    List<EventSideBySide> testEvents;
+    List<EventDTO> testEvents;
     private RecyclerView myrv;
 
 
@@ -31,7 +32,7 @@ public class EventFragment extends Fragment{
         createEvents();
 
 
-        View view = inflater.inflate(R.layout.fragment_event2,container,false);
+        View view = inflater.inflate(R.layout.fragment_event,container,false);
         myrv = (RecyclerView) view.findViewById(R.id.recyclerview);
         EventSideBySideAdapter myAdapter = new EventSideBySideAdapter( view.getContext(), testEvents);
         myrv.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
@@ -41,14 +42,14 @@ public class EventFragment extends Fragment{
     }
 
     public void createEvents() {
-        EventSideBySide event1 = new EventSideBySide("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
-        EventSideBySide event2 = new EventSideBySide("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
-        EventSideBySide event3 = new EventSideBySide("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
-        EventSideBySide event4 = new EventSideBySide("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00",R.drawable.bruh);
-        EventSideBySide event5 = new EventSideBySide("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00",R.drawable.bruh);
-        EventSideBySide event6 = new EventSideBySide("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00",R.drawable.bruh);
-        EventSideBySide event7 = new EventSideBySide("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00",R.drawable.bruh);
-        EventSideBySide event8 = new EventSideBySide("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00",R.drawable.bruh);
+        EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
+        EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
+        EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
+        EventDTO event4 = new EventDTO("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00",R.drawable.bruh);
+        EventDTO event5 = new EventDTO("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00",R.drawable.bruh);
+        EventDTO event6 = new EventDTO("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00",R.drawable.bruh);
+        EventDTO event7 = new EventDTO("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00",R.drawable.bruh);
+        EventDTO event8 = new EventDTO("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00",R.drawable.bruh);
 
         testEvents = new ArrayList<>();
         testEvents.add(event1);

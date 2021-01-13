@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.moro.R;
 
-public class LoginFragment extends Fragment implements View.OnClickListener {
+public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
-                fragment = new MinProfil();
+                fragment = new MyProfile();
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();
@@ -49,7 +49,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
+        replaceFragment(fragment);
+//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
 
     }
 }

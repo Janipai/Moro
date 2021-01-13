@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.EventBeskrivelseFragment">
+    tools:context=".Fragments.EventHandler.EventBeskrivelseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -141,10 +141,10 @@
                     android:layout_width="100dp"
                     android:layout_height="87dp"
                     android:src="@drawable/ic_map_filled"
-                    android:tint="#002399"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#002399" />
 
                 <TextView
                     android:id="@+id/EB_lokationOS"

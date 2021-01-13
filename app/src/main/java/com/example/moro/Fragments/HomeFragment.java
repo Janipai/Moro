@@ -10,19 +10,19 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
 import java.util.ArrayList;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener{
+public class HomeFragment extends CustomFragment implements View.OnClickListener{
 
-    ArrayList<Event> testEvents;
-    ArrayList<Event> rightNowTestEvents;
+    ArrayList<EventDTO> testEvents;
+    ArrayList<EventDTO> rightNowTestEvents;
 
     ViewPager viewPager;
     ListView eventList;
@@ -75,10 +75,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
 
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new Event("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
 
         rightNowAdapter = new RightNowEventArrayAdapter(getActivity(), rightNowTestEvents);
         viewPager.setAdapter(rightNowAdapter);
@@ -86,14 +86,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
     }
 
     public void createEvents() {
-        Event event1 = new Event("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
-        Event event2 = new Event("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);
-        Event event3 = new Event("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
-        Event event4 = new Event("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00", R.drawable.bruh);
-        Event event5 = new Event("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00", R.drawable.bruh);
-        Event event6 = new Event("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00", R.drawable.bruh);
-        Event event7 = new Event("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00", R.drawable.bruh);
-        Event event8 = new Event("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00", R.drawable.bruh);
+        EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
+        EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);
+        EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
+        EventDTO event4 = new EventDTO("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00", R.drawable.bruh);
+        EventDTO event5 = new EventDTO("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00", R.drawable.bruh);
+        EventDTO event6 = new EventDTO("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00", R.drawable.bruh);
+        EventDTO event7 = new EventDTO("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00", R.drawable.bruh);
+        EventDTO event8 = new EventDTO("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00", R.drawable.bruh);
 
         testEvents = new ArrayList<>();
         testEvents.add(event1);
@@ -109,6 +109,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
+        replaceFragment(new HvornaarFragment());
+//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
     }
 }

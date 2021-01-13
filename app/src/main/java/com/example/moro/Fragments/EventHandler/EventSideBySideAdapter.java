@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moro.Fragments.EventBeskrivelseFragment;
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.R;
 
 import java.util.List;
@@ -20,10 +20,10 @@ import java.util.List;
 public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySideAdapter.MyViewHolder> {
 
          private Context myContext;
-         private List<EventSideBySide> myData;
+         private List<EventDTO> myData;
 
 
-    public EventSideBySideAdapter(Context myContext, List<EventSideBySide> myData) {
+    public EventSideBySideAdapter(Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
