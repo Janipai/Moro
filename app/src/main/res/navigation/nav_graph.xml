@@ -12,6 +12,15 @@
         <action
             android:id="@+id/action_homeFragment_to_hvornaarFragment"
             app:destination="@id/hvornaarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_burgerMenuFragment"
+            app:destination="@id/burgerMenuFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -52,5 +61,71 @@
         android:id="@+id/hvorFragment"
         android:name="com.example.moro.Fragments.VibeCheck.HvorFragment"
         android:label="fragment_hvor"
-        tools:layout="@layout/fragment_hvor" />
+        tools:layout="@layout/fragment_hvor" >
+        <action
+            android:id="@+id/action_hvorFragment_to_eventBeskrivelseFragment"
+            app:destination="@id/eventBeskrivelseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/burgerMenuFragment"
+        android:name="com.example.moro.Fragments.BurgerMenuFragment"
+        android:label="fragment_burger_menu"
+        tools:layout="@layout/fragment_burger_menu" >
+        <action
+            android:id="@+id/action_burgerMenuFragment_to_tipFragment"
+            app:destination="@id/tipFragment" />
+        <action
+            android:id="@+id/action_burgerMenuFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_burgerMenuFragment_to_contactFragment"
+            app:destination="@id/contactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tipFragment"
+        android:name="com.example.moro.Fragments.TipFragment"
+        android:label="fragment_tip"
+        tools:layout="@layout/fragment_tip" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.moro.Fragments.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.example.moro.Fragments.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.moro.Fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_opretFragment"
+            app:destination="@id/opretFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_minProfil"
+            app:destination="@id/minProfil" />
+    </fragment>
+    <fragment
+        android:id="@+id/opretFragment"
+        android:name="com.example.moro.Fragments.OpretFragment"
+        android:label="fragment_opret"
+        tools:layout="@layout/fragment_opret" />
+    <fragment
+        android:id="@+id/minProfil"
+        android:name="com.example.moro.Fragments.MinProfil"
+        android:label="fragment_min_profil"
+        tools:layout="@layout/fragment_min_profil" />
+    <fragment
+        android:id="@+id/eventBeskrivelseFragment"
+        android:name="com.example.moro.Fragments.EventBeskrivelseFragment"
+        android:label="fragment_eventbeskrivelse"
+        tools:layout="@layout/fragment_eventbeskrivelse" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.moro.Fragments.EventHandler.EventFragment"
+        android:label="fragment_favoritter"
+        tools:layout="@layout/fragment_favoritter" />
 </navigation>

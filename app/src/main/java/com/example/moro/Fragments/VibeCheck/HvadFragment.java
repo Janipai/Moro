@@ -68,6 +68,7 @@ public class HvadFragment extends CustomFragment {
 //                    transaction.replace(R.id.main_fragment_container, hvor);
 //                    transaction.commit();
 //                }
+                replaceFragment(new HvorFragment());
             }
         });
 
