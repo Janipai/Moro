@@ -1,20 +1,17 @@
 package com.example.moro.Fragments;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 
+import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import io.sentry.Sentry;
 
 public class MainActivity extends AppCompatActivity {
 

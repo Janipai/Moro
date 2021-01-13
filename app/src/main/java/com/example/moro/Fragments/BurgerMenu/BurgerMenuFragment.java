@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.BurgerMenu;
 
 import android.os.Bundle;
 
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 public class BurgerMenuFragment extends CustomFragment implements View.OnClickListener {

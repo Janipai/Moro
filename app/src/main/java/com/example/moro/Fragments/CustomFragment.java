@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.moro.R;
 
+/* Back stack håndtering
+Udviklet af Mads H.*/
 public abstract class CustomFragment extends Fragment {
-    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+
 
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){
@@ -23,11 +25,11 @@ public abstract class CustomFragment extends Fragment {
         }
     }
 
+   /* private static final String BACK_STACK_ROOT_TAG = "root_fragment";
     public void resetBackStack() {
         FragmentManager manager = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         manager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-
-    }
+    }*/
 }
