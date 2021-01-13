@@ -54,12 +54,6 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvadFragment hvad = new HvadFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.main_fragment_container, hvad);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//                replaceFragment(new HvadFragment());
                 getActivity().onBackPressed();
             }
         });
@@ -67,12 +61,6 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvorFragment hvor = new HvorFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.main_fragment_container, hvor);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-
                 replaceFragment(new HvorFragment());
             }
         });
@@ -80,12 +68,6 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
         arrowUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvornaarFragment hvornaar = new HvornaarFragment();
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.main_fragment_container, hvornaar);
-//                    transaction.addToBackStack(null);
-//                    transaction.commit();
-//                replaceFragment(new HvornaarFragment());
                 getActivity().onBackPressed();
             }
         });

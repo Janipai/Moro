@@ -31,7 +31,7 @@ public class EventFragment extends Fragment{
         createEvents();
 
 
-        View view = inflater.inflate(R.layout.fragment_event2,container,false);
+        View view = inflater.inflate(R.layout.fragment_event,container,false);
         myrv = (RecyclerView) view.findViewById(R.id.recyclerview);
         EventSideBySideAdapter myAdapter = new EventSideBySideAdapter( view.getContext(), testEvents);
         myrv.setLayoutManager(new GridLayoutManager(view.getContext(), 2));

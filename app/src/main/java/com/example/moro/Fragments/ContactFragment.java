@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.example.moro.R;
 
-public class ContactFragment extends Fragment implements View.OnClickListener {
+public class ContactFragment extends CustomFragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,7 +27,8 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
         tipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new TipFragment()).addToBackStack(null).commit();
+                replaceFragment(new TipFragment());
+//                ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new TipFragment()).addToBackStack(null).commit();
             }
         });
 

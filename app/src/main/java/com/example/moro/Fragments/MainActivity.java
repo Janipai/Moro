@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,11 +18,11 @@ import io.sentry.Sentry;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         Fragment home = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             if (selectedFragment == null)
                 return true;
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+//            replaceFragment(selectedFragment);
             return true;
         });
 
@@ -62,8 +64,25 @@ public class MainActivity extends AppCompatActivity {
             }
             if (selectedFragment == null)
                 return true;
+
+//            replaceFragment(selectedFragment);
             getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
+
             return true;
         });
+
+    }
+
+    public void replaceFragment (Fragment fragment){
+        String backStateName = fragment.getClass().getName();
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
+
+        FragmentTransaction ft = manager.beginTransaction();
+        if (!fragmentPopped){ //fragment not in back stack, create it.
+            ft.replace(R.id.main_fragment_container, fragment);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
     }
 }
