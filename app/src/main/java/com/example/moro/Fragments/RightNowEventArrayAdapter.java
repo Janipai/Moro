@@ -1,7 +1,6 @@
 package com.example.moro.Fragments;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class RightNowEventArrayAdapter extends PagerAdapter {
 
     private Context mContext;
-    private ArrayList<Event> rightNowList;
+    private ArrayList<EventDTO> rightNowList;
 
-    public RightNowEventArrayAdapter(Context context, ArrayList<Event> rightNowList){
+    public RightNowEventArrayAdapter(Context context, ArrayList<EventDTO> rightNowList){
         this.mContext = context;
         this.rightNowList = rightNowList;
     }
@@ -47,7 +47,7 @@ public class RightNowEventArrayAdapter extends PagerAdapter {
         final TextView title = view.findViewById(R.id.cardviewEventtitle);
         TextView timeframe = view.findViewById(R.id.cardviewTime);
 
-        Event event = rightNowList.get(position);
+        EventDTO event = rightNowList.get(position);
         final String eventDate= event.getDate();
         final String eventTitle = event.getTitle();
         final String eventTimeframe = event.getTimeframe();

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.moro.R;
 
 
-public class MinProfil extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

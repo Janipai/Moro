@@ -35,7 +35,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
-                fragment = new MinProfil();
+                fragment = new MyProfile();
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();

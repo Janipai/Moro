@@ -2,8 +2,6 @@ package com.example.moro.Fragments.VibeCheck;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.EventBeskrivelseFragment;
+import com.example.moro.Fragments.EventHandler.EventBeskrivelseFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
