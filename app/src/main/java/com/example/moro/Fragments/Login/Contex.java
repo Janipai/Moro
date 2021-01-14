@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Contex {
     private States states;
     private static Contex ctx;
+    //Some data?
 
     ArrayList<EventArrayAdapter> favourites;
     protected boolean editInfo;
@@ -17,25 +18,15 @@ public class Contex {
     protected String bday;
 
     public String getName() {return name;}
-
     public void setName(String name) {this.name = name;}
-
     public String getGender() {return gender;}
-
     public void setGender(String gender) {this.gender = gender;}
-
     public String getMail() {return mail;}
-
     public void setMail(String mail) {this.mail = mail;}
-
     public String getPassword() {return password;}
-
     public void setPassword(String password) {this.password = password;}
-
     public String getBday() {return bday;}
-
     public void setBday(String bday) {this.bday = bday;}
-
 
 
     public static Contex getInstance() {
@@ -65,11 +56,11 @@ public class Contex {
     }
 
     public void addFavourites(EventArrayAdapter favourites) {
-        states.addFavourites();
+        states.addFavourites(this, favourites);
     }
 
     public void showMyFavourites(ArrayList<EventArrayAdapter> favourites){
-        states.showMyFavourites();
+        states.showMyFavourites(this, favourites);
     }
 
 }

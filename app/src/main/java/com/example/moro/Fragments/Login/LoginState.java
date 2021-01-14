@@ -1,5 +1,9 @@
 package com.example.moro.Fragments.Login;
 
+import com.example.moro.Fragments.EventArrayAdapter;
+
+import java.util.ArrayList;
+
 public class LoginState extends Adapter {
 
     @Override
@@ -15,12 +19,12 @@ public class LoginState extends Adapter {
     }
 
     @Override
-    public void addFavourites() {
-        super.addFavourites();
+    public void addFavourites(Contex contex, EventArrayAdapter favourites) {
+        super.addFavourites(contex, favourites);
     }
 
     @Override
-    public void showMyFavourites() {
-        super.showMyFavourites();
+    public void showMyFavourites(Contex contex, ArrayList<EventArrayAdapter> favourites) {
+        super.showMyFavourites(contex, favourites);
     }
 }
