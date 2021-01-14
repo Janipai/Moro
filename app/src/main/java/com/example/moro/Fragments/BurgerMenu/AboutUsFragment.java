@@ -7,59 +7,48 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.moro.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AboutUsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class AboutUsFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public AboutUsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutUsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AboutUsFragment newInstance(String param1, String param2) {
-        AboutUsFragment fragment = new AboutUsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_us, container, false);
+        View v = inflater.inflate(R.layout.fragment_about_us, container, false);
+
+        TextView aboutUsTxt = v.findViewById(R.id.aboutText);
+        aboutUsTxt.setText("Vi er MORO. \n" +
+                "\n" +
+                "Otte unge kvinder, der er fyldt med passion, gåpåmod og skabertrang! Vi kommer fra vidt forskellige steder i landet og har vidt forskellige baggrunde, men er gået sammen om et fælles projekt - et projekt vi kalder MORO.\n" +
+                "\n" +
+                "Skabt af unge, til unge.\n" +
+                "Vi blev i første omgang samlet om kærligheden til kulturen gennem et ophold på Roskilde\n" +
+                "Festival Højskole, hvor vi var en del af første årgang. Efter et halvt års samarbejde om at skabe\n" +
+                "kulturelle oplevelser for unge mennesker opstod idéen:\n" +
+                "\n" +
+                "En platform for unge og andre interesserede, hvor alle store som små oplevelser og begivenheder bliver samlet og fremlagt på en overskuelig, navigerbar og ikke mindst inspirerende måde - om det så\n" +
+                "drejer sig om loppemarkeder, kunst-talks eller silent disco-fester.\n" +
+                "\n" +
+                "MORO er et online kulturfællesskab, der inspirerer unge til at opleve nye sider af kulturen, og\n" +
+                "danner ramme om nye sociale fællesskaber i København. Vi vil give dig en skræddersyet oversigt over byens mange arrangementer og ambitionen er, at MORO bliver dit go-to redskab, når weekenden, daten eller bare onsdagen skal planlægges.\n" +
+                "\n" +
+                "Vi ønsker at udbrede brugen af kulturlivet blandt unge og inspirere unge til at udvide deres kulturelle horisont. Det behøver ikke at vælte budgettet at leve et oplevelsesrigt og kulturelt liv, og man behøver ikke på forhånd have stort kendskab til kunst, kultur og musik. \n" +
+                "\n" +
+                "Vi elsker at få oplevelser sammen om kulturen, og det ønsker vi at udbrede. Med MORO skal vi opleve kulturen sammen og at styrke diversiteten i kulturen. \n" +
+                "\n" +
+                "Fang os på [kontakt os-siden]\n");
+
+        return v;
     }
 }
