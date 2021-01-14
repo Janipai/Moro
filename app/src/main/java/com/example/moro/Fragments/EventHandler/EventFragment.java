@@ -40,6 +40,7 @@ public class EventFragment extends Fragment implements View.OnClickListener{
 
         listView = view.findViewById(R.id.favouriteListButton);
         listView.setOnClickListener(this);
+        listView.setImageResource(R.drawable.ic_listview_filled);
         gridView = view.findViewById(R.id.favouriteGridButton);
         gridView.setOnClickListener(this);
 
@@ -64,11 +65,13 @@ public class EventFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.favouriteListButton) {
+            updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
             EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
             recyclerView.setAdapter(adapter);
         }
         else if (v.getId() == R.id.favouriteGridButton) {
+            updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
             EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
             recyclerView.setAdapter(adapter);
@@ -96,6 +99,17 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         testEvents.add(event7);
         testEvents.add(event8);
 
+    }
+
+    public void updateButtonImg(View v) {
+        if (v.getId() == R.id.favouriteListButton) {
+            listView.setImageResource(R.drawable.ic_listview_filled);
+            gridView.setImageResource(R.drawable.ic_gridview_unfilled);
+        }
+        else if (v.getId() == R.id.favouriteGridButton) {
+            listView.setImageResource(R.drawable.ic_listview_unfilled);
+            gridView.setImageResource(R.drawable.ic_gridview_filled);
+        }
     }
 
 
