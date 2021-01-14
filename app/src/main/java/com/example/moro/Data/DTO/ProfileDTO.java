@@ -12,42 +12,42 @@ public class ProfileDTO {
 
 
     public ProfileDTO (String username, String password, String dateborn, ArrayList<EventDTO> favourites) {
-        this.username = username;
-        this.password = password;
-        this.dateborn = dateborn;
-        this.favourites = favourites;
+        this.profileUsername = username;
+        this.profilePassword = password;
+        this.profileDateBorn = dateborn;
+        this.profileFavourites = favourites;
     }
 
 
-    public String getUsername() {
-        return username;
+    public String getProfileUsername() {
+        return profileUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setProfileUsername(String profileUsername) {
+        this.profileUsername = profileUsername;
     }
 
-    public String getPassword() {
-        return password;
+    public String getProfilePassword() {
+        return profilePassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setProfilePassword(String profilePassword) {
+        this.profilePassword = profilePassword;
     }
 
-    public String getDateborn() {
-        return dateborn;
+    public String getProfileDateBorn() {
+        return profileDateBorn;
     }
 
-    public void setDateborn(String dateborn) {
-        this.dateborn = dateborn;
+    public void setProfileDateBorn(String profileDateBorn) {
+        this.profileDateBorn = profileDateBorn;
     }
 
-    public ArrayList<EventDTO> getFavourites() {
-        return favourites;
+    public ArrayList<EventDTO> getProfileFavourites() {
+        return profileFavourites;
     }
 
-    public void setFavourites(ArrayList<EventDTO> favourites) {
-        this.favourites = favourites;
+    public void setProfileFavourites(ArrayList<EventDTO> profileFavourites) {
+        this.profileFavourites = profileFavourites;
     }
 }
