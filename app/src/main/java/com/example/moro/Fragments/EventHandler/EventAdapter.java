@@ -17,15 +17,32 @@ import com.example.moro.R;
 
 import java.util.List;
 
-public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySideAdapter.MyViewHolder> {
-
-         private Context myContext;
-         private List<EventDTO> myData;
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
 
 
-    public EventSideBySideAdapter(Context myContext, List<EventDTO> myData) {
+
+    public enum ViewType {
+        VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
+    }
+
+    private Context myContext;
+    private List<EventDTO> myData;
+    private  ViewType viewTypeSelected;
+
+
+    public EventAdapter(Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
+    }
+
+
+    public EventAdapter(Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
+        this.myContext = myContext;
+        this.myData = myData;
+        this.viewTypeSelected = viewTypeSelected;
+    }
+
+    public void updateViewType () {
     }
 
     @NonNull
@@ -33,15 +50,25 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
-
-        return new MyViewHolder(view);
+        if(this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
+            view = myInflater.inflate(R.layout.fragment_event_liste,parent,false);
+            return new MyViewHolder(view);
+        }
+        else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
+            view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
+            return new MyViewHolder(view);
+        }
+//        else if (viewTypeSelected == ViewType.VIEW_TYPE_LOCATION) {
+//            skal bruges til lokation
+//        }
+        return null;
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         holder.tv_date.setText(myData.get(position).getDate());
+        holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
         holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
@@ -51,7 +78,7 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
+                EventDescFragment fragment = new EventDescFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }
         });
@@ -62,6 +89,11 @@ public class EventSideBySideAdapter extends RecyclerView.Adapter<EventSideBySide
     public int getItemCount() {
         return myData.size();
     }
+
+//    @Override
+//    public int getItemViewType(int position) {
+//        return this.viewTypeSelected.ordinal();
+//    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
