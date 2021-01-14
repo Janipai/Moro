@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:focusable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C4C4C4"
+            android:layout_weight="0.3">
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="14"
+                android:textSize="18sp">
+            </TextView>
+
+            <ImageView
+                android:id="@+id/imageEvent"
+                android:layout_width="match_parent"
+                tools:src="@tools:sample/avatars"
+                android:layout_height="match_parent">
+
+            </ImageView>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            android:background="#1F3A7D"
+            android:weightSum="2"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:weightSum="2"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_weight="1.8"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/anton"
+                    android:text="TITEL PÅ EVENT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40px">
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/add"
+                    android:layout_width="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"
+                    android:src="@drawable/ic_baseline_add_box_24" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:id="@+id/afstand"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:fontFamily="@font/anton"
+                    android:text="23 KM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tidsrum"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:fontFamily="@font/anton"
+                    android:layout_marginHorizontal="5dp"
+                    android:text="00:00 - 00:00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25px"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

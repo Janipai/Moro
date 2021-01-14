@@ -35,24 +35,24 @@
             android:background="#D4E2F2"
             android:src="@drawable/ic_back"
             android:tint="#002399"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            />
 
 
         <ImageButton
-            android:layout_weight="1"
-            android:id="@+id/imageButton5"
+            android:id="@+id/favouriteListButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
+            android:layout_weight="1"
             android:background="#D4E2F2"
             android:src="@drawable/ic_listview_unfilled"
             android:tint="#002399"
             tools:layout_editor_absoluteX="184dp"
-            tools:layout_editor_absoluteY="63dp"
-            />
+            tools:layout_editor_absoluteY="63dp" />
 
         <ImageButton
             android:layout_weight="1"
-            android:id="@+id/imageButton6"
+            android:id="@+id/favouriteGridButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:background="#D4E2F2"
@@ -64,7 +64,7 @@
 
         <ImageButton
             android:layout_weight="1"
-            android:id="@+id/kortButton"
+            android:id="@+id/favouriteLocationButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:background="#D4E2F2"

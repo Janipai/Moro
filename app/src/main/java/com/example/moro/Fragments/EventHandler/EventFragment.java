@@ -5,11 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.HomeFragment;
@@ -19,27 +22,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventFragment extends Fragment{
+public class EventFragment extends Fragment implements View.OnClickListener{
 
     List<EventDTO> testEvents;
-    private RecyclerView myrv;
-
+    private RecyclerView recyclerView;
+    private GridLayoutManager gridLayoutManager;
+    private LinearLayoutManager linearLayoutManager;
+    View view;
+    private ImageButton listView;
+    private ImageButton gridView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        HomeFragment home = new HomeFragment();
+        view = inflater.inflate(R.layout.fragment_event,container,false);
         createEvents();
 
+        listView = view.findViewById(R.id.favouriteListButton);
+        listView.setOnClickListener(this);
+        gridView = view.findViewById(R.id.favouriteGridButton);
+        gridView.setOnClickListener(this);
 
-        View view = inflater.inflate(R.layout.fragment_event,container,false);
-        myrv = (RecyclerView) view.findViewById(R.id.recyclerview);
-        EventSideBySideAdapter myAdapter = new EventSideBySideAdapter( view.getContext(), testEvents);
-        myrv.setLayoutManager(new GridLayoutManager(view.getContext(), 2));
-        myrv.setAdapter(myAdapter);
+        // Recycler view manager (den layouts bliver smidt ind i)
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        // Liste layout manager
+        linearLayoutManager = new LinearLayoutManager(view.getContext());
+        // Grid layout manager
+        gridLayoutManager = new GridLayoutManager(view.getContext(),2);
+
+        // Sætter default view til recycleren
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        // Sætter adapter til recyclerviewet
+        EventAdapter myAdapter = new EventAdapter( view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        recyclerView.setAdapter(myAdapter);
 
         return view;
     }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.favouriteListButton) {
+            recyclerView.setLayoutManager(linearLayoutManager);
+            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+            recyclerView.setAdapter(adapter);
+        }
+        else if (v.getId() == R.id.favouriteGridButton) {
+            recyclerView.setLayoutManager(gridLayoutManager);
+            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
+            recyclerView.setAdapter(adapter);
+        }
+    }
+
 
     public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
