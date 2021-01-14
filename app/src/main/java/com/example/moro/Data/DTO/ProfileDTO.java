@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class ProfileDTO {
 
-    String username;
-    String password;
-    String dateborn;
-    ArrayList<EventDTO> favourites;
+    String profileUsername;
+    String profilePassword;
+    String profileDateBorn;
+    ArrayList<EventDTO> profileFavourites;
 
 
     public ProfileDTO (String username, String password, String dateborn, ArrayList<EventDTO> favourites) {
