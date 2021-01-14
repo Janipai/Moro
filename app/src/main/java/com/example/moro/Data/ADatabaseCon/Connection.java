@@ -23,13 +23,14 @@ import java.util.Set;
  */
 public class Connection {
     DBCollection coll;
-    private final DB database;
+    private DB database;
     private static Connection connection;
 
     public Connection() throws UnknownHostException {
-        MongoCredential credential = MongoCredential.createCredential("admin", "admin", "eCaayuCie4".toCharArray());
-        MongoClient mongoClient = new MongoClient(new ServerAddress("95.179.180.78:27017"), Arrays.asList(credential));
-        database = mongoClient.getDB("moro");
+            MongoCredential credential = MongoCredential.createCredential("admin", "admin", "eCaayuCie4".toCharArray());
+            MongoClient mongoClient = new MongoClient(new ServerAddress("95.179.180.78:27017"), Arrays.asList(credential));
+            database = mongoClient.getDB("moro");
+
     }
 
     public static Connection getInstance() throws UnknownHostException {
@@ -41,11 +42,11 @@ public class Connection {
     public void insertCollection(String json, String collection){
         coll = database.getCollection(collection);
         DBObject bson = ( DBObject ) JSON.parse(json);
-        Thread thread = new Thread(() -> coll.update(bson, bson, true, false));
+        coll.update(bson, bson, true, false);
     }
 
     public void findSpecific(String collection, String searchFilter, String searchFieldInput){
-        Thread thread = new Thread((Runnable) () -> {
+
             BasicDBObject SearchQuery = new BasicDBObject();
             SearchQuery.put(searchFilter, searchFieldInput);
             coll = database.getCollection(collection);
@@ -53,18 +54,13 @@ public class Connection {
             while (cursor.hasNext()) {
                 System.out.println(cursor.next());
             }
-        });
-        thread.run();
     }
 
     public DBCursor findAll(String collection){
         final DBCursor c;
-        Thread thread = new Thread((Runnable) () -> {
             coll = database.getCollection(collection);
             System.out.println(coll.count());
             //c = coll.find();
-        });
-        thread.start();
         return null;
     }
 }

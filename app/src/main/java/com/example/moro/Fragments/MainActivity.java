@@ -28,7 +28,14 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         BottomNavigationView topNav = findViewById(R.id.top_navigation);
-
+        Thread thread = new Thread(() -> {
+            try {
+                Connection.getInstance().findAll("events");
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
         topNav.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
