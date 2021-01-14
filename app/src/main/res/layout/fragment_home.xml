@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:background="#E69999"
     >
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp">
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
@@ -49,16 +51,17 @@
         android:textSize="20sp"
         />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventlistview"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-
+        android:layout_height="wrap_content"
+        android:scrollbarSize="0dp"
+        android:paddingVertical="5dp"
         android:layout_below="@id/anbefaletTxt"
         android:layout_marginHorizontal="40px"
         />
-
         </RelativeLayout>
     </ScrollView>
+
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.moro.Fragments.VibeCheck;
+package com.example.moro.Fragments;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,13 +17,13 @@ import com.example.moro.R;
 
 import java.util.ArrayList;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RightNowRecyclerAdapter extends RecyclerView.Adapter<RightNowRecyclerAdapter.ViewHolder> {
 
     private final String TAG = "RecyclerViewAdapter";
     private ArrayList<EventDTO> eventDTOS = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerAdapter(Context mContext, ArrayList<EventDTO> eventDTOS) {
+    public RightNowRecyclerAdapter(Context mContext, ArrayList<EventDTO> eventDTOS) {
         this.eventDTOS = eventDTOS;
         this.mContext = mContext;
     }

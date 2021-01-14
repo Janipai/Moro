@@ -1,17 +1,13 @@
 package com.example.moro.Fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,7 +16,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bekawestberg.loopinglayout.library.LoopingLayoutManager;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.VibeCheck.RecyclerAdapter;
 import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
@@ -33,11 +28,9 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     ArrayList<EventDTO> rightNowTestEvents;
 
     ViewPager viewPager;
-    ListView eventList;
-    RecyclerView recyclerView;
+    RecyclerView eventListRecyclerView;
+    RecyclerView rightNowrecyclerView;
     View view;
-
-    EventArrayAdapter eventAdapter;
 
     Button vibeCheck;
 
@@ -52,13 +45,12 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
         createRightNowEvents();
 
-        eventList = (ListView) view.findViewById(R.id.eventlistview);
-        recyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerview);
+        eventListRecyclerView = (RecyclerView) view.findViewById(R.id.eventlistview);
+        rightNowrecyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerview);
         SnapHelper snapper = new LinearSnapHelper();
-        snapper.attachToRecyclerView(recyclerView);
-        initRecyclerView();
-        eventAdapter = new EventArrayAdapter(getActivity(), R.layout.home_event_adapterv_view_layout, testEvents);
-        eventList.setAdapter(eventAdapter);
+        snapper.attachToRecyclerView(rightNowrecyclerView);
+        initRecyclerViews();
+
 
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
@@ -76,11 +68,20 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
     }
 
-    private void initRecyclerView() {
+    private void initRecyclerViews() {
         LoopingLayoutManager layoutManager = new LoopingLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        RecyclerAdapter adapter = new RecyclerAdapter(getActivity(), rightNowTestEvents);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        RightNowRecyclerAdapter adapter = new RightNowRecyclerAdapter(getActivity(), rightNowTestEvents);
+        EventRecyclerAdapter adapter1 = new EventRecyclerAdapter(getActivity(), testEvents);
+
+        eventListRecyclerView.setLayoutManager(layoutManager1);
+        eventListRecyclerView.setAdapter(adapter1);
+        eventListRecyclerView.setNestedScrollingEnabled(false);
+
+        rightNowrecyclerView.setLayoutManager(layoutManager);
+        rightNowrecyclerView.setAdapter(adapter);
+
+
 
     }
 
