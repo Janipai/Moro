@@ -2,7 +2,9 @@ package com.example.moro.Fragments.Login;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +16,19 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.OpretFragment;
 import com.example.moro.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import java.util.Arrays;
+import java.util.Objects;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
+
+    private CallbackManager callbackManager;
+    private LoginButton loginButton;
 
     Contex ctx = Contex.getInstance();
     EditText emailLogin, passwordLogin;
@@ -25,18 +38,45 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         View myView = inflater.inflate(R.layout.fragment_login, container, false);
         Button bOP = myView.findViewById(R.id.buttonOpretLogin);
         Button bL = myView.findViewById(R.id.buttonLogin);
-        ImageView fbi = myView.findViewById(R.id.fbiIV);
+        loginButton = myView.findViewById(R.id.fbiIV);
         ImageView gi = myView.findViewById(R.id.giIV);
 
+        callbackManager = CallbackManager.Factory.create();
         emailLogin = myView.findViewById(R.id.emailLogin);
         passwordLogin = myView.findViewById(R.id.passwordLogin);
 
         bL.setOnClickListener(this);
         bOP.setOnClickListener(this);
-        fbi.setOnClickListener(this);
         gi.setOnClickListener(this);
 
+        loginButton.setPermissions(Arrays.asList("user_gender, user_birthday"));
+
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d("Demo","Login succes");
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d("Demo", "Login canceled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d("Demo", "Login error");
+            }
+        });
+
+
+
         return myView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
