@@ -82,7 +82,6 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
         replaceFragment(fragment);
-//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
 
     }
 
