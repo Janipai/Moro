@@ -21,11 +21,11 @@ public class NotLoginState extends Adapter {
         }
     }
 
-    /*public void alreadyUser(Contex contex, String mail, String password){
+    public void alreadyUser(Contex contex, String mail, String password){
         //hvis mail og password matcher db's info
-        if (mail&&password){
+        /*if (mail&&password){
             contex.setStates(new LoginState());
         }else
-            System.out.println("mail eller password er forkert");
-    }*/
+            System.out.println("mail eller password er forkert");*/
+    }
 }

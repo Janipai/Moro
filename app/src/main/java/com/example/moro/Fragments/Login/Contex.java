@@ -1,31 +1,31 @@
 package com.example.moro.Fragments.Login;
 
-import com.example.moro.Fragments.EventArrayAdapter;
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Data.DTO.ProfileDTO;
 
-import java.util.ArrayList;
+import java.util.List;
+/**
+ * @author s195477, Shania Hau
+ */
 
 public class Contex {
     private States states;
     private static Contex ctx;
+    ProfileDTO profileDTO;
     //Some data?
 
-    ArrayList<EventArrayAdapter> favourites;
-    protected boolean editInfo;
+    List<EventDTO> favourites;
     protected String name;
     protected String gender;
     protected String mail;
     protected String password;
     protected String bday;
 
-    public String getName() {return name;}
+
     public void setName(String name) {this.name = name;}
-    public String getGender() {return gender;}
     public void setGender(String gender) {this.gender = gender;}
-    public String getMail() {return mail;}
     public void setMail(String mail) {this.mail = mail;}
-    public String getPassword() {return password;}
     public void setPassword(String password) {this.password = password;}
-    public String getBday() {return bday;}
     public void setBday(String bday) {this.bday = bday;}
 
 
@@ -39,9 +39,7 @@ public class Contex {
         this.states = states;
     }
 
-    public boolean isEditInfo() {
-        return editInfo;
-    }
+    public List<EventDTO> allMyFavourites(){return favourites;}
 
     public void signUp(String name, String gender, String mail, String password, String bday) {
         states.signup(this, name, gender,mail,password,bday);
@@ -55,12 +53,16 @@ public class Contex {
         states.editInfo(this, name, gender,mail,password,bday);
     }
 
-    public void addFavourites(EventArrayAdapter favourites) {
-        states.addFavourites(this, favourites);
+    public void addFavourites(EventDTO favourite) {
+        states.addFavourites(this, favourite);
     }
 
-    public void showMyFavourites(ArrayList<EventArrayAdapter> favourites){
-        states.showMyFavourites(this, favourites);
+    public void removeFavourites(EventDTO favourite) {
+        states.addFavourites(this, favourite);
+    }
+
+    public void showMyFavourites(){
+        states.showMyFavourites(this);
     }
 
 }

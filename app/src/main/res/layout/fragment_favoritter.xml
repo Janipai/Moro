@@ -7,7 +7,7 @@
     tools:context=".Fragments.EventHandler.EventFragment">
 
     <TextView
-        android:id="@+id/favoritTitle"
+        android:id="@+id/favoriteTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="38dp"
@@ -36,7 +36,7 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/favoriteListButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:layout_weight="1"
@@ -46,7 +46,7 @@
             tools:layout_editor_absoluteY="60dp" />
 
         <ImageButton
-            android:id="@+id/imageButton6"
+            android:id="@+id/favoriteGridButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:layout_weight="1"
@@ -57,7 +57,7 @@
 
 
         <ImageButton
-            android:id="@+id/kortButton"
+            android:id="@+id/favoriteLocationButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
             android:layout_weight="1"
@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/favoriteRecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="35dp"

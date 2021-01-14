@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.HomeFragment;
+import com.example.moro.Fragments.Login.Contex;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -23,6 +22,8 @@ import java.util.List;
 
 
 public class EventFragment extends Fragment implements View.OnClickListener{
+
+    Contex ctx = Contex.getInstance();
 
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;
@@ -38,14 +39,14 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         view = inflater.inflate(R.layout.fragment_event,container,false);
         createEvents();
 
-        listView = view.findViewById(R.id.favouriteListButton);
+        listView = view.findViewById(R.id.rigthNowListButton);
         listView.setOnClickListener(this);
         listView.setImageResource(R.drawable.ic_listview_filled);
-        gridView = view.findViewById(R.id.favouriteGridButton);
+        gridView = view.findViewById(R.id.rigthNowGridButton);
         gridView.setOnClickListener(this);
 
         // Recycler view manager (den layouts bliver smidt ind i)
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rigthNowrecyclerview);
         recyclerView.setHasFixedSize(true);
         // Liste layout manager
         linearLayoutManager = new LinearLayoutManager(view.getContext());
@@ -64,13 +65,13 @@ public class EventFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.favouriteListButton) {
+        if (v.getId() == R.id.rigthNowListButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
             EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
             recyclerView.setAdapter(adapter);
         }
-        else if (v.getId() == R.id.favouriteGridButton) {
+        else if (v.getId() == R.id.rigthNowGridButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
             EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
@@ -102,11 +103,11 @@ public class EventFragment extends Fragment implements View.OnClickListener{
     }
 
     public void updateButtonImg(View v) {
-        if (v.getId() == R.id.favouriteListButton) {
+        if (v.getId() == R.id.rigthNowListButton) {
             listView.setImageResource(R.drawable.ic_listview_filled);
             gridView.setImageResource(R.drawable.ic_gridview_unfilled);
         }
-        else if (v.getId() == R.id.favouriteGridButton) {
+        else if (v.getId() == R.id.rigthNowGridButton) {
             listView.setImageResource(R.drawable.ic_listview_unfilled);
             gridView.setImageResource(R.drawable.ic_gridview_filled);
         }

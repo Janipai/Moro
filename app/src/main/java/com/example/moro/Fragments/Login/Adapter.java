@@ -1,8 +1,6 @@
 package com.example.moro.Fragments.Login;
 
-import com.example.moro.Fragments.EventArrayAdapter;
-
-import java.util.ArrayList;
+import com.example.moro.Data.DTO.EventDTO;
 
 public class Adapter implements States{
     @Override
@@ -21,12 +19,17 @@ public class Adapter implements States{
     }
 
     @Override
-    public void addFavourites(Contex contex, EventArrayAdapter favourites) {
+    public void addFavourites(Contex contex, EventDTO favourites) {
 
     }
 
     @Override
-    public void showMyFavourites(Contex contex, ArrayList<EventArrayAdapter> favourites) {
+    public void removeFavourites(Contex contex, EventDTO favourites) {
+
+    }
+
+    @Override
+    public void showMyFavourites(Contex contex) {
 
     }
 }

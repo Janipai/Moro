@@ -1,4 +1,4 @@
-package com.example.moro.Fragments.EventHandler;
+package com.example.moro.Fragments.Login;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,32 +13,34 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.Login.Contex;
+import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
 import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
+/**
+ * @author s195477, Shania Hau
+ */
 
+public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEventAdapter.MyViewHolder>{
 
     public enum ViewType {
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
-    Contex ctx = Contex.getInstance();
-
     private Context myContext;
     private List<EventDTO> myData;
-    private  ViewType viewTypeSelected;
+    private FavouritesEventAdapter.ViewType viewTypeSelected;
 
+    Contex ctx = Contex.getInstance();
 
-    public EventAdapter(Context myContext, List<EventDTO> myData) {
+    public FavouritesEventAdapter(Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
 
 
-    public EventAdapter(Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
+    public FavouritesEventAdapter(Context myContext, List<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.myData = myData;
         this.viewTypeSelected = viewTypeSelected;
@@ -49,16 +51,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FavouritesEventAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if(this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
+        if(this.viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST) {
             view = myInflater.inflate(R.layout.fragment_event_liste,parent,false);
-            return new MyViewHolder(view);
+            return new FavouritesEventAdapter.MyViewHolder(view);
         }
-        else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
+        else if (viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_GRID) {
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
-            return new MyViewHolder(view);
+            return new FavouritesEventAdapter.MyViewHolder(view);
         }
 //        else if (viewTypeSelected == ViewType.VIEW_TYPE_LOCATION) {
 //            skal bruges til lokation
@@ -67,7 +69,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(FavouritesEventAdapter.MyViewHolder holder, int position) {
 
         holder.tv_date.setText(myData.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -75,12 +77,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
+        holder.addToRemove.setImageResource(R.drawable.ic_minus);
 
-        //add current event to favourites
-        holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
+        holder.addToRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.addFavourites();
+                ctx.removeFavourites();
             }
         });
 
@@ -113,7 +115,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         TextView tv_afstand;
         TextView tv_tidsrum;
         CardView cardView;
-        ImageView addToFavourites;
+        ImageView addToRemove;
 
 
         public MyViewHolder(View itemView) {
@@ -125,10 +127,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             tv_afstand = (TextView) itemView.findViewById(R.id.afstand);
             tv_tidsrum = (TextView) itemView.findViewById(R.id.tidsrum);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
-            addToFavourites = (ImageView) itemView.findViewById(R.id.add);
+            addToRemove = (ImageView) itemView.findViewById(R.id.add);
         }
 
     }
-
-
 }
