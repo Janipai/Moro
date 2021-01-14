@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 

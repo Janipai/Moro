@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.Login;
 
 import androidx.fragment.app.Fragment;
 
@@ -7,11 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.Login.MyProfile;
+import com.example.moro.Fragments.Login.OpretFragment;
 import com.example.moro.R;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
+
+    Contex ctx = Contex.getInstance();
+    EditText emailLogin, passwordLogin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -21,6 +28,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         ImageView fbi = myView.findViewById(R.id.fbiIV);
         ImageView gi = myView.findViewById(R.id.giIV);
 
+        emailLogin = myView.findViewById(R.id.emailLogin);
+        passwordLogin = myView.findViewById(R.id.passwordLogin);
 
         bL.setOnClickListener(this);
         bOP.setOnClickListener(this);
@@ -35,6 +44,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
+                 ctx.alreadyUser(emailLogin.getText().toString(),passwordLogin.getText().toString());
                 fragment = new MyProfile();
                 break;
             case R.id.buttonOpretLogin:
