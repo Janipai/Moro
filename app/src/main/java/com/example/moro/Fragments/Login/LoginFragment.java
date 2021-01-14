@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.Login.MyProfile;
-import com.example.moro.Fragments.Login.OpretFragment;
 import com.example.moro.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -100,7 +98,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
         replaceFragment(fragment);
-//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
+    //        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
 
     }
 }
