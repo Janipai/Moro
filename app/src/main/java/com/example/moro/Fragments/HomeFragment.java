@@ -6,13 +6,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bekawestberg.loopinglayout.library.LoopingLayoutManager;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.VibeCheck.RecyclerAdapter;
 import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
@@ -26,8 +34,9 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
     ViewPager viewPager;
     ListView eventList;
+    RecyclerView recyclerView;
     View view;
-    RightNowEventArrayAdapter rightNowAdapter;
+
     EventArrayAdapter eventAdapter;
 
     Button vibeCheck;
@@ -41,33 +50,18 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
         createEvents();
 
-        viewPager  = view.findViewById(R.id.viewPager);
         createRightNowEvents();
 
         eventList = (ListView) view.findViewById(R.id.eventlistview);
+        recyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerview);
+        SnapHelper snapper = new LinearSnapHelper();
+        snapper.attachToRecyclerView(recyclerView);
+        initRecyclerView();
         eventAdapter = new EventArrayAdapter(getActivity(), R.layout.home_event_adapterv_view_layout, testEvents);
         eventList.setAdapter(eventAdapter);
 
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
-
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.d("tag", "Ligma blaas");
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
 
         return view;
     }
@@ -75,13 +69,18 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
 
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "10:00 - 12:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", R.drawable.resutnat));
+        rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", R.drawable.buffet));
+        rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", R.drawable.fashionshow));
+        rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", R.drawable.john));
 
-        rightNowAdapter = new RightNowEventArrayAdapter(getActivity(), rightNowTestEvents);
-        viewPager.setAdapter(rightNowAdapter);
+    }
+
+    private void initRecyclerView() {
+        LoopingLayoutManager layoutManager = new LoopingLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerAdapter adapter = new RecyclerAdapter(getActivity(), rightNowTestEvents);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
 
     }
 

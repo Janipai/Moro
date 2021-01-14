@@ -4,24 +4,30 @@
     android:layout_height="match_parent"
     android:background="#E69999"
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRecyclerview"
             android:layout_width="match_parent"
+            android:layout_marginVertical="5dp"
             android:layout_height="220dp"
-            android:overScrollMode="never"
-            android:clipToPadding="false"
-            android:foregroundGravity="center"
-            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
             >
-        </androidx.viewpager.widget.ViewPager>
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
     <Button
         android:id="@+id/eventTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPager"
+        android:layout_below="@+id/homeRecyclerview"
         android:fontFamily="@font/anton"
         android:layout_centerHorizontal="true"
         android:text="FIND EVENTS / VIBE CHECK"
@@ -42,13 +48,17 @@
         android:fontFamily="@font/anton"
         android:textSize="20sp"
         />
+
     <ListView
         android:id="@+id/eventlistview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
+
         android:layout_below="@id/anbefaletTxt"
         android:layout_marginHorizontal="40px"
         />
 
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>
