@@ -35,12 +35,11 @@ public class Connection {
         return connection = new Connection();
     }
 
-    public void insertOrUpdateCollection(String json, String collection){
+    public void insertCollection(String json, String collection){
         coll = database.getCollection(collection);
         DBObject bson = ( DBObject ) JSON.parse(json);
-        coll.insert(bson);
+        coll.update(bson, bson, true, false);
     }
-
 
     public void findSpecific(String collection, String searchFilter, String searchFieldInput){
         BasicDBObject SearchQuery = new BasicDBObject();
