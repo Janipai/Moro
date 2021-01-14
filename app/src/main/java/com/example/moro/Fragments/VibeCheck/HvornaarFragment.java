@@ -14,7 +14,9 @@ import android.widget.DatePicker;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
-
+/**
+ * @author s195477, Shania Hau
+ */
 public class HvornaarFragment extends CustomFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
 
     DatePicker dp;

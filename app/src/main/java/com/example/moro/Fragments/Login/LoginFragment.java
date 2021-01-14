@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.Login.MyProfile;
-import com.example.moro.Fragments.Login.OpretFragment;
 import com.example.moro.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -23,14 +21,13 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
     private CallbackManager callbackManager;
     private LoginButton loginButton;
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
     EditText emailLogin, passwordLogin;
 
     @Override

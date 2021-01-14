@@ -14,16 +14,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
+import java.util.ArrayList;
+
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
     EditText nameProfile, bdayProfile, genderProfile, emailProfile, passwordProfile;
 
     @Override
@@ -70,11 +72,13 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
+                ArrayList<EventDTO> emptyFavourites = null;
+
                 ctx.signUp(nameProfile.getText().toString(),
-                        bdayProfile.getText().toString(),
                         genderProfile.getText().toString(),
                         emailProfile.getText().toString(),
-                        passwordProfile.getText().toString());
+                        passwordProfile.getText().toString(),
+                        bdayProfile.getText().toString(),emptyFavourites);
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:

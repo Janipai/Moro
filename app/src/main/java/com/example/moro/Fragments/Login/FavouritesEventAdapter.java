@@ -1,6 +1,5 @@
 package com.example.moro.Fragments.Login;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
@@ -22,25 +23,25 @@ import java.util.List;
  * @author s195477, Shania Hau
  */
 
-public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEventAdapter.MyViewHolder>{
+public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEventAdapter.MyViewHolder> {
 
     public enum ViewType {
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
-    private Context myContext;
+    private android.content.Context myContext;
     private List<EventDTO> myData;
     private FavouritesEventAdapter.ViewType viewTypeSelected;
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
 
-    public FavouritesEventAdapter(Context myContext, List<EventDTO> myData) {
+    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
 
 
-    public FavouritesEventAdapter(Context myContext, List<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
+    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.myData = myData;
         this.viewTypeSelected = viewTypeSelected;
@@ -82,9 +83,20 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         holder.addToRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.removeFavourites();
+
+                if (ctx.getStates().equals(new NotLoginState())){
+                    AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                    LoginFragment fragment = new LoginFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+
+                }else {
+                    //remove current event from favourites
+                    ctx.removeFavourites();
+                }
             }
         });
+
+
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

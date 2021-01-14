@@ -2,16 +2,19 @@ package com.example.moro.Fragments.Login;
 
 import com.example.moro.Data.DTO.EventDTO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author s195477, Shania Hau
  */
 public interface States {
     //not login
-    void signup(Contex contex, String name, String gender, String mail, String password, String bday);
-    void alreadyUser(Contex contex, String mail, String password);
+    void signUp(Context context, String name, String gender, String mail, String password, String bday, List<EventDTO> eventDTOS);
+    void alreadyUser(Context context, String mail, String password);
     //login
-    void editInfo(Contex contex, String name, String gender, String mail, String password, String bday);
-    void addFavourites(Contex contex, EventDTO favourites);
-    void removeFavourites(Contex contex, EventDTO favourites);
-    void showMyFavourites(Contex contex);
+    void editInfo(Context context, String name, String gender, String mail, String password, String bday);
+    void addFavourites(Context context, EventDTO favourites);
+    void removeFavourites(Context context, EventDTO favourites);
+    void showMyFavourites(Context context);
 }

@@ -14,12 +14,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.R;
+
+import java.util.ArrayList;
 
 
 public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
+    ProfileDTO profileDTO;
     EditText name, bday, gender, email, password;
 
     @Override
@@ -34,16 +39,25 @@ public class MyProfile extends Fragment implements AdapterView.OnItemSelectedLis
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
 
+        name.setHint(profileDTO.getProfileUsername());
+        bday.setHint(profileDTO.getProfileDateBorn());
+        gender.setHint(profileDTO.getProfileGender());
+        email.setHint(profileDTO.getProfileEmail());
+        password.setHint(profileDTO.getProfilePassword());
+
         TextView changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
         changeProfileInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //doesn't take images
+
                 ctx.editInfo(name.getText().toString(),
-                        bday.getText().toString(),
                         gender.getText().toString(),
                         email.getText().toString(),
-                        password.getText().toString());
+                        password.getText().toString(),
+                        bday.getText().toString(),
+                        profileDTO.getProfileFavourites()
+                        );
             }
         });
 

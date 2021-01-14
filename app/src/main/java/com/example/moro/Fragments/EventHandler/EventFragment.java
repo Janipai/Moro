@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.Login.Contex;
+import com.example.moro.Fragments.Login.Context;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public class EventFragment extends Fragment implements View.OnClickListener{
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
 
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;

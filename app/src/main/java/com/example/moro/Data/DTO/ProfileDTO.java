@@ -6,13 +6,17 @@ import java.util.ArrayList;
 public class ProfileDTO {
 
     String profileUsername;
+    String profileEmail;
+    String profileGender;
     String profilePassword;
     String profileDateBorn;
     ArrayList<EventDTO> profileFavourites;
 
 
-    public ProfileDTO (String username, String password, String dateborn, ArrayList<EventDTO> favourites) {
+    public ProfileDTO (String username, String email, String gender, String password, String dateborn, ArrayList<EventDTO> favourites) {
         this.profileUsername = username;
+        this.profileEmail = email;
+        this.profileGender = gender;
         this.profilePassword = password;
         this.profileDateBorn = dateborn;
         this.profileFavourites = favourites;
@@ -25,6 +29,21 @@ public class ProfileDTO {
 
     public void setProfileUsername(String profileUsername) {
         this.profileUsername = profileUsername;
+    }
+    public String getProfileEmail() {
+        return profileEmail;
+    }
+
+    public void setProfileEmail(String profileEmail) {
+        this.profileEmail = profileEmail;
+    }
+
+    public String getProfileGender() {
+        return profileGender;
+    }
+
+    public void setProfileGender(String profileGender) {
+        this.profileGender = profileGender;
     }
 
     public String getProfilePassword() {

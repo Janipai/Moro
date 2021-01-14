@@ -2,7 +2,6 @@ package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +23,7 @@ import java.util.List;
 
 public class FavouritesFragment extends CustomFragment implements View.OnClickListener {
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;

@@ -1,43 +1,49 @@
 package com.example.moro.Fragments.Login;
 
 import com.example.moro.Data.DTO.EventDTO;
-import java.util.List;
+import com.example.moro.Data.DTO.ProfileDTO;
+
+import java.util.ArrayList;
+
 /**
  * @author s195477, Shania Hau
  */
 
 public class LoginState extends Adapter {
 
-    @Override
-    public void editInfo(Contex contex, String name, String gender, String mail, String password, String bday) {
+    ProfileDTO profileDTO;
+
+    public void editInfo(Context context, String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> favourites) {
         //do we need super?
-        super.editInfo(contex, name, gender, mail, password, bday);
+        //super.editInfo(context, name, gender, mail, password, bday);
 
-        contex.setName(name);
-        contex.setGender(gender);
-        contex.setMail(mail);
-        contex.setPassword(password);
-        contex.setBday(bday);
+        profileDTO.setProfileUsername(name);
+        profileDTO.setProfileGender(gender);
+        profileDTO.setProfileEmail(mail);
+        profileDTO.setProfilePassword(password);
+        profileDTO.setProfileDateBorn(bday);
+        profileDTO.setProfileFavourites(favourites);
     }
 
-    @Override
-    public void addFavourites(Contex contex, EventDTO favourites) {
+    public void addFavourites(Context context, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
+        //context.favourites.add(favourites);
 
-        contex.favourites.add(favourites);
+        profileDTO.getProfileFavourites().add(favourites);
     }
 
-    @Override
-    public void removeFavourites(Contex contex, EventDTO favourites) {
+    public void removeFavourites(Context context, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
+        //context.favourites.remove(favourites);
 
-        contex.favourites.remove(favourites);
+        profileDTO.getProfileFavourites().remove(favourites);
     }
 
     @Override
-    public void showMyFavourites(Contex contex) {
+    public void showMyFavourites(Context context) {
         //super.showMyFavourites(contex, favourites);
+        //context.allMyFavourites();
 
-        contex.allMyFavourites();
+        profileDTO.getProfileFavourites();
     }
 }

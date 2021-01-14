@@ -16,7 +16,9 @@ import com.example.moro.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author s195477, Shania Hau
+ */
 public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAdapter.MyViewHolder>{
 
     private Context myContext;

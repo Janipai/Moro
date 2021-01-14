@@ -1,6 +1,5 @@
 package com.example.moro.Fragments.EventHandler;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.Login.Contex;
+import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.Login.LoginFragment;
+import com.example.moro.Fragments.Login.MyProfile;
+import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 
 import java.util.List;
@@ -25,26 +27,26 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
-    Contex ctx = Contex.getInstance();
+    Context ctx = Context.getInstance();
 
-    private Context myContext;
+    private android.content.Context myContext;
     private List<EventDTO> myData;
-    private  ViewType viewTypeSelected;
+    private ViewType viewTypeSelected;
 
 
-    public EventAdapter(Context myContext, List<EventDTO> myData) {
+    public EventAdapter(android.content.Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
 
 
-    public EventAdapter(Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
+    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.myData = myData;
         this.viewTypeSelected = viewTypeSelected;
     }
 
-    public void updateViewType () {
+    public void updateViewType() {
     }
 
     @NonNull
@@ -52,12 +54,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if(this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
-            view = myInflater.inflate(R.layout.fragment_event_liste,parent,false);
+        if (this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
+            view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
             return new MyViewHolder(view);
-        }
-        else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
-            view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
+        } else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
+            view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
             return new MyViewHolder(view);
         }
 //        else if (viewTypeSelected == ViewType.VIEW_TYPE_LOCATION) {
@@ -76,18 +77,28 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
 
+
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.addFavourites();
+                if (ctx.getStates().equals(new NotLoginState())) {
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    LoginFragment fragment = new LoginFragment();
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+
+                } else {
+                    //remove current event from favourites
+                    ctx.addFavourites();
+                }
             }
         });
+
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 EventDescFragment fragment = new EventDescFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }
