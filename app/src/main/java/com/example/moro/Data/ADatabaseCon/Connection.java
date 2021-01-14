@@ -41,36 +41,30 @@ public class Connection {
     public void insertCollection(String json, String collection){
         coll = database.getCollection(collection);
         DBObject bson = ( DBObject ) JSON.parse(json);
-        coll.update(bson, bson, true, false);
+        Thread thread = new Thread(() -> coll.update(bson, bson, true, false));
     }
 
     public void findSpecific(String collection, String searchFilter, String searchFieldInput){
-        BasicDBObject SearchQuery = new BasicDBObject();
-        SearchQuery.put(searchFilter, searchFieldInput);
-        coll = database.getCollection(collection);
-        DBCursor cursor = coll.find(SearchQuery);
-            while(cursor.hasNext()){
+        Thread thread = new Thread((Runnable) () -> {
+            BasicDBObject SearchQuery = new BasicDBObject();
+            SearchQuery.put(searchFilter, searchFieldInput);
+            coll = database.getCollection(collection);
+            DBCursor cursor = coll.find(SearchQuery);
+            while (cursor.hasNext()) {
                 System.out.println(cursor.next());
             }
+        });
+        thread.run();
     }
 
     public DBCursor findAll(String collection){
-        coll = database.getCollection(collection);
-        System.out.println(coll.count());
-        return coll.find();
+        final DBCursor c;
+        Thread thread = new Thread((Runnable) () -> {
+            coll = database.getCollection(collection);
+            System.out.println(coll.count());
+            //c = coll.find();
+        });
+        thread.start();
+        return null;
     }
-
-    public void test(){
-        DBCursor l = findAll("events");
-        try {
-            while (l.hasNext()) {
-                System.out.println(l.next());
-            }
-        } finally {
-            l.close();
-        }
-
-
-    }
-
 }
