@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.moro.R;
 
-public class EventBeskrivelseFragment extends Fragment {
+public class EventDescFragment extends Fragment {
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -19,13 +19,13 @@ public class EventBeskrivelseFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public EventBeskrivelseFragment() {
+    public EventDescFragment() {
         // Required empty public constructor
     }
 
 
-    public static EventBeskrivelseFragment newInstance(String param1, String param2) {
-        EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
+    public static EventDescFragment newInstance(String param1, String param2) {
+        EventDescFragment fragment = new EventDescFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

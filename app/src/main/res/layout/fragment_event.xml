@@ -35,28 +35,28 @@
             android:background="#D4E2F2"
             android:src="@drawable/ic_back"
             android:tint="#002399"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            />
 
 
         <ImageButton
-            android:layout_weight="1"
-            android:id="@+id/imageButton5"
+            android:id="@+id/favouriteListButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
-            android:background="#D4E2F2"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_listview_unfilled"
             android:tint="#002399"
             tools:layout_editor_absoluteX="184dp"
-            tools:layout_editor_absoluteY="63dp"
-            />
+            tools:layout_editor_absoluteY="63dp" />
 
         <ImageButton
             android:layout_weight="1"
-            android:id="@+id/imageButton6"
+            android:id="@+id/favouriteGridButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
-            android:background="#D4E2F2"
-            android:src="@drawable/ic_gridview_filled"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_gridview_unfilled"
             android:tint="#002399"
             tools:layout_editor_absoluteX="235dp"
             tools:layout_editor_absoluteY="60dp"/>
@@ -64,10 +64,10 @@
 
         <ImageButton
             android:layout_weight="1"
-            android:id="@+id/kortButton"
+            android:id="@+id/favouriteLocationButton"
             android:layout_width="43dp"
             android:layout_height="43dp"
-            android:background="#D4E2F2"
+            android:background="@android:color/transparent"
             android:src="@drawable/ic_map_unfilled"
             android:tint="#002399"
             tools:layout_editor_absoluteX="288dp"

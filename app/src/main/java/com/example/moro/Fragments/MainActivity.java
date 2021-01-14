@@ -14,8 +14,6 @@ import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.net.UnknownHostException;
-
 public class MainActivity extends AppCompatActivity {
 
 
