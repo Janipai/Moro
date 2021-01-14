@@ -8,10 +8,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 
+import com.example.moro.Data.ADatabaseCon.Connection;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.net.UnknownHostException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +23,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        try {
+            Connection.getInstance().test();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         Fragment home = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();

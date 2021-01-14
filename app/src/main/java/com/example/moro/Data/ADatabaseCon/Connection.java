@@ -2,6 +2,7 @@ package com.example.moro.Data.ADatabaseCon;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
@@ -12,6 +13,9 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/***
+ * @author Mikkel Johansen s175194
+ */
 public class Connection {
     DBCollection coll;
     private final DB database;
@@ -43,9 +47,23 @@ public class Connection {
         coll.insert(bson);
     }
 
-    public void findAll(String collection){
+    public DBCursor findAll(String collection){
         coll = database.getCollection(collection);
-        coll.find();
+        System.out.println(coll.count());
+        return coll.find();
+    }
+
+    public void test(){
+        DBCursor l = findAll("events");
+        try {
+            while (l.hasNext()) {
+                System.out.println(l.next());
+            }
+        } finally {
+            l.close();
+        }
+
+
     }
 
 }
