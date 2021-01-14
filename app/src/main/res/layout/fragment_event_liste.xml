@@ -5,7 +5,7 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="140dp"
     android:focusable="true">
 
 
@@ -34,9 +34,8 @@
             <ImageView
                 android:id="@+id/imageEvent"
                 android:layout_width="match_parent"
-                tools:src="@tools:sample/avatars"
-                android:layout_height="match_parent">
-
+                android:layout_height="match_parent"
+                tools:src="@tools:sample/avatars">
             </ImageView>
 
 

@@ -69,6 +69,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         holder.tv_date.setText(myData.get(position).getDate());
+        holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
         holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
