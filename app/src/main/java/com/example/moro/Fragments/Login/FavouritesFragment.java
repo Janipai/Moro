@@ -34,7 +34,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_event,container,false);
+        View v = inflater.inflate(R.layout.fragment_favoritter,container,false);
 
         listView = v.findViewById(R.id.favoriteListButton);
         listView.setOnClickListener(this);

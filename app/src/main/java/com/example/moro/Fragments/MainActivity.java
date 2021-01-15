@@ -20,8 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity    extends AppCompatActivity {
 
-    Context ctx = Context.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

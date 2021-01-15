@@ -27,8 +27,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
-    Context ctx = Context.getInstance();
-
     private android.content.Context myContext;
     private List<EventDTO> myData;
     private ViewType viewTypeSelected;
@@ -76,24 +74,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.tv_title.setText(myData.get(position).getTitle());
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
-
-
-        //add current event to favourites
-        holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (ctx.getStates().equals(new NotLoginState())) {
-                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                    LoginFragment fragment = new LoginFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
-
-                } else {
-                    //remove current event from favourites
-                    //ctx.addFavourites();
-                }
-            }
-        });
-
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
