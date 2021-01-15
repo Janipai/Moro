@@ -89,7 +89,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
                 } else {
                     //remove current event from favourites
-                    ctx.addFavourites();
+                    //ctx.addFavourites();
                 }
             }
         });

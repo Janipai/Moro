@@ -91,7 +91,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
 
                 }else {
                     //remove current event from favourites
-                    ctx.removeFavourites();
+                    //ctx.removeFavourites();
                 }
             }
         });

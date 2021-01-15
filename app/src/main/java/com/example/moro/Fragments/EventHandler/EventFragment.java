@@ -12,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -79,6 +81,11 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    HvornaarFragment hvornaar = new HvornaarFragment();
+    public void showEventsBasedOnVibeCheck(String date, TextView choosenHvadNaarList, TextView choosenHvorList){
+        //this.hvornaar.showSetDate() = date;
+
+    }
 
     public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);

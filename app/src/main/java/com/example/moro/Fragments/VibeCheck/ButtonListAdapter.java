@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -48,13 +49,13 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (choosenButtonList.contains(holder.tv)){
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
                     holder.tv.setTextColor(Color.parseColor("#FFA500"));
                     choosenButtonList.remove(holder.tv);
                 }else if (!choosenButtonList.contains(holder.tv)){
                     choosenButtonList.add(holder.tv);
+                    //add vibe to showEventsBasedOnVibeCheck
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvad2);
                     holder.tv.setTextColor(Color.parseColor("#FFFDBA"));
                 }
