@@ -37,12 +37,12 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_event,container,false);
 
-        try {
-            ctx.showMyFavourites();
-        }catch (Exception e){
-            System.out.println("Du skal være logget in først");
-            replaceFragment(new OpretFragment());
-        }
+//        try {
+//            ctx.showMyFavourites();
+//        }catch (Exception e){
+//            System.out.println("Du skal være logget in først");
+//            replaceFragment(new OpretFragment());
+//        }
 
         listView = v.findViewById(R.id.favoriteListButton);
         listView.setOnClickListener(this);

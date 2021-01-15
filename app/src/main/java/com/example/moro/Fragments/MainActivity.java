@@ -42,7 +42,7 @@ public class MainActivity    extends AppCompatActivity {
                         selectedFragment = new MyProfile();
                     break;
                 case R.id.top_nav_search:
-                    //selectedFragment = new SearchFragment();
+                    selectedFragment = new SearchFragment();
                     break;
             }
             if (selectedFragment == null)
@@ -72,7 +72,6 @@ public class MainActivity    extends AppCompatActivity {
                 return true;
 
             replaceFragment(selectedFragment);
-//            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
 
             return true;
         });

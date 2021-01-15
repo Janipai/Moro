@@ -39,7 +39,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
 
 
         calendersubmit.setOnClickListener(item -> {
-            model.select(showSetDate());
+//            model.select(showSetDate());
 
             replaceFragment(new HvadFragment());
         });
@@ -50,14 +50,16 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View v = inflater.inflate(R.layout.fragment_event,container,false);
         // Inflate the layout for this fragment
 
-        test = getView().findViewById(R.id.hvornaarTest);
+        test = v.findViewById(R.id.hvornaarTest);
 
-        calendersubmit = getActivity().findViewById(R.id.idcalendersubmission);
+        calendersubmit = v.findViewById(R.id.idcalendersubmission);
         //calendersubmit.setOnClickListener(this);
 
-        dp = view.findViewById(R.id.datePicker);
+//        dp = view.findViewById(R.id.datePicker);
 
 
         /*'calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -69,7 +71,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
         });*/
 
 
-        return view;
+        return v;
     }
 
     @Override
