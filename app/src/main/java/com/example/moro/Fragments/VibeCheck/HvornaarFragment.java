@@ -22,42 +22,29 @@ import com.example.moro.R;
  * @author s195477, Shania Hau
  */
 public class HvornaarFragment extends CustomFragment implements View.OnClickListener, DatePickerDialog.OnDateSetListener {
-    private SharedViewModel model;
 
     DatePicker dp;
     Button calendersubmit;
     TextView test;
+    View v;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        model = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
-
-
-        calendersubmit.setOnClickListener(item -> {
-            model.select(showSetDate());
-
-            replaceFragment(new HvadFragment());
-        });
-    }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_event,container,false);
 
-        test = getView().findViewById(R.id.hvornaarTest);
+        test = v.findViewById(R.id.hvornaarTest);
 
         calendersubmit = getActivity().findViewById(R.id.idcalendersubmission);
         //calendersubmit.setOnClickListener(this);
 
-        dp = view.findViewById(R.id.datePicker);
+        dp = v.findViewById(R.id.datePicker);
 
 
         /*'calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -69,7 +56,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
         });*/
 
 
-        return view;
+        return v;
     }
 
     @Override
@@ -81,19 +68,12 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
     public void showSetDate(int year, int month, int dayOfMonth) {
         //get choosen date
         String choosenDate = "day/month/year: " + dayOfMonth + "/" + month + "/" + year;
+        test.setText(choosenDate);
     }
 
     @Override
     public void onClick(View v) {
-
-//        backStateName = hvornaarFragment.getClass().getName();
-//        boolean fragmentPopped = getActivity().getSupportFragmentManager().popBackStackImmediate(backStateName,0);
-//        if(!fragmentPopped) {
-//            ((MainActivity) getActivity()).getSupportFragmentManager().
-//                    beginTransaction().
-//                    replace(R.id.main_fragment_container, new HvadFragment()).
-//                    addToBackStack(backStateName).
-//                    commit();
+        replaceFragment(new HvadFragment());
 
     }
 }

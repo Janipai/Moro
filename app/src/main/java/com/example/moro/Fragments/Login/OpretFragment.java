@@ -72,13 +72,6 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
-                ArrayList<EventDTO> emptyFavourites = null;
-
-                ctx.signUp(nameProfile.getText().toString(),
-                        genderProfile.getText().toString(),
-                        emailProfile.getText().toString(),
-                        passwordProfile.getText().toString(),
-                        bdayProfile.getText().toString(),emptyFavourites);
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:

@@ -36,11 +36,7 @@ public class MainActivity    extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.top_nav_profile:
-                    if (ctx.getStates().equals(new NotLoginState())){
-                        selectedFragment = new LoginFragment();
-                    }else
                         selectedFragment = new MyProfile();
-                    break;
                 case R.id.top_nav_search:
                     //selectedFragment = new SearchFragment();
                     break;
