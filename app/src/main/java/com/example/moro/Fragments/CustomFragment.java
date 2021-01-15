@@ -6,8 +6,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.moro.R;
 
-/* Back stack håndtering
-Udviklet af Mads H.*/
+/*** Back Stack håndtering
+ * @author Mads H
+ */
 public abstract class CustomFragment extends Fragment {
 
 

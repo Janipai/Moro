@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.EventHandler.EventBeskrivelseFragment;
+import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
@@ -49,7 +49,7 @@ public class HvorFragment extends CustomFragment implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 //Dine resultater skal ind her
-                replaceFragment(new EventBeskrivelseFragment());
+                replaceFragment(new EventDescFragment());
             }
         });
 

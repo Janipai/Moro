@@ -10,10 +10,12 @@ import android.os.Bundle;
 
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
+import com.example.moro.Fragments.Login.FavouritesFragment;
+import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity    extends AppCompatActivity {
 
 
     @Override

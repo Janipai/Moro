@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="om os 2"
+            android:text="om os"
             android:textAllCaps="true"
             android:textColor="#260023"
             android:textSize="36sp"
@@ -40,9 +40,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:srcCompat="@drawable/untitled"
-            tools:src="@drawable/untitled"
-            tools:srcCompat="@drawable/untitled" />
+            app:srcCompat="@drawable/the_moro_griiils"
+            tools:src="@drawable/the_moro_griiils"
+            tools:srcCompat="@drawable/the_moro_griiils" />
 
         <TextView
             android:id="@+id/aboutText"
@@ -52,7 +52,6 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/anton"
-            android:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
