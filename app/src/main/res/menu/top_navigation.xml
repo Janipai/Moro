@@ -8,6 +8,11 @@
         />
 
 
+    <item
+        android:id="@+id/MORO_logo"
+        android:icon="@drawable/ic_moro_moro"
+        android:title="Logo"
+        />
 
     <item
         android:id="@+id/top_nav_search"

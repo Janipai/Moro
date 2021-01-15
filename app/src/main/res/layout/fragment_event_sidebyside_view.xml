@@ -5,11 +5,13 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="164dp"
-
+    android:layout_marginBottom="6dp"
+    android:layout_marginHorizontal="4dp"
     android:layout_height="164dp">
 
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:weightSum="1"
@@ -53,7 +55,8 @@
         android:weightSum="2"
         >
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/EventLayoutSBS_RL1"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1"
@@ -75,11 +78,12 @@
 
             <ImageView
                 android:id="@+id/add"
-                android:layout_width="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/ic_baseline_add_box_24" />
-        </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
