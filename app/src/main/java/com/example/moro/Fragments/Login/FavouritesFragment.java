@@ -44,7 +44,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
 
         // Recycler view manager (den layouts bliver smidt ind i)
         recyclerView = (RecyclerView) v.findViewById(R.id.favoriteRecyclerview);
-        //recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
         // Liste layout manager
         linearLayoutManager = new LinearLayoutManager(v.getContext());
         // Grid layout manager

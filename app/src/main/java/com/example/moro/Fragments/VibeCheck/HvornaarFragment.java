@@ -41,7 +41,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
 
         test = v.findViewById(R.id.hvornaarTest);
 
-        calendersubmit = getActivity().findViewById(R.id.idcalendersubmission);
+        calendersubmit = v.findViewById(R.id.idcalendersubmission);
         //calendersubmit.setOnClickListener(this);
 
         dp = v.findViewById(R.id.datePicker);
