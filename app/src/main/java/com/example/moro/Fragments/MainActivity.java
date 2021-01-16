@@ -1,56 +1,53 @@
 package com.example.moro.Fragments;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.widget.SearchView;
 
 
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
+import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
-import com.example.moro.Fragments.Login.MyProfile;
-import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity    extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     Context ctx = Context.getInstance();
+    BottomNavigationView bottomNav;
+    Toolbar topNav;
+    ImageButton profile;
+    ImageButton searchImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        replaceFragment(new HomeFragment());
 
-        Fragment home = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        BottomNavigationView topNav = findViewById(R.id.top_navigation);
 
-        topNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-            switch (item.getItemId()) {
-                case R.id.top_nav_profile:
-                    if (ctx.getStates().equals(new NotLoginState())){
-                        selectedFragment = new LoginFragment();
-                    }else
-                        selectedFragment = new MyProfile();
-                    break;
-                case R.id.top_nav_search:
-                    selectedFragment = new SearchFragment();
-                    break;
-            }
-            if (selectedFragment == null)
-                return true;
-//            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
-            replaceFragment(selectedFragment);
-            return true;
-        });
+
+        bottomNav = findViewById(R.id.bottom_navigation);
+        topNav = findViewById(R.id.top_navigation_toolbar);
+        setSupportActionBar(topNav);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+//        getSupportActionBar().setDisplayShowCustomEnabled(true);
+//        getSupportActionBar().setCustomView(R.layout.toptoolbar);
+
+
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
@@ -77,6 +74,16 @@ public class MainActivity    extends AppCompatActivity {
         });
 
     }
+
+    /* Sets the menu for top nav to the custom search menu*/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_navigation, menu);
+        return true;
+    }
+    
+
+
 
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();

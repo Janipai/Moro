@@ -3,19 +3,25 @@ package com.example.moro.Fragments.EventHandler;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import com.example.moro.R;
 
@@ -31,14 +37,21 @@ public class EventFragment extends Fragment implements View.OnClickListener{
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
+    private EventAdapter eventAdapter;
     View view;
     private ImageButton listView;
     private ImageButton gridView;
+    Toolbar toolbar;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_event,container,false);
+
+//        toolbar = view.findViewById(R.id.top_navigation_toolbar);
+//        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        setHasOptionsMenu(true);
+
         createEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
@@ -59,8 +72,8 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        EventAdapter myAdapter = new EventAdapter( view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
-        recyclerView.setAdapter(myAdapter);
+        eventAdapter = new EventAdapter( view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        recyclerView.setAdapter(eventAdapter);
 
         return view;
     }
@@ -86,6 +99,29 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         //this.hvornaar.showSetDate() = date;
 
     }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu,inflater);
+
+
+        MenuItem searchItem = menu.findItem(R.id.menu_top_nav_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                eventAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+    }
+
 
     public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);

@@ -3,6 +3,8 @@ package com.example.moro.Fragments.EventHandler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,50 +16,47 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginFragment;
-import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
-
-
+public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> implements Filterable {
     public enum ViewType {
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
     Context ctx = Context.getInstance();
-
     private android.content.Context myContext;
-    private List<EventDTO> myData;
-    private ViewType viewTypeSelected;
+    private List<EventDTO> itemsToAdapt;
+    private List<EventDTO> itemsToAdaptComplete;
+    private ViewType viewType;
 
 
     public EventAdapter(android.content.Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
-        this.myData = myData;
+        this.itemsToAdapt = myData;
     }
 
 
     public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
         this.myContext = myContext;
-        this.myData = myData;
-        this.viewTypeSelected = viewTypeSelected;
+        this.itemsToAdapt = myData;
+        this.viewType = viewTypeSelected;
+        itemsToAdaptComplete = new ArrayList<>(myData);
     }
 
-    public void updateViewType() {
-    }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if (this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
+        if (this.viewType == ViewType.VIEW_TYPE_LIST) {
             view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
             return new MyViewHolder(view);
-        } else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
+        } else if (this.viewType == ViewType.VIEW_TYPE_GRID) {
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
             return new MyViewHolder(view);
         }
@@ -70,13 +69,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.tv_date.setText(myData.get(position).getDate());
+        holder.tv_date.setText(itemsToAdapt.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
-        holder.tv_title.setText(myData.get(position).getTitle());
-        holder.tv_afstand.setText(myData.get(position).getDistance());
-        holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
-
+        holder.iv_imageEvent.setImageResource(itemsToAdapt.get(position).getImage());
+        holder.tv_title.setText(itemsToAdapt.get(position).getTitle());
+        holder.tv_afstand.setText(itemsToAdapt.get(position).getDistance());
+        holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTimeframe());
 
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
@@ -108,13 +106,56 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return myData.size();
+        return itemsToAdapt.size();
     }
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        return this.viewTypeSelected.ordinal();
-//    }
+    @Override
+    public int getItemViewType(int position) {
+        return viewType.ordinal();
+    }
+
+
+    /***
+     * @author Mads H.
+     */
+    /* For filter search */
+    @Override
+    public Filter getFilter() {
+        return itemsFiltered;
+    }
+
+    private Filter itemsFiltered = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<EventDTO> filteredList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) {
+                filteredList.addAll(itemsToAdaptComplete);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (EventDTO item : itemsToAdaptComplete) {
+                    if (item.getTitle().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            itemsToAdapt.clear();
+            itemsToAdapt.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+    /* End of filtering */
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
