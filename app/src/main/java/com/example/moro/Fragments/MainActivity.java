@@ -8,17 +8,23 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 
+import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
+import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class MainActivity    extends AppCompatActivity {
     FirebaseAuth mAuth;
@@ -27,7 +33,9 @@ public class MainActivity    extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Fragment home = new HomeFragment();
+        //Fragment home = new HomeFragment();
+        //Test purposes
+        Fragment home = new LoginFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         BottomNavigationView topNav = findViewById(R.id.top_navigation);
@@ -82,6 +90,11 @@ public class MainActivity    extends AppCompatActivity {
         Context context = Context.getInstance();
         if (currentUser == null)
             context.setStates(new NotLoginState());
+        else {
+            context.setStates(new LoginState());
+        }
+        Connection con = Connection.getInstance();
+        con.getAll();
     }
 
     public void replaceFragment (Fragment fragment){

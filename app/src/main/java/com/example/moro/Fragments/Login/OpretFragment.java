@@ -79,6 +79,6 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         replaceFragment(fragment);
 
     }
-
+    
 
 }
