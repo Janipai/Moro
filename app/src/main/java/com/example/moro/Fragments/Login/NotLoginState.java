@@ -11,6 +11,7 @@ public class NotLoginState extends Adapter {
 
     ProfileDTO profileDTO;
 
+    @Override
     public void signUp(Context context, String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> eventDTOS) {
         //super.signup(contex, name, gender, mail, password, bday);
 
@@ -25,14 +26,17 @@ public class NotLoginState extends Adapter {
             //create user in db
             new ProfileDTO(name, gender, mail, password, bday, eventDTOS);
             context.setStates(new LoginState());
+            context.setLogin(true);
         }
     }
 
+    @Override
     public void alreadyUser(Context context, String mail, String password) {
         //hvis mail og password matcher db's info
 
         if (profileDTO.getProfileEmail().equals(mail) && profileDTO.getProfilePassword().equals(password)) {
             context.setStates(new LoginState());
+            context.setLogin(true);
         } else
             System.out.println("mail eller password er forkert");
     }

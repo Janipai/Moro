@@ -17,6 +17,7 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,18 +31,18 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     }
 
     private android.content.Context myContext;
-    private List<EventDTO> myData;
+    private ArrayList<EventDTO> myData;
     private FavouritesEventAdapter.ViewType viewTypeSelected;
 
     Context ctx = Context.getInstance();
 
-    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData) {
+    public FavouritesEventAdapter(android.content.Context myContext, ArrayList<EventDTO> myData) {
         this.myContext = myContext;
         this.myData = myData;
     }
 
 
-    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
+    public FavouritesEventAdapter(android.content.Context myContext, ArrayList<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.myData = myData;
         this.viewTypeSelected = viewTypeSelected;

@@ -16,6 +16,7 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.R;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @author s195477, Shania Hau
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class FavouritesFragment extends CustomFragment implements View.OnClickListener {
 
-    List<EventDTO> testEvents;
+    ArrayList<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;

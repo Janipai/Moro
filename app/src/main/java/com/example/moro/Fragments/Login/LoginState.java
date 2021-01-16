@@ -13,7 +13,8 @@ public class LoginState extends Adapter {
 
     ProfileDTO profileDTO;
 
-    public void editInfo(Context context, String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> favourites) {
+    @Override
+    public void editInfo(Context context, String name, String gender, String mail, String password, String bday) {
         //do we need super?
         //super.editInfo(context, name, gender, mail, password, bday);
 
@@ -22,17 +23,18 @@ public class LoginState extends Adapter {
         profileDTO.setProfileEmail(mail);
         profileDTO.setProfilePassword(password);
         profileDTO.setProfileDateBorn(bday);
-        profileDTO.setProfileFavourites(favourites);
     }
 
-    public void addFavourites(Context context, EventDTO favourites) {
+    @Override
+    public void addFavourites(Context context, String mail,String password, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
         //context.favourites.add(favourites);
 
         profileDTO.getProfileFavourites().add(favourites);
     }
 
-    public void removeFavourites(Context context, EventDTO favourites) {
+    @Override
+    public void removeFavourites(Context context, String mail,String password, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
         //context.favourites.remove(favourites);
 
@@ -40,7 +42,7 @@ public class LoginState extends Adapter {
     }
 
     @Override
-    public void showMyFavourites(Context context) {
+    public void showMyFavourites(Context context, String mail, String password) {
         //super.showMyFavourites(contex, favourites);
         //context.allMyFavourites();
 

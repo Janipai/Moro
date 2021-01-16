@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 
+import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
@@ -19,6 +20,8 @@ import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity    extends AppCompatActivity {
+
+    Context ctx = Context.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,12 @@ public class MainActivity    extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.top_nav_profile:
+                    if (!ctx.isLogin()) {
+                        selectedFragment = new LoginFragment();
+                        break;
+                    }else
                         selectedFragment = new MyProfile();
+                    break;
                 case R.id.top_nav_search:
                     selectedFragment = new SearchFragment();
                     break;
@@ -56,8 +64,12 @@ public class MainActivity    extends AppCompatActivity {
                     selectedFragment = new EventFragment();
                     break;
                 case R.id.bot_nav_favorite:
-                    selectedFragment = new FavouritesFragment();
-                    break;
+                    if (!ctx.isLogin()) {
+                        selectedFragment = new LoginFragment();
+                        break;
+                    }else
+                        selectedFragment = new FavouritesFragment();
+                        break;
                 case R.id.bot_nav_menu:
                     selectedFragment = new BurgerMenuFragment();
                     break;

@@ -9,8 +9,9 @@ import java.util.List;
  */
 
 public class Adapter implements States{
+
     @Override
-    public void signUp(Context context, String name, String gender, String mail, String password, String bday, List<EventDTO> eventDTOS) {
+    public void signUp(Context context, String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> eventDTOS) {
 
     }
 
@@ -25,17 +26,17 @@ public class Adapter implements States{
     }
 
     @Override
-    public void addFavourites(Context context, EventDTO favourites) {
+    public void addFavourites(Context context, String mail, String password, EventDTO favourites) {
 
     }
 
     @Override
-    public void removeFavourites(Context context, EventDTO favourites) {
+    public void removeFavourites(Context context, String mail, String password, EventDTO favourites) {
 
     }
 
     @Override
-    public void showMyFavourites(Context context) {
+    public void showMyFavourites(Context context, String mail, String password) {
 
     }
 }
