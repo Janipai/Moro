@@ -23,9 +23,8 @@ import java.util.ArrayList;
 
 public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
 
-    Context ctx = Context.getInstance();
     ProfileDTO profileDTO;
-    EditText name, bday, gender, email, password;
+    EditText name, bday, email, password;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,32 +34,14 @@ public class MyProfile extends Fragment implements AdapterView.OnItemSelectedLis
 
         name = myView.findViewById(R.id.minProfilNavn);
         bday = myView.findViewById(R.id.minProfilFoeds);
-        gender = myView.findViewById(R.id.minProfilSpinner);
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
 
-        name.setHint(profileDTO.getProfileUsername());
+        /*name.setHint(profileDTO.getProfileUsername());
         bday.setHint(profileDTO.getProfileDateBorn());
         gender.setHint(profileDTO.getProfileGender());
         email.setHint(profileDTO.getProfileEmail());
-        password.setHint(profileDTO.getProfilePassword());
-
-        TextView changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
-        changeProfileInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //doesn't take images
-
-                ctx.editInfo(name.getText().toString(),
-                        gender.getText().toString(),
-                        email.getText().toString(),
-                        password.getText().toString(),
-                        bday.getText().toString(),
-                        profileDTO.getProfileFavourites()
-                        );
-            }
-        });
-
+        password.setHint(profileDTO.getProfilePassword());*/
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 

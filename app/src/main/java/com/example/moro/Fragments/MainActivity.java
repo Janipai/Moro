@@ -20,8 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity    extends AppCompatActivity {
 
-    Context ctx = Context.getInstance();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +34,7 @@ public class MainActivity    extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.top_nav_profile:
-                    if (ctx.getStates().equals(new NotLoginState())){
-                        selectedFragment = new LoginFragment();
-                    }else
                         selectedFragment = new MyProfile();
-                    break;
                 case R.id.top_nav_search:
                     selectedFragment = new SearchFragment();
                     break;

@@ -23,7 +23,6 @@ import java.util.List;
 
 public class FavouritesFragment extends CustomFragment implements View.OnClickListener {
 
-    Context ctx = Context.getInstance();
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
@@ -35,14 +34,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_event,container,false);
-
-//        try {
-//            ctx.showMyFavourites();
-//        }catch (Exception e){
-//            System.out.println("Du skal være logget in først");
-//            replaceFragment(new OpretFragment());
-//        }
+        View v = inflater.inflate(R.layout.fragment_favoritter,container,false);
 
         listView = v.findViewById(R.id.favoriteListButton);
         listView.setOnClickListener(this);

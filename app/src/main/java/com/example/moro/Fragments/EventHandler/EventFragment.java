@@ -25,8 +25,6 @@ import java.util.List;
 
 public class EventFragment extends Fragment implements View.OnClickListener{
 
-    Context ctx = Context.getInstance();
-
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
@@ -79,12 +77,6 @@ public class EventFragment extends Fragment implements View.OnClickListener{
             EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
             recyclerView.setAdapter(adapter);
         }
-    }
-
-    HvornaarFragment hvornaar = new HvornaarFragment();
-    public void showEventsBasedOnVibeCheck(String date, TextView choosenHvadNaarList, TextView choosenHvorList){
-        //this.hvornaar.showSetDate() = date;
-
     }
 
     public void createEvents() {
