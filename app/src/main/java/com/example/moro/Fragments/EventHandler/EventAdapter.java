@@ -29,8 +29,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     Context ctx = Context.getInstance();
     private android.content.Context myContext;
+
+    /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
+    /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
+
     private ViewType viewType;
 
 
@@ -48,6 +52,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     }
 
 
+    /* Method used to determine what viewholder the user wants (What type of recycler view is shown - Grid, list and so on.) */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -117,35 +122,37 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     /***
      * @author Mads H.
-     */
-    /* For filter search */
+    /* For filter search within events. Everything related to search / filtering */
     @Override
     public Filter getFilter() {
         return itemsFiltered;
     }
-
+    /* Creating filter method */
     private Filter itemsFiltered = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
+            /* List of filtered items */
             List<EventDTO> filteredList = new ArrayList<>();
-
+            /* If the given charSequence (Users input in searchview) is 0 or null, if so readies all events to be searched through */
             if(constraint == null || constraint.length() == 0) {
                 filteredList.addAll(itemsToAdaptComplete);
             } else {
+                /* Makes input not case sensitive */
                 String filterPattern = constraint.toString().toLowerCase().trim();
-
+                /* Searches through all of the events to check for matching characters */
                 for (EventDTO item : itemsToAdaptComplete) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
             }
-
+            /* Sets results */
             FilterResults results = new FilterResults();
             results.values = filteredList;
             return results;
         }
 
+        /* Method which updates the results in real time */
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             itemsToAdapt.clear();

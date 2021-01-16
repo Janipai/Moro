@@ -11,6 +11,9 @@
     app:contentInsetStart="10dp"
     app:contentInsetEnd="10dp"
     app:logo="@drawable/ic_moro_moro"
+
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     >
 </androidx.appcompat.widget.Toolbar>
+
+<!--    app:collapseIcon="@drawable/calendar_style"-->

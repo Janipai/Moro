@@ -23,13 +23,15 @@ import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+import javax.security.auth.Subject;
+
+public class MainActivity extends AppCompatActivity{
 
     Context ctx = Context.getInstance();
     BottomNavigationView bottomNav;
     Toolbar topNav;
-    ImageButton profile;
-    ImageButton searchImg;
+    SearchView searchView;
+    MenuItem searchItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         topNav = findViewById(R.id.top_navigation_toolbar);
         setSupportActionBar(topNav);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
@@ -79,10 +82,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
+        menu.findItem(R.id.menu_top_nav_search).setVisible(false);
         return true;
     }
-    
-
 
 
     public void replaceFragment (Fragment fragment){

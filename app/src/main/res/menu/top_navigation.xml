@@ -22,7 +22,7 @@
         android:id="@+id/menu_top_nav_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="always|collapseActionView"
         app:actionViewClass="android.widget.SearchView"
         />
 

@@ -2,6 +2,7 @@ package com.example.moro.Fragments.EventHandler;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -15,11 +16,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
@@ -29,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventFragment extends Fragment implements View.OnClickListener{
+public class EventFragment extends CustomFragment implements View.OnClickListener{
 
     Context ctx = Context.getInstance();
 
@@ -41,7 +46,8 @@ public class EventFragment extends Fragment implements View.OnClickListener{
     View view;
     private ImageButton listView;
     private ImageButton gridView;
-    Toolbar toolbar;
+    MenuItem searchItem;
+    SearchView searchView;
 
     @Nullable
     @Override
@@ -51,6 +57,7 @@ public class EventFragment extends Fragment implements View.OnClickListener{
 //        toolbar = view.findViewById(R.id.top_navigation_toolbar);
 //        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
+
 
         createEvents();
 
@@ -100,28 +107,43 @@ public class EventFragment extends Fragment implements View.OnClickListener{
 
     }
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
+        /* Sætter search ikonet til visible */
+        menu.findItem(R.id.menu_top_nav_search).setVisible(true);
 
+        /* Finder menu item id, og sætter derefter searchviewet til items actionView. */
+        searchItem = menu.findItem(R.id.menu_top_nav_search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setQuery("",false);
 
-        MenuItem searchItem = menu.findItem(R.id.menu_top_nav_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
+        /* Expander automatisk searviewet (Trykket ind) */
+        searchView.onActionViewExpanded();
+
+        /* Ændre tastatur tegnet til close */
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        /* Sætter onQueryTextChange hvilket opdaterer hver gang bruger lavet en action i searchviewet (sletter, indsætter bogstav) */
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+//                searchView.clearFocus();
+                getActivity().getCurrentFocus().clearFocus();
+                closeKeyboard();
+                searchItem.collapseActionView();
+//                searchView.onActionViewCollapsed();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                /* Kalder filtrerings metoden fra adapteren */
                 eventAdapter.getFilter().filter(newText);
                 return false;
             }
         });
     }
-
 
     public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
@@ -156,5 +178,7 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
+    private void closeKeyboard() {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 }

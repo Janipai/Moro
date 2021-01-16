@@ -1,9 +1,13 @@
 package com.example.moro.Fragments;
 
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.moro.Fragments.Login.Context;
 import com.example.moro.R;
 
 /*** Back Stack håndtering
@@ -33,4 +37,5 @@ public abstract class CustomFragment extends Fragment {
         manager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
     }*/
+
 }
