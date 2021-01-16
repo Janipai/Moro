@@ -54,6 +54,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         LayoutInflater myInflater = LayoutInflater.from(myContext);
         if (this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
             view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
+
             return new MyViewHolder(view);
         } else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
