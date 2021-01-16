@@ -17,9 +17,11 @@ import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity    extends AppCompatActivity {
-
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class MainActivity    extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         BottomNavigationView topNav = findViewById(R.id.top_navigation);
+        mAuth = FirebaseAuth.getInstance();
 
         topNav.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
@@ -70,6 +73,15 @@ public class MainActivity    extends AppCompatActivity {
             return true;
         });
 
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        Context context = Context.getInstance();
+        if (currentUser == null)
+            context.setStates(new NotLoginState());
     }
 
     public void replaceFragment (Fragment fragment){

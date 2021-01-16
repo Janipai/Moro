@@ -15,7 +15,9 @@ public class Context {
     ProfileDTO profileDTO;
 
     public static Context getInstance() {
-        return ctx;
+        if (ctx != null)
+            return ctx;
+        return ctx = new Context();
     }
     private Context(){
         states = new NotLoginState();

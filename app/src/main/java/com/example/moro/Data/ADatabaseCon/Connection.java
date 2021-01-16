@@ -1,5 +1,6 @@
 package com.example.moro.Data.ADatabaseCon;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -19,41 +20,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class Connection {
-    DBCollection coll;
-    private final DB database;
-    private static Connection connection;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public Connection() throws UnknownHostException {
-        MongoCredential credential = MongoCredential.createCredential("admin", "admin", "eCaayuCie4".toCharArray());
-        MongoClient mongoClient = new MongoClient(new ServerAddress("95.179.180.78:27017"), Arrays.asList(credential));
-        database = mongoClient.getDB("moro");
+    public void Write(){
+        db.collection("events");
     }
-
-    public static Connection getInstance() throws UnknownHostException {
-        if(connection != null)
-            return connection;
-        return connection = new Connection();
-    }
-
-    public void insertCollection(String json, String collection){
-        coll = database.getCollection(collection);
-        DBObject bson = ( DBObject ) JSON.parse(json);
-        coll.update(bson, bson, true, false);
-    }
-
-    public void findSpecific(String collection, String searchFilter, String searchFieldInput){
-        BasicDBObject SearchQuery = new BasicDBObject();
-        SearchQuery.put(searchFilter, searchFieldInput);
-        coll = database.getCollection(collection);
-        DBCursor cursor = coll.find(SearchQuery);
-            while(cursor.hasNext()){
-                System.out.println(cursor.next());
-            }
-    }
-
-    public void findAll(String collection){
-        coll = database.getCollection(collection);
-        coll.find();
-    }
-
 }
