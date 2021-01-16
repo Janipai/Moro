@@ -81,4 +81,8 @@ public class Connection {
             }
         });
     }
+
+    public ArrayList getEvents(){
+        return events;
+    }
 }
