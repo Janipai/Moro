@@ -97,8 +97,6 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
             }
         });
 
-
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

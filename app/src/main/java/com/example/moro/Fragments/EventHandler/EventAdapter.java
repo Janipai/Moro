@@ -27,6 +27,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
+    Context ctx = Context.getInstance();
     private android.content.Context myContext;
     private List<EventDTO> myData;
     private ViewType viewTypeSelected;
@@ -82,6 +83,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 EventDescFragment fragment = new EventDescFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+            }
+        });
+
+        holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ctx.addFavourites();
             }
         });
 

@@ -13,7 +13,7 @@ public interface States {
     void alreadyUser(Context context, String mail, String password);
     //login
     void editInfo(Context context, String name, String gender, String mail, String password, String bday);
-    void addFavourites(Context context, String mail, String password, EventDTO favourites);
-    void removeFavourites(Context context, String mail, String password, EventDTO favourites);
-    void showMyFavourites(Context context, String mail, String password);
+    void addFavourites(Context context, EventDTO favourites);
+    void removeFavourites(Context context, EventDTO favourites);
+    void showMyFavourites(Context context);
 }

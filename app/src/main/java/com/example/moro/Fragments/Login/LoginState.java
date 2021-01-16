@@ -26,7 +26,7 @@ public class LoginState extends Adapter {
     }
 
     @Override
-    public void addFavourites(Context context, String mail,String password, EventDTO favourites) {
+    public void addFavourites(Context context, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
         //context.favourites.add(favourites);
 
@@ -34,7 +34,7 @@ public class LoginState extends Adapter {
     }
 
     @Override
-    public void removeFavourites(Context context, String mail,String password, EventDTO favourites) {
+    public void removeFavourites(Context context, EventDTO favourites) {
         //super.addFavourites(contex, favourites);
         //context.favourites.remove(favourites);
 
@@ -42,7 +42,7 @@ public class LoginState extends Adapter {
     }
 
     @Override
-    public void showMyFavourites(Context context, String mail, String password) {
+    public void showMyFavourites(Context context) {
         //super.showMyFavourites(contex, favourites);
         //context.allMyFavourites();
 

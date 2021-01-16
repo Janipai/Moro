@@ -76,6 +76,15 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
             recyclerView.setAdapter(adapter);
         }
     }
+    public void createEvents() {
+        EventDTO event1 = new EventDTO("test1", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
+        EventDTO event2 = new EventDTO("test2", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
+
+        testEvents = new ArrayList<>();
+        testEvents.add(event1);
+        testEvents.add(event2);
+
+    }
 
     public void updateButtonImg(View v) {
         if (v.getId() == R.id.rigthNowListButton) {

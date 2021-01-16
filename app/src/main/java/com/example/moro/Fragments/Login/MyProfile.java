@@ -24,7 +24,9 @@ import java.util.ArrayList;
 public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
 
     ProfileDTO profileDTO;
+    Context ctx = Context.getInstance();
     EditText name, bday, email, password;
+    TextView changeProfileInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +44,18 @@ public class MyProfile extends Fragment implements AdapterView.OnItemSelectedLis
         gender.setHint(profileDTO.getProfileGender());
         email.setHint(profileDTO.getProfileEmail());
         password.setHint(profileDTO.getProfilePassword());*/
+
+        changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
+        changeProfileInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctx.editInfo(name.toString(),
+                        spinner.getSelectedItem().toString(),
+                        email.toString(),
+                        password.toString(),
+                        bday.toString());
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 

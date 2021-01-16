@@ -38,6 +38,7 @@ public class NotLoginState extends Adapter {
             context.setStates(new LoginState());
             context.setLogin(true);
         } else
+
             System.out.println("mail eller password er forkert");
     }
 }

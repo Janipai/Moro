@@ -25,7 +25,9 @@ import java.util.ArrayList;
 
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    EditText nameProfile, bdayProfile, genderProfile, emailProfile, passwordProfile;
+    Context ctx = Context.getInstance();
+    EditText nameProfile, bdayProfile, emailProfile, passwordProfile;
+    Spinner spinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +42,7 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         //Creating adapters
         TextView aP = myView.findViewById(R.id.alleredeProfil);
         Button oP = myView.findViewById(R.id.buttonOpretLogin);
-        Spinner spinner = myView.findViewById(R.id.genderSpinner);
+        spinner = myView.findViewById(R.id.genderSpinner);
 
         aP.setOnClickListener(this);
         oP.setOnClickListener(this);
@@ -70,6 +72,11 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
+                ctx.signUp(nameProfile.toString(),
+                        spinner.getSelectedItem().toString(),
+                        emailProfile.toString(),
+                        passwordProfile.toString(),
+                        bdayProfile.toString(),null);
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:

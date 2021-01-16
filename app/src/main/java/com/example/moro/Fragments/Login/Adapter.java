@@ -26,17 +26,17 @@ public class Adapter implements States{
     }
 
     @Override
-    public void addFavourites(Context context, String mail, String password, EventDTO favourites) {
+    public void addFavourites(Context context, EventDTO favourites) {
 
     }
 
     @Override
-    public void removeFavourites(Context context, String mail, String password, EventDTO favourites) {
+    public void removeFavourites(Context context, EventDTO favourites) {
 
     }
 
     @Override
-    public void showMyFavourites(Context context, String mail, String password) {
+    public void showMyFavourites(Context context) {
 
     }
 }

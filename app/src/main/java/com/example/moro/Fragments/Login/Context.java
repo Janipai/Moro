@@ -30,9 +30,9 @@ public class Context {
     public void signUp(String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> eventDTOS) {states.signUp(this, name, gender,mail,password,bday,eventDTOS);}
     public void alreadyUser(String mail, String password){states.alreadyUser(this, mail, password);}
     public void editInfo(String name, String gender, String mail, String password, String bday) {states.editInfo(this, name, gender,mail,password,bday);}
-    public void addFavourites(String mail, String password, EventDTO favourites) {states.addFavourites(this, mail, password, favourites);}
-    public void removeFavourites(String mail, String password, EventDTO favourites) {states.removeFavourites(this, mail, password, favourites);}
-    public void showMyFavourites(String mail, String password){states.showMyFavourites(this, mail, password);}
+    public void addFavourites(EventDTO favourites) {states.addFavourites(this, favourites);}
+    public void removeFavourites(EventDTO favourites) {states.removeFavourites(this, favourites);}
+    public void showMyFavourites(){states.showMyFavourites(this);}
 
     public boolean isLogin() {
         return login;
