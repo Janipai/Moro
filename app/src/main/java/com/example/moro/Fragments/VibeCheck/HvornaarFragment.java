@@ -31,12 +31,12 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_event,container,false);
+        v = inflater.inflate(R.layout.fragment_hvornaar,container,false);
 
         test = v.findViewById(R.id.hvornaarTest);
 
         calendersubmit = v.findViewById(R.id.idcalendersubmission);
-        //calendersubmit.setOnClickListener(this);
+        calendersubmit.setOnClickListener(this);
 
         dp = v.findViewById(R.id.datePicker);
 

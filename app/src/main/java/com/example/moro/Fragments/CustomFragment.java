@@ -15,12 +15,11 @@ import com.example.moro.R;
  */
 public abstract class CustomFragment extends Fragment {
 
-
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
