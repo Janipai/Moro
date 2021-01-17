@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-
-
         /* Sets support for the navigation bar and top toolbar */
         bottomNav = findViewById(R.id.bottom_navigation);
         topNav = findViewById(R.id.top_navigation_toolbar);
