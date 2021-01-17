@@ -47,16 +47,17 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         replaceFragment(new HomeFragment());
 
-
+        /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
             options.setBeforeSend(((event, hint) -> {
+                /* If run in debug, dont report events */
                 if (BuildConfig.DEBUG) {
                     return null;
                 } else
                     return event;
             }));
-
+            /* Sets environment */
             if (RUNSONPHONE) {
                 options.setEnvironment("PHONE");
             } else {
