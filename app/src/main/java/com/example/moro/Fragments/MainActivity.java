@@ -17,12 +17,15 @@ import android.widget.SearchView;
 
 
 import com.example.moro.BuildConfig;
+import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
+import com.example.moro.Fragments.Login.MyProfile;
+import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity{
             } else {
                 options.setEnvironment("EMULATOR");
             }
-        });
 
         /* Sets support for the navigation bar and top toolbar */
         bottomNav = findViewById(R.id.bottom_navigation);
@@ -87,8 +89,13 @@ public class MainActivity extends AppCompatActivity{
                     selectedFragment = new EventFragment();
                     break;
                 case R.id.bot_nav_favorite:
-                    selectedFragment = new FavouritesFragment();
-                    break;
+                    //henvises til login fragment, hvis ikke man er logget in
+                    if (!ctx.isLogin()) {
+                        selectedFragment = new LoginFragment();
+                        break;
+                    }else
+                        selectedFragment = new FavouritesFragment();
+                        break;
                 case R.id.bot_nav_menu:
                     selectedFragment = new BurgerMenuFragment();
                     break;
@@ -110,7 +117,6 @@ public class MainActivity extends AppCompatActivity{
         menu.findItem(R.id.menu_top_nav_search).setVisible(false);
         return true;
     }
-
 
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();

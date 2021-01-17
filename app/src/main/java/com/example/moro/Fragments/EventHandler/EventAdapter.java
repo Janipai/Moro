@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginFragment;
+import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 
@@ -51,6 +52,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         itemsToAdaptComplete = new ArrayList<>(myData);
     }
 
+    public void updateViewType() {
+    }
 
     /* Method used to determine what viewholder the user wants (What type of recycler view is shown - Grid, list and so on.) */
     @NonNull
@@ -58,10 +61,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if (this.viewType == ViewType.VIEW_TYPE_LIST) {
+        if (this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
             view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
             return new MyViewHolder(view);
-        } else if (this.viewType == ViewType.VIEW_TYPE_GRID) {
+        } else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
             return new MyViewHolder(view);
         }
@@ -85,18 +88,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ctx.getStates().equals(new NotLoginState())) {
-                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                    LoginFragment fragment = new LoginFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
-
-                } else {
-                    //remove current event from favourites
-                    //ctx.addFavourites();
-                }
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                EventDescFragment fragment = new EventDescFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }
         });
-
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +102,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }
         });
-
     }
 
     @Override
@@ -162,7 +157,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     };
     /* End of filtering */
 
-
+//    @Override
+//    public int getItemViewType(int position) {
+//        return this.viewTypeSelected.ordinal();
+//    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

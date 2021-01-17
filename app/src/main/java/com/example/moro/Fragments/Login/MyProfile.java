@@ -16,16 +16,18 @@ import android.widget.Toast;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
+import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
 import java.util.ArrayList;
 
 
-public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MyProfile extends CustomFragment implements AdapterView.OnItemSelectedListener {
 
     Context ctx = Context.getInstance();
-    ProfileDTO profileDTO;
-    EditText name, bday, gender, email, password;
+    EditText name, bday, email, password;
+    TextView changeProfileInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,32 +37,28 @@ public class MyProfile extends Fragment implements AdapterView.OnItemSelectedLis
 
         name = myView.findViewById(R.id.minProfilNavn);
         bday = myView.findViewById(R.id.minProfilFoeds);
-        gender = myView.findViewById(R.id.minProfilSpinner);
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
 
-        name.setHint(profileDTO.getProfileUsername());
-        bday.setHint(profileDTO.getProfileDateBorn());
-        gender.setHint(profileDTO.getProfileGender());
-        email.setHint(profileDTO.getProfileEmail());
-        password.setHint(profileDTO.getProfilePassword());
+        name.setText(ctx.profileDTO.getProfileUsername());
+        bday.setText(ctx.profileDTO.getProfileDateBorn());
+        spinner.setPrompt(ctx.profileDTO.getProfileGender());
+        email.setText(ctx.profileDTO.getProfileEmail());
+        password.setText(ctx.profileDTO.getProfilePassword());
 
-        TextView changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
+        changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
         changeProfileInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //doesn't take images
-
+                //Hvad hvis internet fejler?
                 ctx.editInfo(name.getText().toString(),
-                        gender.getText().toString(),
+                        spinner.getSelectedItem().toString(),
                         email.getText().toString(),
                         password.getText().toString(),
-                        bday.getText().toString(),
-                        profileDTO.getProfileFavourites()
-                        );
+                        bday.getText().toString());
+                Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 

@@ -9,15 +9,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * @author s195477, Shania Hau
@@ -30,21 +28,20 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     }
 
     private android.content.Context myContext;
-    private List<EventDTO> myData;
+    private ArrayList<EventDTO> myData;
     private FavouritesEventAdapter.ViewType viewTypeSelected;
+    private  EventLister recall;
 
     Context ctx = Context.getInstance();
-
-    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData) {
-        this.myContext = myContext;
-        this.myData = myData;
+    public interface EventLister{
+        void updateRecyclerView();
     }
 
-
-    public FavouritesEventAdapter(android.content.Context myContext, List<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected) {
+    public FavouritesEventAdapter(android.content.Context myContext, ArrayList<EventDTO> myData, FavouritesEventAdapter.ViewType viewTypeSelected, EventLister recall) {
         this.myContext = myContext;
         this.myData = myData;
         this.viewTypeSelected = viewTypeSelected;
+        this.recall = recall;
     }
 
     public void updateViewType () {
@@ -84,19 +81,19 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
             @Override
             public void onClick(View v) {
 
-                if (ctx.getStates().equals(new NotLoginState())){
+                if (!ctx.login){
                     AppCompatActivity activity = (AppCompatActivity)v.getContext();
                     LoginFragment fragment = new LoginFragment();
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
 
                 }else {
-                    //remove current event from favourites
-                    //ctx.removeFavourites();
+                    //remove current event from favourites and updates
+                    ctx.removeFavourites(myData.get(position));
+                    //tog virkelig lang tid at finde ud af :'(
+                    recall.updateRecyclerView();
                 }
             }
         });
-
-
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,11 +110,6 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     public int getItemCount() {
         return myData.size();
     }
-
-//    @Override
-//    public int getItemViewType(int position) {
-//        return this.viewTypeSelected.ordinal();
-//    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
