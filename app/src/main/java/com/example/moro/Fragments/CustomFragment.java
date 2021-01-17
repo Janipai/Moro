@@ -1,5 +1,7 @@
 package com.example.moro.Fragments;
 
+import android.app.Activity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -16,6 +18,19 @@ public abstract class CustomFragment extends Fragment {
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getActivity().getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
+
+        FragmentTransaction ft = manager.beginTransaction();
+        if (!fragmentPopped){ //fragment not in back stack, create it.
+            ft.replace(R.id.main_fragment_container, fragment);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+    }
+
+    public void replaceFragment (Fragment fragment, FragmentManager fragmentManager){
+        String backStateName = fragment.getClass().getName();
+        FragmentManager manager = fragmentManager;
         boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
 
         FragmentTransaction ft = manager.beginTransaction();

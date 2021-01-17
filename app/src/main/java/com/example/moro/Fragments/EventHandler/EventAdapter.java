@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
@@ -27,11 +28,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
     }
 
-    Context ctx = Context.getInstance();
     private android.content.Context myContext;
     private List<EventDTO> myData;
     private ViewType viewTypeSelected;
-
 
     public EventAdapter(android.content.Context myContext, List<EventDTO> myData) {
         this.myContext = myContext;
@@ -90,7 +89,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.addFavourites(myData.get(position));
+                myData.add(myData.get(position));
+
             }
         });
 

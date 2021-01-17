@@ -1,5 +1,7 @@
 package com.example.moro.Fragments.Login;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.R;
@@ -16,7 +18,7 @@ public class Context {
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
     protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
-    boolean login;
+    boolean login = true;
 
     public static Context getInstance() {
         return ctx;
@@ -24,8 +26,7 @@ public class Context {
 
     private Context() {
         //Logik - find ud af om vi er logget ind
-        login = false;
-        if(!login)
+        if (!login)
             state = new NotLoginState();
         else
             state = new LoginState();
@@ -44,28 +45,12 @@ public class Context {
         this.state = state;
     }
 
-    public void signUp(String name, String gender, String mail, String password, String bday, ArrayList<EventDTO> eventDTOS) {
-        state.signUp(this, name, gender, mail, password, bday, eventDTOS);
+    public void createUserPressed() {
+        state.createUserPressed(this);
     }
 
-    public void login(String mail, String password) {
-        state.login(this, mail, password);
-    }
-
-    public void editInfo(String name, String gender, String mail, String password, String bday) {
-        state.editInfo(this, name, gender, mail, password, bday);
-    }
-
-    public void addFavourites(EventDTO favourites) {
-        state.addFavourites(this, favourites);
-    }
-
-    public void removeFavourites(EventDTO favourites) {
-        state.removeFavourites(this, favourites);
-    }
-
-    public ArrayList<EventDTO> getMyFavourites() {
-        return state.getMyFavourites(this);
+    public void profilePressed(FragmentManager fragmentManager) {
+        state.profilePressed(this, fragmentManager);
     }
 
     public boolean isLogin() {
@@ -74,5 +59,9 @@ public class Context {
 
     public void setLogin(boolean login) {
         this.login = login;
+    }
+
+    public void favouritFragment(FragmentManager fragmentManager) {
+        state.favouriteFragment(this, fragmentManager);
     }
 }

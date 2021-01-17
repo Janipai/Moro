@@ -15,13 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
-
-import java.util.ArrayList;
 
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
@@ -73,11 +69,7 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         switch (v.getId()){
             case R.id.buttonOpretLogin:
                 //mangler noget validering
-                /*ctx.signUp(nameProfile.toString(),
-                        spinner.getSelectedItem().toString(),
-                        emailProfile.toString(),
-                        passwordProfile.toString(),
-                        bdayProfile.toString(),null);*/
+                ctx.createUserPressed();
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:

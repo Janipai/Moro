@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class MyProfile extends CustomFragment implements AdapterView.OnItemSelectedListener {
 
+    ProfileDTO dto;
     Context ctx = Context.getInstance();
     EditText name, bday, email, password;
     TextView changeProfileInfo;
@@ -51,11 +52,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View v) {
                 //Hvad hvis internet fejler?
-                ctx.editInfo(name.getText().toString(),
-                        spinner.getSelectedItem().toString(),
-                        email.getText().toString(),
-                        password.getText().toString(),
-                        bday.getText().toString());
+                editInfo(name.toString(), spinner.getPrompt().toString(), email.toString(), password.toString(), bday.toString());
                 Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,4 +79,18 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    public void editInfo(String name, String gender, String mail, String password, String bday) {
+
+        //gets the user from context
+        dto.setProfileUsername(name);
+        dto.setProfileGender(gender);
+        dto.setProfileEmail(mail);
+        dto.setProfilePassword(password);
+        dto.setProfileDateBorn(bday);
+
+        //Update database
+        //profileDAO.saveProfile(profileDTO);
+    }
+
 }

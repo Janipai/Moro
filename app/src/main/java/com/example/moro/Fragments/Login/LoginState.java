@@ -1,8 +1,12 @@
 package com.example.moro.Fragments.Login;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
+import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -10,47 +14,20 @@ import java.util.ArrayList;
  * @author s195477, Shania Hau
  */
 
-public class LoginState extends Adapter {
+public class LoginState extends CustomFragment implements States {
 
     @Override
-    public void editInfo(Context context, String name, String gender, String mail, String password, String bday) {
-        //super.editInfo(context, name, gender, mail, password, bday);
-
-        //gets the user from context
-        context.profileDTO.setProfileUsername(name);
-        context.profileDTO.setProfileGender(gender);
-        context.profileDTO.setProfileEmail(mail);
-        context.profileDTO.setProfilePassword(password);
-        context.profileDTO.setProfileDateBorn(bday);
-
-        //Update database
-        //profileDAO.saveProfile(profileDTO);
+    public void createUserPressed(Context context) {
+        replaceFragment(new HomeFragment());
     }
 
     @Override
-    public void addFavourites(Context context, EventDTO favourites) {
-        //super.addFavourites(contex, favourites);
-
-        context.profileDTO.getProfileFavourites().add(favourites);
-
-        //Update database
-        //profileDAO.saveProfile(profileDTO);
+    public void profilePressed(Context context, FragmentManager fragmentManager) {
+        replaceFragment(new MyProfile(), fragmentManager);
     }
 
     @Override
-    public void removeFavourites(Context context, EventDTO favourites) {
-        //super.addFavourites(contex, favourites);
-
-        context.profileDTO.getProfileFavourites().remove(favourites);
-
-        //Update database
-        //profileDAO.saveProfile(profileDTO);
-    }
-
-    @Override
-    public ArrayList<EventDTO> getMyFavourites(Context context) {
-        //super.showMyFavourites(contex, favourites);
-
-        return context.profileDTO.getProfileFavourites();
+    public void favouriteFragment(Context context, FragmentManager fragmentManager) {
+        replaceFragment(new FavouritesFragment(), fragmentManager);
     }
 }

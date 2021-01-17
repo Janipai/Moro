@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -19,15 +21,25 @@ import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity    extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
 
     Context ctx = Context.getInstance();
+    ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
+
+    public ArrayList<EventDTO> getFavouritesEvents(){
+        return favouritesEvents;
+    };
+
+    public static MainActivity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        activity = this;
         Fragment home = new HomeFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -37,12 +49,7 @@ public class MainActivity    extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.top_nav_profile:
-                    if (!ctx.isLogin()) {
-                        //henvises til login fragment, hvis ikke man er logget in
-                        selectedFragment = new LoginFragment();
-                        break;
-                    }else
-                        selectedFragment = new MyProfile();
+                    ctx.profilePressed(getSupportFragmentManager());
                     break;
                 case R.id.top_nav_search:
                     selectedFragment = new SearchFragment();
@@ -66,12 +73,8 @@ public class MainActivity    extends AppCompatActivity {
                     break;
                 case R.id.bot_nav_favorite:
                     //henvises til login fragment, hvis ikke man er logget in
-                    if (!ctx.isLogin()) {
-                        selectedFragment = new LoginFragment();
-                        break;
-                    }else
-                        selectedFragment = new FavouritesFragment();
-                        break;
+                    ctx.favouritFragment(getSupportFragmentManager());
+                    break;
                 case R.id.bot_nav_menu:
                     selectedFragment = new BurgerMenuFragment();
                     break;
