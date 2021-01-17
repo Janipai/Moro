@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<!--    <item-->
+<!--        android:id="@+id/MORO_logo"-->
+<!--        android:icon="@drawable/ic_moro_moro"-->
+<!--        android:title="Logo"-->
+<!--        app:showAsAction="ifRoom"-->
+<!--        />-->
+
 
     <item
-        android:id="@+id/top_nav_profile"
+        android:id="@+id/menu_top_nav_profile"
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Profile"
-        />
-
-
-    <item
-        android:id="@+id/MORO_logo"
-        android:icon="@drawable/ic_moro_moro"
-        android:title="Logo"
+        app:showAsAction="ifRoom|collapseActionView"
         />
 
     <item
-        android:id="@+id/top_nav_search"
+        android:id="@+id/menu_top_nav_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"
         />
 
 </menu>
+<!--For search -->

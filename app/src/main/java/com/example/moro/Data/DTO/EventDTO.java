@@ -1,5 +1,7 @@
 package com.example.moro.Data.DTO;
 
+import java.util.ArrayList;
+
 public class EventDTO {
 
     private String title;
@@ -7,6 +9,8 @@ public class EventDTO {
     private String date;
     private String timeframe;
     private int image;
+    private boolean moroAnbefaler;
+    private ArrayList<String> tags;
 
     public EventDTO(String title, String distance, String date, String timeframe, int image) {
         this.title = title;

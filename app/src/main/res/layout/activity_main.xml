@@ -11,7 +11,7 @@
         android:id="@+id/main_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/top_navigation"
+        android:layout_below="@id/top_navigation_toolbar"
         android:layout_above="@id/bottom_navigation">
         <fragment
             android:id="@+id/main_fragment"
@@ -28,22 +28,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:theme = "@style/Theme.MaterialComponents.DayNight"
+        android:theme = "@style/Theme.MaterialComponents.DayNight.DarkActionBar"
         app:itemIconTint="#FFFFFF"
         app:backgroundTint="#000000"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/bottom_navigation" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/top_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:theme = "@style/Theme.MaterialComponents.DayNight"
-        app:itemIconTint="#FFFFFF"
-        app:backgroundTint="#000000"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/top_navigation" />
+    <include layout="@layout/top_navigation_toolbar"
+        android:id="@+id/top_navigation_toolbar"
+        app:menu="@menu/top_navigation">
+    </include>
+
+
 
 
 

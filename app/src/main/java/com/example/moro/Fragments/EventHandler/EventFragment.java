@@ -2,20 +2,31 @@ package com.example.moro.Fragments.EventHandler;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import com.example.moro.R;
 
@@ -23,20 +34,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class EventFragment extends Fragment implements View.OnClickListener{
+public class EventFragment extends CustomFragment implements View.OnClickListener{
+
+    Context ctx = Context.getInstance();
 
     List<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
+    private EventAdapter eventAdapter;
     View view;
     private ImageButton listView;
     private ImageButton gridView;
+    MenuItem searchItem;
+    SearchView searchView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_event,container,false);
+
+//        toolbar = view.findViewById(R.id.top_navigation_toolbar);
+//        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
+        setHasOptionsMenu(true);
+
+
         createEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
@@ -57,8 +79,8 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        EventAdapter myAdapter = new EventAdapter( view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
-        recyclerView.setAdapter(myAdapter);
+        eventAdapter = new EventAdapter( view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        recyclerView.setAdapter(eventAdapter);
 
         return view;
     }
@@ -77,6 +99,51 @@ public class EventFragment extends Fragment implements View.OnClickListener{
             EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
             recyclerView.setAdapter(adapter);
         }
+    }
+
+    HvornaarFragment hvornaar = new HvornaarFragment();
+    public void showEventsBasedOnVibeCheck(String date, TextView choosenHvadNaarList, TextView choosenHvorList){
+        //this.hvornaar.showSetDate() = date;
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu,inflater);
+
+        /* Sætter search ikonet til visible */
+        menu.findItem(R.id.menu_top_nav_search).setVisible(true);
+
+        /* Finder menu item id, og sætter derefter searchviewet til items actionView. */
+        searchItem = menu.findItem(R.id.menu_top_nav_search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setQuery("",false);
+
+        /* Expander automatisk searviewet (Trykket ind) */
+        searchView.onActionViewExpanded();
+
+        /* Ændre tastatur tegnet til close */
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        /* Sætter onQueryTextChange hvilket opdaterer hver gang bruger lavet en action i searchviewet (sletter, indsætter bogstav) */
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+//                searchView.clearFocus();
+                getActivity().getCurrentFocus().clearFocus();
+                closeKeyboard();
+                searchItem.collapseActionView();
+//                searchView.onActionViewCollapsed();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                /* Kalder filtrerings metoden fra adapteren */
+                eventAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     public void createEvents() {
@@ -112,5 +179,7 @@ public class EventFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-
+    private void closeKeyboard() {
+            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 }
