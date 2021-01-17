@@ -18,7 +18,7 @@ public class Context {
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
     protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
-    boolean login = true;
+    boolean login = false;
 
     public static Context getInstance() {
         return ctx;

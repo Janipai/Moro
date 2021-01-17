@@ -59,27 +59,8 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new HomeFragment());
 
         activity = this;
-        Fragment home = new HomeFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment, home).commit();
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        BottomNavigationView topNav = findViewById(R.id.top_navigation);
+        bottomNav = findViewById(R.id.bottom_navigation);
 
-        topNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-            switch (item.getItemId()) {
-                case R.id.top_nav_profile:
-                    ctx.profilePressed(getSupportFragmentManager());
-                    break;
-                case R.id.top_nav_search:
-                    selectedFragment = new SearchFragment();
-                    break;
-            }
-            if (selectedFragment == null)
-                return true;
-//            getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).addToBackStack(null).commit();
-            replaceFragment(selectedFragment);
-            return true;
-        });
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
@@ -107,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
         topNav.setNavigationIcon(null);
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
-
-        
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
@@ -141,6 +120,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
         menu.findItem(R.id.menu_top_nav_search).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_top_nav_profile:
+                ctx.profilePressed(getSupportFragmentManager());
+                break;
+        }
         return true;
     }
 
