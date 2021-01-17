@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Build;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.SearchView;
 
 
 import com.example.moro.BuildConfig;
+import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventAdapter;
@@ -29,14 +31,21 @@ import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.EnumMap;
 
 import io.sentry.android.core.SentryAndroid;
 
-
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     Context ctx = Context.getInstance();
+    ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
+
+    public ArrayList<EventDTO> getFavouritesEvents() {
+        return favouritesEvents;
+    }
+
+    public static MainActivity activity;
     BottomNavigationView bottomNav;
     Toolbar topNav;
     SearchView searchView;
@@ -49,6 +58,9 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new HomeFragment());
+
+        activity = this;
+        bottomNav = findViewById(R.id.bottom_navigation);
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
@@ -78,31 +90,25 @@ public class MainActivity extends AppCompatActivity{
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
-
-
-            bottomNav.setOnNavigationItemSelectedListener(item -> {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.bot_nav_home:
-                        selectedFragment = new HomeFragment();
-                        break;
-                    case R.id.bot_nav_events:
-                        selectedFragment = new EventFragment();
-                        break;
-                    case R.id.bot_nav_favorite:
-                        //henvises til login fragment, hvis ikke man er logget in
-                        if (!ctx.isLogin()) {
-                            selectedFragment = new LoginFragment();
-                            break;
-                        } else
-                            selectedFragment = new FavouritesFragment();
-                        break;
-                    case R.id.bot_nav_menu:
-                        selectedFragment = new BurgerMenuFragment();
-                        break;
-                }
-                if (selectedFragment == null)
-                    return true;
+        bottomNav.setOnNavigationItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.bot_nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.bot_nav_events:
+                    selectedFragment = new EventFragment();
+                    break;
+                case R.id.bot_nav_favorite:
+                    //henvises til login fragment, hvis ikke man er logget in
+                    ctx.favFragment(getSupportFragmentManager());
+                    break;
+                case R.id.bot_nav_menu:
+                    selectedFragment = new BurgerMenuFragment();
+                    break;
+            }
+            if (selectedFragment == null)
+                return true;
 
                 replaceFragment(selectedFragment);
 
@@ -115,6 +121,16 @@ public class MainActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
         menu.findItem(R.id.menu_top_nav_search).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_top_nav_profile:
+                ctx.profilePressed(getSupportFragmentManager());
+                break;
+        }
         return true;
     }
 

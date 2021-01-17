@@ -1,9 +1,11 @@
 package com.example.moro.Fragments.Login;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -30,9 +33,8 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     private android.content.Context myContext;
     private ArrayList<EventDTO> myData;
     private FavouritesEventAdapter.ViewType viewTypeSelected;
-    private  EventLister recall;
+    private EventLister recall;
 
-    Context ctx = Context.getInstance();
     public interface EventLister{
         void updateRecyclerView();
     }
@@ -76,22 +78,14 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         holder.tv_afstand.setText(myData.get(position).getDistance());
         holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
         holder.addToRemove.setImageResource(R.drawable.ic_minus);
+        holder.addToRemove.setColorFilter(Color.argb(255, 255, 255, 255));
+        holder.infoBar.setBackgroundColor(Color.parseColor("#01362F"));
 
         holder.addToRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (!ctx.login){
-                    AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                    LoginFragment fragment = new LoginFragment();
-                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
-
-                }else {
-                    //remove current event from favourites and updates
-                    ctx.removeFavourites(myData.get(position));
-                    //tog virkelig lang tid at finde ud af :'(
-                    recall.updateRecyclerView();
-                }
+                myData.remove(myData.get(position));
             }
         });
 
@@ -120,6 +114,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         TextView tv_tidsrum;
         CardView cardView;
         ImageView addToRemove;
+        RelativeLayout infoBar;
 
 
         public MyViewHolder(View itemView) {
@@ -132,6 +127,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
             tv_tidsrum = (TextView) itemView.findViewById(R.id.tidsrum);
             cardView = (CardView) itemView.findViewById(R.id.cardview);
             addToRemove = (ImageView) itemView.findViewById(R.id.add);
+            infoBar = (RelativeLayout) itemView.findViewById(R.id.infoBar);
         }
 
     }
