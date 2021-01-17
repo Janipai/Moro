@@ -110,6 +110,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
+
         /* Sætter search ikonet til visible */
         menu.findItem(R.id.menu_top_nav_search).setVisible(true);
 
