@@ -61,10 +61,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if (this.viewTypeSelected == ViewType.VIEW_TYPE_LIST) {
+        if (this.viewType == ViewType.VIEW_TYPE_LIST) {
             view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
             return new MyViewHolder(view);
-        } else if (viewTypeSelected == ViewType.VIEW_TYPE_GRID) {
+        } else if (this.viewType == ViewType.VIEW_TYPE_GRID) {
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
             return new MyViewHolder(view);
         }
@@ -172,7 +172,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         CardView cardView;
         ImageView addToFavourites;
 
-
         public MyViewHolder(View itemView) {
             super(itemView);
 
@@ -184,8 +183,5 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             cardView = (CardView) itemView.findViewById(R.id.cardview);
             addToFavourites = (ImageView) itemView.findViewById(R.id.add);
         }
-
     }
-
-
 }

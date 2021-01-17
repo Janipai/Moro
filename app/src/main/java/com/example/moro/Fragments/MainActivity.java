@@ -52,62 +52,61 @@ public class MainActivity extends AppCompatActivity{
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
-            options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
-            options.setBeforeSend(((event, hint) -> {
-                /* If run in debug, dont report events */
-                if (BuildConfig.DEBUG) {
-                    return null;
-                } else
-                    return event;
-            }));
-            /* Sets environment */
-            if (RUNSONPHONE) {
-                options.setEnvironment("PHONE");
-            } else {
-                options.setEnvironment("EMULATOR");
-            }
+                options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
+                options.setBeforeSend(((event, hint) -> {
+                    /* If run in debug, dont report events */
+                    if (BuildConfig.DEBUG) {
+                        return null;
+                    } else
+                        return event;
+                }));
+                /* Sets environment */
+                if (RUNSONPHONE) {
+                    options.setEnvironment("PHONE");
+                } else {
+                    options.setEnvironment("EMULATOR");
+                }
+            });
 
-        /* Sets support for the navigation bar and top toolbar */
-        bottomNav = findViewById(R.id.bottom_navigation);
-        topNav = findViewById(R.id.top_navigation_toolbar);
-        setSupportActionBar(topNav);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        topNav.setNavigationIcon(null);
+            /* Sets support for the navigation bar and top toolbar */
+            bottomNav = findViewById(R.id.bottom_navigation);
+            topNav = findViewById(R.id.top_navigation_toolbar);
+            setSupportActionBar(topNav);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            topNav.setNavigationIcon(null);
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
 
+            bottomNav.setOnNavigationItemSelectedListener(item -> {
+                Fragment selectedFragment = null;
+                switch (item.getItemId()) {
+                    case R.id.bot_nav_home:
+                        selectedFragment = new HomeFragment();
+                        break;
+                    case R.id.bot_nav_events:
+                        selectedFragment = new EventFragment();
+                        break;
+                    case R.id.bot_nav_favorite:
+                        //henvises til login fragment, hvis ikke man er logget in
+                        if (!ctx.isLogin()) {
+                            selectedFragment = new LoginFragment();
+                            break;
+                        } else
+                            selectedFragment = new FavouritesFragment();
+                        break;
+                    case R.id.bot_nav_menu:
+                        selectedFragment = new BurgerMenuFragment();
+                        break;
+                }
+                if (selectedFragment == null)
+                    return true;
 
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-            switch (item.getItemId()) {
-                case R.id.bot_nav_home:
-                    selectedFragment = new HomeFragment();
-                    break;
-                case R.id.bot_nav_events:
-                    selectedFragment = new EventFragment();
-                    break;
-                case R.id.bot_nav_favorite:
-                    //henvises til login fragment, hvis ikke man er logget in
-                    if (!ctx.isLogin()) {
-                        selectedFragment = new LoginFragment();
-                        break;
-                    }else
-                        selectedFragment = new FavouritesFragment();
-                        break;
-                case R.id.bot_nav_menu:
-                    selectedFragment = new BurgerMenuFragment();
-                    break;
-            }
-            if (selectedFragment == null)
+                replaceFragment(selectedFragment);
+
                 return true;
-
-            replaceFragment(selectedFragment);
-
-            return true;
-        });
-
+            });
     }
 
     /* Sets the menu for top nav to the custom search menu*/
