@@ -120,7 +120,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         return itemsFiltered;
     }
     /* Creating filter method */
-    private Filter itemsFiltered = new Filter() {
+    private final Filter itemsFiltered = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             /* List of filtered items */
