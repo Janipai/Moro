@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity{
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
+        
 
             bottomNav.setOnNavigationItemSelectedListener(item -> {
                 Fragment selectedFragment = null;
