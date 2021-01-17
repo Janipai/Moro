@@ -64,29 +64,29 @@ public class MainActivity extends AppCompatActivity {
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
-                options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
-                options.setBeforeSend(((event, hint) -> {
-                    /* If run in debug, dont report events */
-                    if (BuildConfig.DEBUG) {
-                        return null;
-                    } else
-                        return event;
-                }));
-                /* Sets environment */
-                if (RUNSONPHONE) {
-                    options.setEnvironment("PHONE");
-                } else {
-                    options.setEnvironment("EMULATOR");
-                }
-            });
+            options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
+            options.setBeforeSend(((event, hint) -> {
+                /* If run in debug, dont report events */
+                if (BuildConfig.DEBUG) {
+                    return null;
+                } else
+                    return event;
+            }));
+            /* Sets environment */
+            if (RUNSONPHONE) {
+                options.setEnvironment("PHONE");
+            } else {
+                options.setEnvironment("EMULATOR");
+            }
+        });
 
-            /* Sets support for the navigation bar and top toolbar */
-            bottomNav = findViewById(R.id.bottom_navigation);
-            topNav = findViewById(R.id.top_navigation_toolbar);
-            setSupportActionBar(topNav);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            topNav.setNavigationIcon(null);
+        /* Sets support for the navigation bar and top toolbar */
+        bottomNav = findViewById(R.id.bottom_navigation);
+        topNav = findViewById(R.id.top_navigation_toolbar);
+        setSupportActionBar(topNav);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        topNav.setNavigationIcon(null);
 //        getSupportActionBar().setDisplayShowCustomEnabled(true);
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.bot_nav_favorite:
                     //henvises til login fragment, hvis ikke man er logget in
-                    ctx.favFragment(getSupportFragmentManager());
+                    ctx.favouritFragment(getSupportFragmentManager());
                     break;
                 case R.id.bot_nav_menu:
                     selectedFragment = new BurgerMenuFragment();
@@ -110,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
             if (selectedFragment == null)
                 return true;
 
-                replaceFragment(selectedFragment);
+            replaceFragment(selectedFragment);
 
-                return true;
-            });
+            return true;
+        });
     }
 
     /* Sets the menu for top nav to the custom search menu*/
@@ -134,13 +134,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void replaceFragment (Fragment fragment){
+    public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
         FragmentTransaction ft = manager.beginTransaction();
-        if (!fragmentPopped){ //fragment not in back stack, create it.
+        if (!fragmentPopped) { //fragment not in back stack, create it.
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
