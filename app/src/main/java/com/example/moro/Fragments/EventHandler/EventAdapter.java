@@ -87,9 +87,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                EventDescFragment fragment = new EventDescFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+                itemsToAdapt.add(itemsToAdapt.get(position));
             }
         });
 
@@ -102,15 +100,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             }
         });
     }
-
-        //add this add to favourites function
-        holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myData.add(myData.get(position));
-
-            }
-        });
 
     @Override
     public int getItemCount() {
