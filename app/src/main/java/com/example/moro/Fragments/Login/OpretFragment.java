@@ -1,9 +1,12 @@
 package com.example.moro.Fragments.Login;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +22,22 @@ import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.HomeFragment;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.concurrent.Executor;
 
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
-
+    OpretFragment e = this;
+    private static final String TAG = "OpretFragment";
     EditText nameProfile, bdayProfile, genderProfile, emailProfile, passwordProfile;
-
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_opret, container, false);
@@ -68,17 +79,35 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Fragment fragment = null;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.buttonOpretLogin:
-                fragment = new HomeFragment();
+                //fragment = new HomeFragment();
+                signUp();
                 break;
             case R.id.alleredeProfil:
                 fragment = new LoginFragment();
                 break;
         }
-        replaceFragment(fragment);
+        //replaceFragment(fragment);
 
     }
-    
 
+    private void signUp() {
+        mAuth.createUserWithEmailAndPassword(emailProfile.getText().toString(), passwordProfile.getText().toString())
+                .addOnCompleteListener(e.getActivity(), task -> {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "createUserWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Context.getInstance().setStates(new LoginState());
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                        Toast.makeText(e.getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    // ...
+                });
+    }
 }
