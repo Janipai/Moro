@@ -86,10 +86,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             }
         });
 
+        //add this add to favourites function
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ctx.addFavourites();
+                ctx.addFavourites(myData.get(position));
             }
         });
 

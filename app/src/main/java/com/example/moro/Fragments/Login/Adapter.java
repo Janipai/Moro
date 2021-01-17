@@ -16,7 +16,7 @@ public class Adapter implements States{
     }
 
     @Override
-    public void alreadyUser(Context context, String mail, String password) {
+    public void login(Context context, String mail, String password) {
 
     }
 
@@ -36,7 +36,8 @@ public class Adapter implements States{
     }
 
     @Override
-    public void showMyFavourites(Context context) {
+    public ArrayList<EventDTO> getMyFavourites(Context context) {
+        return null;
 
     }
 }

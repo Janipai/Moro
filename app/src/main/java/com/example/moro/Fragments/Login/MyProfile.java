@@ -16,14 +16,15 @@ import android.widget.Toast;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
+import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
 import java.util.ArrayList;
 
 
-public class MyProfile extends Fragment implements AdapterView.OnItemSelectedListener {
+public class MyProfile extends CustomFragment implements AdapterView.OnItemSelectedListener {
 
-    ProfileDTO profileDTO;
     Context ctx = Context.getInstance();
     EditText name, bday, email, password;
     TextView changeProfileInfo;
@@ -39,21 +40,23 @@ public class MyProfile extends Fragment implements AdapterView.OnItemSelectedLis
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
 
-        /*name.setHint(profileDTO.getProfileUsername());
-        bday.setHint(profileDTO.getProfileDateBorn());
-        gender.setHint(profileDTO.getProfileGender());
-        email.setHint(profileDTO.getProfileEmail());
-        password.setHint(profileDTO.getProfilePassword());*/
+        name.setText(ctx.profileDTO.getProfileUsername());
+        bday.setText(ctx.profileDTO.getProfileDateBorn());
+        spinner.setPrompt(ctx.profileDTO.getProfileGender());
+        email.setText(ctx.profileDTO.getProfileEmail());
+        password.setText(ctx.profileDTO.getProfilePassword());
 
         changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
         changeProfileInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ctx.editInfo(name.toString(),
+                //Hvad hvis internet fejler?
+                ctx.editInfo(name.getText().toString(),
                         spinner.getSelectedItem().toString(),
-                        email.toString(),
-                        password.toString(),
-                        bday.toString());
+                        email.getText().toString(),
+                        password.getText().toString(),
+                        bday.getText().toString());
+                Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -72,11 +72,12 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
-                ctx.signUp(nameProfile.toString(),
+                //mangler noget validering
+                /*ctx.signUp(nameProfile.toString(),
                         spinner.getSelectedItem().toString(),
                         emailProfile.toString(),
                         passwordProfile.toString(),
-                        bdayProfile.toString(),null);
+                        bdayProfile.toString(),null);*/
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:

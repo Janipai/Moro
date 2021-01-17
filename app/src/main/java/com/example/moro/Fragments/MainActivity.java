@@ -38,6 +38,7 @@ public class MainActivity    extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.top_nav_profile:
                     if (!ctx.isLogin()) {
+                        //henvises til login fragment, hvis ikke man er logget in
                         selectedFragment = new LoginFragment();
                         break;
                     }else
@@ -64,6 +65,7 @@ public class MainActivity    extends AppCompatActivity {
                     selectedFragment = new EventFragment();
                     break;
                 case R.id.bot_nav_favorite:
+                    //henvises til login fragment, hvis ikke man er logget in
                     if (!ctx.isLogin()) {
                         selectedFragment = new LoginFragment();
                         break;

@@ -11,25 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.R;
 
-import java.util.ArrayList;
-import java.util.List;
 /**
  * @author s195477, Shania Hau
  */
 
-public class FavouritesFragment extends CustomFragment implements View.OnClickListener {
+public class FavouritesFragment extends CustomFragment implements View.OnClickListener, FavouritesEventAdapter.EventLister {
 
-    ArrayList<EventDTO> testEvents;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
     private ImageButton listView;
     private ImageButton gridView;
+    Context ctx = Context.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +52,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        FavouritesEventAdapter myAdapter = new FavouritesEventAdapter( v.getContext(), testEvents, FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST);
+        FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), ctx.getMyFavourites(), FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
         recyclerView.setAdapter(myAdapter);
 
         return v;
@@ -66,24 +63,15 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         if (v.getId() == R.id.rigthNowListButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
-            EventAdapter adapter = new EventAdapter(v.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
-            recyclerView.setAdapter(adapter);
+            FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), ctx.getMyFavourites(), FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
+            recyclerView.setAdapter(myAdapter);
         }
         else if (v.getId() == R.id.rigthNowGridButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
-            EventAdapter adapter = new EventAdapter(v.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
-            recyclerView.setAdapter(adapter);
+            FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), ctx.getMyFavourites(), FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
+            recyclerView.setAdapter(myAdapter);
         }
-    }
-    public void createEvents() {
-        EventDTO event1 = new EventDTO("test1", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
-        EventDTO event2 = new EventDTO("test2", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
-
-        testEvents = new ArrayList<>();
-        testEvents.add(event1);
-        testEvents.add(event2);
-
     }
 
     public void updateButtonImg(View v) {
@@ -95,5 +83,14 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
             listView.setImageResource(R.drawable.ic_listview_unfilled);
             gridView.setImageResource(R.drawable.ic_gridview_filled);
         }
+    }
+
+    //skal opdatere fragmentet, hver gang nogen events fjernes. (kaldes i favouritesEventAdapter)
+    @Override
+    public void updateRecyclerView() {
+        //testEvents erstattet med ctx.getMyFavourites(), for at hente favorites fra context, som holder styr på brugeren
+        // samt recall refrecher fragmenttet
+        FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), ctx.getMyFavourites(), FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
+        recyclerView.setAdapter(myAdapter);
     }
 }

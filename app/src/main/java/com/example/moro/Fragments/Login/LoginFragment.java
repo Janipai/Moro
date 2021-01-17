@@ -81,7 +81,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
-                 ctx.alreadyUser(emailLogin.toString(), passwordLogin.toString());
+                //kan ikke validere endnu
+                 //ctx.login(emailLogin.toString(), passwordLogin.toString());
                 fragment = new MyProfile();
                 break;
             case R.id.buttonOpretLogin:
