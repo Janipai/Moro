@@ -28,6 +28,9 @@ Animation animation;
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
+            //shan laver farlige ting
+            ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
+            //ft.setCustomAnimations()
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();

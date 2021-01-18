@@ -41,11 +41,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
     ArrayList<MikkelEventDTO> events = new ArrayList<>();
 
-    public ArrayList<EventDTO> getFavouritesEvents() {
-        return favouritesEvents;
-    }
-
-
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
