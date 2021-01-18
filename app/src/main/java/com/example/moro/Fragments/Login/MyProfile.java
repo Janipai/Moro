@@ -38,7 +38,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     Spinner spinner;
     ProfileDAO dao = new ProfileDAO();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    Button logoutProfil;
+    Button logoutProfil, deleteMyProfile;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +63,16 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
                 Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
+        deleteMyProfile = myView.findViewById(R.id.deleteMyProfile);
+        deleteMyProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new ProfileDAO().deleteUser();
+                ctx.setState(new NotLoginState());
+                replaceFragment(new HomeFragment());
+            }
+        });
+
         logoutProfil = myView.findViewById(R.id.logoutProfil);
         logoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
