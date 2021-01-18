@@ -98,7 +98,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                             Context.getInstance().setState(new LoginState());
                             Toast.makeText(e.getContext(), "User : " + user.getUid() + " logged in",
                                     Toast.LENGTH_SHORT).show();
-                            loginSucces();
+                            loginSucces(user.getUid());
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -132,8 +132,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
     }
-    public void loginSucces(){
-        new ProfileDAO().findUserSign(mAuth.getUid(),this);
+    public void loginSucces(String uid){
+        new ProfileDAO().findUserSign(uid,this);
     }
     public void done(){
         replaceFragment(fragment);
