@@ -3,6 +3,7 @@ package com.example.moro.Fragments;
 import android.app.Activity;
 
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.example.moro.R;
  */
 public abstract class CustomFragment extends Fragment {
 
+Animation animation;
 
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){
