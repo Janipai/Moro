@@ -12,6 +12,7 @@ import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.Fragments.Login.MyProfile;
+import com.example.moro.Fragments.Login.OpretFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -37,16 +39,6 @@ public class ProfileDAO {
     private final String profileFavourites = "favourites";
 
     public ProfileDAO () {
-    }
-
-    public void test() {
-        ProfileDTO dto = new ProfileDTO("mikkel",
-                "dk@gmail.dk",
-                "123",
-                "123456",
-                new ArrayList<>()
-        );
-        createUser("123", dto);
     }
 
     public void findUserInit(String userID, Activity act) {
@@ -99,10 +91,24 @@ public class ProfileDAO {
     }
 
     public void updateUser (String userID, ProfileDTO dto) {
-
+        mBase.collection("Users").document(userID).set(dto, SetOptions.merge());
     }
 
-    public void createUser (String userID, ProfileDTO dto) {
-        mBase.collection("Users").document(userID).set(dto);
+    public void createUser (String userID, ProfileDTO dto, OpretFragment frag) {
+        mBase.collection("Users").document(userID).set(dto)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully written!");
+                ((MainActivity)frag.getActivity()).setUserProfile(dto);
+                frag.done();
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                    }
+                });
     }
 }
