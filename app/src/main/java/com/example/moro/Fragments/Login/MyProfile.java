@@ -53,7 +53,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View v) {
                 //Hvad hvis internet fejler?
-                editInfo(name.toString(), spinner.getPrompt().toString(), email.toString(), password.toString(), bday.toString());
+                editInfo(name.getText().toString(), spinner.getPrompt().toString(), email.getText().toString(), bday.getText().toString());
                 Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
@@ -81,13 +81,12 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
     }
 
-    public void editInfo(String name, String gender, String mail, String password, String bday) {
+    public void editInfo(String name, String gender, String mail, String bday) {
 
         //gets the user from context
         dto.setProfileUsername(name);
         dto.setProfileGender(gender);
         dto.setProfileEmail(mail);
-        dto.setProfilePassword(password);
         dto.setProfileDateBorn(bday);
 
         //Update database

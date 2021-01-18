@@ -29,10 +29,11 @@ Animation animation;
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
             //shan laver farlige ting
-            ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
-            //ft.setCustomAnimations()
-            ft.replace(R.id.main_fragment_container, fragment);
-            ft.addToBackStack(backStateName);
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right).replace(R.id.main_fragment_container, fragment);
+            ft.addToBackStack(backStateName).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             ft.commit();
         }
     }
@@ -44,7 +45,10 @@ Animation animation;
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
-            ft.replace(R.id.main_fragment_container, fragment);
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right).replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
