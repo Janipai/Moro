@@ -77,10 +77,8 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         // Sætter default view til recycleren
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        favouritesEventsList = ((MainActivity)getActivity()).getFavouritesEvents();
-
         // Sætter adapter til recyclerviewet
-        eventAdapter = new EventAdapter(view.getContext(), testEvents, favouritesEventsList, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        eventAdapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
         recyclerView.setAdapter(eventAdapter);
 
         return view;
@@ -91,13 +89,13 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         if (v.getId() == R.id.rigthNowListButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
-            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, favouritesEventsList, EventAdapter.ViewType.VIEW_TYPE_LIST);
+            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
             recyclerView.setAdapter(adapter);
         }
         else if (v.getId() == R.id.rigthNowGridButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
-            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, favouritesEventsList, EventAdapter.ViewType.VIEW_TYPE_GRID);
+            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
             recyclerView.setAdapter(adapter);
         }
     }

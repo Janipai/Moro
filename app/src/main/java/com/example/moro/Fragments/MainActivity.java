@@ -1,5 +1,6 @@
 package com.example.moro.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
     public static ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents;
-    ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    public static ArrayList<EventDTO> favouritesEvents;
+    public static ArrayList<MikkelEventDTO> events = new ArrayList<>();
 
-    public static MainActivity activity;
+    public MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
     Toolbar topNav;
@@ -183,7 +184,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
-        favouritesEvents = userProfile.getProfileFavourites();
+        if (mAuth.getCurrentUser() != null)
+            favouritesEvents = userProfile.getProfileFavourites();
         if (favouritesEvents == null)
             favouritesEvents = new ArrayList<>();
         con.getAllEvents(this);
