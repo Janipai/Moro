@@ -1,5 +1,7 @@
 package com.example.moro.Fragments;
 
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileDTO userProfile;
     ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
     ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    SharedPreferences prefs;
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
@@ -67,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
         activity = this;
         bottomNav = findViewById(R.id.bottom_navigation);
+
+
         mAuth = FirebaseAuth.getInstance();
 
         /* Sentry Error tracking initialization */
@@ -121,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+
     }
 
     /* Sets the menu for top nav to the custom search menu*/
@@ -179,4 +186,6 @@ public class MainActivity extends AppCompatActivity {
     public void initializingDone(){
         replaceFragment(new HomeFragment());
     }
+
+
 }

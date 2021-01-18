@@ -45,7 +45,8 @@ public class HvorFragment extends CustomFragment implements View.OnClickListener
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
-
+        arrowDown.setRotation(-90);
+        arrowUp.setRotation(-90);
 
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override

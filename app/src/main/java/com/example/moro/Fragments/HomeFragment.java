@@ -1,5 +1,8 @@
 package com.example.moro.Fragments;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +15,7 @@ import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +38,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     ViewPager viewPager;
     RecyclerView eventListRecyclerView;
     RecyclerView rightNowrecyclerView;
+    SharedPreferences prefs;
     View view;
 
     Button vibeCheck;
@@ -46,7 +51,6 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
         createEvents();
-
         createRightNowEvents();
 
         eventListRecyclerView = (RecyclerView) view.findViewById(R.id.eventlistview);
@@ -59,6 +63,11 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
 
+        prefs = getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("FS", true);
+
+        if(firstStart)
+            startUpDialog();
         return view;
     }
 
@@ -115,6 +124,30 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     public void onClick(View v) {
         replaceFragment(new HvornaarFragment());
 //        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
+    }
+
+    private void startUpDialog() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Velkommen til MORO")
+                .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
+                .setNegativeButton("Nej tak!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("Ja tak!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        //Start rundvisning
+                    }
+                })
+                .create().show();
+        SharedPreferences preferences = getActivity().getSharedPreferences("prefs" , Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("FS", false);
+        editor.apply();
     }
 
 }
