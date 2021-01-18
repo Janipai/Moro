@@ -15,9 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.moro.Data.DAO.ProfileDAO;
-import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -38,6 +36,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     private CallbackManager callbackManager;
     private LoginButton loginButton;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    Fragment fragment = null;
     Context ctx = Context.getInstance();
     EditText emailLogin, passwordLogin;
     LoginFragment e = this;
@@ -112,15 +111,15 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     }
     @Override
     public void onClick(View v) {
-        Fragment fragment = null;
         switch (v.getId()){
              case R.id.buttonLogin:
                  SignIn();
                 fragment = new MyProfile();
-                 new ProfileDAO().findUserSign(mAuth.getUid(), (MyProfile) fragment);
+                new ProfileDAO().findUserSign(mAuth.getUid(),this);
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();
+                done();
                 break;
             case R.id.giIV:
                 //Log in med google
@@ -131,7 +130,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
             default:
                 break;
         }
+    }
+    public void done(){
         replaceFragment(fragment);
-
     }
 }

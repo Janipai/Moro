@@ -71,7 +71,7 @@ public class ProfileDAO {
             }
         });
     }
-    public void findUserSign(String userID, MyProfile frag) {
+    public void findUserSign(String userID, LoginFragment frag) {
         mBase.collection("Users").document(userID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -80,7 +80,8 @@ public class ProfileDAO {
                     if (document.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         ProfileDTO user = document.toObject(ProfileDTO.class);
-                        frag.setInformation(user);
+                        ((MainActivity)frag.getActivity()).setUserProfile(user);
+                        frag.done();
 
                     } else {
                         Log.d(TAG, "No such document");
