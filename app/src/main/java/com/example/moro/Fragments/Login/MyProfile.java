@@ -18,6 +18,7 @@ import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.HomeFragment;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_min_profil, container, false);
-
+        dto = ((MainActivity)this.getActivity()).getUserProfile();
         Spinner spinner = myView.findViewById(R.id.minProfilSpinner);
 
         name = myView.findViewById(R.id.minProfilNavn);
@@ -41,11 +42,11 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
 
-        name.setText(ctx.profileDTO.getProfileUsername());
-        bday.setText(ctx.profileDTO.getProfileDateBorn());
-        spinner.setPrompt(ctx.profileDTO.getProfileGender());
-        email.setText(ctx.profileDTO.getProfileEmail());
-        password.setText(ctx.profileDTO.getProfilePassword());
+        name.setText(dto.getProfileUsername());
+        bday.setText(dto.getProfileDateBorn());
+        spinner.setPrompt(dto.getProfileGender());
+        email.setText(dto.getProfileEmail());
+        password.setText(dto.getProfilePassword());
 
         changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
         changeProfileInfo.setOnClickListener(new View.OnClickListener() {

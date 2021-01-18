@@ -1,5 +1,6 @@
 package com.example.moro.Data.ADatabaseCon;
 
+import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -7,6 +8,7 @@ import androidx.annotation.NonNull;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.MikkelEventDTO;
+import com.example.moro.Fragments.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,7 +68,7 @@ public class Connection {
                     }
                 });
     }
-    public void getAll(){
+    public void getAll(MainActivity activity){
         db.collection("Events")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -74,10 +76,13 @@ public class Connection {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                //Log.d(TAG, document.getId() + " => " + document.getData());
                                 events.add(document.toObject(MikkelEventDTO.class));
-                                Log.d(TAG, String.valueOf(events.size()));
+                                //Log.d(TAG, String.valueOf(events.size()));
+                                activity.setEvents(events);
+                                activity.initializingDone();
                             }
+
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }

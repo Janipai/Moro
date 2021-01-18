@@ -93,7 +93,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Context.getInstance().setStates(new LoginState());
+                            Context.getInstance().setState(new LoginState());
                             Toast.makeText(e.getContext(), "User : " + user.getUid() + " logged in",
                                     Toast.LENGTH_SHORT).show();
                         } else {

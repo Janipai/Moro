@@ -1,68 +1,71 @@
 package com.example.moro.Fragments;
 
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SearchView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Build;
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ImageButton;
-import android.widget.SearchView;
-
-
 import com.example.moro.BuildConfig;
-import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.MikkelEventDTO;
+import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
-import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
-import com.example.moro.Fragments.Login.FavouritesFragment;
-import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.Fragments.Login.LoginState;
-import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.util.ArrayList;
-import java.util.EnumMap;
 import io.sentry.android.core.SentryAndroid;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     FirebaseAuth mAuth;
     Context ctx = Context.getInstance();
+    ProfileDTO userProfile;
     ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
-
-    public ArrayList<EventDTO> getFavouritesEvents() {
-        return favouritesEvents;
-    }
-
+    ArrayList<MikkelEventDTO> events = new ArrayList<>();
     public static MainActivity activity;
+    ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
     Toolbar topNav;
     SearchView searchView;
     MenuItem searchItem;
     boolean RUNSONPHONE = Build.PRODUCT.contains("sdk"); //|| Build.MODEL.contains("Emulator");
 
+    public ArrayList<EventDTO> getFavouritesEvents() {
+        return favouritesEvents;
+    }
+    public void setEvents(ArrayList<MikkelEventDTO> list) {
+        events = list;
+    }
+    public ProfileDTO getUserProfile(){
+        return userProfile;
+    }
+
+    public void setUserProfile(ProfileDTO profile){
+        userProfile = profile;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        replaceFragment(new HomeFragment());
 
         activity = this;
         bottomNav = findViewById(R.id.bottom_navigation);
@@ -143,15 +146,19 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+        //mAuth.signOut();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Context context = Context.getInstance();
-        if (currentUser == null)
-            context.setStates(new NotLoginState());
-        else {
-            context.setStates(new LoginState());
+        if (currentUser == null){
+            Log.d(TAG, "onStart: no user logged in");
+            context.setState(new NotLoginState());
         }
-        Connection con = Connection.getInstance();
-        con.getAll();
+        else {
+            Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
+            context.setState(new LoginState());
+            dao.findUser(mAuth.getUid(), this);
+            //favouritesEvents =
+        }
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -165,5 +172,12 @@ public class MainActivity extends AppCompatActivity {
             ft.addToBackStack(backStateName);
             ft.commit();
         }
+    }
+    public void getEvents(){
+        Connection con = Connection.getInstance();
+        con.getAll(this);
+    }
+    public void initializingDone(){
+        replaceFragment(new HomeFragment());
     }
 }
