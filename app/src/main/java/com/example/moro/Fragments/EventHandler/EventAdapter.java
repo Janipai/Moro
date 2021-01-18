@@ -1,5 +1,6 @@
 package com.example.moro.Fragments.EventHandler;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,20 +36,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
+    private List<EventDTO> favouriteEventList;
 
     private ViewType viewType;
 
-    public EventAdapter(android.content.Context myContext, List<EventDTO> myData) {
-        this.myContext = myContext;
-        this.itemsToAdapt = myData;
-    }
 
-
-    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
+    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, List<EventDTO> favouriteEventList, ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.itemsToAdapt = myData;
         this.viewType = viewTypeSelected;
         itemsToAdaptComplete = new ArrayList<>(myData);
+        this.favouriteEventList = favouriteEventList;
     }
 
     public void updateViewType() {
@@ -87,7 +85,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemsToAdapt.add(itemsToAdapt.get(position));
+                holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                favouriteEventList.add(itemsToAdapt.get(position));
             }
         });
 

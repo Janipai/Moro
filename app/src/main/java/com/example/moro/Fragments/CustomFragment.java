@@ -3,6 +3,7 @@ package com.example.moro.Fragments;
 import android.app.Activity;
 
 import android.view.View;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,8 @@ import com.example.moro.R;
  */
 public abstract class CustomFragment extends Fragment {
 
+Animation animation;
+
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();
@@ -26,6 +29,10 @@ public abstract class CustomFragment extends Fragment {
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null){ //fragment not in back stack, create it.
 
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right);
             ft.replace(R.id.main_fragment_container, fragment);
 //            ft.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit,R.anim.fragment_close_enter, R.anim.fragment_close_exit);
             ft.addToBackStack(backStateName);
@@ -40,7 +47,10 @@ public abstract class CustomFragment extends Fragment {
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
-            ft.replace(R.id.main_fragment_container, fragment);
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right).replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
         }

@@ -49,7 +49,6 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
         name = myView.findViewById(R.id.minProfilNavn);
         bday = myView.findViewById(R.id.minProfilFoeds);
         email = myView.findViewById(R.id.minProfilEmail);
-        password = myView.findViewById(R.id.minProfilPassword);
 
         name.setText(dto.getProfileUsername());
         bday.setText(dto.getProfileDateBorn());
@@ -69,10 +68,8 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                EventDescFragment fragment = new EventDescFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, fragment).addToBackStack(null).commit();
+                ctx.setState(new NotLoginState());
+                replaceFragment(new HomeFragment());
             }
         });
 

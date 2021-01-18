@@ -14,17 +14,13 @@ import java.util.ArrayList;
 
 public class Context {
     private States state;
-    private static Context ctx = new Context();
+    private static final Context ctx = new Context();
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
-    //protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
-    //protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "04/20/1969", favorites);
-    boolean login = false;
+    boolean login = true;
 
     public static Context getInstance() {
-        if (ctx != null)
-            return ctx;
-        return ctx = new Context();
+        return ctx;
     }
 
     /*private Context() {
@@ -34,10 +30,6 @@ public class Context {
         else
             state = new LoginState();
 
-        //mere fake data for nu
-        EventDTO fakeEvent = new EventDTO("Title", "Distance", "Date", "Timeframe", R.drawable.bruh);
-        favorites.add(fakeEvent);
-        favorites.add(fakeEvent);
     }
     */
 

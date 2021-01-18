@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
@@ -29,6 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+
 import io.sentry.android.core.SentryAndroid;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileDTO userProfile;
     ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
     ArrayList<MikkelEventDTO> events = new ArrayList<>();
+
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
@@ -49,14 +53,16 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
+
     public void setEvents(ArrayList<MikkelEventDTO> list) {
         events = list;
     }
-    public ProfileDTO getUserProfile(){
+
+    public ProfileDTO getUserProfile() {
         return userProfile;
     }
 
-    public void setUserProfile(ProfileDTO profile){
+    public void setUserProfile(ProfileDTO profile) {
         userProfile = profile;
     }
 
@@ -134,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -141,12 +148,11 @@ public class MainActivity extends AppCompatActivity {
         //mAuth.signOut();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Context context = Context.getInstance();
-        if (currentUser == null){
+        if (currentUser == null) {
             Log.d(TAG, "onStart: no user logged in");
             context.setState(new NotLoginState());
             getEvents();
-        }
-        else {
+        } else {
             Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
             context.setState(new LoginState());
             dao.findUserInit(mAuth.getUid(), this);
@@ -159,18 +165,26 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
+        FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped) { //fragment not in back stack, create it.
-            FragmentTransaction ft = manager.beginTransaction();
+
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right);
+
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
     }
+
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
         con.getAllEvents(this);
     }
-    public void initializingDone(){
+
+    public void initializingDone() {
         replaceFragment(new HomeFragment());
     }
 }
