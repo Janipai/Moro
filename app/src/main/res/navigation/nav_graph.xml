@@ -98,7 +98,7 @@
         tools:layout="@layout/fragment_contact" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.moro.Fragments.LoginFragment"
+        android:name="com.example.moro.Fragments.Login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -110,7 +110,7 @@
     </fragment>
     <fragment
         android:id="@+id/opretFragment"
-        android:name="com.example.moro.Fragments.OpretFragment"
+        android:name="com.example.moro.Fragments.Login.OpretFragment"
         android:label="fragment_opret"
         tools:layout="@layout/fragment_opret" />
     <fragment

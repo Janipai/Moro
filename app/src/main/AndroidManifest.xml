@@ -25,7 +25,8 @@
         </activity>
 
         <!-- BRUGES TIL SENTRY.IO, GIVER EN VALUE SOM KALDES DSN (DATA SOURCE NAME) -->
-        <meta-data android:name="io.sentry.dsn" android:value="https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708" />
+<!--        <meta-data android:name="io.sentry.dsn" android:value="https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708" />-->
+        <meta-data android:name="io.sentry.auto-init" android:value="false" />
 
         <meta-data
             android:name="preloaded_fonts"

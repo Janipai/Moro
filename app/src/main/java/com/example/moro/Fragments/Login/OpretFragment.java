@@ -1,4 +1,4 @@
-package com.example.moro.Fragments;
+package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 
@@ -10,24 +10,35 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-//import com.facebook.FacebookSdk;
-//import com.facebook.appevents.AppEventsLogger;
 
+import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.R;
 
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    Context ctx = Context.getInstance();
+    EditText nameProfile, bdayProfile, emailProfile, passwordProfile;
+    Spinner spinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_opret, container, false);
 
+        nameProfile = myView.findViewById(R.id.nameProfil);
+        bdayProfile = myView.findViewById(R.id.bdayProfile);
+        emailProfile = myView.findViewById(R.id.emailProfil);
+        passwordProfile = myView.findViewById(R.id.passwordProfil);
+
+
         //Creating adapters
         TextView aP = myView.findViewById(R.id.alleredeProfil);
         Button oP = myView.findViewById(R.id.buttonOpretLogin);
-        Spinner spinner = myView.findViewById(R.id.genderSpinner);
+        spinner = myView.findViewById(R.id.genderSpinner);
 
         aP.setOnClickListener(this);
         oP.setOnClickListener(this);
@@ -57,6 +68,8 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
+                //mangler noget validering
+                ctx.createUserPressed();
                 fragment = new HomeFragment();
                 break;
             case R.id.alleredeProfil:
@@ -64,7 +77,6 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
         replaceFragment(fragment);
-//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
 
     }
 

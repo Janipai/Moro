@@ -15,7 +15,9 @@ import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
-
+/**
+ * @author s195477, Shania Hau
+ */
 public class HvorFragment extends CustomFragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;

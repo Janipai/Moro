@@ -18,7 +18,9 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
-
+/**
+ * @author s195477, Shania Hau
+ */
 public class HvadFragment extends CustomFragment {
 
     private RecyclerView recyclerView;
