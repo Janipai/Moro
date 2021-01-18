@@ -114,9 +114,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
              case R.id.buttonLogin:
+                 fragment = new MyProfile();
                  SignIn();
-                fragment = new MyProfile();
-                new ProfileDAO().findUserSign(mAuth.getUid(),this);
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();
