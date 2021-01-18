@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.bot_nav_menu:
                     selectedFragment = new BurgerMenuFragment();
                     break;
-            }
+            } 
             if (selectedFragment == null)
                 return true;
 
