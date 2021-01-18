@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activity = this;
-        bottomNav = findViewById(R.id.bottom_navigation);
         mAuth = FirebaseAuth.getInstance();
 
         /* Sentry Error tracking initialization */
@@ -98,28 +97,23 @@ public class MainActivity extends AppCompatActivity {
 //        getSupportActionBar().setCustomView(R.layout.toptoolbar);
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.bot_nav_home:
-                    selectedFragment = new HomeFragment();
-                    break;
+                    replaceFragment(new HomeFragment());
+                    return true;
                 case R.id.bot_nav_events:
-                    selectedFragment = new EventFragment();
-                    break;
+                    replaceFragment(new EventFragment());
+                    return true;
                 case R.id.bot_nav_favorite:
                     //henvises til login fragment, hvis ikke man er logget in
                     ctx.favouritFragment(getSupportFragmentManager());
-                    break;
+                    return true;
                 case R.id.bot_nav_menu:
-                    selectedFragment = new BurgerMenuFragment();
-                    break;
+                    replaceFragment(new BurgerMenuFragment());
+                    return true;
+                default:
+                    return true;
             }
-            if (selectedFragment == null)
-                return true;
-
-            replaceFragment(selectedFragment);
-
-            return true;
         });
     }
 
@@ -165,8 +159,8 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
-        FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();

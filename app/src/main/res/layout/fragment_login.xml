@@ -52,7 +52,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/anton"
         android:text="LOGIN"
         android:textColor="#000000"
@@ -162,29 +162,28 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/fbiIV"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="120dp"
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="36dp"
-        android:background="@drawable/tipborder"
-        android:src="@drawable/ggi"
+        app:layout_constraintEnd_toStartOf="@+id/giIV"
+        app:layout_constraintHorizontal_bias="0.618"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:srcCompat="@drawable/fbi" />
+        app:layout_constraintTop_toBottomOf="@+id/ellerTV" />
 
     <ImageView
         android:id="@+id/giIV"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/tipborder"
-        android:src="@drawable/fbi"
+        android:src="@drawable/ggi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toEndOf="@+id/fbiIV"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         app:srcCompat="@drawable/ggi" />
 

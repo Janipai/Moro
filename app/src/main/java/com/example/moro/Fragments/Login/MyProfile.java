@@ -2,6 +2,7 @@ package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
@@ -35,6 +38,8 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     Spinner spinner;
     ProfileDAO dao = new ProfileDAO();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    Button logoutProfil;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_min_profil, container, false);
@@ -57,6 +62,17 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
                 //Hvad hvis internet fejler?
                 editInfo(name.getText().toString(), spinner.getSelectedItem().toString(), email.getText().toString(), bday.getText().toString());
                 Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
+            }
+        });
+        logoutProfil = myView.findViewById(R.id.logoutProfil);
+        logoutProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                EventDescFragment fragment = new EventDescFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, fragment).addToBackStack(null).commit();
             }
         });
 

@@ -21,11 +21,13 @@ public abstract class CustomFragment extends Fragment {
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
 
         FragmentTransaction ft = manager.beginTransaction();
-        if (!fragmentPopped){ //fragment not in back stack, create it.
+        if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null){ //fragment not in back stack, create it.
+
             ft.replace(R.id.main_fragment_container, fragment);
+//            ft.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit,R.anim.fragment_close_enter, R.anim.fragment_close_exit);
             ft.addToBackStack(backStateName);
             ft.commit();
         }

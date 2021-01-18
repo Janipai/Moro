@@ -16,74 +16,121 @@ import android.widget.Toast;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.concurrent.Executor;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
     private static final String TAG = "LoginFragment";
-    private CallbackManager callbackManager;
-    private LoginButton loginButton;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private FirebaseAuth mAuth;
     Fragment fragment = null;
-    Context ctx = Context.getInstance();
+    CallbackManager mCallbackManager;
     EditText emailLogin, passwordLogin;
+    Button bOP, bL;
+    ImageView gli;
+    LoginButton loginButton;
+
+    Context ctx = Context.getInstance();
+
     LoginFragment e = this;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_login, container, false);
-        Button bOP = myView.findViewById(R.id.buttonOpretLogin);
-        Button bL = myView.findViewById(R.id.buttonLogin);
-        loginButton = myView.findViewById(R.id.fbiIV);
-        ImageView gi = myView.findViewById(R.id.giIV);
-
-        callbackManager = CallbackManager.Factory.create();
+        bOP = myView.findViewById(R.id.buttonOpretLogin);
+        bL = myView.findViewById(R.id.buttonLogin);
+        gli = myView.findViewById(R.id.giIV);
         emailLogin = myView.findViewById(R.id.emailLogin);
         passwordLogin = myView.findViewById(R.id.passwordLogin);
 
         bL.setOnClickListener(this);
         bOP.setOnClickListener(this);
-        gi.setOnClickListener(this);
+        gli.setOnClickListener(this);
 
-        loginButton.setPermissions(Arrays.asList("user_gender, user_birthday"));
 
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        FacebookSdk.sdkInitialize(this.getContext());
+
+
+        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize Facebook Login button
+        mCallbackManager = CallbackManager.Factory.create();
+        loginButton = myView.findViewById(R.id.login_button);
+        loginButton.setReadPermissions("email", "public_profile");
+        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("Demo","Login succes");
+                Log.d(TAG, "facebook:onSuccess:" + loginResult);
+                handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
             @Override
             public void onCancel() {
-                Log.d("Demo", "Login canceled");
+                Log.d(TAG, "facebook:onCancel");
+                // ...
             }
 
             @Override
             public void onError(FacebookException error) {
-                Log.d("Demo", "Login error");
+                Log.d(TAG, "facebook:onError", error);
+                // ...
             }
         });
-
-
-
         return myView;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        Log.d(TAG, "handleFacebookAccessToken:" + token);
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
+    }
+
+
+
+
+    private void updateUI(FirebaseUser user) {
+        if(user != null){
+            fragment = new MyProfile();
+            replaceFragment(fragment);
+        }else{
+            Toast.makeText(this.getContext(), "", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void SignIn(){
@@ -123,9 +170,6 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
             case R.id.giIV:
                 //Log in med google
-                break;
-            case R.id.fbiIV:
-                //Log in med facebook
                 break;
             default:
                 break;
