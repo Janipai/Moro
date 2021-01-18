@@ -68,10 +68,8 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
-
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                EventDescFragment fragment = new EventDescFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, fragment).addToBackStack(null).commit();
+                ctx.setState(new NotLoginState());
+                replaceFragment(new HomeFragment());
             }
         });
 
