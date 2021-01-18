@@ -1,5 +1,6 @@
 package com.example.moro.Fragments.EventHandler;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,15 +13,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
 import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +36,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     }
 
     private android.content.Context myContext;
+    public FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
@@ -93,6 +99,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                     holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
                     favouriteEventList.add(itemsToAdapt.get(position));
                 }
+                holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                favouriteEventList.add(itemsToAdapt.get(position));
+                new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
             }
         });
 

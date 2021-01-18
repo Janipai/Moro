@@ -20,6 +20,8 @@ public class EventDTO {
         this.image = image;
     }
 
+    public EventDTO(){}
+
     public String getTitle() {
         return title;
     }
