@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         return favouritesEvents;
     }
 
+
     public static MainActivity activity;
     BottomNavigationView bottomNav;
     Toolbar topNav;

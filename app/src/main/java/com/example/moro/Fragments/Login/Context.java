@@ -18,7 +18,7 @@ public class Context {
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
     protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
-    boolean login = false;
+    boolean login = true;
 
     public static Context getInstance() {
         return ctx;
@@ -31,10 +31,6 @@ public class Context {
         else
             state = new LoginState();
 
-        //mere fake data for nu
-        EventDTO fakeEvent = new EventDTO("Title", "Distance", "Date", "Timeframe", R.drawable.bruh);
-        favorites.add(fakeEvent);
-        favorites.add(fakeEvent);
     }
 
     public States getState() {
