@@ -83,10 +83,12 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
              case R.id.buttonLogin:
                 //kan ikke validere endnu
                  //ctx.login(emailLogin.toString(), passwordLogin.toString());
-                fragment = new MyProfile();
+                 replaceFragment(new MyProfile());
+//                fragment = new MyProfile();
                 break;
             case R.id.buttonOpretLogin:
-                fragment = new OpretFragment();
+                replaceFragment(new OpretFragment());
+//                fragment = new OpretFragment();
                 break;
             case R.id.giIV:
                 //Log in med google
@@ -97,7 +99,5 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
             default:
                 break;
         }
-        replaceFragment(fragment);
-
     }
 }

@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivity activity;
     BottomNavigationView bottomNav;
     Toolbar topNav;
-    SearchView searchView;
-    MenuItem searchItem;
     boolean RUNSONPHONE = Build.PRODUCT.contains("sdk"); //|| Build.MODEL.contains("Emulator");
 
 
@@ -132,14 +130,24 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-        public void replaceFragment(Fragment fragment) {
+    /* If back stack has a count of 1 - finish the activity instead of going back another time (Would give a whitescreen) */
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
-
-        FragmentTransaction ft = manager.beginTransaction();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
         if (!fragmentPopped) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
             ft.replace(R.id.main_fragment_container, fragment);
+//            ft.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit,R.anim.fragment_close_enter, R.anim.fragment_close_exit);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
