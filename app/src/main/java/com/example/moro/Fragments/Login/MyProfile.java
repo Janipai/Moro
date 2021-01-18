@@ -2,6 +2,7 @@ package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,9 +19,11 @@ import android.widget.Toast;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -29,7 +33,9 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     ProfileDTO dto;
     Context ctx = Context.getInstance();
     EditText name, bday, email, password;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     TextView changeProfileInfo;
+    Button logoutProfil;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +63,17 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
                 Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
+        logoutProfil = myView.findViewById(R.id.logoutProfil);
+        logoutProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                EventDescFragment fragment = new EventDescFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.homeFragment, fragment).addToBackStack(null).commit();
+            }
+        });
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 
@@ -80,6 +97,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 
     public void editInfo(String name, String gender, String mail, String password, String bday) {
 
