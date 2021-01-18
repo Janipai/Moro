@@ -96,40 +96,39 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         return myView;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                .addOnCompleteListener((Executor) this, task -> {
+                     if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        updateUI(null);
                     }
                 });
     }
 
-
-
-
     private void updateUI(FirebaseUser user) {
         if(user != null){
             fragment = new MyProfile();
-            replaceFragment(fragment);
+            replaceFragment(fragment, getActivity().getSupportFragmentManager());
         }else{
-            Toast.makeText(this.getContext(), "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext(), "Login for at fortsætte", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -152,11 +151,13 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                             Toast.makeText(e.getContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
+
+
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
