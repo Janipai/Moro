@@ -49,7 +49,6 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
         name = myView.findViewById(R.id.minProfilNavn);
         bday = myView.findViewById(R.id.minProfilFoeds);
         email = myView.findViewById(R.id.minProfilEmail);
-        password = myView.findViewById(R.id.minProfilPassword);
 
         name.setText(dto.getProfileUsername());
         bday.setText(dto.getProfileDateBorn());
