@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.moro.BuildConfig;
-import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.MikkelEventDTO;
@@ -167,8 +167,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void getEvents(){
-        Connection con = Connection.getInstance();
-        con.getAll(this);
+        EventDAO con = EventDAO.getInstance();
+        con.getAllEvents(this);
     }
     public void initializingDone(){
         replaceFragment(new HomeFragment());
