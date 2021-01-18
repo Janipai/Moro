@@ -58,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new HomeFragment());
-
         activity = this;
-        bottomNav = findViewById(R.id.bottom_navigation);
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
@@ -134,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void replaceFragment(Fragment fragment) {
+        public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
