@@ -44,12 +44,11 @@ public abstract class CustomFragment extends Fragment {
         }
     }
 
-   /* private static final String BACK_STACK_ROOT_TAG = "root_fragment";
-    public void resetBackStack() {
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction();
-        manager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-    }*/
 
+//    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+//    public void readyBackStack(Fragment fragment, FragmentManager fragmentManager) {
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
+//    }
 }
