@@ -14,17 +14,20 @@ import java.util.ArrayList;
 
 public class Context {
     private States state;
-    private static final Context ctx = new Context();
+    private static Context ctx = new Context();
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
-    protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
+    //protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
+    //protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "04/20/1969", favorites);
     boolean login = false;
 
     public static Context getInstance() {
-        return ctx;
+        if (ctx != null)
+            return ctx;
+        return ctx = new Context();
     }
 
-    private Context() {
+    /*private Context() {
         //Logik - find ud af om vi er logget ind
         if (!login)
             state = new NotLoginState();
@@ -36,6 +39,7 @@ public class Context {
         favorites.add(fakeEvent);
         favorites.add(fakeEvent);
     }
+    */
 
     public States getState() {
         return state;
