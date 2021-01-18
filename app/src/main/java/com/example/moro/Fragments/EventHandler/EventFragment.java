@@ -80,7 +80,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         favouritesEventsList = ((MainActivity)getActivity()).getFavouritesEvents();
 
         // Sætter adapter til recyclerviewet
-        eventAdapter = new EventAdapter( view.getContext(), testEvents, favouritesEventsList, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        eventAdapter = new EventAdapter(view.getContext(), testEvents, favouritesEventsList, EventAdapter.ViewType.VIEW_TYPE_LIST);
         recyclerView.setAdapter(eventAdapter);
 
         return view;

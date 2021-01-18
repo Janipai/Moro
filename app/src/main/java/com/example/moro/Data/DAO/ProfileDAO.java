@@ -51,6 +51,7 @@ public class ProfileDAO {
                     Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                     ProfileDTO user = document.toObject(ProfileDTO.class);
                     ((MainActivity)frag.getActivity()).setUserProfile(user);
+                    ((MainActivity)frag.getActivity()).updateFav();
                     frag.done();
 
                 } else {

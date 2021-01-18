@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.MainActivity;
@@ -79,6 +80,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
             public void onClick(View v) {
                 holder.addToRemove.setImageResource(R.drawable.ic_baseline_add_box_24);
                 myData.remove(myData.get(position));
+                new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
                 recall.updateRecyclerView();
             }
         });

@@ -41,9 +41,9 @@ public class EventDAO {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
-                            //Log.d(TAG, document.getId() + " => " + document.getData());
+                            Log.d(TAG, document.getId() + " => " + document.getData());
                             events.add(document.toObject(MikkelEventDTO.class));
-                            //Log.d(TAG, String.valueOf(events.size()));
+                            Log.d(TAG, String.valueOf(events.size()));
                             activity.setEvents(events);
                             activity.initializingDone();
                         }

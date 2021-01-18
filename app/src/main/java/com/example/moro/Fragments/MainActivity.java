@@ -36,10 +36,10 @@ import io.sentry.android.core.SentryAndroid;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    FirebaseAuth mAuth;
+    public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
-    ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
+    public static ProfileDTO userProfile;
+    ArrayList<EventDTO> favouritesEvents;
     ArrayList<MikkelEventDTO> events = new ArrayList<>();
 
     public static MainActivity activity;
@@ -53,12 +53,14 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
-
+    public void updateFav(){
+        favouritesEvents = userProfile.getProfileFavourites();
+    }
     public void setEvents(ArrayList<MikkelEventDTO> list) {
         events = list;
     }
 
-    public ProfileDTO getUserProfile() {
+    public static ProfileDTO getUserProfile() {
         return userProfile;
     }
 
@@ -72,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activity = this;
-        mAuth = FirebaseAuth.getInstance();
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
@@ -151,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null) {
             Log.d(TAG, "onStart: no user logged in");
             context.setState(new NotLoginState());
+            favouritesEvents = new ArrayList<>();
             getEvents();
         } else {
             Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
@@ -181,6 +183,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
+        favouritesEvents = userProfile.getProfileFavourites();
+        if (favouritesEvents == null)
+            favouritesEvents = new ArrayList<>();
         con.getAllEvents(this);
     }
 
