@@ -30,18 +30,23 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     Context ctx = Context.getInstance();
     EditText name, bday, email, password;
     TextView changeProfileInfo;
-    Spinner spinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_min_profil, container, false);
         dto = ((MainActivity)this.getActivity()).getUserProfile();
-        spinner = myView.findViewById(R.id.minProfilSpinner);
+        Spinner spinner = myView.findViewById(R.id.minProfilSpinner);
 
         name = myView.findViewById(R.id.minProfilNavn);
         bday = myView.findViewById(R.id.minProfilFoeds);
         email = myView.findViewById(R.id.minProfilEmail);
         password = myView.findViewById(R.id.minProfilPassword);
+
+        name.setText(dto.getProfileUsername());
+        bday.setText(dto.getProfileDateBorn());
+        spinner.setPrompt(dto.getProfileGender());
+        email.setText(dto.getProfileEmail());
+        password.setText(dto.getProfilePassword());
 
         changeProfileInfo = myView.findViewById(R.id.changeProfileInfo);
         changeProfileInfo.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +60,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 
+
         //Apply adapter to the spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -62,18 +68,6 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
 
         return myView;
-    }
-
-    public void setInformation(ProfileDTO dto){
-        name.setText(dto.getProfileUsername());
-        bday.setText(dto.getProfileDateBorn());
-        spinner.setPrompt(dto.getProfileGender());
-        email.setText(dto.getProfileEmail());
-        password.setText(dto.getProfilePassword());name.setText(dto.getProfileUsername());
-        bday.setText(dto.getProfileDateBorn());
-        spinner.setPrompt(dto.getProfileGender());
-        email.setText(dto.getProfileEmail());
-        password.setText(dto.getProfilePassword());
     }
 
     @Override
