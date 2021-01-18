@@ -24,7 +24,7 @@ Animation animation;
     public void replaceFragment (Fragment fragment){
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0); //POP kan være 0
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped){ //fragment not in back stack, create it.
@@ -47,12 +47,11 @@ Animation animation;
         }
     }
 
-   /* private static final String BACK_STACK_ROOT_TAG = "root_fragment";
-    public void resetBackStack() {
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction();
-        manager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-    }*/
 
+//    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+//    public void readyBackStack(Fragment fragment, FragmentManager fragmentManager) {
+//        FragmentTransaction ft = fragmentManager.beginTransaction();
+//        fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
+//    }
 }

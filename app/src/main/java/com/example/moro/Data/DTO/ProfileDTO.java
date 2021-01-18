@@ -13,14 +13,16 @@ public class ProfileDTO {
     ArrayList<EventDTO> profileFavourites;
 
 
-    public ProfileDTO (String username, String email, String gender, String password, String dateborn, ArrayList<EventDTO> favourites) {
+    public ProfileDTO (String username, String email, String gender, String dateborn, ArrayList<EventDTO> favourites) {
         this.profileUsername = username;
         this.profileEmail = email;
         this.profileGender = gender;
-        this.profilePassword = password;
+        //this.profilePassword = password;
         this.profileDateBorn = dateborn;
         this.profileFavourites = favourites;
     }
+
+    public ProfileDTO(){}
 
 
     public String getProfileUsername() {

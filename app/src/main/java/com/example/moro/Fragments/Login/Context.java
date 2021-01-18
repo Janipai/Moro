@@ -18,13 +18,13 @@ public class Context {
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
     protected ProfileDTO profileDTO = new ProfileDTO("Brormand", "brormand@brormand.com", "genderfluid", "sejereje123", "04/20/1969", favorites);
-    boolean login = true;
+    boolean login = false;
 
     public static Context getInstance() {
         return ctx;
     }
 
-    private Context() {
+    /*private Context() {
         //Logik - find ud af om vi er logget ind
         if (!login)
             state = new NotLoginState();
@@ -32,6 +32,7 @@ public class Context {
             state = new LoginState();
 
     }
+    */
 
     public States getState() {
         return state;
