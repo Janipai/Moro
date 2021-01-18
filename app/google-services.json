@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "856468981790",
+    "project_id": "moro-bf8ae",
+    "storage_bucket": "moro-bf8ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856468981790:android:deb70cb0ee11250b02460f",
+        "android_client_info": {
+          "package_name": "com.example.moro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "856468981790-hrr2bcn9kdmhor17cc1d5uf22olnh1rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDixTnuFvI5T5wRxofNmuem12O9JutBYug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "856468981790-hrr2bcn9kdmhor17cc1d5uf22olnh1rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

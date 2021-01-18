@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ProfileDAO {
     // Forbindelsen til databasen
-    Connection con = Connection.getInstance();
 
     // Definer final strings til kommunikation til databasen
     private final String profileUsername = "user";

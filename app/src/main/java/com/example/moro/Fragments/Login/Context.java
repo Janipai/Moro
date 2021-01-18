@@ -21,7 +21,9 @@ public class Context {
     boolean login = false;
 
     public static Context getInstance() {
-        return ctx;
+        if (ctx != null)
+            return ctx;
+        return ctx = new Context();
     }
 
     private Context() {

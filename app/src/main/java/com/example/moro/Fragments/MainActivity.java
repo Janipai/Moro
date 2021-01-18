@@ -20,24 +20,29 @@ import android.widget.SearchView;
 import com.example.moro.BuildConfig;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
+import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.Fragments.EventHandler.EventFragment;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.FavouritesFragment;
 import com.example.moro.Fragments.Login.LoginFragment;
+import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.MyProfile;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.EnumMap;
-
 import io.sentry.android.core.SentryAndroid;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    FirebaseAuth mAuth;
     Context ctx = Context.getInstance();
     ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
 
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         activity = this;
         bottomNav = findViewById(R.id.bottom_navigation);
+        mAuth = FirebaseAuth.getInstance();
 
         /* Sentry Error tracking initialization */
         SentryAndroid.init(this, options -> {
@@ -132,6 +138,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        Context context = Context.getInstance();
+        if (currentUser == null)
+            context.setStates(new NotLoginState());
+        else {
+            context.setStates(new LoginState());
+        }
+        Connection con = Connection.getInstance();
+        con.getAll();
     }
 
     public void replaceFragment(Fragment fragment) {
