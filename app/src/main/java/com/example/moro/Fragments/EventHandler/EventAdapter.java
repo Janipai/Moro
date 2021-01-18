@@ -80,13 +80,19 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.tv_title.setText(itemsToAdapt.get(position).getTitle());
         holder.tv_afstand.setText(itemsToAdapt.get(position).getDistance());
         holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTimeframe());
+        holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
 
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
-                favouriteEventList.add(itemsToAdapt.get(position));
+                if (favouriteEventList.contains(itemsToAdapt.get(position))){
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
+                    favouriteEventList.remove(itemsToAdapt.get(position));
+                }else{
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                    favouriteEventList.add(itemsToAdapt.get(position));
+                }
             }
         });
 
