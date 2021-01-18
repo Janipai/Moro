@@ -24,11 +24,9 @@ import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.ArrayList;
 import io.sentry.android.core.SentryAndroid;
@@ -153,11 +151,12 @@ public class MainActivity extends AppCompatActivity {
         if (currentUser == null){
             Log.d(TAG, "onStart: no user logged in");
             context.setState(new NotLoginState());
+            getEvents();
         }
         else {
             Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
             context.setState(new LoginState());
-            dao.findUser(mAuth.getUid(), this);
+            dao.findUserInit(mAuth.getUid(), this);
             //favouritesEvents =
         }
     }
