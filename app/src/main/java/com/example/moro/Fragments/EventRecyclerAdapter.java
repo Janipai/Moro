@@ -74,7 +74,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ctx.getState().equals(new NotLoginState())){
+                if (ctx.isLogin()){
                     ctx.favouritFragment( ((AppCompatActivity) mContext).getSupportFragmentManager());
                 }else{
                     if (favouriteEventList.contains(eventDTOS.get(position))){
