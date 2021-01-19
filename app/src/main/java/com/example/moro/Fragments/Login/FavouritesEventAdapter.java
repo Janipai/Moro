@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.MainActivity;
@@ -46,9 +47,6 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         this.recall = recall;
     }
 
-    public void updateViewType () {
-    }
-
     @NonNull
     @Override
     public FavouritesEventAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -62,30 +60,28 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
             view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
             return new FavouritesEventAdapter.MyViewHolder(view);
         }
-//        else if (viewTypeSelected == ViewType.VIEW_TYPE_LOCATION) {
-//            skal bruges til lokation
-//        }
         return null;
     }
 
     @Override
-    public void onBindViewHolder(FavouritesEventAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, int position) {
 
         holder.tv_date.setText(myData.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
-        holder.tv_title.setText(myData.get(position).getTitle());
-        holder.tv_afstand.setText(myData.get(position).getDistance());
-        holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
-        holder.addToRemove.setImageResource(R.drawable.ic_minus);
-        holder.addToRemove.setColorFilter(Color.argb(255, 255, 255, 255));
+        //holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
+        holder.tv_title.setText(myData.get(position).getName());
+        holder.tv_afstand.setText(myData.get(position).getAddress());
+        holder.tv_tidsrum.setText(myData.get(position).getTime());
+        holder.addToRemove.setImageResource(R.drawable.ic_baseline_remove_box);
         holder.infoBar.setBackgroundColor(Color.parseColor("#01362F"));
 
         holder.addToRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                holder.addToRemove.setImageResource(R.drawable.ic_baseline_add_box_24);
                 myData.remove(myData.get(position));
+                new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
+                recall.updateRecyclerView();
             }
         });
 
@@ -97,7 +93,6 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }
         });
-
     }
 
     @Override
@@ -115,7 +110,6 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         CardView cardView;
         ImageView addToRemove;
         RelativeLayout infoBar;
-
 
         public MyViewHolder(View itemView) {
             super(itemView);

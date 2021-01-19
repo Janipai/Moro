@@ -7,11 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
-
-public class AboutUsFragment extends Fragment {
+/**
+ * @author Mikkel Johansen s175194
+ */
+public class AboutUsFragment extends CustomFragment {
 
     public AboutUsFragment() {
         // Required empty public constructor
@@ -28,6 +32,13 @@ public class AboutUsFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_about_us, container, false);
 
         TextView aboutUsTxt = v.findViewById(R.id.aboutText);
+        Button catchUs = v.findViewById(R.id.menu_catchushere);
+        catchUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new ContactFragment());
+            }
+        });
         aboutUsTxt.setText("Vi er MORO. \n" +
                 "\n" +
                 "Otte unge kvinder, der er fyldt med passion, gåpåmod og skabertrang! Vi kommer fra vidt forskellige steder i landet og har vidt forskellige baggrunde, men er gået sammen om et fælles projekt - et projekt vi kalder MORO.\n" +
@@ -45,9 +56,7 @@ public class AboutUsFragment extends Fragment {
                 "\n" +
                 "Vi ønsker at udbrede brugen af kulturlivet blandt unge og inspirere unge til at udvide deres kulturelle horisont. Det behøver ikke at vælte budgettet at leve et oplevelsesrigt og kulturelt liv, og man behøver ikke på forhånd have stort kendskab til kunst, kultur og musik. \n" +
                 "\n" +
-                "Vi elsker at få oplevelser sammen om kulturen, og det ønsker vi at udbrede. Med MORO skal vi opleve kulturen sammen og at styrke diversiteten i kulturen. \n" +
-                "\n" +
-                "Fang os på [kontakt os-siden]\n");
+                "Vi elsker at få oplevelser sammen om kulturen, og det ønsker vi at udbrede. Med MORO skal vi opleve kulturen sammen og at styrke diversiteten i kulturen.");
 
         return v;
     }

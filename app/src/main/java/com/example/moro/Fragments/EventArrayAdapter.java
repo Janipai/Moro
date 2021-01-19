@@ -29,10 +29,10 @@
 //    @Override
 //    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 //
-//        String title = getItem(position).getTitle();
-//        String distance = getItem(position).getDistance();
+//        String title = getItem(position).getName();
+//        String distance = getItem(position).getAddress();
 //        String date = getItem(position).getDate();
-//        String timeframe = getItem(position).getTimeframe();
+//        String timeframe = getItem(position).getTime();
 //        int image = getItem(position).getImage();
 //
 //        EventDTO event = new EventDTO(title, distance, date, timeframe, image);

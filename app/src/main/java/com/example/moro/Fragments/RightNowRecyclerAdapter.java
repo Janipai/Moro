@@ -10,10 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,16 +40,28 @@ public class RightNowRecyclerAdapter extends RecyclerView.Adapter<RightNowRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-       holder.eventTitle.setText(eventDTOS.get(position).getTitle());
-       holder.eventTimeframe.setText(eventDTOS.get(position).getTimeframe());
+       holder.eventTitle.setText(eventDTOS.get(position).getName());
+       holder.eventTimeframe.setText(eventDTOS.get(position).getTime());
        holder.eventDate.setText(eventDTOS.get(position).getDate());
-       holder.background.setImageResource(eventDTOS.get(position).getImage());
+       //holder.background.setImageResource(eventDTOS.get(position).getImage());
+
+        if(eventDTOS.get(position).getImage() != null && !eventDTOS.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(eventDTOS.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.background);
+        } else {
+            holder.background.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.bruh));
+        }
 
        holder.background.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Log.d(TAG, "Clicked on " + eventDTOS.get(position).getTitle());
-               Toast.makeText(mContext, eventDTOS.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+               Log.d(TAG, "Clicked on " + eventDTOS.get(position).getName());
+               Toast.makeText(mContext, eventDTOS.get(position).getName(), Toast.LENGTH_SHORT).show();
            }
        });
     }

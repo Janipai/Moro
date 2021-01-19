@@ -31,6 +31,7 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
     EditText nameProfile, bdayProfile, emailProfile, passwordProfile;
     Spinner spinner;
     FirebaseUser user;
+    Fragment fragment = null;
 
     OpretFragment e = this;
 
@@ -77,7 +78,6 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = null;
         switch (v.getId()){
             case R.id.buttonOpretLogin:
                 fragment = new MyProfile();
@@ -85,10 +85,13 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
                 break;
             case R.id.alleredeProfil:
                 fragment = new LoginFragment();
+                done();
                 break;
         }
-        replaceFragment(fragment);
+    }
 
+    public void done(){
+        replaceFragment(fragment);
     }
 
     private void signUp() {
@@ -98,21 +101,22 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success");
                         user = mAuth.getCurrentUser();
+                        ProfileDTO dto = new ProfileDTO(nameProfile.getText().toString(),
+                                emailProfile.getText().toString(),
+                                spinner.getSelectedItem().toString(),
+                                bdayProfile.getText().toString(),
+                                new ArrayList<>()
+                        );
+                        ProfileDAO dao = new ProfileDAO();
                         Context.getInstance().setState(new LoginState());
+                        dao.createUser(mAuth.getUid(), dto, this);
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.getException());
                         Toast.makeText(e.getContext(), "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
                     }
-                    ProfileDTO dto = new ProfileDTO(nameProfile.getText().toString(),
-                            emailProfile.getText().toString(),
-                            spinner.getSelectedItem().toString(),
-                            bdayProfile.getText().toString(),
-                            new ArrayList<>()
-                    );
-                    ProfileDAO dao = new ProfileDAO();
-                    dao.createUser(mAuth.getUid(), dto);
                 });
     }
 }

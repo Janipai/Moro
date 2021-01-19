@@ -1,6 +1,5 @@
 package com.example.moro.Fragments;
 
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.moro.BuildConfig;
-import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.MikkelEventDTO;
@@ -33,15 +34,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+
 import io.sentry.android.core.SentryAndroid;
+
+import static androidx.lifecycle.Lifecycle.State.STARTED;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    FirebaseAuth mAuth;
+    public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
-    ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
-    ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    public static ProfileDTO userProfile;
+    public static ArrayList<EventDTO> favouritesEvents;
+    ArrayList<EventDTO> events;
+    EventDTO selectedEvent;
     SharedPreferences prefs;
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
@@ -54,14 +59,32 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
-    public void setEvents(ArrayList<MikkelEventDTO> list) {
+    public ArrayList<EventDTO> getAllEvents() {
+        return events;
+    }
+    public void updateFav(){
+        favouritesEvents = userProfile.getProfileFavourites();
+    }
+    public void setEvents(ArrayList<EventDTO> list) {
+        System.out.println(list.size());
         events = list;
     }
-    public ProfileDTO getUserProfile(){
+
+    public void setOneEvent(EventDTO data){
+        System.out.println(data.getName() + " " + data.getAddress());
+        selectedEvent = data;
+    }
+
+    public EventDTO getOneEvent(){
+        System.out.println("GetoneEvent " + selectedEvent.getName() + " " + selectedEvent.getAddress());
+        return selectedEvent;
+    }
+
+    public static ProfileDTO getUserProfile() {
         return userProfile;
     }
 
-    public void setUserProfile(ProfileDTO profile){
+    public void setUserProfile(ProfileDTO profile) {
         userProfile = profile;
     }
 
@@ -75,12 +98,11 @@ public class MainActivity extends AppCompatActivity {
         if(firstStart)
             startUpDialog();
         activity = this;
-        bottomNav = findViewById(R.id.bottom_navigation);
 
-
-        mAuth = FirebaseAuth.getInstance();
-
-        /* Sentry Error tracking initialization */
+         /**
+         *  Sentry Error tracking initialization
+         * @author Mads H.
+         */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
             options.setBeforeSend(((event, hint) -> {
@@ -98,44 +120,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Sets support for the navigation bar and top toolbar */
+        /**
+         * Sets support for the navigation bar and top toolbar
+         * @author Mads H.
+         */
         bottomNav = findViewById(R.id.bottom_navigation);
         topNav = findViewById(R.id.top_navigation_toolbar);
         setSupportActionBar(topNav);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         topNav.setNavigationIcon(null);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setCustomView(R.layout.toptoolbar);
+
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.bot_nav_home:
-                    selectedFragment = new HomeFragment();
-                    break;
+                    replaceFragment(new HomeFragment());
+                    return true;
                 case R.id.bot_nav_events:
-                    selectedFragment = new EventFragment();
-                    break;
+                    replaceFragment(new EventFragment());
+                    return true;
                 case R.id.bot_nav_favorite:
                     //henvises til login fragment, hvis ikke man er logget in
                     ctx.favouritFragment(getSupportFragmentManager());
-                    break;
+                    return true;
                 case R.id.bot_nav_menu:
-                    selectedFragment = new BurgerMenuFragment();
-                    break;
+                    replaceFragment(new BurgerMenuFragment());
+                    return true;
+                default:
+                    return true;
             }
-            if (selectedFragment == null)
-                return true;
-
-            replaceFragment(selectedFragment);
-
-            return true;
         });
-
     }
 
-    /* Sets the menu for top nav to the custom search menu*/
+     /** @author Mads H
+     * Sets the menu for top nav to the custom search menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
@@ -152,6 +172,19 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * @author Mikkel Johansen s175194
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -159,12 +192,12 @@ public class MainActivity extends AppCompatActivity {
         //mAuth.signOut();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Context context = Context.getInstance();
-        if (currentUser == null){
+        if (currentUser == null) {
             Log.d(TAG, "onStart: no user logged in");
             context.setState(new NotLoginState());
+            favouritesEvents = new ArrayList<>();
             getEvents();
-        }
-        else {
+        } else {
             Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
             context.setState(new LoginState());
             dao.findUserInit(mAuth.getUid(), this);
@@ -172,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /** @author Mads H, Shania H */
     public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
@@ -179,16 +213,32 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped) { //fragment not in back stack, create it.
+
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right);
+
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
     }
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void getEvents(){
-        Connection con = Connection.getInstance();
-        con.getAll(this);
+        EventDAO con = EventDAO.getInstance();
+        if(mAuth.getCurrentUser() != null)
+            favouritesEvents = userProfile.getProfileFavourites();
+        if (favouritesEvents == null)
+            favouritesEvents = new ArrayList<>();
+        con.getAllEvents(this);
     }
-    public void initializingDone(){
+    /**
+     * @author Mikkel Johansen s175194
+     */
+    public void initializingDone() {
         replaceFragment(new HomeFragment());
     }
     private void startUpDialog() {
