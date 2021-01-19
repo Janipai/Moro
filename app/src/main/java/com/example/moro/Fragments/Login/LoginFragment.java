@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.facebook.AccessToken;
@@ -33,7 +34,6 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
@@ -125,8 +125,10 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
 
     private void updateUI(FirebaseUser user) {
         if(user != null){
-            fragment = new MyProfile();
-            replaceFragment(fragment, getActivity().getSupportFragmentManager());
+            //fragment = new MyProfile();
+            ctx.setState(new LoginState());
+            replaceFragment(new MyProfile());
+            //replaceFragment(fragment, getActivity().getSupportFragmentManager());
         }else{
             Toast.makeText(this.getContext(), "Login for at fortsætte", Toast.LENGTH_SHORT).show();
         }
