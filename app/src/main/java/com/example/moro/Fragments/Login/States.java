@@ -2,10 +2,6 @@ package com.example.moro.Fragments.Login;
 
 import androidx.fragment.app.FragmentManager;
 
-import com.example.moro.Data.DTO.EventDTO;
-
-import java.util.ArrayList;
-
 /**
  * @author s195477, Shania Hau
  */

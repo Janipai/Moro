@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,16 +38,16 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        holder.eventTitle.setText(eventDTOS.get(position).getTitle());
-        holder.eventTimeframe.setText(eventDTOS.get(position).getTimeframe());
+        holder.eventTitle.setText(eventDTOS.get(position).getName());
+        holder.eventTimeframe.setText(eventDTOS.get(position).getTime());
         holder.eventDate.setText(eventDTOS.get(position).getDate());
-        holder.background.setImageResource(eventDTOS.get(position).getImage());
-        holder.eventDistance.setText(eventDTOS.get(position).getDistance());
+        //holder.background.setImageResource(eventDTOS.get(position).getImage());
+        holder.eventDistance.setText(eventDTOS.get(position).getAddress());
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Clicked on " + eventDTOS.get(position).getTitle());
-                Toast.makeText(mContext, eventDTOS.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Clicked on " + eventDTOS.get(position).getName());
+                Toast.makeText(mContext, eventDTOS.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }

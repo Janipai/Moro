@@ -2,13 +2,9 @@ package com.example.moro.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,12 +41,12 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-        createEvents();
-
+        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
         createRightNowEvents();
 
         eventListRecyclerView = (RecyclerView) view.findViewById(R.id.eventlistview);
         rightNowrecyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerview);
+
         SnapHelper snapper = new LinearSnapHelper();
         snapper.attachToRecyclerView(rightNowrecyclerView);
         initRecyclerViews();
@@ -65,10 +61,10 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
 
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", R.drawable.resutnat));
-        rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", R.drawable.buffet));
-        rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", R.drawable.fashionshow));
-        rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", R.drawable.john));
+        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", "Jan", "Jan", "Jan","Jan"));
+        rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", "Jan", "Jan", "Jan","Jan"));
+        rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", "Jan", "Jan", "Jan","Jan"));
+        rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", "Jan", "Jan", "Jan","Jan"));
 
     }
 
@@ -89,7 +85,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
     }
 
-    public void createEvents() {
+/*    public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
         EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);
         EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
@@ -109,7 +105,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         testEvents.add(event7);
         testEvents.add(event8);
 
-    }
+    }*/
 
     @Override
     public void onClick(View v) {

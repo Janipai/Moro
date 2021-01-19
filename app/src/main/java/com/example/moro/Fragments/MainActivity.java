@@ -18,7 +18,6 @@ import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Context ctx = Context.getInstance();
     public static ProfileDTO userProfile;
     ArrayList<EventDTO> favouritesEvents;
-    ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    ArrayList<EventDTO> events;
 
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
@@ -53,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
+    public ArrayList<EventDTO> getAllEvents() {
+        return events;
+    }
     public void updateFav(){
         favouritesEvents = userProfile.getProfileFavourites();
     }
-    public void setEvents(ArrayList<MikkelEventDTO> list) {
+    public void setEvents(ArrayList<EventDTO> list) {
+        System.out.println(list.size());
         events = list;
     }
 
@@ -183,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
-        favouritesEvents = userProfile.getProfileFavourites();
+        if(mAuth.getCurrentUser() != null)
+            favouritesEvents = userProfile.getProfileFavourites();
         if (favouritesEvents == null)
             favouritesEvents = new ArrayList<>();
         con.getAllEvents(this);

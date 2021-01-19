@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 

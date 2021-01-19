@@ -2,9 +2,6 @@ package com.example.moro.Fragments.Login;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,16 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.moro.Data.DAO.ProfileDAO;
-import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
 
 
 public class MyProfile extends CustomFragment implements AdapterView.OnItemSelectedListener {

@@ -68,10 +68,10 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
 
         holder.tv_date.setText(myData.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
-        holder.tv_title.setText(myData.get(position).getTitle());
-        holder.tv_afstand.setText(myData.get(position).getDistance());
-        holder.tv_tidsrum.setText(myData.get(position).getTimeframe());
+        //holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
+        holder.tv_title.setText(myData.get(position).getName());
+        holder.tv_afstand.setText(myData.get(position).getAddress());
+        holder.tv_tidsrum.setText(myData.get(position).getTime());
         holder.addToRemove.setImageResource(R.drawable.ic_baseline_remove_box);
         holder.infoBar.setBackgroundColor(Color.parseColor("#01362F"));
 
