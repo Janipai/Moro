@@ -22,14 +22,14 @@ public class EventDescFragment extends Fragment {
 
     EventDTO specificEvent;
     ImageView imageIV;
-    TextView descTV, dateTV, timeTV, priceTV;
+    TextView titleTV, descTV, dateTV, timeTV, priceTV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_eventbeskrivelse, container,false);
         specificEvent = ((MainActivity)this.getActivity()).getOneEvent();
 
-        TextView titleTV = (TextView) view.findViewById(R.id.EB_Overskrift);
+        titleTV = view.findViewById(R.id.EB_Overskrift);
         descTV = view.findViewById(R.id.EB_beskrivelse);
         dateTV = view.findViewById(R.id.EB_dato);
         timeTV = view.findViewById(R.id.EB_tidspunkt);
@@ -40,9 +40,9 @@ public class EventDescFragment extends Fragment {
 
         titleTV.setText(specificEvent.getName());
         descTV.setText(specificEvent.getInfo());
-        dateTV.setText(specificEvent.getDate() + Calendar.getInstance().get(Calendar.YEAR));
+        dateTV.setText(specificEvent.getDate() + "." + Calendar.getInstance().get(Calendar.YEAR));
         timeTV.setText(specificEvent.getTime());
-        priceTV.setText(specificEvent.getPrice() + System.getProperty("line.separator") + "PRIS PÅ BILLET");
+        priceTV.setText(specificEvent.getPrice() + "\n" + "PRIS PÅ BILLET");
 
         Picasso.get()
                 .load(specificEvent.getImage())

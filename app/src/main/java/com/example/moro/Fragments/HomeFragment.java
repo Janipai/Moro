@@ -62,10 +62,14 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
         Random rand = new Random();
+        int i = 0;
 
-        for (int i = 0; i < 4; i++) {
+        while(i < 4) {
             int randomIndex = rand.nextInt(testEvents.size());
-            rightNowTestEvents.add(testEvents.get(randomIndex));
+            if(!rightNowTestEvents.contains(randomIndex)) {
+                rightNowTestEvents.add(testEvents.get(randomIndex));
+                i++;
+            }
         }
 
   /*
