@@ -33,6 +33,8 @@ import java.util.ArrayList;
 
 import io.sentry.android.core.SentryAndroid;
 
+import static androidx.lifecycle.Lifecycle.State.STARTED;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -150,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     /**

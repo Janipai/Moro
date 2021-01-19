@@ -1,21 +1,21 @@
 package com.example.moro;
 
-import android.app.Activity;
+import android.content.Intent;
 
 import com.example.moro.Fragments.MainActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
-import org.robolectric.res.android.AConfiguration;
+import org.robolectric.Shadows;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
+//@RunWith(JUnit4.class)
 @RunWith(RobolectricTestRunner.class)
-
 public class MainActivityTest {
     private MainActivity activity;
 
@@ -37,4 +37,5 @@ public class MainActivityTest {
     public void shouldHaveHomeFragment() throws Exception {
         assertNotNull(activity.getSupportFragmentManager().findFragmentById(R.id.homeFragment));
     }
+
 }
