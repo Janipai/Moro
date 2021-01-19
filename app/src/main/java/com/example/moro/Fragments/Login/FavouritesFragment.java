@@ -57,7 +57,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        favouritesEvents = MainActivity.favouritesEvents;
+        favouritesEvents = ((MainActivity)this.getActivity()).getFavouritesEvents();;
 
         FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), favouritesEvents, FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
         recyclerView.setAdapter(myAdapter);

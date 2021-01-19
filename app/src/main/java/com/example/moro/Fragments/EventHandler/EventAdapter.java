@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DAO.ProfileDAO;
@@ -78,11 +79,20 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.tv_afstand.setText(itemsToAdapt.get(position).getAddress());
         holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTime());
 
-        /* Har udkommenteret fordi den crasher appen. Alt for mange billeder i et recyclerview tror jeg?
-        Men er et library som kan vise billeder baseret på URL
-        Picasso.get()
-                .load(itemsToAdapt.get(position).getImage())
-                .into(holder.iv_imageEvent);*/
+       /*  Har udkommenteret fordi den crasher appen. Alt for mange billeder i et recyclerview tror jeg?
+        Men er et library som kan vise billeder baseret på URL*/
+        if(itemsToAdapt.get(position).getImage() != null && !itemsToAdapt.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(itemsToAdapt.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.iv_imageEvent);
+        } else {
+            holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
+        }
+
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
