@@ -36,15 +36,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
     private List<EventDTO> favouriteEventList;
+
     private ViewType viewType;
 
 
-    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, List<EventDTO> favouriteEventList, ViewType viewTypeSelected) {
+    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
         this.myContext = myContext;
         this.itemsToAdapt = myData;
         this.viewType = viewTypeSelected;
         itemsToAdaptComplete = new ArrayList<>(myData);
-        this.favouriteEventList = favouriteEventList;
     }
 
     public void updateViewType() {
@@ -87,8 +87,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
-                favouriteEventList.add(itemsToAdapt.get(position));
+                if (favouriteEventList.contains(itemsToAdapt.get(position))){
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
+                    favouriteEventList.remove(itemsToAdapt.get(position));
+                }else{
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                    favouriteEventList.add(itemsToAdapt.get(position));
+                }
                 new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
             }
         });
