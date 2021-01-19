@@ -1,32 +1,42 @@
-    package com.example.moro.Fragments.BurgerMenu;
+package com.example.moro.Fragments.BurgerMenu;
 
-    import android.os.Bundle;
-    import android.view.LayoutInflater;
-    import android.view.View;
-    import android.view.ViewGroup;
-    import android.widget.AdapterView;
-    import android.widget.ArrayAdapter;
-    import android.widget.Button;
-    import android.widget.EditText;
-    import android.widget.Spinner;
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-    import androidx.annotation.Nullable;
-    import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-    import com.example.moro.R;
+import com.example.moro.Data.DTO.TipDTO;
+import com.example.moro.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-    import org.json.JSONException;
-    import org.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    import java.util.ArrayList;
-    import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Calendar;
 
-
-    /**
-     * @author Mikkel Johansen s175194
-     */
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class TipFragment extends Fragment implements View.OnFocusChangeListener {
+    private static final String TAG = "TipFragment";
     AdapterView.OnItemSelectedListener dateListener;
+    TipFragment activity = this;
     EditText eventName;
     EditText eventWhere;
     EditText eventWhat;
@@ -79,15 +89,22 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String temp = parent.getItemAtPosition(position).toString();
 
-                switch (view.getId()){
-                    case R.id.datePicker : day = temp; break;
-                    case R.id.monthPicker : month = temp; break;
-                    case R.id.yearPicker : year = temp; break;
+                switch (view.getId()) {
+                    case R.id.datePicker:
+                        day = temp;
+                        break;
+                    case R.id.monthPicker:
+                        month = temp;
+                        break;
+                    case R.id.yearPicker:
+                        year = temp;
+                        break;
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         };
 
         //Creating the adapters for my spinners
@@ -109,15 +126,22 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject json = new JSONObject();
-                try {
-                    json.put("name", eventName);
-                    json.put("where", eventWhere);
-                    json.put("link", eventLink);
-                    json.put("about", about);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                TipDTO tip = new TipDTO(name, where, about, link, day + "-" + month + "-" + year);
+                FirebaseFirestore.getInstance().collection("Tips").add(tip).addOnSuccessListener(documentReference -> {
+                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    Toast.makeText(activity.getContext(), "Tak for tippet!", Toast.LENGTH_SHORT).show();
+                    eventName.getText().clear();
+                    eventLink.getText().clear();
+                    eventWhat.getText().clear();
+                    eventWhere.getText().clear();
+                    dateSpinner.setSelection(0);
+                    monthSpinner.setSelection(0);
+                    yearSpinner.setSelection(0);
+                })
+                        .addOnFailureListener(e -> {
+                            Log.w(TAG, "Error while uploading tip", e);
+                            Toast.makeText(activity.getContext(), "Noget gik galt prøv igen senere", Toast.LENGTH_SHORT).show();
+                        });
             }
         });
 
@@ -130,10 +154,18 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
         if (hasFocus)
             return;
         switch (v.getId()) {
-            case R.id.eventName : name = eventName.getText().toString(); break;
-            case R.id.eventWhere : where = eventWhere.getText().toString(); break;
-            case R.id.eventWhat : about = eventWhat.getText().toString(); break;
-            case R.id.eventLink : link = eventLink.getText().toString(); break;
+            case R.id.eventName:
+                name = eventName.getText().toString();
+                break;
+            case R.id.eventWhere:
+                where = eventWhere.getText().toString();
+                break;
+            case R.id.eventWhat:
+                about = eventWhat.getText().toString();
+                break;
+            case R.id.eventLink:
+                link = eventLink.getText().toString();
+                break;
         }
     }
 }
