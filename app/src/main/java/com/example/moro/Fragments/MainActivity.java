@@ -1,5 +1,6 @@
 package com.example.moro.Fragments;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar topNav;
     SearchView searchView;
     MenuItem searchItem;
+    boolean isLoaded = false;
     boolean RUNSONPHONE = Build.PRODUCT.contains("sdk"); //|| Build.MODEL.contains("Emulator");
 
     public ArrayList<EventDTO> getFavouritesEvents() {
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        replaceFragment(new HomeFragment());
 
         activity = this;
 
@@ -225,5 +229,10 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }
+        isLoaded = true;
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
     }
 }
