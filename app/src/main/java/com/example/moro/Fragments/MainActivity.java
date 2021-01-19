@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
     public static ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents;
+    public static ArrayList<EventDTO> favouritesEvents;
     ArrayList<EventDTO> events;
 
     public static MainActivity activity;
