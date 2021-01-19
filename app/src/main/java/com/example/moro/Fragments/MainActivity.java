@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static ProfileDTO userProfile;
     public static ArrayList<EventDTO> favouritesEvents;
     ArrayList<EventDTO> events;
+    EventDTO selectedEvent;
 
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
@@ -61,6 +62,16 @@ public class MainActivity extends AppCompatActivity {
     public void setEvents(ArrayList<EventDTO> list) {
         System.out.println(list.size());
         events = list;
+    }
+
+    public void setOneEvent(EventDTO data){
+        System.out.println(data.getName() + " " + data.getAddress());
+        selectedEvent = data;
+    }
+
+    public EventDTO getOneEvent(){
+        System.out.println("GetoneEvent " + selectedEvent.getName() + " " + selectedEvent.getAddress());
+        return selectedEvent;
     }
 
     public static ProfileDTO getUserProfile() {
