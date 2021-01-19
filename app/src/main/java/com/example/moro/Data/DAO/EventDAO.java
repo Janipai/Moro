@@ -44,9 +44,10 @@ public class EventDAO {
                             Log.d(TAG, document.getId() + " => " + document.getData());
                             events.add(document.toObject(MikkelEventDTO.class));
                             Log.d(TAG, String.valueOf(events.size()));
-                            activity.setEvents(events);
-                            activity.initializingDone();
+
                         }
+                        activity.setEvents(events);
+                        activity.initializingDone();
 
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
