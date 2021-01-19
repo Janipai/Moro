@@ -39,10 +39,9 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
+        initEvents();
         createRightNowEvents();
 
         eventListRecyclerView = (RecyclerView) view.findViewById(R.id.eventlistview);
@@ -74,6 +73,10 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", "Jan", "Jan", "Jan","Jan"));
 */
+    }
+
+    private void initEvents() {
+        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
     }
 
     private void initRecyclerViews() {
