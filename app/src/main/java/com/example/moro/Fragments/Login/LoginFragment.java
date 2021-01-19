@@ -3,6 +3,7 @@ package com.example.moro.Fragments.Login;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,9 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEvent;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -59,22 +63,27 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         gli = myView.findViewById(R.id.giIV);
         emailLogin = myView.findViewById(R.id.emailLogin);
         passwordLogin = myView.findViewById(R.id.passwordLogin);
+        loginButton = myView.findViewById(R.id.login_button);
 
         bL.setOnClickListener(this);
         bOP.setOnClickListener(this);
         gli.setOnClickListener(this);
 
 
+        // The following facebook code is made with the help of https://www.youtube.com/channel/UCYLAirIEMMXtWOECuZAtjqQ
+
+
         FacebookSdk.sdkInitialize(this.getContext());
 
-
+        //Initializing firebase
         mAuth = FirebaseAuth.getInstance();
 
         // Initialize Facebook Login button
         mCallbackManager = CallbackManager.Factory.create();
-        loginButton = myView.findViewById(R.id.login_button);
         loginButton.setReadPermissions("email", "public_profile");
+        loginButton.setFragment(this);
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
@@ -93,6 +102,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 // ...
             }
         });
+
         return myView;
     }
 
@@ -107,8 +117,9 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener((Executor) this, task -> {
-                     if (task.isSuccessful()) {
+                .addOnCompleteListener(getActivity(), task -> {
+
+                    if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
                         FirebaseUser user = mAuth.getCurrentUser();
@@ -116,12 +127,12 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
                         updateUI(null);
                     }
                 });
     }
+
 
     private void updateUI(FirebaseUser user) {
         if(user != null){
@@ -174,8 +185,8 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 fragment = new OpretFragment();
                 done();
                 break;
-            case R.id.giIV:
-                //Log in med google
+            case R.id.login_button:
+
                 break;
             default:
                 break;

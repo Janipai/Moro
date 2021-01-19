@@ -36,7 +36,7 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_min_profil, container, false);
-        dto = ((MainActivity)this.getActivity()).getUserProfile();
+        dto = MainActivity.getUserProfile();
         spinner = myView.findViewById(R.id.minProfilSpinner);
 
         name = myView.findViewById(R.id.minProfilNavn);
