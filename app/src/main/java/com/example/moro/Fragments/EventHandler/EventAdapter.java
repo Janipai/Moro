@@ -30,8 +30,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     }
 
     private android.content.Context myContext;
-    public FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
+    private InfoAdapterInterface adapterInterface;
     /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
@@ -40,11 +39,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     private ViewType viewType;
 
 
-    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
+    public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected, InfoAdapterInterface adapterInterface) {
         this.myContext = myContext;
         this.itemsToAdapt = myData;
         this.viewType = viewTypeSelected;
         itemsToAdaptComplete = new ArrayList<>(myData);
+        this.adapterInterface = adapterInterface;
     }
 
     public void updateViewType() {
@@ -112,9 +112,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                adapterInterface.onItemClicked(itemsToAdapt.get(position).getName(), itemsToAdapt.get(position).getDate());
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 EventDescFragment fragment = new EventDescFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
             }
         });
     }
@@ -194,5 +195,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             cardView = (CardView) itemView.findViewById(R.id.cardview);
             addToFavourites = (ImageView) itemView.findViewById(R.id.add);
         }
+    }
+
+    public interface InfoAdapterInterface{
+        void onItemClicked(String title, String date);
     }
 }
