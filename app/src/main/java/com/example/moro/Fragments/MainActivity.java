@@ -23,6 +23,7 @@ import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
+import com.example.moro.Fragments.Intro.IntroFragmentContainer;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.NotLoginState;
@@ -68,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        prefs = getSharedPreferences("prefs", android.content.Context.MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("FS", true);
+        // firstStart = true; // To test the intro if needed
+        if(firstStart)
+            startUpDialog();
         activity = this;
         bottomNav = findViewById(R.id.bottom_navigation);
 
@@ -186,6 +191,28 @@ public class MainActivity extends AppCompatActivity {
     public void initializingDone(){
         replaceFragment(new HomeFragment());
     }
-
+    private void startUpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Velkommen til MORO")
+                .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
+                .setNegativeButton("Nej tak!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton("Ja tak!", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+        SharedPreferences preferences = getSharedPreferences("prefs" , android.content.Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("FS", false);
+        editor.apply();
+    }
 
 }

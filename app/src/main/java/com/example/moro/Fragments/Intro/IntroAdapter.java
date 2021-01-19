@@ -25,11 +25,11 @@ public class IntroAdapter extends FragmentPagerAdapter {
             default:
                 return null;
         }
-        return null;
+
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return 3;
     }
 }

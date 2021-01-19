@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Intro.IntroFragmentHolder">
+    tools:context=".Fragments.Intro.IntroFragmentContainer">
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_height="match_parent"
+        android:id="@+id/introViewPager"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         />
-
 
 </FrameLayout>

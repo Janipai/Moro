@@ -24,6 +24,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bekawestberg.loopinglayout.library.LoopingLayoutManager;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.Intro.IntroFragmentContainer;
 import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
@@ -38,7 +39,6 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     ViewPager viewPager;
     RecyclerView eventListRecyclerView;
     RecyclerView rightNowrecyclerView;
-    SharedPreferences prefs;
     View view;
 
     Button vibeCheck;
@@ -48,7 +48,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        view = inflater.inflate(R.layout.fragment_home,container,false);
 
         createEvents();
         createRightNowEvents();
@@ -63,11 +63,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         vibeCheck = view.findViewById(R.id.eventTxt);
         vibeCheck.setOnClickListener(this);
 
-        prefs = getActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE);
-        boolean firstStart = prefs.getBoolean("FS", true);
 
-        if(firstStart)
-            startUpDialog();
         return view;
     }
 
@@ -126,28 +122,6 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 //        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
     }
 
-    private void startUpDialog() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle("Velkommen til MORO")
-                .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
-                .setNegativeButton("Nej tak!", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setPositiveButton("Ja tak!", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        //Start rundvisning
-                    }
-                })
-                .create().show();
-        SharedPreferences preferences = getActivity().getSharedPreferences("prefs" , Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("FS", false);
-        editor.apply();
-    }
+
 
 }
