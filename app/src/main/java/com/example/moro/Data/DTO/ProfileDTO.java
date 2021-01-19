@@ -8,7 +8,6 @@ public class ProfileDTO {
     String profileUsername;
     String profileEmail;
     String profileGender;
-    String profilePassword;
     String profileDateBorn;
     ArrayList<EventDTO> profileFavourites;
 
@@ -17,7 +16,6 @@ public class ProfileDTO {
         this.profileUsername = username;
         this.profileEmail = email;
         this.profileGender = gender;
-        //this.profilePassword = password;
         this.profileDateBorn = dateborn;
         this.profileFavourites = favourites;
     }
@@ -46,14 +44,6 @@ public class ProfileDTO {
 
     public void setProfileGender(String profileGender) {
         this.profileGender = profileGender;
-    }
-
-    public String getProfilePassword() {
-        return profilePassword;
-    }
-
-    public void setProfilePassword(String profilePassword) {
-        this.profilePassword = profilePassword;
     }
 
     public String getProfileDateBorn() {

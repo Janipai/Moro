@@ -22,7 +22,9 @@
     import java.util.Calendar;
 
 
-
+    /**
+     * @author Mikkel Johansen s175194
+     */
 public class TipFragment extends Fragment implements View.OnFocusChangeListener {
     AdapterView.OnItemSelectedListener dateListener;
     EditText eventName;

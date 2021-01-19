@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.moro.R;
-
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class AboutUsFragment extends Fragment {
 
     public AboutUsFragment() {

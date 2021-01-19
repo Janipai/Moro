@@ -11,15 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.Login.Context;
-import com.example.moro.Fragments.Login.FavouritesFragment;
-import com.example.moro.Fragments.Login.LoginFragment;
-import com.example.moro.Fragments.Login.MyProfile;
-import com.example.moro.Fragments.Login.NotLoginState;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,18 +30,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     }
 
     private android.content.Context myContext;
+    public FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
+    private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
 
     private ViewType viewType;
-
-    public EventAdapter(android.content.Context myContext, List<EventDTO> myData) {
-        this.myContext = myContext;
-        this.itemsToAdapt = myData;
-    }
 
 
     public EventAdapter(android.content.Context myContext, List<EventDTO> myData, ViewType viewTypeSelected) {
@@ -78,16 +75,36 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
         holder.tv_date.setText(itemsToAdapt.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.iv_imageEvent.setImageResource(itemsToAdapt.get(position).getImage());
-        holder.tv_title.setText(itemsToAdapt.get(position).getTitle());
-        holder.tv_afstand.setText(itemsToAdapt.get(position).getDistance());
-        holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTimeframe());
+        holder.tv_title.setText(itemsToAdapt.get(position).getName());
+        holder.tv_afstand.setText(itemsToAdapt.get(position).getAddress());
+        holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTime());
+
+       /*  Har udkommenteret fordi den crasher appen. Alt for mange billeder i et recyclerview tror jeg?
+        Men er et library som kan vise billeder baseret på URL*/
+        if(itemsToAdapt.get(position).getImage() != null && !itemsToAdapt.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(itemsToAdapt.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.iv_imageEvent);
+        } else {
+            holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
+        }
 
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemsToAdapt.add(itemsToAdapt.get(position));
+                if (favouriteEventList.contains(itemsToAdapt.get(position))){
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
+                    favouriteEventList.remove(itemsToAdapt.get(position));
+                }else{
+                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                    favouriteEventList.add(itemsToAdapt.get(position));
+                }
+                new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
             }
         });
 
@@ -133,7 +150,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 /* Searches through all of the events to check for matching characters */
                 for (EventDTO item : itemsToAdaptComplete) {
-                    if (item.getTitle().toLowerCase().contains(filterPattern)) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }

@@ -41,10 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="PROFILBILLEDE"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/minProfilPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/minProfilEmail" />
 
         <TextView
             android:id="@+id/textView16"
@@ -67,31 +67,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/textView18"
-            android:layout_width="84dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="68dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/minprofil_button_style"
-            android:paddingLeft="5dp"
-            android:text="DINE VIBES"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.977"
-            app:layout_constraintStart_toEndOf="@+id/minProfilTextPB"
-            app:layout_constraintTop_toBottomOf="@+id/minProfilVis" />
-
-        <Button
-            android:id="@+id/minProfilVis"
-            android:layout_width="72dp"
-            android:layout_height="50dp"
-            android:background="@drawable/minprofil_button_style"
-            android:text="VIS"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="@+id/minProfilPassword"
-            app:layout_constraintTop_toTopOf="@+id/minProfilPassword" />
-
-        <TextView
             android:id="@+id/changeProfileInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,14 +79,16 @@
 
         <EditText
             android:id="@+id/minProfilNavn"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/minprofil_button_style"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/minProfilTextView" />
 
@@ -130,29 +107,18 @@
 
         <EditText
             android:id="@+id/minProfilEmail"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/minprofil_button_style"
             android:ems="10"
             android:inputType="textPersonName"
             android:paddingLeft="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/minProfilFoeds" />
-
-        <EditText
-            android:id="@+id/minProfilPassword"
-            android:layout_width="370dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/minprofil_button_style"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/minProfilEmail" />
 
         <Spinner
             android:id="@+id/minProfilSpinner"
@@ -165,11 +131,21 @@
             app:layout_constraintTop_toBottomOf="@+id/minProfilNavn" />
 
         <Button
+            android:id="@+id/deleteMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#C34E4E"
+            android:text="Slet profil"
+            app:layout_constraintBottom_toTopOf="@+id/logoutProfil"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
             android:id="@+id/logoutProfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="#C34E4E"
             android:text="Logout"
             app:layout_constraintBottom_toBottomOf="parent"

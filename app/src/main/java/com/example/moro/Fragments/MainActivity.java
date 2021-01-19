@@ -6,17 +6,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.moro.BuildConfig;
-import com.example.moro.Data.ADatabaseCon.Connection;
+import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -29,15 +30,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+
 import io.sentry.android.core.SentryAndroid;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    FirebaseAuth mAuth;
+    public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
-    ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents = new ArrayList<>();
-    ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    public static ProfileDTO userProfile;
+    public static ArrayList<EventDTO> favouritesEvents;
+    ArrayList<EventDTO> events;
+
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
@@ -49,14 +52,22 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
-    public void setEvents(ArrayList<MikkelEventDTO> list) {
+    public ArrayList<EventDTO> getAllEvents() {
+        return events;
+    }
+    public void updateFav(){
+        favouritesEvents = userProfile.getProfileFavourites();
+    }
+    public void setEvents(ArrayList<EventDTO> list) {
+        System.out.println(list.size());
         events = list;
     }
-    public ProfileDTO getUserProfile(){
+
+    public static ProfileDTO getUserProfile() {
         return userProfile;
     }
 
-    public void setUserProfile(ProfileDTO profile){
+    public void setUserProfile(ProfileDTO profile) {
         userProfile = profile;
     }
 
@@ -66,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activity = this;
-        mAuth = FirebaseAuth.getInstance();
 
          /**
          *  Sentry Error tracking initialization
@@ -141,6 +151,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    /**
+     * @author Mikkel Johansen s175194
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -148,12 +162,12 @@ public class MainActivity extends AppCompatActivity {
         //mAuth.signOut();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Context context = Context.getInstance();
-        if (currentUser == null){
+        if (currentUser == null) {
             Log.d(TAG, "onStart: no user logged in");
             context.setState(new NotLoginState());
+            favouritesEvents = new ArrayList<>();
             getEvents();
-        }
-        else {
+        } else {
             Log.d(TAG, "onStart: " + currentUser.getUid() + " is logged in");
             context.setState(new LoginState());
             dao.findUserInit(mAuth.getUid(), this);
@@ -166,18 +180,34 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0); //POP kan være 0
 
+        FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped) { //fragment not in back stack, create it.
-            FragmentTransaction ft = manager.beginTransaction();
+
+            ft.setCustomAnimations(R.anim.enter_right_to_left,
+                    R.anim.exit_right_to_left,
+                    R.anim.enter_left_to_right,
+                    R.anim.exit_left_to_right);
+
             ft.replace(R.id.main_fragment_container, fragment);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
     }
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void getEvents(){
-        Connection con = Connection.getInstance();
-        con.getAll(this);
+        EventDAO con = EventDAO.getInstance();
+        if(mAuth.getCurrentUser() != null)
+            favouritesEvents = userProfile.getProfileFavourites();
+        if (favouritesEvents == null)
+            favouritesEvents = new ArrayList<>();
+        con.getAllEvents(this);
     }
-    public void initializingDone(){
+    /**
+     * @author Mikkel Johansen s175194
+     */
+    public void initializingDone() {
         replaceFragment(new HomeFragment());
     }
 }

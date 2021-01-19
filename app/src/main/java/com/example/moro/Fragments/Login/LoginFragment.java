@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Fragments.CustomFragment;
+import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.facebook.AccessToken;
@@ -33,7 +34,6 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
@@ -96,43 +96,47 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         return myView;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
 
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                .addOnCompleteListener((Executor) this, task -> {
+                     if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithCredential:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        Toast.makeText(LoginFragment.this.getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                        updateUI(null);
                     }
                 });
     }
 
-
-
-
     private void updateUI(FirebaseUser user) {
         if(user != null){
-            fragment = new MyProfile();
-            replaceFragment(fragment);
+            //fragment = new MyProfile();
+            ctx.setState(new LoginState());
+            replaceFragment(new MyProfile());
+            //replaceFragment(fragment, getActivity().getSupportFragmentManager());
         }else{
-            Toast.makeText(this.getContext(), "", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.getContext(), "Login for at fortsætte", Toast.LENGTH_SHORT).show();
         }
     }
 
+    /**
+     * @author Mikkel Johansen s175194
+     */
     private void SignIn(){
         mAuth.signInWithEmailAndPassword(emailLogin.getText().toString(), passwordLogin.getText().toString())
                 .addOnCompleteListener(e.getActivity(), new OnCompleteListener<AuthResult>() {
@@ -152,11 +156,13 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                             Toast.makeText(e.getContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
     }
+
+
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -175,6 +181,9 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
     }
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void loginSucces(String uid){
         new ProfileDAO().findUserSign(uid,this);
     }
