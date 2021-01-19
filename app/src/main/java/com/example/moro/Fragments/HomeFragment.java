@@ -114,7 +114,6 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         replaceFragment(new HvornaarFragment());
-//        ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HvornaarFragment()).addToBackStack(null).commit();
     }
 
 }

@@ -49,6 +49,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     MenuItem searchItem;
     SearchView searchView;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,6 +86,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         return view;
     }
 
+    /** @author Mads H.
+     * Recycler view layout switching
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
@@ -104,9 +108,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     HvornaarFragment hvornaar = new HvornaarFragment();
     public void showEventsBasedOnVibeCheck(String date, TextView choosenHvadNaarList, TextView choosenHvorList){
         //this.hvornaar.showSetDate() = date;
-
     }
 
+    /** @author Mads H. */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
