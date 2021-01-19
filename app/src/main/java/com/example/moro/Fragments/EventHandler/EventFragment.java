@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.moro.Data.DTO.EventDTO;
@@ -35,6 +36,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
     private EventAdapter eventAdapter;
+    long adapterType;
     View view;
     private ImageButton listView;
     private ImageButton gridView;
@@ -166,8 +168,19 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
             if(title.equals(allEvents.get(i).getName()) && date.equals(allEvents.get(i).getDate()))
                 ((MainActivity)this.getActivity()).setOneEvent(allEvents.get(i));
         }
-
     }
+
+    public long testingLayoutInRecycler() {
+        final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            adapterType = 1;
+        }
+        else if (layoutManager instanceof LinearLayoutManager) {
+            adapterType = 2;
+        }
+        return adapterType;
+    }
+
     EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
         @Override
         public void onItemClicked(String title, String date) {

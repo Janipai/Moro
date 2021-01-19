@@ -15,7 +15,7 @@ public class Context {
     private static final Context ctx = new Context();
     protected ArrayList<EventDTO> favorites = new ArrayList<>();
     //fake data for nu
-    boolean login = true;
+    boolean login = false;
 
     public static Context getInstance() {
         return ctx;
@@ -46,6 +46,7 @@ public class Context {
     public void profilePressed(FragmentManager fragmentManager) {
         state.profilePressed(this, fragmentManager);
     }
+
 
     public boolean isLogin() {
         return login;

@@ -8,6 +8,7 @@ import androidx.test.espresso.Espresso;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
+import androidx.test.filters.MediumTest;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -24,6 +25,7 @@ import static androidx.fragment.app.testing.FragmentScenario.launch;
 import static androidx.fragment.app.testing.FragmentScenario.launchInContainer;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.swipeDown;
 import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -32,17 +34,23 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * Android test for Main Activity and the HomeFragment asscosiated.
+ * Mainly small tests focusing on the recyclers views.
+ *
+ * @note Thread.Sleep is used to make sure the home fragment
+ * has attached itself to the main activity.
+ *
+ * @author Mads Hansen s195456
+ */
+
 @RunWith(AndroidJUnit4ClassRunner.class)
-@LargeTest
-public class MainActivityTest {
+@MediumTest
+public class MainActivityHomeTest {
 
     /* Builds activity before running tests */
     @Rule
     public ActivityScenarioRule<MainActivity> ruleActivity = new ActivityScenarioRule<>(MainActivity.class);
-
-    @Before
-    public void init() {
-    }
 
     @Test
     public void shouldNotBeNull() {
@@ -51,8 +59,6 @@ public class MainActivityTest {
 
     @Test
     public void shouldHaveHomeFragment() throws Exception {
-//        ActivityScenario<MainActivity> act = ruleActivity.getScenario();
-        // Have to sleep to ensure the fragment have been attached
         Thread.sleep(1000);
         onView(withId(R.id.fragment_home));
     }
@@ -66,8 +72,11 @@ public class MainActivityTest {
 
     @Test
     public void eventsRecyclerInteractable() throws Exception {
-        Thread.sleep(1000);
-        onView(withId(R.id.eventlistview)).perform(RecyclerViewActions.actionOnItemAtPosition(0,swipeDown())).perform(click());
+        Thread.sleep(3000);
+        onView(withId(R.id.eventlistview)).perform(scrollTo());
+        onView(withId(R.id.eventlistview)).perform(scrollTo());
+        onView(withId(R.id.eventlistview)).perform(RecyclerViewActions.scrollToPosition(10)).perform(click());
+//        onView(withId(R.id.eventlistview)).perform(click());
 
     }
 }
