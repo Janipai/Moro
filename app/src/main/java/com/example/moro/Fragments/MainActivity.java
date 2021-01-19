@@ -33,6 +33,8 @@ import java.util.ArrayList;
 
 import io.sentry.android.core.SentryAndroid;
 
+import static androidx.lifecycle.Lifecycle.State.STARTED;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -78,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
         activity = this;
 
-        /* Sentry Error tracking initialization */
+         /**
+         *  Sentry Error tracking initialization
+         * @author Mads H.
+         */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
             options.setBeforeSend(((event, hint) -> {
@@ -96,15 +101,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Sets support for the navigation bar and top toolbar */
+        /**
+         * Sets support for the navigation bar and top toolbar
+         * @author Mads H.
+         */
         bottomNav = findViewById(R.id.bottom_navigation);
         topNav = findViewById(R.id.top_navigation_toolbar);
         setSupportActionBar(topNav);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         topNav.setNavigationIcon(null);
-//        getSupportActionBar().setDisplayShowCustomEnabled(true);
-//        getSupportActionBar().setCustomView(R.layout.toptoolbar);
+
 
         bottomNav.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
@@ -127,7 +134,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /* Sets the menu for top nav to the custom search menu*/
+     /** @author Mads H
+     * Sets the menu for top nav to the custom search menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.top_navigation, menu);
@@ -143,6 +152,15 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     /**
@@ -168,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /** @author Mads H, Shania H */
     public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();

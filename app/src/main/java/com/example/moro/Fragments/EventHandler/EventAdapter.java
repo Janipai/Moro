@@ -37,7 +37,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
     private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
-
     private ViewType viewType;
 
 
@@ -51,7 +50,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public void updateViewType() {
     }
 
-    /* Method used to determine what viewholder the user wants (What type of recycler view is shown - Grid, list and so on.) */
+    /** @author Mads H.
+     * Method used to determine what viewholder the user wants (What type of recycler view is shown - Grid, list and so on.)
+     **/
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -171,10 +172,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     };
     /* End of filtering */
 
-//    @Override
-//    public int getItemViewType(int position) {
-//        return this.viewTypeSelected.ordinal();
-//    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
