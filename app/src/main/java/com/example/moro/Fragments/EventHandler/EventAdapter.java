@@ -42,7 +42,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
     private List<EventDTO> itemsToAdaptComplete;
-    private List<EventDTO> favouriteEventList;
+    private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
 
     private ViewType viewType;
 
