@@ -1,5 +1,7 @@
 package com.example.moro.Data.DTO;
-
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class TipDTO {
     String name;
     String where;
