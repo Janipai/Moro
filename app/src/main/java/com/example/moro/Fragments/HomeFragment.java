@@ -20,6 +20,7 @@ import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class HomeFragment extends CustomFragment implements View.OnClickListener{
@@ -60,12 +61,19 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
+        Random rand = new Random();
 
+        for (int i = 0; i < 4; i++) {
+            int randomIndex = rand.nextInt(testEvents.size());
+            rightNowTestEvents.add(testEvents.get(randomIndex));
+        }
+
+  /*
         rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", "Jan", "Jan", "Jan","Jan"));
-
+*/
     }
 
     private void initRecyclerViews() {

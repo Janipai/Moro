@@ -10,10 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,18 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         holder.eventDate.setText(eventDTOS.get(position).getDate());
         //holder.background.setImageResource(eventDTOS.get(position).getImage());
         holder.eventDistance.setText(eventDTOS.get(position).getAddress());
+
+        if(eventDTOS.get(position).getImage() != null && !eventDTOS.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(eventDTOS.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.background);
+        } else {
+            holder.background.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.untitled));
+        }
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
