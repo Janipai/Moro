@@ -134,6 +134,9 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    /**
+     * @author Mikkel Johansen s175194
+     */
     private void SignIn(){
         mAuth.signInWithEmailAndPassword(emailLogin.getText().toString(), passwordLogin.getText().toString())
                 .addOnCompleteListener(e.getActivity(), new OnCompleteListener<AuthResult>() {
@@ -178,6 +181,9 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
     }
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void loginSucces(String uid){
         new ProfileDAO().findUserSign(uid,this);
     }

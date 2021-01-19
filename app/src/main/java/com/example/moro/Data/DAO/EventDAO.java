@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class EventDAO {
     private static final String TAG = "Connectivity";
     private ArrayList<MikkelEventDTO> events = new ArrayList<>();
