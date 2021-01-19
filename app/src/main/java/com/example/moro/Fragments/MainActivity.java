@@ -1,6 +1,5 @@
 package com.example.moro.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +18,6 @@ import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -40,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
     public static ProfileDTO userProfile;
-    public static ArrayList<EventDTO> favouritesEvents;
-    public static ArrayList<MikkelEventDTO> events = new ArrayList<>();
+    ArrayList<EventDTO> favouritesEvents;
+    ArrayList<EventDTO> events;
 
-    public MainActivity activity;
+    public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
     Toolbar topNav;
@@ -54,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<EventDTO> getFavouritesEvents() {
         return favouritesEvents;
     }
+    public ArrayList<EventDTO> getAllEvents() {
+        return events;
+    }
     public void updateFav(){
         favouritesEvents = userProfile.getProfileFavourites();
     }
-    public void setEvents(ArrayList<MikkelEventDTO> list) {
+    public void setEvents(ArrayList<EventDTO> list) {
+        System.out.println(list.size());
         events = list;
     }
 
@@ -189,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
-        if (mAuth.getCurrentUser() != null)
+        if(mAuth.getCurrentUser() != null)
             favouritesEvents = userProfile.getProfileFavourites();
         if (favouritesEvents == null)
             favouritesEvents = new ArrayList<>();

@@ -2,10 +2,7 @@ package com.example.moro.Fragments.EventHandler;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,19 +15,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.CustomFragment;
-import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.MainActivity;
-import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import com.example.moro.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -57,8 +49,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
 //        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
+        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
 
-        createEvents();
+        //createEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
         listView.setOnClickListener(this);
@@ -139,7 +132,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         });
     }
 
-    public void createEvents() {
+    /*public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
         EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
         EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
@@ -158,8 +151,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         testEvents.add(event6);
         testEvents.add(event7);
         testEvents.add(event8);
-
-    }
+    }*/
 
     public void updateButtonImg(View v) {
         if (v.getId() == R.id.rigthNowListButton) {

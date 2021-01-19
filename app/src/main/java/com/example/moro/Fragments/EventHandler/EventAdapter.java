@@ -1,7 +1,5 @@
 package com.example.moro.Fragments.EventHandler;
 
-import android.app.Activity;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,19 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Fragments.Login.Context;
-import com.example.moro.Fragments.Login.FavouritesFragment;
-import com.example.moro.Fragments.Login.LoginFragment;
-import com.example.moro.Fragments.Login.MyProfile;
-import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,10 +75,23 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
         holder.tv_date.setText(itemsToAdapt.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.iv_imageEvent.setImageResource(itemsToAdapt.get(position).getImage());
-        holder.tv_title.setText(itemsToAdapt.get(position).getTitle());
-        holder.tv_afstand.setText(itemsToAdapt.get(position).getDistance());
-        holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTimeframe());
+        holder.tv_title.setText(itemsToAdapt.get(position).getName());
+        holder.tv_afstand.setText(itemsToAdapt.get(position).getAddress());
+        holder.tv_tidsrum.setText(itemsToAdapt.get(position).getTime());
+
+       /*  Har udkommenteret fordi den crasher appen. Alt for mange billeder i et recyclerview tror jeg?
+        Men er et library som kan vise billeder baseret på URL*/
+        if(itemsToAdapt.get(position).getImage() != null && !itemsToAdapt.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(itemsToAdapt.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.iv_imageEvent);
+        } else {
+            holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
+        }
 
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +150,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 /* Searches through all of the events to check for matching characters */
                 for (EventDTO item : itemsToAdaptComplete) {
-                    if (item.getTitle().toLowerCase().contains(filterPattern)) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
