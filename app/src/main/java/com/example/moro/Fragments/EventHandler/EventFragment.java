@@ -77,6 +77,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         return view;
     }
 
+    /** @author Mads H.
+     * Layout adapter switching
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
@@ -93,6 +96,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    /** @author Mads H. */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
@@ -153,6 +157,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         testEvents.add(event8);
     }*/
 
+    /** @author Mads H.
+     * Simple update of image resources based on what the layout the user is on
+     */
     public void updateButtonImg(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
             listView.setImageResource(R.drawable.ic_listview_filled);
@@ -164,6 +171,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    /** @author Mads H.
+     * Method to close the keyboard.
+     */
     private void closeKeyboard() {
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }

@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /** @author Mads H, Shania H */
     public void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         FragmentManager manager = getSupportFragmentManager();
