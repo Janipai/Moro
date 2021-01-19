@@ -11,7 +11,9 @@ import android.widget.Button;
 
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
-
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class BurgerMenuFragment extends CustomFragment implements View.OnClickListener {
 
     @Override

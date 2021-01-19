@@ -12,7 +12,9 @@ import android.widget.ImageView;
 
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
-
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class ContactFragment extends CustomFragment implements View.OnClickListener {
 
     @Override

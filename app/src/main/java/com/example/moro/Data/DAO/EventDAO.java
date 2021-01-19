@@ -9,6 +9,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * @author Mikkel Johansen s175194
+ */
 public class EventDAO {
     private static final String TAG = "Connectivity";
     private ArrayList<EventDTO> events = new ArrayList<>();

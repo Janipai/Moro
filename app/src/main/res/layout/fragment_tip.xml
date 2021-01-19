@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194 -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/anton"
-            android:text="Tip osa"
+            android:text="Tip os"
             android:textAllCaps="true"
             android:textColor="#000000"
             android:textSize="36sp"

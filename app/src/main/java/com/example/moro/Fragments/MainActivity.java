@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public  static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Context ctx = Context.getInstance();
     public static ProfileDTO userProfile;
-    ArrayList<EventDTO> favouritesEvents;
+    public static ArrayList<EventDTO> favouritesEvents;
     ArrayList<EventDTO> events;
 
     public static MainActivity activity;
@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * @author Mikkel Johansen s175194
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -183,7 +186,9 @@ public class MainActivity extends AppCompatActivity {
             ft.commit();
         }
     }
-
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void getEvents(){
         EventDAO con = EventDAO.getInstance();
         if(mAuth.getCurrentUser() != null)
@@ -192,7 +197,9 @@ public class MainActivity extends AppCompatActivity {
             favouritesEvents = new ArrayList<>();
         con.getAllEvents(this);
     }
-
+    /**
+     * @author Mikkel Johansen s175194
+     */
     public void initializingDone() {
         replaceFragment(new HomeFragment());
     }
