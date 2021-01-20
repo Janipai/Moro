@@ -28,13 +28,11 @@ Animation animation;
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null){ //fragment not in back stack, create it.
-
             ft.setCustomAnimations(R.anim.enter_right_to_left,
                     R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right,
                     R.anim.exit_left_to_right);
             ft.replace(R.id.main_fragment_container, fragment);
-//            ft.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit,R.anim.fragment_close_enter, R.anim.fragment_close_exit);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
@@ -55,12 +53,4 @@ Animation animation;
             ft.commit();
         }
     }
-
-
-//    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
-//    public void readyBackStack(Fragment fragment, FragmentManager fragmentManager) {
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-//    }
 }

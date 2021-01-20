@@ -12,6 +12,9 @@
     app:contentInsetStart="10dp"
     app:contentInsetEnd="10dp"
     app:logo="@drawable/ic_moro_moro"
+    app:titleMarginStart="18dp"
+    app:title="Gruppe A1"
+    app:titleTextColor="#FFFFFF"
 
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     >

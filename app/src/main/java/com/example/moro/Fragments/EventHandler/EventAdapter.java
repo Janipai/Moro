@@ -18,11 +18,13 @@ import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.google.common.base.Strings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> implements Filterable {
     public enum ViewType {
@@ -34,7 +36,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
-    private List<EventDTO> itemsToAdaptComplete;
+    private List<EventDTO> itemsToAdaptComplete = new ArrayList<>();
     private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
     private ViewType viewType;
 
@@ -43,7 +45,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         this.myContext = myContext;
         this.itemsToAdapt = myData;
         this.viewType = viewTypeSelected;
-        itemsToAdaptComplete = new ArrayList<>(myData);
+//        this.itemsToAdaptComplete = new ArrayList<>();
+        itemsToAdaptComplete.addAll(myData);
         this.adapterInterface = adapterInterface;
     }
 
@@ -149,7 +152,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
                 filteredList.addAll(itemsToAdaptComplete);
             } else {
                 /* Makes input not case sensitive */
-                String filterPattern = constraint.toString().toLowerCase().trim();
+                String filterPattern = constraint.toString().toLowerCase().trim(); // Locale.ROOT
                 /* Searches through all of the events to check for matching characters */
                 for (EventDTO item : itemsToAdaptComplete) {
                     if (item.getName().toLowerCase().contains(filterPattern)) {
