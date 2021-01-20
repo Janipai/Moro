@@ -27,7 +27,7 @@ public abstract class CustomFragment extends Fragment {
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null){ //fragment not in back stack, create it.
-
+            //@author s195477 Shania Hau
             ft.setCustomAnimations(R.anim.enter_right_to_left,
                     R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right,
