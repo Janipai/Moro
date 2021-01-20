@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DAO.ProfileDAO;
@@ -18,6 +19,7 @@ import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -67,12 +69,23 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
 
         holder.tv_date.setText(myData.get(position).getDate());
         holder.iv_imageEvent.setScaleType(ImageView.ScaleType.FIT_XY);
-        //holder.iv_imageEvent.setImageResource(myData.get(position).getImage());
         holder.tv_title.setText(myData.get(position).getName());
         holder.tv_afstand.setText(myData.get(position).getAddress());
         holder.tv_tidsrum.setText(myData.get(position).getTime());
         holder.addToRemove.setImageResource(R.drawable.ic_baseline_remove_box);
         holder.infoBar.setBackgroundColor(Color.parseColor("#01362F"));
+
+        if(myData.get(position).getImage() != null && !myData.get(position).getImage().isEmpty()){
+            Picasso.get()
+                    .load(myData.get(position).getImage())
+                    .placeholder(R.drawable.untitled)
+                    .error(R.drawable.john)
+                    .fit()
+                    .noFade()
+                    .into(holder.iv_imageEvent);
+        } else {
+            holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
+        }
 
         holder.addToRemove.setOnClickListener(new View.OnClickListener() {
             @Override
