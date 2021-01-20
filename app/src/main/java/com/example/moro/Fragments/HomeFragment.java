@@ -22,7 +22,7 @@ import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+/** @author Stefan Luxhøj */
 public class HomeFragment extends CustomFragment implements View.OnClickListener{
 
     ArrayList<EventDTO> testEvents;

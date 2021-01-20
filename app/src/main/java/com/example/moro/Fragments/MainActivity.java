@@ -1,6 +1,5 @@
 package com.example.moro.Fragments;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,12 +8,12 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
@@ -23,6 +22,7 @@ import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
+import com.example.moro.Fragments.Intro.IntroFragmentContainer;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.NotLoginState;
@@ -46,14 +46,13 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<EventDTO> favouritesEvents;
     ArrayList<EventDTO> events;
     EventDTO selectedEvent;
-
+    SharedPreferences prefs;
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
     Toolbar topNav;
     SearchView searchView;
     MenuItem searchItem;
-    boolean isLoaded = false;
     boolean RUNSONPHONE = Build.PRODUCT.contains("sdk"); //|| Build.MODEL.contains("Emulator");
 
     public ArrayList<EventDTO> getFavouritesEvents() {
@@ -92,8 +91,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        replaceFragment(new HomeFragment());
-
+        prefs = getSharedPreferences("prefs", android.content.Context.MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("FS", true);
+        // firstStart = true; // To test the intro if needed
+        if(firstStart)
+            startUpDialog();
         activity = this;
 
          /**
@@ -240,10 +242,24 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }
-        isLoaded = true;
+
     }
 
-    public boolean isLoaded() {
-        return isLoaded;
+    /** @author Stefan Luxhøj */
+    private void startUpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Velkommen til MORO")
+                .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
+                .setNegativeButton("Nej tak!", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Ja tak!", (dialog, which) -> {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
+                    dialog.dismiss();
+                })
+                .create().show();
+        SharedPreferences preferences = getSharedPreferences("prefs" , android.content.Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("FS", false);
+        editor.apply();
     }
+
 }

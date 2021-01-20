@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.graphics.Matrix;
 
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
@@ -48,10 +49,13 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
 
         TextView typeText = v.findViewById(R.id.idtype);
 
+        Matrix matrix = new Matrix();
+
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
-
+        arrowDown.setRotation(-90);
+        arrowUp.setRotation(-90);
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
