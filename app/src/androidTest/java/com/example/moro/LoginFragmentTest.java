@@ -60,6 +60,7 @@ import static org.junit.Assert.assertNotNull;
  *
  * @author Mads Hansen s195456
  */
+@RunWith(AndroidJUnit4ClassRunner.class)
 @MediumTest
 public class LoginFragmentTest {
     ActivityScenario<MainActivity> scenario;

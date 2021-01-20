@@ -48,13 +48,11 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_event,container,false);
 
-//        toolbar = view.findViewById(R.id.top_navigation_toolbar);
-//        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
 
         testEvents = ((MainActivity)this.getActivity()).getAllEvents();
+//        setTestEvents(); /* PURELY FOR TESTING PURPOSES*/
 
-        //createEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
         listView.setOnClickListener(this);
@@ -170,6 +168,17 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
+        @Override
+        public void onItemClicked(String title, String date) {
+            setOneEvent(title, date);
+        }
+
+    };
+
+
+
+    /** @author MADS H. - FOR TESTING PURPOSES */
     public long testingLayoutInRecycler() {
         final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
@@ -181,11 +190,12 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         return adapterType;
     }
 
-    EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
-        @Override
-        public void onItemClicked(String title, String date) {
-            setOneEvent(title, date);
-        }
+    public void setTestEvents() {
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+    }
 
-    };
+
+
 }
