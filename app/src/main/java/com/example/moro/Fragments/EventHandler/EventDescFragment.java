@@ -18,6 +18,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Calendar;
 
+/** @author Jacob Christensen S174130
+ **/
+
 public class EventDescFragment extends Fragment {
 
     EventDTO specificEvent;

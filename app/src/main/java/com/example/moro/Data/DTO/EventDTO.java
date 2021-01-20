@@ -1,5 +1,9 @@
 package com.example.moro.Data.DTO;
 
+/**
+ * @author Jacob Christensen S174130
+ **/
+
 public class EventDTO {
     public String name;
     public String genre;

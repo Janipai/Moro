@@ -24,6 +24,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+/** @author Jacob Christensen S174130
+ * Everything else besides the things Mads has implemented i've implemented instead
+ **/
+
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> implements Filterable {
     public enum ViewType {
         VIEW_TYPE_LIST, VIEW_TYPE_GRID, VIEW_TYPE_LOCATION
@@ -50,7 +54,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public void updateViewType() {
     }
 
-    /** @author Mads H.
+    /** @author Mads H. S195456
      * Method used to determine what viewholder the user wants (What type of recycler view is shown - Grid, list and so on.)
      **/
     @NonNull
@@ -132,7 +136,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
 
     /***
-     * @author Mads H.
+     * @author Mads H. S195456
     /* For filter search within events. Everything related to search / filtering */
     @Override
     public Filter getFilter() {

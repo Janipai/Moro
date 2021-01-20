@@ -66,13 +66,14 @@ public class MainActivity extends AppCompatActivity {
         events = list;
     }
 
+    /** @author Jacob Christensen S174130
+     * Simple get methods to access the we've received from the database
+     **/
     public void setOneEvent(EventDTO data){
-        System.out.println(data.getName() + " " + data.getAddress());
         selectedEvent = data;
     }
 
     public EventDTO getOneEvent(){
-        System.out.println("GetoneEvent " + selectedEvent.getName() + " " + selectedEvent.getAddress());
         return selectedEvent;
     }
 
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
          /**
          *  Sentry Error tracking initialization
-         * @author Mads H.
+         * @author Mads H. S195456
          */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          * Sets support for the navigation bar and top toolbar
-         * @author Mads H.
+         * @author Mads H. S195456
          */
         bottomNav = findViewById(R.id.bottom_navigation);
         topNav = findViewById(R.id.top_navigation_toolbar);
