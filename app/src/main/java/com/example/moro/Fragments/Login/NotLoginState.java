@@ -11,7 +11,7 @@ public class NotLoginState extends CustomFragment implements States {
 
     @Override
     public void profilePressed(Context context, FragmentManager fragmentManager) {
-        replaceFragment(new LoginFragment(),fragmentManager);
+        replaceFragment(new LoginFragment(), fragmentManager);
     }
 
     @Override

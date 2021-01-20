@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Context {
     private States state;
     private static final Context ctx = new Context();
-    protected ArrayList<EventDTO> favorites = new ArrayList<>();
     boolean login = false;
 
     public static Context getInstance() {

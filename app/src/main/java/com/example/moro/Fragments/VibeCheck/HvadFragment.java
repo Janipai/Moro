@@ -18,6 +18,7 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -37,7 +38,7 @@ public class HvadFragment extends CustomFragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_hvad);
 
         ButtonListAdapter myAdapter = new ButtonListAdapter(v.getContext(), Arrays.asList(hvadButtonname));
-        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(), 3));
         recyclerView.setAdapter(myAdapter);
 
 

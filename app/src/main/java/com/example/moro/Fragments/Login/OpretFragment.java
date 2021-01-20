@@ -74,6 +74,7 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String genderTxt = parent.getItemAtPosition(position).toString();
     }
+
     /**
      * @ s195485, Nikolai Kristensen
      */
@@ -83,7 +84,7 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.buttonOpretLogin:
                 fragment = new MyProfile();
                 signUp();
@@ -94,10 +95,11 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
     }
+
     /**
      * @ s175194, Mikkel Johansen
      */
-    public void done(){
+    public void done() {
         replaceFragment(fragment);
     }
 

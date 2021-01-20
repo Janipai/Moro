@@ -7,5 +7,5 @@ import androidx.fragment.app.FragmentManager;
  */
 public interface States {
     void profilePressed(Context context, FragmentManager fragmentManager);
-    void favouriteFragment (Context context, FragmentManager fragmentManager);
+    void favouriteFragment(Context context, FragmentManager fragmentManager);
 }

@@ -19,6 +19,7 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -43,7 +44,7 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_naar);
         ButtonListAdapter myAdapter = new ButtonListAdapter(v.getContext(), Arrays.asList(naarButtonname));
-        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(), 3));
         recyclerView.setAdapter(myAdapter);
 
         TextView typeText = v.findViewById(R.id.idtype);

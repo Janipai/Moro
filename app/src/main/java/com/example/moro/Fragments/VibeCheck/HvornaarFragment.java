@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -31,7 +32,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_hvornaar,container,false);
+        v = inflater.inflate(R.layout.fragment_hvornaar, container, false);
 
         test = v.findViewById(R.id.hvornaarTest);
 
@@ -45,7 +46,7 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        showSetDate(year,month,dayOfMonth);
+        showSetDate(year, month, dayOfMonth);
         //get choosen date
     }
 
