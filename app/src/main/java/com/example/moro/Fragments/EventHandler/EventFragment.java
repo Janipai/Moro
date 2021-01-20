@@ -23,12 +23,13 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class EventFragment extends CustomFragment implements View.OnClickListener{
 
-    List<EventDTO> testEvents;
+    ArrayList<EventDTO> testEvents;
     List<EventDTO> favouritesEventsList;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
@@ -71,28 +72,32 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        eventAdapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+        eventAdapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
         recyclerView.setAdapter(eventAdapter);
 
         return view;
     }
 
+    /** @author Mads H.
+     * Layout adapter switching
+     */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
-            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST);
+            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
             recyclerView.setAdapter(adapter);
         }
         else if (v.getId() == R.id.rigthNowGridButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
-            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID);
+            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_GRID, adapterInterface);
             recyclerView.setAdapter(adapter);
         }
     }
 
+    /** @author Mads H. */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
@@ -132,27 +137,9 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         });
     }
 
-    /*public void createEvents() {
-        EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00",R.drawable.bruh);
-        EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00",R.drawable.bruh);
-        EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
-        EventDTO event4 = new EventDTO("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00",R.drawable.bruh);
-        EventDTO event5 = new EventDTO("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00",R.drawable.bruh);
-        EventDTO event6 = new EventDTO("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00",R.drawable.bruh);
-        EventDTO event7 = new EventDTO("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00",R.drawable.bruh);
-        EventDTO event8 = new EventDTO("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00",R.drawable.bruh);
-
-        testEvents = new ArrayList<>();
-        testEvents.add(event1);
-        testEvents.add(event2);
-        testEvents.add(event3);
-        testEvents.add(event4);
-        testEvents.add(event5);
-        testEvents.add(event6);
-        testEvents.add(event7);
-        testEvents.add(event8);
-    }*/
-
+    /** @author Mads H.
+     * Simple update of image resources based on what the layout the user is on
+     */
     public void updateButtonImg(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
             listView.setImageResource(R.drawable.ic_listview_filled);
@@ -164,7 +151,28 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    /** @author Mads H.
+     * Method to close the keyboard.
+     */
     private void closeKeyboard() {
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
+    public void setOneEvent(String title, String date){
+        System.out.println(title + " " + date);
+        ArrayList<EventDTO> allEvents = ((MainActivity)this.getActivity()).getAllEvents();
+        System.out.println(allEvents.size());
+        for (int i = 0; i < allEvents.size(); i++) {
+            if(title.equals(allEvents.get(i).getName()) && date.equals(allEvents.get(i).getDate()))
+                ((MainActivity)this.getActivity()).setOneEvent(allEvents.get(i));
+        }
+
+    }
+    EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
+        @Override
+        public void onItemClicked(String title, String date) {
+            setOneEvent(title, date);
+        }
+
+    };
 }
