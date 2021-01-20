@@ -42,7 +42,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
+        initEvents();
         createRightNowEvents();
 
         eventListRecyclerView = (RecyclerView) view.findViewById(R.id.eventlistview);
@@ -70,12 +70,15 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         }
 
   /*
-        // Test events.
         rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", "Jan", "Jan", "Jan","Jan"));
         rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", "Jan", "Jan", "Jan","Jan"));
 */
+    }
+
+    private void initEvents() {
+        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
     }
 
     // Method so set the layoutmanager and adapters for the recyclerview on the home screen.
@@ -95,7 +98,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
 
     }
-        // Test
+        // Test method for creating events
 /*    public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
         EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);

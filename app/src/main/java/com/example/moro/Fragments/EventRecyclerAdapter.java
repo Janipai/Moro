@@ -10,14 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** @author s195467 Stefan Luxhøj */
 // Adapter for the event recommended to the user on the home screen.
@@ -26,6 +30,9 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
     private final String TAG = "RecyclerViewAdapter";
     private ArrayList<EventDTO> eventDTOS = new ArrayList<>();
     private Context mContext;
+    private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
+    com.example.moro.Fragments.Login.Context ctx = com.example.moro.Fragments.Login.Context.getInstance();
+
 
     public EventRecyclerAdapter(Context mContext, ArrayList<EventDTO> eventDTOS) {
         this.eventDTOS = eventDTOS;
@@ -67,6 +74,26 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
                 Toast.makeText(mContext, eventDTOS.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        /**
+         * @author Shania Hau
+         */
+        holder.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ctx.isLogin()){
+                    ctx.favouritFragment( ((AppCompatActivity) mContext).getSupportFragmentManager());
+                }else{
+                    if (favouriteEventList.contains(eventDTOS.get(position))){
+                        holder.add.setImageResource(R.drawable.ic_baseline_add_box_24);
+                        favouriteEventList.remove(eventDTOS.get(position));
+                    }else{
+                        holder.add.setImageResource(R.drawable.ic_baseline_remove_box);
+                        favouriteEventList.add(eventDTOS.get(position));
+                    }
+                    new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
+                }
+            }
+        });
     }
 
     @Override
@@ -82,6 +109,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         TextView eventTimeframe;
         TextView eventDate;
         TextView eventDistance;
+        ImageView add;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -90,6 +118,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
             eventTimeframe = itemView.findViewById(R.id.HomeEventView_TV_timeframe);
             eventDate = itemView.findViewById(R.id.HomeEventView_TV_date);
             eventDistance = itemView.findViewById(R.id.HomeEventView_TV_distance);
+            add = itemView.findViewById(R.id.HomeEvent_add);
 
         }
 

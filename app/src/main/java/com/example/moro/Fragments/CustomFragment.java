@@ -18,7 +18,6 @@ import com.example.moro.R;
  */
 public abstract class CustomFragment extends Fragment {
 
-Animation animation;
 
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){

@@ -18,6 +18,7 @@ import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -37,7 +38,7 @@ public class HvadFragment extends CustomFragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_hvad);
 
         ButtonListAdapter myAdapter = new ButtonListAdapter(v.getContext(), Arrays.asList(hvadButtonname));
-        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(), 3));
         recyclerView.setAdapter(myAdapter);
 
 
@@ -52,13 +53,6 @@ public class HvadFragment extends CustomFragment {
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                NaarFragment naar = new NaarFragment();
-//                if (!naar.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, naar);
-//                    transaction.commit();
-//                }
                 replaceFragment(new NaarFragment());
             }
         });
@@ -66,13 +60,6 @@ public class HvadFragment extends CustomFragment {
         arrowDown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvorFragment hvor = new HvorFragment();
-//                if (!hvor.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, hvor);
-//                    transaction.commit();
-//                }
                 replaceFragment(new HvorFragment());
             }
         });
@@ -80,18 +67,7 @@ public class HvadFragment extends CustomFragment {
         arrowUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                HvornaarFragment hvornaar = new HvornaarFragment();
-//                if (!hvornaar.isAdded()) {
-//                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                    transaction.addToBackStack(null);
-//                    transaction.replace(R.id.main_fragment_container, hvornaar);
-//                    transaction.commit();
-//                }
-//                replaceFragment(new HvornaarFragment());
-//                getActivity().getSupportFragmentManager().popBackStackImmediate();
                 getActivity().onBackPressed();
-
-
             }
         });
         return v;

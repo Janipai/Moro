@@ -25,9 +25,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
+/**
+ * @author s195477, Shania H
+ */
 public class OpretFragment extends CustomFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    Context ctx = Context.getInstance();
     EditText nameProfile, bdayProfile, emailProfile, passwordProfile;
     Spinner spinner;
     FirebaseUser user;
@@ -65,20 +67,24 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         return myView;
     }
 
+    /**
+     * @ s195485, Nikolai Kristensen
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String genderTxt = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), genderTxt, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * @ s195485, Nikolai Kristensen
+     */
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.buttonOpretLogin:
                 fragment = new MyProfile();
                 signUp();
@@ -90,10 +96,16 @@ public class OpretFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
-    public void done(){
+    /**
+     * @ s175194, Mikkel Johansen
+     */
+    public void done() {
         replaceFragment(fragment);
     }
 
+    /**
+     * @ s175194, Mikkel Johansen
+     */
     private void signUp() {
         mAuth.createUserWithEmailAndPassword(emailProfile.getText().toString(), passwordProfile.getText().toString())
                 .addOnCompleteListener(e.getActivity(), task -> {

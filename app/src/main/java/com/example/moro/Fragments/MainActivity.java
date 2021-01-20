@@ -1,6 +1,5 @@
 package com.example.moro.Fragments;
 
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,6 +36,7 @@ import java.util.ArrayList;
 
 import io.sentry.android.core.SentryAndroid;
 
+import static androidx.lifecycle.Lifecycle.State.RESUMED;
 import static androidx.lifecycle.Lifecycle.State.STARTED;
 
 public class MainActivity extends AppCompatActivity {
@@ -121,38 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 options.setEnvironment("EMULATOR");
             }
         });
-
-        /**
-         * Sets support for the navigation bar and top toolbar
-         * @author Mads H.
-         */
-        bottomNav = findViewById(R.id.bottom_navigation);
-        topNav = findViewById(R.id.top_navigation_toolbar);
-        setSupportActionBar(topNav);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        topNav.setNavigationIcon(null);
-
-
-        bottomNav.setOnNavigationItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.bot_nav_home:
-                    replaceFragment(new HomeFragment());
-                    return true;
-                case R.id.bot_nav_events:
-                    replaceFragment(new EventFragment());
-                    return true;
-                case R.id.bot_nav_favorite:
-                    //henvises til login fragment, hvis ikke man er logget in
-                    ctx.favouritFragment(getSupportFragmentManager());
-                    return true;
-                case R.id.bot_nav_menu:
-                    replaceFragment(new BurgerMenuFragment());
-                    return true;
-                default:
-                    return true;
-            }
-        });
     }
 
      /** @author Mads H
@@ -175,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /** @author Mads H.
+     * On back press not going to whitescreen from Home fragment.
+     */
     @Override
     public void onBackPressed() {
         if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
@@ -241,7 +212,40 @@ public class MainActivity extends AppCompatActivity {
      * @author Mikkel Johansen s175194
      */
     public void initializingDone() {
-        replaceFragment(new HomeFragment());
+        if (getLifecycle().getCurrentState().isAtLeast(STARTED)) {
+            replaceFragment(new HomeFragment());
+
+            if (getLifecycle().getCurrentState().isAtLeast(RESUMED)) {
+                bottomNav = findViewById(R.id.bottom_navigation);
+                topNav = findViewById(R.id.top_navigation_toolbar);
+                setSupportActionBar(topNav);
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                topNav.setNavigationIcon(null);
+
+
+                bottomNav.setOnNavigationItemSelectedListener(item -> {
+                    switch (item.getItemId()) {
+                        case R.id.bot_nav_home:
+                            replaceFragment(new HomeFragment());
+                            return true;
+                        case R.id.bot_nav_events:
+                            replaceFragment(new EventFragment());
+                            return true;
+                        case R.id.bot_nav_favorite:
+                            //henvises til login fragment, hvis ikke man er logget in
+                            ctx.favouritFragment(getSupportFragmentManager());
+                            return true;
+                        case R.id.bot_nav_menu:
+                            replaceFragment(new BurgerMenuFragment());
+                            return true;
+                        default:
+                            return true;
+                    }
+                });
+            }
+        }
+
     }
 
     /** @author s195467 Stefan Luxhøj */
