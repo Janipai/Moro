@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- @author s195467 Stefan Luxhøj -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bot_nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"
+        />
+    <item
+        android:id="@+id/bot_nav_events"
+        android:icon="@drawable/ic_baseline_event_24"
+        android:title="Events"
+        />
+    <item
+        android:id="@+id/bot_nav_favorite"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="Favorites"
+        />
+    <item
+        android:id="@+id/bot_nav_menu"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="Burger Menu"
+        />
+</menu>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".Fragments.BurgerMenu.TipFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F7F5BD">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/anton"
+            android:text="Tip os"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/eventName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/tipborder"
+            android:ems="10"
+            android:fontFamily="@font/anton"
+            android:hint="Navnet på eventet"
+            android:inputType="textPersonName"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <EditText
+            android:id="@+id/eventWhere"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/tipborder"
+            android:ems="10"
+            android:fontFamily="@font/anton"
+            android:gravity="top|start"
+            android:hint="Hvor afholdes eventet?"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <EditText
+            android:id="@+id/eventWhat"
+            android:layout_width="0dp"
+            android:layout_height="126dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/tipborder"
+            android:fontFamily="@font/anton"
+            android:gravity="top|left"
+            android:hint="Her kan du skrive en kommentar/beskrivelse af eventet."
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventWhere" />
+
+        <EditText
+            android:id="@+id/Tip_eventLink"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/tipborder"
+            android:fontFamily="@font/anton"
+            android:hint="Link til event."
+            android:paddingLeft="10dp"
+            android:password="false"
+            android:phoneNumber="false"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventWhat" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/Tip_eventLink"
+            app:layout_constraintStart_toStartOf="@+id/Tip_eventLink"
+            app:layout_constraintTop_toBottomOf="@+id/Tip_eventLink">
+
+            <Button
+                android:id="@+id/tip_submit"
+                android:layout_width="250dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginBottom="13dp"
+                android:background="#F6A31A"
+                android:fontFamily="@font/anton"
+                android:text="SEND"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/button_back"
+                app:layout_constraintEnd_toEndOf="@+id/button_back"
+                app:layout_constraintStart_toStartOf="@+id/button_back"
+                app:layout_constraintTop_toTopOf="@+id/button_back" />
+
+            <TextView
+                android:id="@+id/button_back"
+                android:layout_width="250dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/tipborder"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/eventName">
+
+            <Spinner
+                android:id="@+id/datePicker"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/tipborder"
+                android:entries="@array/date_array"
+                android:popupBackground="@drawable/tipborder"
+                android:spinnerMode="dropdown" />
+
+            <Spinner
+                android:id="@+id/monthPicker"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:background="@drawable/tipborder"
+                android:entries="@array/month_array"
+                android:popupBackground="@drawable/tipborder"
+                tools:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/yearPicker"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/tipborder"
+                android:entries="@array/year_array"
+                android:popupBackground="@drawable/tipborder"
+                tools:layout_weight="1" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

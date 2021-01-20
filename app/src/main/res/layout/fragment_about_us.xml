@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194, Shania Hau, s195477 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3CAEE"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context=".Fragments.BurgerMenu.AboutUsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/menu_catchushere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#1E1E1C"
+            android:fontFamily="@font/anton"
+            android:text="Fang os her"
+            android:textAllCaps="false"
+            android:textColor="#D3CAEE"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutText" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="om os"
+            android:textAllCaps="true"
+            android:textColor="#260023"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/aboutPicture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Picture of the squad"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:srcCompat="@drawable/the_moro_griiils"
+            tools:src="@drawable/the_moro_griiils"
+            tools:srcCompat="@drawable/the_moro_griiils" />
+
+        <TextView
+            android:id="@+id/aboutText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/anton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutPicture"
+            tools:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3CAEE"
+    tools:context=".Fragments.BurgerMenu.ContactFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/anton"
+            android:text="kontakt os"
+            android:textAllCaps="true"
+            android:textColor="#030405"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title">
+
+            <ImageButton
+                android:id="@+id/facebook_link"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:contentDescription="facebook link"
+                android:maxWidth="100dp"
+                android:maxHeight="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/download"
+                tools:src="@drawable/download" />
+
+            <ImageButton
+                android:id="@+id/instagram_link"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:contentDescription="instagram link"
+                android:maxWidth="100dp"
+                android:maxHeight="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gram"
+                tools:src="@drawable/gram" />
+
+            <ImageButton
+                android:id="@+id/linked_in_link"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:contentDescription="linked in link"
+                android:maxWidth="100dp"
+                android:maxHeight="100dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/linkedin"
+                tools:src="@drawable/linkedin" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tipButton"
+            android:layout_width="250dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="32dp"
+            android:background="#1E1123"
+            android:fontFamily="@font/anton"
+            android:text="tip os"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

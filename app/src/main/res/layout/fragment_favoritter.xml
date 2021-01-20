@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194, Shania Hau, s195477 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D7E9CF"
+    tools:context=".Fragments.EventHandler.EventFragment">
+
+    <TextView
+        android:id="@+id/favoriteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="38dp"
+        android:fontFamily="@font/anton"
+        android:text="Favoritter"
+        android:textColor="#1E1E1C"
+        android:textSize="90px" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:weightSum="10">
+
+
+        <ImageButton
+            android:id="@+id/filterButton"
+            android:layout_width="164dp"
+            android:layout_height="38dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_back"
+            android:textAlignment="center"/>
+
+
+        <ImageButton
+            android:id="@+id/favoriteListButton"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_listview_filled"
+            tools:layout_editor_absoluteX="235dp"
+            tools:layout_editor_absoluteY="60dp" />
+
+        <ImageButton
+            android:id="@+id/favoriteGridButton"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_gridview_unfilled"
+            tools:layout_editor_absoluteX="184dp"
+            tools:layout_editor_absoluteY="63dp" />
+
+
+        <ImageButton
+            android:id="@+id/favoriteLocationButton"
+            android:layout_width="43dp"
+            android:layout_height="43dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_map_unfilled"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="60dp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="120dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>
