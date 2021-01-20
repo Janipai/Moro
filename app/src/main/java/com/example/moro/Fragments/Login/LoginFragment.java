@@ -41,11 +41,11 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.concurrent.Executor;
 
 /**
- * @author s195485, Nikolai Kristensen
+ * @author Nikolai Kristensen s195485
  */
-
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
+     //Initializing variables
     private static final String TAG = "LoginFragment";
     public FirebaseAuth mAuth;
 
@@ -53,31 +53,25 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     CallbackManager mCallbackManager;
     EditText emailLogin, passwordLogin;
     Button bOP, bL;
-    ImageView gli;
     LoginButton loginButton;
-
     Context ctx = Context.getInstance();
-
     LoginFragment e = this;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View myView = inflater.inflate(R.layout.fragment_login, container, false);
+
+        //using xml elements
         bOP = myView.findViewById(R.id.buttonOpretLogin);
         bL = myView.findViewById(R.id.buttonLogin);
-        gli = myView.findViewById(R.id.giIV);
         emailLogin = myView.findViewById(R.id.emailLogin);
         passwordLogin = myView.findViewById(R.id.passwordLogin);
         loginButton = myView.findViewById(R.id.login_button);
 
         bL.setOnClickListener(this);
         bOP.setOnClickListener(this);
-        gli.setOnClickListener(this);
-
 
         // The following facebook code is made with the help of https://www.youtube.com/channel/UCYLAirIEMMXtWOECuZAtjqQ
-
-
         FacebookSdk.sdkInitialize(this.getContext());
 
         //Initializing firebase
@@ -89,6 +83,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
         loginButton.setFragment(this);
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
 
+            //If the login success, gets canceled or an error happens
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
@@ -98,32 +93,43 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
             @Override
             public void onCancel() {
                 Log.d(TAG, "facebook:onCancel");
-                // ...
+                Toast.makeText(getActivity(), "Facebook lukket ned", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
                 Log.d(TAG, "facebook:onError", error);
-                // ...
+                Toast.makeText(getActivity(), "Noget gik galt prøv igen", Toast.LENGTH_SHORT).show();
             }
         });
-
         return myView;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is already signed in and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            updateUI(currentUser);
+        }
+
+    }
+
+    //Passing results to LoginManger via CallBackManger
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d(TAG, "handleFacebookAccessToken:" + token);
-
+        //Using facebooks credential to get users account data
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(getActivity(), task -> {
-
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "signInWithCredential:success");
@@ -138,13 +144,11 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 });
     }
 
-
+    //Chances login state and chances the fragment
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            //fragment = new MyProfile();
             ctx.setState(new LoginState());
             replaceFragment(new MyProfile());
-            //replaceFragment(fragment, getActivity().getSupportFragmentManager());
         } else {
             Toast.makeText(this.getContext(), "Login for at fortsætte", Toast.LENGTH_SHORT).show();
         }
