@@ -2,7 +2,9 @@ package com.example.moro.Data.DTO;
 
 import java.util.ArrayList;
 
-
+/**
+ * @author Mikkel Johansen, s175194
+ */
 public class ProfileDTO {
 
     String profileUsername;
@@ -28,6 +30,7 @@ public class ProfileDTO {
     }
 
     public void setProfileUsername(String profileUsername) throws Exception {
+        //checks if the parameter has been given an empty string
         if (profileUsername.isEmpty())
             throw new Exception("brugernavn feltet må ikke være tomt");
 

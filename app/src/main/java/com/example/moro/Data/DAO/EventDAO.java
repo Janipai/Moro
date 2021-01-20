@@ -27,6 +27,7 @@ public class EventDAO {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    //this method retrieves all events in the db and saves it in the mainactivity
     public void getAllEvents(MainActivity activity){
         db.collection("Events")
                 .get()
@@ -38,6 +39,7 @@ public class EventDAO {
                             Log.d(TAG, String.valueOf(events.size()));
                         }
                         activity.setEvents(events);
+                        //this method is used for making the start up of the app synchronized
                         activity.initializingDone();
 
                     } else {

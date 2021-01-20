@@ -127,9 +127,11 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
             @Override
             public void onClick(View v) {
                 TipDTO tip = new TipDTO(name, where, about, link, day + "-" + month + "-" + year);
+                //tries to add the new tip to the database
                 FirebaseFirestore.getInstance().collection("Tips").add(tip).addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                     Toast.makeText(activity.getContext(), "Tak for tippet!", Toast.LENGTH_SHORT).show();
+                    //emtying out the text fields
                     eventName.getText().clear();
                     eventLink.getText().clear();
                     eventWhat.getText().clear();

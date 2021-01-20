@@ -33,6 +33,8 @@ public class AboutUsFragment extends CustomFragment {
 
         TextView aboutUsTxt = v.findViewById(R.id.aboutText);
         Button catchUs = v.findViewById(R.id.menu_catchushere);
+
+        //adds an onClick listener to our button
         catchUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

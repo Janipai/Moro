@@ -31,7 +31,6 @@ import java.util.List;
 public class EventFragment extends CustomFragment implements View.OnClickListener{
 
     ArrayList<EventDTO> testEvents;
-    List<EventDTO> favouritesEventsList;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
