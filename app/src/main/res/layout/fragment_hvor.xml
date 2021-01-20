@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- @author s195477, Shania Hau -->
+<!-- @author s195477, Shania Hau, s195467 Stefan Luxhøj -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,21 +20,24 @@
             android:fontFamily="@font/anton"
             android:text="Hvor"
             android:textSize="64sp"
+            app:layout_constraintBottom_toTopOf="@+id/hittentxt"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/hittentxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentLeft="true"
-
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/anton"
-            android:text="TYPE"
+            android:text="Steder"
             android:textSize="32sp"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="111dp"
+            app:layout_constraintTop_toBottomOf="@id/textView5"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -43,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/hittentxt"
             android:layout_centerHorizontal="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hittentxt" />
@@ -53,11 +57,12 @@
             android:layout_height="25dp"
             android:layout_above="@+id/recyclerview_hvor"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/ic_arrow_up"
-            app:layout_constraintBottom_toTopOf="@+id/recyclerview_hvor"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="#990000" />
 
         <ImageView
@@ -66,10 +71,12 @@
             android:layout_height="25dp"
             android:layout_below="@+id/recyclerview_hvor"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
             android:src="@drawable/ic_arrow_down"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_hvor"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="#990000" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

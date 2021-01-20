@@ -67,13 +67,13 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView tv;
-        RelativeLayout layout;
+        LinearLayout layout;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
             tv = (TextView) itemView.findViewById(R.id.all_textview_forhvor);
-            layout = (RelativeLayout) itemView.findViewById(R.id.linear_layout_forhvor);
+            layout = (LinearLayout) itemView.findViewById(R.id.linear_layout_forhvor);
         }
     }
 }

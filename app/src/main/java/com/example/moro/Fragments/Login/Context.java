@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public class Context {
     private States state;
     private static final Context ctx = new Context();
-    boolean login = true;
+    protected ArrayList<EventDTO> favorites = new ArrayList<>();
+    boolean login = false;
 
     public static Context getInstance() {
         return ctx;
@@ -30,6 +31,7 @@ public class Context {
     public void profilePressed(FragmentManager fragmentManager) {
         state.profilePressed(this, fragmentManager);
     }
+
 
     public boolean isLogin() {
         return login;

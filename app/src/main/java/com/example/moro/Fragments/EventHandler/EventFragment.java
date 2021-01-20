@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.moro.Data.DTO.EventDTO;
@@ -35,6 +36,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
     private EventAdapter eventAdapter;
+    long adapterType;
     View view;
     private ImageButton listView;
     private ImageButton gridView;
@@ -46,13 +48,10 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_event,container,false);
 
-//        toolbar = view.findViewById(R.id.top_navigation_toolbar);
-//        ((MainActivity)getActivity()).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
-
         testEvents = ((MainActivity)this.getActivity()).getAllEvents();
+//        setTestEvents(); /* PURELY FOR TESTING PURPOSES*/
 
-        //createEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
         listView.setOnClickListener(this);
@@ -166,8 +165,8 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
             if(title.equals(allEvents.get(i).getName()) && date.equals(allEvents.get(i).getDate()))
                 ((MainActivity)this.getActivity()).setOneEvent(allEvents.get(i));
         }
-
     }
+
     EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
         @Override
         public void onItemClicked(String title, String date) {
@@ -175,4 +174,27 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
 
     };
+
+
+
+    /** @author MADS H. - FOR TESTING PURPOSES */
+    public long testingLayoutInRecycler() {
+        final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            adapterType = 1;
+        }
+        else if (layoutManager instanceof LinearLayoutManager) {
+            adapterType = 2;
+        }
+        return adapterType;
+    }
+
+    public void setTestEvents() {
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
+    }
+
+
+
 }
