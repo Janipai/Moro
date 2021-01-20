@@ -35,7 +35,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_favoritter,container,false);
+        View v = inflater.inflate(R.layout.fragment_favoritter, container, false);
 
         listView = v.findViewById(R.id.favoriteListButton);
         listView.setOnClickListener(this);
@@ -44,20 +44,20 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         gridView.setOnClickListener(this);
 
 
-
         // Recycler view manager (den layouts bliver smidt ind i)
         recyclerView = (RecyclerView) v.findViewById(R.id.favoriteRecyclerview);
         recyclerView.setHasFixedSize(true);
         // Liste layout manager
         linearLayoutManager = new LinearLayoutManager(v.getContext());
         // Grid layout manager
-        gridLayoutManager = new GridLayoutManager(v.getContext(),2);
+        gridLayoutManager = new GridLayoutManager(v.getContext(), 2);
 
         // Sætter default view til recycleren
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        favouritesEvents = ((MainActivity)this.getActivity()).getFavouritesEvents();;
+        favouritesEvents = ((MainActivity) this.getActivity()).getFavouritesEvents();
+        ;
 
         FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), favouritesEvents, FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
         recyclerView.setAdapter(myAdapter);
@@ -72,8 +72,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
             recyclerView.setLayoutManager(linearLayoutManager);
             FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), favouritesEvents, FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
             recyclerView.setAdapter(myAdapter);
-        }
-        else if (v.getId() == R.id.favoriteGridButton) {
+        } else if (v.getId() == R.id.favoriteGridButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(gridLayoutManager);
             FavouritesEventAdapter myAdapter = new FavouritesEventAdapter(getContext(), favouritesEvents, FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST, this);
@@ -85,8 +84,7 @@ public class FavouritesFragment extends CustomFragment implements View.OnClickLi
         if (v.getId() == R.id.favoriteListButton) {
             listView.setImageResource(R.drawable.ic_listview_filled);
             gridView.setImageResource(R.drawable.ic_gridview_unfilled);
-        }
-        else if (v.getId() == R.id.favoriteGridButton) {
+        } else if (v.getId() == R.id.favoriteGridButton) {
             listView.setImageResource(R.drawable.ic_listview_unfilled);
             gridView.setImageResource(R.drawable.ic_gridview_filled);
         }

@@ -15,6 +15,7 @@ import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -35,11 +36,11 @@ public class HvorFragment extends CustomFragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_hvor, container, false);
+        View v = inflater.inflate(R.layout.fragment_hvor, container, false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_hvor);
 
         ButtonListHvorAdapter myAdapter = new ButtonListHvorAdapter(v.getContext(), Arrays.asList(hvadButtonname));
-        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(), 3));
         recyclerView.setAdapter(myAdapter);
 
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
@@ -60,7 +61,6 @@ public class HvorFragment extends CustomFragment implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
-//                replaceFragment(new HvadFragment());
             }
         });
         return v;

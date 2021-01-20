@@ -12,11 +12,6 @@ import com.example.moro.Fragments.HomeFragment;
 public class LoginState extends CustomFragment implements States {
 
     @Override
-    public void createUserPressed(Context context) {
-        replaceFragment(new HomeFragment());
-    }
-
-    @Override
     public void profilePressed(Context context, FragmentManager fragmentManager) {
         replaceFragment(new MyProfile(), fragmentManager);
     }

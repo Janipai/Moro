@@ -17,6 +17,7 @@ import com.example.moro.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -35,25 +36,25 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        view = myInflater.inflate(R.layout.gridview_item_buttons,parent,false);
+        view = myInflater.inflate(R.layout.gridview_item_buttons, parent, false);
         return new MyViewHolder(view);
     }
 
     ArrayList<TextView> choosenButtonList = new ArrayList<>();
+
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         holder.tv.setText(myButtons.get(position));
-        //holder.tv.setPadding(40,40,40,40);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (choosenButtonList.contains(holder.tv)){
+                if (choosenButtonList.contains(holder.tv)) {
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvad);
                     holder.tv.setTextColor(Color.parseColor("#FFA500"));
                     choosenButtonList.remove(holder.tv);
-                }else if (!choosenButtonList.contains(holder.tv)){
+                } else if (!choosenButtonList.contains(holder.tv)) {
                     choosenButtonList.add(holder.tv);
                     //add vibe to showEventsBasedOnVibeCheck
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvad2);
@@ -68,12 +69,12 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
         return myButtons.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
         LinearLayout layout;
 
-        public MyViewHolder( @NonNull View itemView){
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tv = (TextView) itemView.findViewById(R.id.all_textview);

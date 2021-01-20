@@ -27,14 +27,19 @@ public class ProfileDTO {
         return profileUsername;
     }
 
-    public void setProfileUsername(String profileUsername) {
+    public void setProfileUsername(String profileUsername) throws Exception {
+        if (profileUsername.isEmpty())
+            throw new Exception("brugernavn feltet må ikke være tomt");
+
         this.profileUsername = profileUsername;
     }
     public String getProfileEmail() {
         return profileEmail;
     }
 
-    public void setProfileEmail(String profileEmail) {
+    public void setProfileEmail(String profileEmail) throws Exception {
+        if (profileEmail.isEmpty())
+            throw new Exception("email feltet må ikke være tomt");
         this.profileEmail = profileEmail;
     }
 
@@ -50,7 +55,9 @@ public class ProfileDTO {
         return profileDateBorn;
     }
 
-    public void setProfileDateBorn(String profileDateBorn) {
+    public void setProfileDateBorn(String profileDateBorn) throws Exception {
+        if (profileDateBorn.isEmpty())
+            throw new Exception("fødselsdags feltet må ikke være tomt");
         this.profileDateBorn = profileDateBorn;
     }
 

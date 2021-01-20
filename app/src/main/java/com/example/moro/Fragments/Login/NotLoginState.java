@@ -10,13 +10,8 @@ import com.example.moro.Fragments.CustomFragment;
 public class NotLoginState extends CustomFragment implements States {
 
     @Override
-    public void createUserPressed(Context context) {
-        replaceFragment(new OpretFragment());
-    }
-
-    @Override
     public void profilePressed(Context context, FragmentManager fragmentManager) {
-        replaceFragment(new LoginFragment(),fragmentManager);
+        replaceFragment(new LoginFragment(), fragmentManager);
     }
 
     @Override
