@@ -96,6 +96,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
         }
 
+        /**
+         * @author s195477, Shania Hau
+         */
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override

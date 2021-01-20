@@ -109,6 +109,9 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
     }
 
+    /**
+     * @author s195477, Shania Hau
+     */
     public void editInfo(String name, String gender, String mail, String bday) {
 
         //gets the user from context
