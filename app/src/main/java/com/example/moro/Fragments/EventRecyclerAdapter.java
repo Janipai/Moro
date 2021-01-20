@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /** @author s195467 Stefan Luxhøj */
+// Adapter for the event recommended to the user on the home screen.
 public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder> {
 
     private final String TAG = "RecyclerViewAdapter";
@@ -47,6 +48,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
     }
 
     @Override
+    // Method for setting the content in the item
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.eventTitle.setText(eventDTOS.get(position).getName());
         holder.eventTimeframe.setText(eventDTOS.get(position).getTime());
@@ -99,6 +101,7 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         return eventDTOS.size();
     }
 
+    // Class for the items content.
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView background;

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 
 /** @author s195467 Stefan Luxhøj */
+
 public class IntroAdapter extends FragmentPagerAdapter {
 
 
@@ -16,6 +17,7 @@ public class IntroAdapter extends FragmentPagerAdapter {
 
 
     @Override
+    // This will get the intro fragments into the viewPAger in the IntroFragmentContainer, when the adapter is set.
     public Fragment getItem(int position) {
         switch (position) {
             case  0:

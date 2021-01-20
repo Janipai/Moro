@@ -22,7 +22,7 @@ public class IntroFragment3 extends CustomFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
       View view = inflater.inflate(R.layout.fragment_intro3, container, false);
 
       doneTV = view.findViewById(R.id.Intro3Done);
@@ -30,6 +30,8 @@ public class IntroFragment3 extends CustomFragment {
       doneTV.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
+             // When the user is done, we need to check if the user clicks on done and then replace the fragment with the home screen.
+             // We dont user replaceFragment() since we dont wanna add the intro to the backstack.
              getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeFragment()).commit();
           }
       });
