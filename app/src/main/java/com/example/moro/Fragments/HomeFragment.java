@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bekawestberg.loopinglayout.library.LoopingLayoutManager;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.EventHandler.EventAdapter;
 import com.example.moro.R;
 import com.example.moro.Fragments.VibeCheck.HvornaarFragment;
 
@@ -72,14 +73,8 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
                 i++;
             }
         }
-
-  /*
-        rightNowTestEvents.add(new EventDTO("Sovsedyp på Resturant Saltvand", "0", "01/01/2021", "12:00 - 13:00", "Jan", "Jan", "Jan","Jan"));
-        rightNowTestEvents.add(new EventDTO("Gourmet buffet", "0", "01/01/2021", "17:00 - 19:00", "Jan", "Jan", "Jan","Jan"));
-        rightNowTestEvents.add(new EventDTO("Modeshow på Reffen", "0", "01/01/2021", "12:00 - 14:00", "Jan", "Jan", "Jan","Jan"));
-        rightNowTestEvents.add(new EventDTO("John Dillermand Show", "0", "01/01/2021", "16:00 - 18:00", "Jan", "Jan", "Jan","Jan"));
-*/
     }
+
 
     private void initEvents() {
         testEvents = ((MainActivity)this.getActivity()).getAllEvents();
@@ -89,8 +84,8 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     private void initRecyclerViews() {
         LoopingLayoutManager layoutManager = new LoopingLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        RightNowRecyclerAdapter adapter = new RightNowRecyclerAdapter(getActivity(), rightNowTestEvents);
-        EventRecyclerAdapter adapter1 = new EventRecyclerAdapter(getActivity(), testEvents);
+        RightNowRecyclerAdapter adapter = new RightNowRecyclerAdapter(getActivity(), rightNowTestEvents, adapterRightNow);
+        EventRecyclerAdapter adapter1 = new EventRecyclerAdapter(getActivity(), testEvents, adapterInterface);
 
         eventListRecyclerView.setLayoutManager(layoutManager1);
         eventListRecyclerView.setAdapter(adapter1);
@@ -98,36 +93,36 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
         rightNowrecyclerView.setLayoutManager(layoutManager);
         rightNowrecyclerView.setAdapter(adapter);
-
-
-
     }
-        // Test method for creating events
-/*    public void createEvents() {
-        EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
-        EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);
-        EventDTO event3 = new EventDTO("Crowd bowling", "2 KM", "11/11/2020", "12:00 - 16:00", R.drawable.bruh);
-        EventDTO event4 = new EventDTO("Vin smagning", "3.3 KM", "13/11/2020", "18:00 - 20:00", R.drawable.bruh);
-        EventDTO event5 = new EventDTO("Kulturnat", "4 KM", "16/11/2020", "14:00 - 16:00", R.drawable.bruh);
-        EventDTO event6 = new EventDTO("Pudekamp", "1.2 KM", "09/11/2020", "12:00 - 13:00", R.drawable.bruh);
-        EventDTO event7 = new EventDTO("Nøgenløb", "2.4 KM", "1/11/2020", "14:00 - 16:00", R.drawable.bruh);
-        EventDTO event8 = new EventDTO("Mini festival", "3.6 KM", "5/11/2020", "10:00 - 06:00", R.drawable.bruh);
-
-        testEvents = new ArrayList<>();
-        testEvents.add(event1);
-        testEvents.add(event2);
-        testEvents.add(event3);
-        testEvents.add(event4);
-        testEvents.add(event5);
-        testEvents.add(event6);
-        testEvents.add(event7);
-        testEvents.add(event8);
-
-    }*/
-
     @Override
     public void onClick(View v) {
         replaceFragment(new HvornaarFragment());
     }
 
+
+    /**
+     * @author Jacob Christensen
+     */
+    public void setOneEvent(String title, String date){
+        System.out.println(title + " " + date);
+        ArrayList<EventDTO> allEvents = ((MainActivity)this.getActivity()).getAllEvents();
+        System.out.println(allEvents.size());
+        for (int i = 0; i < allEvents.size(); i++) {
+            if(title.equals(allEvents.get(i).getName()) && date.equals(allEvents.get(i).getDate()))
+                ((MainActivity)this.getActivity()).setOneEvent(allEvents.get(i));
+        }
+    }
+        EventRecyclerAdapter.InfoAdapterInterface adapterInterface = new EventRecyclerAdapter.InfoAdapterInterface() {
+            @Override
+            public void onItemClicked(String title, String date) {
+                setOneEvent(title, date);
+            }
+        };
+
+        RightNowRecyclerAdapter.InfoAdapterInterface adapterRightNow = new RightNowRecyclerAdapter.InfoAdapterInterface() {
+            @Override
+            public void onItemClicked(String title, String date) {
+                setOneEvent(title, date);
+            }
+        };
 }

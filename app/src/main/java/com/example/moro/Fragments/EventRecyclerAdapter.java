@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.EventHandler.EventDescFragment;
 import com.example.moro.Fragments.Login.NotLoginState;
 import com.example.moro.R;
 import com.squareup.picasso.Picasso;
@@ -28,15 +29,17 @@ import java.util.List;
 public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdapter.ViewHolder> {
 
     private final String TAG = "RecyclerViewAdapter";
+    private InfoAdapterInterface adapterInterface;
     private ArrayList<EventDTO> eventDTOS = new ArrayList<>();
     private Context mContext;
     private List<EventDTO> favouriteEventList = MainActivity.favouritesEvents;
     com.example.moro.Fragments.Login.Context ctx = com.example.moro.Fragments.Login.Context.getInstance();
 
 
-    public EventRecyclerAdapter(Context mContext, ArrayList<EventDTO> eventDTOS) {
+    public EventRecyclerAdapter(Context mContext, ArrayList<EventDTO> eventDTOS, InfoAdapterInterface adapterInterface) {
         this.eventDTOS = eventDTOS;
         this.mContext = mContext;
+        this.adapterInterface = adapterInterface;
     }
 
     @NonNull
@@ -53,7 +56,6 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         holder.eventTitle.setText(eventDTOS.get(position).getName());
         holder.eventTimeframe.setText(eventDTOS.get(position).getTime());
         holder.eventDate.setText(eventDTOS.get(position).getDate());
-        //holder.background.setImageResource(eventDTOS.get(position).getImage());
         holder.eventDistance.setText(eventDTOS.get(position).getAddress());
 
         if(eventDTOS.get(position).getImage() != null && !eventDTOS.get(position).getImage().isEmpty()){
@@ -67,11 +69,17 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         } else {
             holder.background.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.untitled));
         }
+
+        /**
+         * @author Jacob Christensen
+         */
         holder.background.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "Clicked on " + eventDTOS.get(position).getName());
-                Toast.makeText(mContext, eventDTOS.get(position).getName(), Toast.LENGTH_SHORT).show();
+                adapterInterface.onItemClicked(eventDTOS.get(position).getName(), eventDTOS.get(position).getDate());
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                EventDescFragment fragment = new EventDescFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, fragment).addToBackStack(null).commit();
             }
         });
         /**
@@ -123,4 +131,12 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
         }
 
     }
+
+    /**
+     * @author Jacob Christensen
+     */
+    public interface InfoAdapterInterface{
+        void onItemClicked(String title, String date);
+    }
+
 }
