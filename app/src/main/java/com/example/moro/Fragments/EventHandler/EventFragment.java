@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.SearchView;
 
 import com.example.moro.Data.DTO.EventDTO;
@@ -28,10 +27,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/** @author Jacob Christensen S174130
+ * Everything else besides the things Mads has implemented i've implemented instead
+ **/
+
+
 public class EventFragment extends CustomFragment implements View.OnClickListener{
 
     ArrayList<EventDTO> testEvents;
-    List<EventDTO> favouritesEventsList;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
@@ -76,7 +79,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         return view;
     }
 
-    /** @author Mads H.
+    /** @author Mads H. S195456
      * Layout adapter switching
      * Updates what adapter the recycler view is using.
      */
@@ -96,7 +99,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
-    /** @author Mads H. */
+    /** @author Mads H. S195456 */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu,inflater);
@@ -134,7 +137,7 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         });
     }
 
-    /** @author Mads H.
+    /** @author Mads H. S195456
      * Simple update of image resources based on what the layout the user is on
      */
     public void updateButtonImg(View v) {
@@ -148,13 +151,17 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
-    /** @author Mads H.
+    /** @author Mads H. S195456
      * Method to close the keyboard.
      */
     private void closeKeyboard() {
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
+
+    /* Instead of making a query to get one event, i chose to filter the arraylist
+    *  based of the data and name which are the most unique for each event
+    * */
     public void setOneEvent(String title, String date){
         System.out.println(title + " " + date);
         ArrayList<EventDTO> allEvents = ((MainActivity)this.getActivity()).getAllEvents();
@@ -165,6 +172,10 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
     }
 
+    /* To pass data between the adapter our fragment i've implemented an interface
+    *  which our adapters constructor takes as input
+
+     */
     EventAdapter.InfoAdapterInterface adapterInterface = new EventAdapter.InfoAdapterInterface() {
         @Override
         public void onItemClicked(String title, String date) {

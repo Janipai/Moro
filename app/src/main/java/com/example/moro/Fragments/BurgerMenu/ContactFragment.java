@@ -25,12 +25,11 @@ public class ContactFragment extends CustomFragment implements View.OnClickListe
         ImageView insta = (ImageView) view.findViewById(R.id.instagram_link);
         ImageView linkin = (ImageView) view.findViewById(R.id.linked_in_link);
         Button tipButton = (Button) view.findViewById(R.id.tipButton);
-        tipButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                replaceFragment(new TipFragment());
+
+        //adds an onClick listener to our button
+        tipButton.setOnClickListener(v -> {
+            replaceFragment(new TipFragment());
 //                ((MainActivity) getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new TipFragment()).addToBackStack(null).commit();
-            }
         });
 
         //the imageview button listeners initialized
@@ -42,6 +41,7 @@ public class ContactFragment extends CustomFragment implements View.OnClickListe
     }
 
     @Override
+    //initializes onClick listeners
     public void onClick(View v) {
         Intent browser = null;
         switch (v.getId()){

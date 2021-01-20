@@ -70,13 +70,14 @@ public class MainActivity extends AppCompatActivity {
         events = list;
     }
 
+    /** @author Jacob Christensen S174130
+     * Simple get methods to access the we've received from the database
+     **/
     public void setOneEvent(EventDTO data){
-        System.out.println(data.getName() + " " + data.getAddress());
         selectedEvent = data;
     }
 
     public EventDTO getOneEvent(){
-        System.out.println("GetoneEvent " + selectedEvent.getName() + " " + selectedEvent.getAddress());
         return selectedEvent;
     }
 
@@ -121,6 +122,38 @@ public class MainActivity extends AppCompatActivity {
                 options.setEnvironment("EMULATOR");
             }
         });
+
+        /**
+         * Sets support for the navigation bar and top toolbar
+         * @author Mads H. S195456
+         */
+        bottomNav = findViewById(R.id.bottom_navigation);
+        topNav = findViewById(R.id.top_navigation_toolbar);
+        setSupportActionBar(topNav);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        topNav.setNavigationIcon(null);
+
+
+        bottomNav.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.bot_nav_home:
+                    replaceFragment(new HomeFragment());
+                    return true;
+                case R.id.bot_nav_events:
+                    replaceFragment(new EventFragment());
+                    return true;
+                case R.id.bot_nav_favorite:
+                    //henvises til login fragment, hvis ikke man er logget in
+                    ctx.favouritFragment(getSupportFragmentManager());
+                    return true;
+                case R.id.bot_nav_menu:
+                    replaceFragment(new BurgerMenuFragment());
+                    return true;
+                default:
+                    return true;
+            }
+        });
     }
 
      /** @author Mads H
@@ -143,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    /** @author Mads H.
+    /** @author Mads H. S195456
      * On back press not going to whitescreen from Home fragment.
      */
     @Override
