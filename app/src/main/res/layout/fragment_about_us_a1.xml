@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- author Mikkel Johansen s175194, Shania Hau, s195477 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D3CAEE"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    tools:context=".Fragments.BurgerMenu.AboutUsStudiegruppeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/studiegruppeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="om os"
+            android:textAllCaps="true"
+            android:textColor="#260023"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/studiegruppePicture"
+            android:layout_width="343dp"
+            android:layout_height="282dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Picture of the squad"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studiegruppeTitle"
+            app:srcCompat="@drawable/studiegruppe"
+            tools:src="@drawable/studiegruppe"
+            tools:srcCompat="@drawable/studiegruppe" />
+
+        <TextView
+            android:id="@+id/studiegruppeText"
+            android:layout_width="363dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/anton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studiegruppePicture"
+            tools:text="MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBE- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF- MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF-  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER . MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFA MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO  MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER   MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEF MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFALER MORO ANBEFAL " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
