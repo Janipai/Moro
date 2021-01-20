@@ -42,15 +42,10 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         holder.tv.setText(myButtons.get(position));
-        //holder.tv.setPadding(40,40,40,40);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                //EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
-
                 if (choosenButtonList.contains(holder.tv)){
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvor);
                     holder.tv.setTextColor(Color.parseColor("#990000"));

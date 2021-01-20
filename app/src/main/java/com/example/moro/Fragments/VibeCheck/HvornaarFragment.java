@@ -40,7 +40,6 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
 
         dp = v.findViewById(R.id.datePicker);
 
-
         return v;
     }
 
@@ -59,6 +58,5 @@ public class HvornaarFragment extends CustomFragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         replaceFragment(new HvadFragment());
-
     }
 }

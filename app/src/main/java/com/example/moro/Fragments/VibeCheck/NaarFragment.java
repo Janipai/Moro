@@ -32,7 +32,6 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -47,11 +46,8 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
         recyclerView.setAdapter(myAdapter);
 
         TextView typeText = v.findViewById(R.id.idtype);
-
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
-
-
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override

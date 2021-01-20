@@ -40,6 +40,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.Executor;
 
+/**
+ * @author s195485, Nikolai Kristensen
+ */
+
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
     private static final String TAG = "LoginFragment";
@@ -135,12 +139,12 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
 
 
     private void updateUI(FirebaseUser user) {
-        if(user != null){
+        if (user != null) {
             //fragment = new MyProfile();
             ctx.setState(new LoginState());
             replaceFragment(new MyProfile());
             //replaceFragment(fragment, getActivity().getSupportFragmentManager());
-        }else{
+        } else {
             Toast.makeText(this.getContext(), "Login for at fortsætte", Toast.LENGTH_SHORT).show();
         }
     }
@@ -148,7 +152,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     /**
      * @author Mikkel Johansen s175194
      */
-    private void SignIn(){
+    private void SignIn() {
         mAuth.signInWithEmailAndPassword(emailLogin.getText().toString(), passwordLogin.getText().toString())
                 .addOnCompleteListener(e.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
@@ -171,15 +175,12 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 });
     }
 
-
-
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-             case R.id.buttonLogin:
-                 fragment = new MyProfile();
-                 SignIn();
+        switch (v.getId()) {
+            case R.id.buttonLogin:
+                fragment = new MyProfile();
+                SignIn();
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();
@@ -192,13 +193,15 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
                 break;
         }
     }
+
     /**
      * @author Mikkel Johansen s175194
      */
-    public void loginSucces(String uid){
-        new ProfileDAO().findUserSign(uid,this);
+    public void loginSucces(String uid) {
+        new ProfileDAO().findUserSign(uid, this);
     }
-    public void done(){
+
+    public void done() {
         replaceFragment(fragment);
     }
 }

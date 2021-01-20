@@ -44,7 +44,6 @@ public class ButtonListAdapter extends RecyclerView.Adapter<ButtonListAdapter.My
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         holder.tv.setText(myButtons.get(position));
-        //holder.tv.setPadding(40,40,40,40);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

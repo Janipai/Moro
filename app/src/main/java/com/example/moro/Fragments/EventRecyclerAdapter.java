@@ -71,6 +71,9 @@ public class EventRecyclerAdapter extends RecyclerView.Adapter<EventRecyclerAdap
                 Toast.makeText(mContext, eventDTOS.get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        /**
+         * @author Shania Hau
+         */
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
