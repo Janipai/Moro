@@ -33,7 +33,6 @@ public abstract class CustomFragment extends Fragment {
                     R.anim.enter_left_to_right,
                     R.anim.exit_left_to_right);
             ft.replace(R.id.main_fragment_container, fragment);
-//            ft.setCustomAnimations(R.anim.fragment_close_enter, R.anim.fragment_close_exit,R.anim.fragment_close_enter, R.anim.fragment_close_exit);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
@@ -54,12 +53,4 @@ public abstract class CustomFragment extends Fragment {
             ft.commit();
         }
     }
-
-
-//    private static final String BACK_STACK_ROOT_TAG = "root_fragment";
-//    public void readyBackStack(Fragment fragment, FragmentManager fragmentManager) {
-//        FragmentTransaction ft = fragmentManager.beginTransaction();
-//        fragmentManager.popBackStack(BACK_STACK_ROOT_TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//        ft.replace(R.id.main_fragment_container, new HomeFragment()).addToBackStack(BACK_STACK_ROOT_TAG).commit();
-//    }
 }
