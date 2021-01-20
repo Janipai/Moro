@@ -49,7 +49,6 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         view = inflater.inflate(R.layout.fragment_event,container,false);
 
         setHasOptionsMenu(true);
-
         testEvents = ((MainActivity)this.getActivity()).getAllEvents();
 //        setTestEvents(); /* PURELY FOR TESTING PURPOSES*/
 
