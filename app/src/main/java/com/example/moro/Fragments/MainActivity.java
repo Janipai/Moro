@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomNav = findViewById(R.id.bottom_navigation);
                 topNav = findViewById(R.id.top_navigation_toolbar);
                 setSupportActionBar(topNav);
-                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setDisplayShowTitleEnabled(true);
                 getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                 topNav.setNavigationIcon(null);
 

@@ -23,6 +23,7 @@ public class BurgerMenuFragment extends CustomFragment implements View.OnClickLi
         Button contact = (Button) view.findViewById(R.id.menu_contact);
         Button about = (Button) view.findViewById(R.id.menu_about);
 
+        //adds an onClick listener to our button
         tip.setOnClickListener(this);
         contact.setOnClickListener(this);
         about.setOnClickListener(this);
@@ -32,6 +33,7 @@ public class BurgerMenuFragment extends CustomFragment implements View.OnClickLi
     }
 
     @Override
+    //initializing our onClick methhod
     public void onClick(View v) {
         Fragment fragment = null;
         switch (v.getId()){

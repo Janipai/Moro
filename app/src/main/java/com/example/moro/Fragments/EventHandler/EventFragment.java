@@ -35,12 +35,10 @@ import java.util.List;
 public class EventFragment extends CustomFragment implements View.OnClickListener{
 
     ArrayList<EventDTO> testEvents;
-    List<EventDTO> favouritesEventsList;
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
     private LinearLayoutManager linearLayoutManager;
-    private EventAdapter eventAdapter;
-    long adapterType;
+    private EventAdapter adapter;
     View view;
     private ImageButton listView;
     private ImageButton gridView;
@@ -53,9 +51,8 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         view = inflater.inflate(R.layout.fragment_event,container,false);
 
         setHasOptionsMenu(true);
-        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
-//        setTestEvents(); /* PURELY FOR TESTING PURPOSES*/
 
+        testEvents = ((MainActivity)this.getActivity()).getAllEvents();
 
         listView = view.findViewById(R.id.rigthNowListButton);
         listView.setOnClickListener(this);
@@ -75,21 +72,23 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         recyclerView.setLayoutManager(linearLayoutManager);
 
         // Sætter adapter til recyclerviewet
-        eventAdapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
-        recyclerView.setAdapter(eventAdapter);
+        adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
+        recyclerView.setAdapter(adapter);
+
 
         return view;
     }
 
     /** @author Mads H. S195456
      * Layout adapter switching
+     * Updates what adapter the recycler view is using.
      */
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.rigthNowListButton) {
             updateButtonImg(v);
             recyclerView.setLayoutManager(linearLayoutManager);
-            EventAdapter adapter = new EventAdapter(view.getContext(),testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
+            EventAdapter adapter = new EventAdapter(view.getContext(), testEvents, EventAdapter.ViewType.VIEW_TYPE_LIST, adapterInterface);
             recyclerView.setAdapter(adapter);
         }
         else if (v.getId() == R.id.rigthNowGridButton) {
@@ -123,18 +122,16 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-//                searchView.clearFocus();
                 getActivity().getCurrentFocus().clearFocus();
                 closeKeyboard();
                 searchItem.collapseActionView();
-//                searchView.onActionViewCollapsed();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 /* Kalder filtrerings metoden fra adapteren */
-                eventAdapter.getFilter().filter(newText);
+                adapter.getFilter().filter(newText);
                 return false;
             }
         });
@@ -186,27 +183,4 @@ public class EventFragment extends CustomFragment implements View.OnClickListene
         }
 
     };
-
-
-
-    /** @author MADS H. - FOR TESTING PURPOSES */
-    public long testingLayoutInRecycler() {
-        final RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-        if (layoutManager instanceof GridLayoutManager) {
-            adapterType = 1;
-        }
-        else if (layoutManager instanceof LinearLayoutManager) {
-            adapterType = 2;
-        }
-        return adapterType;
-    }
-
-    public void setTestEvents() {
-        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
-        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
-        testEvents.add(new EventDTO("bonk","bonkstrong","teest","12","12","bonk","hmnm","image?"));
-    }
-
-
-
 }

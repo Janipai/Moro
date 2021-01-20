@@ -27,6 +27,11 @@ public class ProfileDAO {
     private final FirebaseFirestore mBase = FirebaseFirestore.getInstance();
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+    /**
+     * This method search for the user with the given userID and set the activeUser DTO to that person
+     * @param userID The user ID
+     * @param act The activity this method is called from
+     */
     public void findUserInit(String userID, Activity act) {
         mBase.collection("Users").document(userID).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -36,6 +41,7 @@ public class ProfileDAO {
                      ProfileDTO user = document.toObject(ProfileDTO.class);
                     MainActivity activity = ((MainActivity)act);
                     activity.setUserProfile(user);
+                    //this method call is used to make the start up of the app synchronized
                     activity.getEvents();
 
                 } else {
@@ -46,6 +52,8 @@ public class ProfileDAO {
             }
         });
     }
+
+    //this method is called to find a user matching the User id given in the login
     public void findUserSign(String userID, LoginFragment frag) {
         mBase.collection("Users").document(userID).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -66,15 +74,18 @@ public class ProfileDAO {
         });
     }
 
+    //used to delete an user
     public void deleteUser () {
         mBase.collection("Users").document(mAuth.getUid()).delete();
         mAuth.getCurrentUser().delete();
     }
 
+    //this method is used to update an user, by overwritting it's db document
     public void updateUser (String userID, ProfileDTO dto) {
         mBase.collection("Users").document(userID).set(dto, SetOptions.merge());
     }
 
+    //this method is used to create a new user in the database
     public void createUser (String userID, ProfileDTO dto, OpretFragment frag) {
         mBase.collection("Users").document(userID).set(dto)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

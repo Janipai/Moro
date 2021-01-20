@@ -178,10 +178,18 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonLogin:
-                fragment = new MyProfile();
-                SignIn();
+        switch (v.getId()){
+             case R.id.buttonLogin:
+                 if (emailLogin.getText().toString().isEmpty()){
+                     Toast.makeText(e.getContext(), "Indsæt venligst din email addresse", Toast.LENGTH_SHORT).show();
+                     return;
+                 }
+                 if (passwordLogin.getText().toString().isEmpty()){
+                     Toast.makeText(getContext(), "Indsæt venligst dit password", Toast.LENGTH_SHORT).show();
+                     return;
+                 }
+                 fragment = new MyProfile();
+                 SignIn();
                 break;
             case R.id.buttonOpretLogin:
                 fragment = new OpretFragment();
