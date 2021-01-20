@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
+/**@author Mads H */
 public class AboutUsStudiegruppeFragment extends CustomFragment {
 
     public AboutUsStudiegruppeFragment() {
