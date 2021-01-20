@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
             android:fontFamily="@font/anton"
-            android:text="om os studiegruppe"
+            android:text="om Udviklerne"
             android:textAllCaps="true"
             android:textColor="#260023"
             android:textSize="36sp"
