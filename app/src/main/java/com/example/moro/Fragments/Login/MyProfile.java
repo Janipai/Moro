@@ -26,7 +26,9 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
     ProfileDTO dto;
     Context ctx = Context.getInstance();
-    EditText name, bday, email, password;
+    EditText name;
+    EditText bday;
+    EditText email;
     TextView changeProfileInfo;
     Spinner spinner;
     ProfileDAO dao = new ProfileDAO();
@@ -53,7 +55,6 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             public void onClick(View v) {
                 //Hvad hvis internet fejler?
                 editInfo(name.getText().toString(), spinner.getSelectedItem().toString(), email.getText().toString(), bday.getText().toString());
-                Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
             }
         });
         deleteMyProfile = myView.findViewById(R.id.deleteMyProfile);
@@ -110,16 +111,19 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
     }
 
     public void editInfo(String name, String gender, String mail, String bday) {
-
         //gets the user from context
-        dto.setProfileUsername(name);
-        dto.setProfileGender(gender);
-        dto.setProfileEmail(mail);
-        dto.setProfileDateBorn(bday);
-        dao.updateUser(mAuth.getUid(), dto);
+        try {
+            dto.setProfileUsername(name);
+            dto.setProfileGender(gender);
+            dto.setProfileEmail(mail);
+            dto.setProfileDateBorn(bday);
+            dao.updateUser(mAuth.getUid(), dto);
+            Toast.makeText(getContext(), "Gemt", Toast.LENGTH_SHORT).show();
 
-        //Update database
-        //profileDAO.saveProfile(profileDTO);
+            //Update database
+            //profileDAO.saveProfile(profileDTO);
+        }catch (Exception exception){
+            Toast.makeText(getContext(), exception.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
-
 }
