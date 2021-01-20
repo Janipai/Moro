@@ -1,6 +1,5 @@
 package com.example.moro.Fragments.BurgerMenu;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,19 +12,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.moro.Data.DTO.TipDTO;
 import com.example.moro.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,7 +57,7 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
         eventName = view.findViewById(R.id.eventName);
         eventWhere = view.findViewById(R.id.eventWhere);
         eventWhat = view.findViewById(R.id.eventWhat);
-        eventLink = view.findViewById(R.id.eventLink);
+        eventLink = view.findViewById(R.id.Tip_eventLink);
 
         //adding onFocus listeners to my Text fields
         eventName.setOnFocusChangeListener(this);
@@ -126,7 +118,25 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TipDTO tip = new TipDTO(name, where, about, link, day + "-" + month + "-" + year);
+                link = eventLink.getText().toString();
+                name = eventName.getText().toString();
+                where = eventWhere.getText().toString();
+                about = eventWhat.getText().toString();
+                year = yearSpinner.getSelectedItem().toString();
+                month = monthSpinner.getSelectedItem().toString();
+                day = dateSpinner.getSelectedItem().toString();
+                TipDTO tip = new TipDTO();
+                try {
+                    tip.setName(name);
+                    tip.setAbout(about);
+                    tip.setLink(link);
+                    tip.setWhen(day + "-" + month + "-" + year);
+                    tip.setWhere(where);
+                }catch (Exception e){
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //tries to add the new tip to the database
                 FirebaseFirestore.getInstance().collection("Tips").add(tip).addOnSuccessListener(documentReference -> {
                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
@@ -165,7 +175,7 @@ public class TipFragment extends Fragment implements View.OnFocusChangeListener 
             case R.id.eventWhat:
                 about = eventWhat.getText().toString();
                 break;
-            case R.id.eventLink:
+            case R.id.Tip_eventLink:
                 link = eventLink.getText().toString();
                 break;
         }

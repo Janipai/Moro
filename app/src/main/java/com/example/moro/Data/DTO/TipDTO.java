@@ -23,7 +23,9 @@ public class TipDTO {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws Exception {
+        if (name.isEmpty())
+            throw new Exception("Event navn feltet må ikke være tomt!");
         this.name = name;
     }
 
@@ -31,7 +33,9 @@ public class TipDTO {
         return where;
     }
 
-    public void setWhere(String where) {
+    public void setWhere(String where) throws Exception {
+        if (where.isEmpty())
+            throw new Exception("Event Addresse feltet må ikke være tomt!");
         this.where = where;
     }
 
@@ -39,7 +43,9 @@ public class TipDTO {
         return about;
     }
 
-    public void setAbout(String about) {
+    public void setAbout(String about) throws Exception {
+        if (about.isEmpty())
+            throw new Exception("Om Event feltet må ikke være tomt!");
         this.about = about;
     }
 
@@ -47,7 +53,9 @@ public class TipDTO {
         return link;
     }
 
-    public void setLink(String link) {
+    public void setLink(String link) throws Exception {
+        if (link.isEmpty())
+            throw new Exception("Event link feltet må ikke være tomt!");
         this.link = link;
     }
 
@@ -55,7 +63,9 @@ public class TipDTO {
         return when;
     }
 
-    public void setWhen(String when) {
+    public void setWhen(String when) throws Exception {
+        if (when.isEmpty())
+            throw new Exception("Event dato feltet må ikke være tomt!");
         this.when = when;
     }
 }

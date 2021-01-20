@@ -96,7 +96,7 @@
             app:layout_constraintTop_toBottomOf="@+id/eventWhere" />
 
         <EditText
-            android:id="@+id/eventLink"
+            android:id="@+id/Tip_eventLink"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -122,9 +122,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/eventLink"
-            app:layout_constraintStart_toStartOf="@+id/eventLink"
-            app:layout_constraintTop_toBottomOf="@+id/eventLink">
+            app:layout_constraintEnd_toEndOf="@+id/Tip_eventLink"
+            app:layout_constraintStart_toStartOf="@+id/Tip_eventLink"
+            app:layout_constraintTop_toBottomOf="@+id/Tip_eventLink">
 
             <Button
                 android:id="@+id/tip_submit"

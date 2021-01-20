@@ -172,22 +172,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:src="@drawable/fbi"
-        app:layout_constraintEnd_toStartOf="@+id/giIV"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ellerTV" />
-
-    <ImageView
-        android:id="@+id/giIV"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="56dp"
-        android:background="@drawable/tipborder"
-        android:src="@drawable/ggi"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:srcCompat="@drawable/ggi" />
 
     <TextView
         android:id="@+id/ellerTV"

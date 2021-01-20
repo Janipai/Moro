@@ -22,11 +22,13 @@ public class BurgerMenuFragment extends CustomFragment implements View.OnClickLi
         Button tip = (Button) view.findViewById(R.id.menu_tip);
         Button contact = (Button) view.findViewById(R.id.menu_contact);
         Button about = (Button) view.findViewById(R.id.menu_about);
+        Button aboutStudie = (Button) view.findViewById(R.id.menu_aboutstudiegruppe) ;
 
         //adds an onClick listener to our button
         tip.setOnClickListener(this);
         contact.setOnClickListener(this);
         about.setOnClickListener(this);
+        aboutStudie.setOnClickListener(this);
 
         // Inflate the layout for this fragment
         return view;
@@ -45,6 +47,9 @@ public class BurgerMenuFragment extends CustomFragment implements View.OnClickLi
                 break;
             case R.id.menu_contact:
                 fragment = new ContactFragment();
+                break;
+            case R.id.menu_aboutstudiegruppe:
+                fragment = new AboutUsStudiegruppeFragment();
                 break;
         }
         replaceFragment(fragment);

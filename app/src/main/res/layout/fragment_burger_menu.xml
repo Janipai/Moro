@@ -18,6 +18,7 @@
             android:id="@+id/menu_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
             android:background="#00FFFFFF"
             android:fontFamily="@font/anton"
             android:text="tip os"
@@ -26,23 +27,25 @@
             android:textSize="36sp"
             app:layout_constraintBottom_toTopOf="@+id/menu_about"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/menu_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="270dp"
             android:background="#00FFFFFF"
             android:fontFamily="@font/anton"
             android:text="kontakt os"
             android:textAllCaps="true"
             android:textColor="#260023"
             android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_about" />
+            app:layout_constraintTop_toBottomOf="@+id/menu_aboutstudiegruppe" />
 
         <Button
             android:id="@+id/menu_about"
@@ -54,10 +57,28 @@
             android:textAllCaps="true"
             android:textColor="#260023"
             android:textSize="36sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/menu_aboutstudiegruppe"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/menu_tip"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/menu_aboutstudiegruppe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/anton"
+            android:text="om Udviklerne"
+            android:textAllCaps="true"
+            android:textColor="#260023"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/menu_contact"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/menu_about" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
