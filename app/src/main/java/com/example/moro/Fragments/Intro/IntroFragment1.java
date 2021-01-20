@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.moro.R;
 
-
+/** @author s195467 Stefan Luxhøj */
 public class IntroFragment1 extends Fragment {
 
 

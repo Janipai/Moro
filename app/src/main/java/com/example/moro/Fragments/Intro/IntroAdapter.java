@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+
+/** @author s195467 Stefan Luxhøj */
 public class IntroAdapter extends FragmentPagerAdapter {
 
 

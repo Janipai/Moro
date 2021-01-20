@@ -10,11 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.moro.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link IntroFragment2#newInstance} factory method to
- * create an instance of this fragment.
- */
+/** @author s195467 Stefan Luxhøj */
 public class IntroFragment2 extends Fragment {
 
 

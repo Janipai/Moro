@@ -1,5 +1,6 @@
 package com.example.moro.Fragments;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ import com.example.moro.BuildConfig;
 import com.example.moro.Data.DAO.EventDAO;
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
-import com.example.moro.Data.DTO.MikkelEventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
@@ -241,22 +241,16 @@ public class MainActivity extends AppCompatActivity {
     public void initializingDone() {
         replaceFragment(new HomeFragment());
     }
+
+    /** @author Stefan Luxhøj */
     private void startUpDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Velkommen til MORO")
                 .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
-                .setNegativeButton("Nej tak!", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setPositiveButton("Ja tak!", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
-                        dialog.dismiss();
-                    }
+                .setNegativeButton("Nej tak!", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Ja tak!", (dialog, which) -> {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
+                    dialog.dismiss();
                 })
                 .create().show();
         SharedPreferences preferences = getSharedPreferences("prefs" , android.content.Context.MODE_PRIVATE);

@@ -14,7 +14,7 @@ import com.example.moro.Fragments.HomeFragment;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 
-
+/** @author s195467 Stefan Luxhøj */
 public class IntroFragment3 extends CustomFragment {
 
     TextView doneTV;
