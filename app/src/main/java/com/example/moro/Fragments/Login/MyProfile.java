@@ -21,6 +21,9 @@ import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * @author s195477, Shania Hau
+ */
 
 public class MyProfile extends CustomFragment implements AdapterView.OnItemSelectedListener {
 
@@ -67,6 +70,9 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
             }
         });
 
+        /**
+         * @author s174130, Jacob Christensen
+         */
         logoutProfil = myView.findViewById(R.id.logoutProfil);
         logoutProfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,37 +85,27 @@ public class MyProfile extends CustomFragment implements AdapterView.OnItemSelec
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.genderList, android.R.layout.simple_spinner_item);
 
-
         //Apply adapter to the spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
         spinner.setSelection(adapter.getPosition(dto.getProfileGender()));
 
-
         return myView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        name.setText(dto.getProfileUsername().toString());
-        bday.setText(dto.getProfileDateBorn());
-        spinner.setPrompt(dto.getProfileGender());
-        email.setText(dto.getProfileEmail());
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String genderTxt = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), genderTxt, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
+    /**
+     * @author s195477, Shania Hau
+     */
     public void editInfo(String name, String gender, String mail, String bday) {
         //gets the user from context
         try {

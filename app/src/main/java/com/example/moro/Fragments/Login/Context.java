@@ -13,23 +13,11 @@ import java.util.ArrayList;
 public class Context {
     private States state;
     private static final Context ctx = new Context();
-    protected ArrayList<EventDTO> favorites = new ArrayList<>();
-    //fake data for nu
-    boolean login = true;
+    boolean login = false;
 
     public static Context getInstance() {
         return ctx;
     }
-
-    /*private Context() {
-        //Logik - find ud af om vi er logget ind
-        if (!login)
-            state = new NotLoginState();
-        else
-            state = new LoginState();
-
-    }
-    */
 
     public States getState() {
         return state;
@@ -39,13 +27,10 @@ public class Context {
         this.state = state;
     }
 
-    public void createUserPressed() {
-        state.createUserPressed(this);
-    }
-
     public void profilePressed(FragmentManager fragmentManager) {
         state.profilePressed(this, fragmentManager);
     }
+
 
     public boolean isLogin() {
         return login;

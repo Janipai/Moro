@@ -7,45 +7,51 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.Calendar;
 
 public class EventDescFragment extends Fragment {
 
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
-    public EventDescFragment() {
-        // Required empty public constructor
-    }
-
-
-    public static EventDescFragment newInstance(String param1, String param2) {
-        EventDescFragment fragment = new EventDescFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    EventDTO specificEvent;
+    ImageView imageIV;
+    TextView descTV, dateTV, timeTV, priceTV;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_eventbeskrivelse, container,false);
+        specificEvent = ((MainActivity)this.getActivity()).getOneEvent();
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_eventbeskrivelse, container, false);
+        TextView titleTV = (TextView) view.findViewById(R.id.EB_Overskrift);
+        descTV = view.findViewById(R.id.EB_beskrivelse);
+        dateTV = view.findViewById(R.id.EB_dato);
+        timeTV = view.findViewById(R.id.EB_tidspunkt);
+        priceTV = view.findViewById(R.id.EB_billetpris);
+        imageIV = view.findViewById(R.id.EB_Eventbilled);
+
+        System.out.println("EventDescFrag " + specificEvent.getName());
+
+        titleTV.setText(specificEvent.getName());
+        descTV.setText(specificEvent.getInfo());
+        dateTV.setText(specificEvent.getDate() + Calendar.getInstance().get(Calendar.YEAR));
+        timeTV.setText(specificEvent.getTime());
+        priceTV.setText(specificEvent.getPrice() + System.getProperty("line.separator") + "PRIS PÅ BILLET");
+
+        Picasso.get()
+                .load(specificEvent.getImage())
+                .placeholder(R.drawable.untitled)
+                .error(R.drawable.john)
+                .fit()
+                .noFade()
+                .into(imageIV);
+
+        return view;
     }
 }

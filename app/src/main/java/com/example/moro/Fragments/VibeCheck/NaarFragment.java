@@ -13,11 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.graphics.Matrix;
 
 import com.example.moro.Fragments.CustomFragment;
 import com.example.moro.R;
 
 import java.util.Arrays;
+
 /**
  * @author s195477, Shania Hau
  */
@@ -32,7 +34,6 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -43,15 +44,18 @@ public class NaarFragment extends CustomFragment implements View.OnClickListener
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerview_naar);
         ButtonListAdapter myAdapter = new ButtonListAdapter(v.getContext(), Arrays.asList(naarButtonname));
-        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(),3));
+        recyclerView.setLayoutManager(new GridLayoutManager(v.getContext(), 3));
         recyclerView.setAdapter(myAdapter);
 
         TextView typeText = v.findViewById(R.id.idtype);
 
+        Matrix matrix = new Matrix();
+
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
-
+        arrowDown.setRotation(-90);
+        arrowUp.setRotation(-90);
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override

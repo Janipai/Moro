@@ -18,7 +18,6 @@ import com.example.moro.R;
  */
 public abstract class CustomFragment extends Fragment {
 
-Animation animation;
 
     // https://stackoverflow.com/questions/18305945/how-to-resume-fragment-from-backstack-if-exists
     public void replaceFragment (Fragment fragment){
@@ -28,7 +27,7 @@ Animation animation;
 
         FragmentTransaction ft = manager.beginTransaction();
         if (!fragmentPopped && manager.findFragmentByTag(backStateName) == null){ //fragment not in back stack, create it.
-
+            //@author s195477 Shania Hau
             ft.setCustomAnimations(R.anim.enter_right_to_left,
                     R.anim.exit_right_to_left,
                     R.anim.enter_left_to_right,

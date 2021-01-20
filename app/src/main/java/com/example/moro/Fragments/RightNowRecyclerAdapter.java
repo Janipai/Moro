@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+/** @author s195467 Stefan Luxhøj */
+// Class for the swipeable recycler view on the home screen.
 public class RightNowRecyclerAdapter extends RecyclerView.Adapter<RightNowRecyclerAdapter.ViewHolder> {
 
     private final String TAG = "RecyclerViewAdapter";
