@@ -93,10 +93,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // SharedPreferences to check if it is the first time the user opens the app
         prefs = getSharedPreferences("prefs", android.content.Context.MODE_PRIVATE);
         boolean firstStart = prefs.getBoolean("FS", true);
         // firstStart = true; // To test the intro if needed
-        if(firstStart)
+        if(firstStart) // If its the first start run the startUpDialog method.
             startUpDialog();
         activity = this;
 
@@ -279,17 +281,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /** @author Stefan Luxhøj */
+    /** @author s195467 Stefan Luxhøj */
     private void startUpDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Velkommen til MORO")
                 .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
-                .setNegativeButton("Nej tak!", (dialog, which) -> dialog.dismiss())
+                .setNegativeButton("Nej tak!", (dialog, which) -> dialog.dismiss()) // If the user does not want tutorial, we just dismiss the dialog
                 .setPositiveButton("Ja tak!", (dialog, which) -> {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit(); // If the user wants a tuturial we replace the fragment with the intro.
                     dialog.dismiss();
                 })
                 .create().show();
+        // Now that the user has seen the startupdialog for the first time we edit the sharedpreferenes, so it does not pop up again.
         SharedPreferences preferences = getSharedPreferences("prefs" , android.content.Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("FS", false);

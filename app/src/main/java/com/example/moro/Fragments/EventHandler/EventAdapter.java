@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moro.Data.DAO.ProfileDAO;
 import com.example.moro.Data.DTO.EventDTO;
+import com.example.moro.Fragments.Login.Context;
+import com.example.moro.Fragments.Login.NotLoginState;
+import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.MainActivity;
 import com.example.moro.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +38,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     private android.content.Context myContext;
     private InfoAdapterInterface adapterInterface;
+    Context ctx = Context.getInstance();
+
     /* List which is used to update elements when searching / showing when not searching */
     private List<EventDTO> itemsToAdapt;
     /* List used for safekeeping a complete list of events whom are not to be manipulated*/
@@ -98,18 +103,25 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             holder.iv_imageEvent.setImageDrawable(ContextCompat.getDrawable(myContext, R.drawable.bruh));
         }
 
+        /**
+         * @author s195477, Shania Hau
+         */
         //add current event to favourites
         holder.addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (favouriteEventList.contains(itemsToAdapt.get(position))){
-                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
-                    favouriteEventList.remove(itemsToAdapt.get(position));
+                if (ctx.isLogin()){
+                    ctx.favouritFragment( ((AppCompatActivity) myContext).getSupportFragmentManager());
                 }else{
-                    holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
-                    favouriteEventList.add(itemsToAdapt.get(position));
+                    if (favouriteEventList.contains(itemsToAdapt.get(position))){
+                        holder.addToFavourites.setImageResource(R.drawable.ic_baseline_add_box_24);
+                        favouriteEventList.remove(itemsToAdapt.get(position));
+                    }else{
+                        holder.addToFavourites.setImageResource(R.drawable.ic_baseline_remove_box);
+                        favouriteEventList.add(itemsToAdapt.get(position));
+                    }
+                    new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
                 }
-                new ProfileDAO().updateUser(MainActivity.mAuth.getUid(), MainActivity.userProfile);
             }
         });
 

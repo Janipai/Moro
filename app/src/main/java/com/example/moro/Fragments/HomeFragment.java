@@ -39,6 +39,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
         initEvents();
@@ -58,6 +59,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         return view;
     }
 
+    // Method for setting the events to the ArrayList in a random manner.
     private void createRightNowEvents() {
         rightNowTestEvents = new ArrayList<>();
         Random rand = new Random();
@@ -83,6 +85,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
         testEvents = ((MainActivity)this.getActivity()).getAllEvents();
     }
 
+    // Method so set the layoutmanager and adapters for the recyclerview on the home screen.
     private void initRecyclerViews() {
         LoopingLayoutManager layoutManager = new LoopingLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView.LayoutManager layoutManager1 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -99,7 +102,7 @@ public class HomeFragment extends CustomFragment implements View.OnClickListener
 
 
     }
-
+        // Test method for creating events
 /*    public void createEvents() {
         EventDTO event1 = new EventDTO("Softball", "3 KM", "10/11/2020", "10:00 - 12:00", R.drawable.bruh) ;
         EventDTO event2 = new EventDTO("Kunst", "1.6 KM", "11/11/2020", "15:00 - 16:00", R.drawable.bruh);

@@ -36,7 +36,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     private FavouritesEventAdapter.ViewType viewTypeSelected;
     private EventLister recall;
 
-    public interface EventLister{
+    public interface EventLister {
         void updateRecyclerView();
     }
 
@@ -52,12 +52,11 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
     public FavouritesEventAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        if(this.viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST) {
-            view = myInflater.inflate(R.layout.fragment_event_liste,parent,false);
+        if (this.viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_LIST) {
+            view = myInflater.inflate(R.layout.fragment_event_liste, parent, false);
             return new FavouritesEventAdapter.MyViewHolder(view);
-        }
-        else if (viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_GRID) {
-            view = myInflater.inflate(R.layout.fragment_event_sidebyside_view,parent,false);
+        } else if (viewTypeSelected == FavouritesEventAdapter.ViewType.VIEW_TYPE_GRID) {
+            view = myInflater.inflate(R.layout.fragment_event_sidebyside_view, parent, false);
             return new FavouritesEventAdapter.MyViewHolder(view);
         }
         return null;
@@ -88,7 +87,7 @@ public class FavouritesEventAdapter extends RecyclerView.Adapter<FavouritesEvent
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 EventDescFragment fragment = new EventDescFragment();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
             }

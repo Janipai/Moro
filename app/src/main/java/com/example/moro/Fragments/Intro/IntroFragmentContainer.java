@@ -17,7 +17,7 @@ import com.example.moro.R;
 public class IntroFragmentContainer extends Fragment {
 
     ViewPager viewPager;
-
+    // Class to contain the viewpager and set the adapter for the viewpager, and returns the view.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

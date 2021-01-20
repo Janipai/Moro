@@ -16,10 +16,11 @@ import com.example.moro.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * @author s195477, Shania Hau
  */
-public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAdapter.MyViewHolder>{
+public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAdapter.MyViewHolder> {
 
     private Context myContext;
     private List<String> myButtons;
@@ -33,29 +34,25 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         LayoutInflater myInflater = LayoutInflater.from(myContext);
-        view = myInflater.inflate(R.layout.gridview_item_hvor_buttons,parent,false);
-        return new  MyViewHolder(view);
+        view = myInflater.inflate(R.layout.gridview_item_hvor_buttons, parent, false);
+        return new MyViewHolder(view);
 
     }
 
     ArrayList<TextView> choosenButtonList = new ArrayList<>();
+
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
         holder.tv.setText(myButtons.get(position));
-        //holder.tv.setPadding(40,40,40,40);
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //AppCompatActivity activity = (AppCompatActivity)view.getContext();
-                //EventBeskrivelseFragment fragment = new EventBeskrivelseFragment();
-                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.event2All, fragment).addToBackStack(null).commit();
-
-                if (choosenButtonList.contains(holder.tv)){
+                if (choosenButtonList.contains(holder.tv)) {
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvor);
                     holder.tv.setTextColor(Color.parseColor("#990000"));
                     choosenButtonList.remove(holder.tv);
-                }else if (!choosenButtonList.contains(holder.tv)){
+                } else if (!choosenButtonList.contains(holder.tv)) {
                     choosenButtonList.add(holder.tv);
                     holder.tv.setBackgroundResource(R.drawable.button_style_hvor2);
                     holder.tv.setTextColor(Color.parseColor("#FFB7FC"));
@@ -69,12 +66,12 @@ public class ButtonListHvorAdapter extends RecyclerView.Adapter<ButtonListHvorAd
         return myButtons.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView tv;
         LinearLayout layout;
 
-        public MyViewHolder(@NonNull View itemView){
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tv = (TextView) itemView.findViewById(R.id.all_textview_forhvor);

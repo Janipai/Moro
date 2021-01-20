@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- @author s195477, Shania Hau, s195485 Nikolai Kristensen-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,9 +47,7 @@
             android:id="@+id/nameProfil"
             android:layout_width="331dp"
             android:layout_height="50dp"
-            android:layout_marginStart="40dp"
             android:layout_marginTop="52dp"
-            android:layout_marginEnd="40dp"
             android:autoText="false"
             android:background="@drawable/tipborder"
             android:ems="10"
@@ -64,15 +63,14 @@
             android:id="@+id/bdayProfile"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/tipborder"
             android:ems="10"
             android:fontFamily="@font/anton"
             android:hint="FØDSELSDAG"
             android:inputType="date"
             android:paddingLeft="10dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nameProfil"
             app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
         <EditText
@@ -144,11 +142,10 @@
             android:id="@+id/genderSpinner"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/tipborder"
             android:spinnerMode="dropdown"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/nameProfil"
             app:layout_constraintTop_toBottomOf="@+id/nameProfil" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
