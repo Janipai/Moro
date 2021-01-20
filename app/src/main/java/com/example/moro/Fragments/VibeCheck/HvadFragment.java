@@ -45,6 +45,9 @@ public class HvadFragment extends CustomFragment {
         ImageView arrowDown = v.findViewById(R.id.arrow_down);
         ImageView arrowUp = v.findViewById(R.id.arrow_up);
 
+        arrowDown.setRotation(-90);
+        arrowUp.setRotation(-90);
+
 
         typeText.setOnClickListener(new View.OnClickListener() {
             @Override

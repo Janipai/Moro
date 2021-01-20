@@ -43,7 +43,8 @@ import java.util.concurrent.Executor;
 public class LoginFragment extends CustomFragment implements View.OnClickListener {
 
     private static final String TAG = "LoginFragment";
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
+
     Fragment fragment = null;
     CallbackManager mCallbackManager;
     EditText emailLogin, passwordLogin;
@@ -148,7 +149,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
     /**
      * @author Mikkel Johansen s175194
      */
-    private void SignIn(){
+    public void SignIn(){
         mAuth.signInWithEmailAndPassword(emailLogin.getText().toString(), passwordLogin.getText().toString())
                 .addOnCompleteListener(e.getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
@@ -197,6 +198,7 @@ public class LoginFragment extends CustomFragment implements View.OnClickListene
      */
     public void loginSucces(String uid){
         new ProfileDAO().findUserSign(uid,this);
+        ctx.setLogin(true);
     }
     public void done(){
         replaceFragment(fragment);

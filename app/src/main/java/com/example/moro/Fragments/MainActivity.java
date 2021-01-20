@@ -1,5 +1,6 @@
 package com.example.moro.Fragments;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -21,6 +23,7 @@ import com.example.moro.Data.DTO.EventDTO;
 import com.example.moro.Data.DTO.ProfileDTO;
 import com.example.moro.Fragments.BurgerMenu.BurgerMenuFragment;
 import com.example.moro.Fragments.EventHandler.EventFragment;
+import com.example.moro.Fragments.Intro.IntroFragmentContainer;
 import com.example.moro.Fragments.Login.Context;
 import com.example.moro.Fragments.Login.LoginState;
 import com.example.moro.Fragments.Login.NotLoginState;
@@ -33,6 +36,7 @@ import java.util.ArrayList;
 
 import io.sentry.android.core.SentryAndroid;
 
+import static androidx.lifecycle.Lifecycle.State.RESUMED;
 import static androidx.lifecycle.Lifecycle.State.STARTED;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<EventDTO> favouritesEvents;
     ArrayList<EventDTO> events;
     EventDTO selectedEvent;
-
+    SharedPreferences prefs;
     public static MainActivity activity;
     ProfileDAO dao = new ProfileDAO();
     BottomNavigationView bottomNav;
@@ -89,12 +93,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        prefs = getSharedPreferences("prefs", android.content.Context.MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("FS", true);
+        // firstStart = true; // To test the intro if needed
+        if(firstStart)
+            startUpDialog();
         activity = this;
 
          /**
          *  Sentry Error tracking initialization
-         * @author Mads H. S195456
+         * @author Mads H.
          */
         SentryAndroid.init(this, options -> {
             options.setDsn("https://5c95bc18ac2347c1a654c669e48ee273@o503098.ingest.sentry.io/5587708");
@@ -166,6 +174,9 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /** @author Mads H. S195456
+     * On back press not going to whitescreen from Home fragment.
+     */
     @Override
     public void onBackPressed() {
         if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
@@ -232,6 +243,57 @@ public class MainActivity extends AppCompatActivity {
      * @author Mikkel Johansen s175194
      */
     public void initializingDone() {
-        replaceFragment(new HomeFragment());
+        if (getLifecycle().getCurrentState().isAtLeast(STARTED)) {
+            replaceFragment(new HomeFragment());
+
+            if (getLifecycle().getCurrentState().isAtLeast(RESUMED)) {
+                bottomNav = findViewById(R.id.bottom_navigation);
+                topNav = findViewById(R.id.top_navigation_toolbar);
+                setSupportActionBar(topNav);
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                topNav.setNavigationIcon(null);
+
+
+                bottomNav.setOnNavigationItemSelectedListener(item -> {
+                    switch (item.getItemId()) {
+                        case R.id.bot_nav_home:
+                            replaceFragment(new HomeFragment());
+                            return true;
+                        case R.id.bot_nav_events:
+                            replaceFragment(new EventFragment());
+                            return true;
+                        case R.id.bot_nav_favorite:
+                            //henvises til login fragment, hvis ikke man er logget in
+                            ctx.favouritFragment(getSupportFragmentManager());
+                            return true;
+                        case R.id.bot_nav_menu:
+                            replaceFragment(new BurgerMenuFragment());
+                            return true;
+                        default:
+                            return true;
+                    }
+                });
+            }
+        }
+
     }
+
+    /** @author Stefan Luxhøj */
+    private void startUpDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Velkommen til MORO")
+                .setMessage("Hej med dig! Vil du have en rundvisning i appen før du går i gang?")
+                .setNegativeButton("Nej tak!", (dialog, which) -> dialog.dismiss())
+                .setPositiveButton("Ja tak!", (dialog, which) -> {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new IntroFragmentContainer()).commit();
+                    dialog.dismiss();
+                })
+                .create().show();
+        SharedPreferences preferences = getSharedPreferences("prefs" , android.content.Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("FS", false);
+        editor.apply();
+    }
+
 }
